@@ -89,6 +89,9 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
         /** The form configuration parser. */
         private CmsFormConfigParser m_formConfigParser;
 
+        /** Reminder interval to display, if mail is sent subsequently. */
+        private String m_reminderIntervalDisplay;
+
         /**
          * Creates a new event bean for a given search resource.
          * @param searchResource the search resource
@@ -313,6 +316,17 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
         }
 
         /**
+         * Returns the reminder time interval to display.
+         * Useful if the mail is sent subsequently.
+         * @param cms the CMS context
+         * @return the reminder time interval to display
+         */
+        String getReminderIntervalDisplay(CmsObject cms) {
+
+            return m_reminderIntervalDisplay != null ? m_reminderIntervalDisplay : getReminderInterval(cms);
+        }
+
+        /**
          * Returns the reminder note.
          * @param cms the CMS context
          * @return the reminder note
@@ -369,6 +383,9 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
                     long diffDays = TimeUnit.DAYS.convert(diffMillis, TimeUnit.MILLISECONDS);
                     if ((diffDays > 0L) && (diffDays <= timeInterval)) {
                         LOG.debug("Reminder day reached. " + m_searchResource.getField(FIELD_TITLE));
+                        if (diffDays != timeInterval) {
+                            m_reminderIntervalDisplay = String.valueOf(diffDays);
+                        }
                         reached = true;
                     } else {
                         LOG.debug(
@@ -519,7 +536,7 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
         resolver.addMacro("event.note", eventReminderData.getEventNote(cms));
         resolver.addMacro("event.type", eventReminderData.getEventType(cms));
         resolver.addMacro("event.time", eventReminderData.getEventTime(cms));
-        resolver.addMacro("reminder.interval", eventReminderData.getReminderInterval(cms));
+        resolver.addMacro("reminder.interval", eventReminderData.getReminderIntervalDisplay(cms));
         resolver.addMacro("reminder.note", eventReminderData.getReminderNote(cms));
         for (Entry<String, String> field : formDataBean.getData().entrySet()) {
             CmsFormDataField formDataField = new CmsFormDataField(field.getKey(), field.getValue());

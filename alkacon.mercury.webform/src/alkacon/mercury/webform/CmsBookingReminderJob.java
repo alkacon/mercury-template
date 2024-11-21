@@ -69,8 +69,6 @@ import java.util.stream.Collectors;
 import org.apache.commons.logging.Log;
 import org.apache.commons.mail.EmailException;
 
-// TODO: write a schema conversion
-
 /**
  * Job that reminds users of a booked event that is about to start.
  * Configure this job in a way that it does not run more than once per day.
@@ -290,7 +288,7 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
             List<CmsFormDataBean> all = A_CmsFormDataHandler.readAllFormData(cms, uuid);
             List<CmsFormDataBean> registered = new ArrayList<CmsFormDataBean>();
             for (CmsFormDataBean formDataBean : all) {
-                if (formDataBean.isRegistered()) {
+                if (!formDataBean.isCancelled() && !formDataBean.isWaitlist()) {
                     registered.add(formDataBean);
                 }
             }

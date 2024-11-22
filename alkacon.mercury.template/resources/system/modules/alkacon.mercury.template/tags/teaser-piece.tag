@@ -153,30 +153,26 @@
 <c:set var="teaserClass"        value="${empty teaserClass ? 'teaser' : teaserClass}" />
 <c:set var="pieceLayout"        value="${empty pieceLayout ? 6 : pieceLayout}" />
 <c:set var="hsize"              value="${empty hsize ? 3 : hsize}" />
-<c:set var="headingInBody"      value="${headingInBody and ((pieceLayout eq 1) or (pieceLayout ge 6))}" />
 <c:choose>
     <c:when test="${(fn:contains(teaserType, 'teaser-text-tile') or fn:contains(teaserType, 'teaser-masonry')) and not fn:contains(teaserType, '-var')}">
         <c:set var="addButtonDiv" value="${true}" />
         <c:set var="pieceLayout" value="${1}"/>
         <c:set var="sizeDesktop" value="${12}" />
         <c:set var="sizeMobile" value="${12}" />
-        <c:set var="headingInBody" value="${false}" />
+        <c:set var="headingInBody" value="${empty headingInBody ? false : headingInBody}" />
     </c:when>
     <c:when test="${fn:contains(teaserType, 'teaser-compact')}">
         <c:set var="hideImage"  value="${true}"/>
     </c:when>
 </c:choose>
+<c:set var="headingInBody"      value="${headingInBody and ((pieceLayout eq 1) or (pieceLayout ge 6))}" />
+<c:set var="linkOnHeadline"     value="${empty linkOnHeadline ? true : linkOnHeadline}" />
 <c:set var="sizeDesktop"        value="${not empty sizeDesktop ? sizeDesktop : (((pieceLayout ge 1) and (pieceLayout != 10)) ? 4 : 12)}" />
 <c:set var="buttonText"         value="${buttonText eq '-' ? null : buttonText}" /><%-- Allows to have a "none" default but still use the value from the content by setting '-' as button text. --%>
 <c:set var="showButton"         value="${(buttonText ne 'none') and (linkOption ne 'none')}" />
 <c:set var="addButtonDiv"       value="${showButton ? (empty groupId ? addButtonDiv : false) : false}" />
 <c:set var="dateOnTop"          value="${empty dateOnTop ? false : dateOnTop}" />
 <c:set var="textLength"         value="${empty textLength ? -1 : textLength}" />
-
-<%-- These are currently not configurable, maybe add this later --%>
-<c:set var="linkOnHeadline"     value="${empty linkOnHeadline ? true : linkOnHeadline}" />
-<c:set var="linkOnText"         value="${true}" />
-<c:set var="useButton"          value="${false}" />
 
 <c:if test="${not empty markupBody}">
     <jsp:invoke fragment="markupBody" var="markupBodyOutput" />
@@ -256,7 +252,7 @@
                     prefix="${headlinePrefix}"
                     suffix="${headlineSuffix}"
                     level="${hsize}"
-                    tabindex="${not linkHeadline}"
+                    tabindex="${false}"
                     ade="${ade}" />
             </c:if>
         </c:if>
@@ -361,7 +357,7 @@
                     title="${linkHeadline ? null : linkTitle}"
                     css='uncolored'
                     attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
-                    test="${linkOnText and not empty markupTextOutput}">
+                    test="${not empty markupTextOutput}">
                     ${markupTextOutput}
                 </m:link>
             </c:when>

@@ -148,6 +148,7 @@
         headline="${title}"
         preface="${preface}"
         date="${value.Date.toInstanceDate}"
+        dateOnTop="${setDateOnTop}"
         paraCaption="${paragraph.value.Caption}"
         paraText="${paragraph.value.Text}"
         piecePreMarkup="${setElementPreMarkup}"

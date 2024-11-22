@@ -107,6 +107,7 @@
     headlineSuffix="${badge}${setOrderBadge}"
     preface="${preface}"
     date="${date}"
+    dateOnTop="${setDateOnTop}"
     paraCaption="${paragraph.value.Caption}"
     paraText="${paragraph.value.Text}"
     piecePreMarkup="${setElementPreMarkup}"

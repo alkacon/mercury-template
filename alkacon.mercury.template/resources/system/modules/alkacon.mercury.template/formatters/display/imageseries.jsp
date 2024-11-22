@@ -27,6 +27,7 @@
     headlineSuffix="${setOrderBadge}"
     preface="${preface}"
     date="${value.Date.toInstanceDate}"
+    dateOnTop="${setDateOnTop}"
     paraText="${value.Text}"
     piecePreMarkup="${setElementPreMarkup}"
     pieceLayout="${setPieceLayout}"

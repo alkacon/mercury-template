@@ -23,6 +23,7 @@
 <%@ variable name-given="setCssWrapperAll"  declare="true" %>
 <%@ variable name-given="setEffect"         declare="true" %>
 <%@ variable name-given="setDateFormat"     declare="true" %>
+<%@ variable name-given="setDateOnTop"      declare="true" variable-class="java.lang.Boolean" %>
 <%@ variable name-given="setRatio"          declare="true" %>
 <%@ variable name-given="setRatioLg"        declare="true" %>
 <%@ variable name-given="setTextLength"     declare="true" variable-class="java.lang.Integer" %>
@@ -60,6 +61,7 @@
 <c:set var="setCssWrapperRequired"          value="${setting.requiredCssWrapper.isSetNotNone ? ' '.concat(setting.requiredCssWrapper.toString) : null}" />
 <c:set var="setEffect"                      value="${setting.effect.isSetNotNone ? ' '.concat(setting.effect.toString) : null}" />
 <c:set var="setDateFormat"                  value="${setting.dateFormat.toString}" />
+<c:set var="setDateOnTop"                   value="${setting.dateOnTop.toBoolean}" />
 <c:set var="setRatio"                       value="${setting.imageRatio.toString}"/>
 <c:set var="setRatioLg"                     value="${setting.imageRatioLg.toString}"/>
 <c:set var="setTextLength"                  value="${setting.textLength.toInteger}" />

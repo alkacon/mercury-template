@@ -30,6 +30,7 @@
     headlineSuffix="${setOrderBadge}"
     preface="${preface}"
     date="${value.Date.toInstanceDate}"
+    dateOnTop="${setDateOnTop}"
     paraCaption="${paragraphIntro.value.Caption.isSet ? paragraphIntro.value.Caption : paragraphText.value.Caption}"
     paraText="${paragraphIntro.value.Text.isSet ? paragraphIntro.value.Text : paragraphText.value.Text}"
     piecePreMarkup="${setElementPreMarkup}"

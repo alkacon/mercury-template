@@ -30,6 +30,7 @@
     headlineSuffix="${setOrderBadge}"
     preface="${preface}"
     date="${value.Date.toInstanceDate}"
+    dateOnTop="${setDateOnTop}"
     paraText="${value.Text}"
     noLinkOnVisual="${true}"
     piecePreMarkup="${setElementPreMarkup}"

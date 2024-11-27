@@ -39,6 +39,7 @@
     --#{$prefix}form-error-background-color: #{$form-error-background};
     --#{$prefix}form-error-text-color: #{$form-error-text-color};
 
+    --#{$prefix}form-border-radius: #{$form-border-radius};
     @if ($form-input-border-radius != $btn-border-radius) {
         --#{$prefix}form-input-border-radius: #{$form-input-border-radius};
     } @else {
@@ -62,7 +63,7 @@
     line-height: $form-line-height;
     font-family: var(--#{$prefix}form-font-family);
     border: $form-border;
-    border-radius: var(--#{$prefix}border-radius);
+    border-radius: var(--#{$prefix}form-border-radius);
     color: var(--#{$prefix}form-text-color);
     background: var(--#{$prefix}form-background-color);
     @include use-hyphens-text;
@@ -212,9 +213,11 @@
             right: 4px;
             float: none;
             height: calc(100% - 8px);
-            line-height: 31px;
             padding: 0 var(--#{$prefix}form-spacing);
             font-size: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         input {

@@ -30,6 +30,9 @@
         description="The type assigned to the container, e.g. 'element' or 'image-simple'.
         The type will be used to select the formatter that is used to render a content in the container." %>
 
+<%@attribute name="subType" type="java.lang.String" required="false"
+        description="The sub type assigned to the container, which will control optional default settings." %>
+
 <%@attribute name="role" type="java.lang.String" required="false"
         description="Role for the container." %>
 
@@ -70,6 +73,7 @@
 
 <c:set var="name"           value="${empty name ? (not empty value.Name ? value.Name.toString() : null) : name}" />
 <c:set var="type"           value="${empty type ? (not empty value.Type ? value.Type.toString() : null) : type}" />
+<c:set var="subType"        value="${empty subType ? (not empty value.subType ? value.Type.toString() : null) : subType}" />
 <c:set var="role"           value="${empty role ? (not empty value.Role ? value.Role.toString() : null) : role}" />
 <c:set var="css"            value="${empty css ? (not empty value.Css ? value.Css.toString() : null) : css}" />
 <c:set var="tag"            value="${empty tag ? (not empty value.Tag ? value.Tag.toString() : null) : tag}" />
@@ -118,6 +122,11 @@
             detailView and ((type eq 'element') or (type eq 'm-element')) and cms.sitemapConfig.attribute['template.detailview.element.container'].isSetNotNone
             ? cms.sitemapConfig.attribute['template.detailview.element.container']
             : type}" />
+
+        <c:if test="${empty settings and not empty subType}">
+            <m:load-plugins group="container-defaults" type="jsp-nocache" />
+            <c:set var="settings" value="${subTypeSettings}" />
+        </c:if>
 
         <cms:container
             name="${name}"

@@ -903,6 +903,7 @@ $form-font-size-input:              $form-font-size !default;
 $form-font-size-input-xs-ph:        $font-size-sm !default;
 $form-input-border-radius:          $btn-border-radius !default;  // will inherit btn-border-radius css var if not different
 
+$form-border-radius:                var(--#{$prefix}border-radius) !default;
 $form-text-color:                   var(--#{$prefix}body-color) !default;
 $form-label-color:                  var(--#{$prefix}form-text-color) !default;
 $form-border-color:                 var(--#{$prefix}grey) !default;

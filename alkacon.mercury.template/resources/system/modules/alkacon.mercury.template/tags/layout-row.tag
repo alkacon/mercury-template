@@ -23,6 +23,9 @@
 <%@ attribute name="sideType" type="java.lang.String" required="false"
     description="The type for the smaller 'side' container. Will default to 'element' if not set."  %>
 
+<%@ attribute name="subType" type="java.lang.String" required="false"
+    description="The sub type assigned to the container, which will control optional default settings." %>
+
 <%@ attribute name="detailContainer" type="java.lang.String" required="false"
     description="Controls which container is used as detail container." %>
 
@@ -92,6 +95,7 @@
         <m:div test="${addContainer}" css="${conCss}" css2="container">
             <m:div test="${not empty rowCss}" css="row${rowCss}">
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
+                <c:set target="${valueMap}" property="subType"      value="${subType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCss}" />
                 <c:set target="${valueMap}" property="Parameters"   value="${{'cssgrid': 'col-xs-12'}}" />
@@ -111,6 +115,7 @@
             <div class="row${rowCss}"><%----%>
 
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
+                <c:set target="${valueMap}" property="subType"      value="${subType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="col${breakpoint}${mainColSize}${colCss}" />
                 <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
@@ -135,6 +140,7 @@
 
                 <c:set var="colOrder" value="${reverseMobileOrder ? ' order-last order'.concat(breakpoint).concat('first') : ''}" />
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
+                <c:set target="${valueMap}" property="subType"      value="${subType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="col${breakpoint}4${colCss}${colOrder}" />
                 <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
@@ -177,6 +183,7 @@
             <div class="row${rowCss}"><%----%>
 
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
+                <c:set target="${valueMap}" property="subType"      value="${subType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-3' :' order-4').concat('order-md-3 order-lg-1') : ''}" />
                 <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
@@ -226,6 +233,7 @@
 
                     <c:set target="${valueMap}" property="Name"         value="${containerName}"/>
                     <c:set target="${valueMap}" property="Type"         value="${containerType}"/>
+                    <c:set target="${valueMap}" property="subType"      value="${subType}"/>
                     <c:set target="${valueMap}" property="Css"          value="col${breakpoint} col-num-${status.count}${colCss}" />
 
                     <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq containerName}" />
@@ -257,6 +265,7 @@
             <div class="row${rowCss}"><%----%>
 
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
+                <c:set target="${valueMap}" property="subType"      value="${subType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
                 <c:set target="${valueMap}" property="Css"          value="${colCssMod}${reverseMobileOrder ? (twoXsCols ? ' order-5' : ' order-6').concat(' order-md-4 order-xl-1') : ''}" />
                 <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />

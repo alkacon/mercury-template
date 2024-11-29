@@ -169,6 +169,11 @@
         font-size: 0.7em;
         padding: 3px 6px;
         bottom: 2px;
+        .ico {
+            // required to counter edge-case for type-contact detail pages
+            width: unset;
+            margin-right: 0;
+        }
     }
 }
 

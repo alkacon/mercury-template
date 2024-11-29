@@ -63,6 +63,9 @@
       <IncludeName><![CDATA[showTitle.contact.false]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[showNotice.contact.false]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[showDescription.contact.false]]></IncludeName>
     </Setting>
     <Setting>

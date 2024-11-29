@@ -3415,19 +3415,28 @@
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
-      <PropertyName><![CDATA[showDescription]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.contact.showDescription.help)]]></Description>
+      <IncludeName><![CDATA[showNotice.contact]]></IncludeName>
+      <PropertyName><![CDATA[showNotice]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showNotice)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showNotice.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showNotice.contact]]></IncludeName>
+      <IncludeName><![CDATA[showNotice.contact.false]]></IncludeName>
       <PropertyName><![CDATA[showNotice]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.contact.showNotice)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.contact.showNotice.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showDescription.contact]]></IncludeName>
+      <PropertyName><![CDATA[showDescription]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.contact.showDescription)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.contact.showDescription.help)]]></Description>
       <Visibility><![CDATA[elementAndParentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[true]]></Default>

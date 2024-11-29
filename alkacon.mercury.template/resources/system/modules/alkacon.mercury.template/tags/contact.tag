@@ -39,10 +39,10 @@
 <%@ attribute name="linkToDetail" type="java.lang.String" required="false"
     description="Link to the detail page." %>
 
-<%@ attribute name="notice" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
+<%@ attribute name="notice" type="java.lang.Object" required="false"
     description="Value wrapper for the notice." %>
 
-<%@ attribute name="description" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"
+<%@ attribute name="description" type="java.lang.Object" required="false"
     description="Value wrapper for the contact description." %>
 
 <%@ attribute name="data" type="org.opencms.jsp.util.CmsJspContentAccessValueWrapper" required="false"

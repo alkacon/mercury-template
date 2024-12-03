@@ -429,7 +429,7 @@ function getBoundsAndInfos(features, centerPoint, getInfo, infos) {
         }
         checkBounds(coordinates);
     }
-    return [[boundsNorthEast.lng,boundsNorthEast.lat],[boundSouthWest.lng,boundSouthWest.lat]];
+    return [[boundSouthWest.lng,boundSouthWest.lat],[boundsNorthEast.lng,boundsNorthEast.lat]];
 }
 
 function getKey(coordinates) {
@@ -505,6 +505,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count) {
             centerPoint = md;
         }
     }
+
     let bounds = getBoundsAndInfos(geoJson.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null), false);
     let fitted = false;
     map.on("data", function(event) {

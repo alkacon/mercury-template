@@ -44,6 +44,9 @@
       <IncludeName><![CDATA[hsize.element.0]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[cssVisibility.default]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[imageRatioSmall.slider.hero]]></IncludeName>
     </Setting>
     <Setting>

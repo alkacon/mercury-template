@@ -111,7 +111,7 @@
     </c:otherwise>
 </c:choose>
 
-<div class="element type-slider${justOneSlide ? ' just-one-slide' : ' use-embla-slider'}${isHeroSlider ? ' hero-slider ' : ' logo-slider '}pivot pivot-full${setCssWrapper123}${' '}${textDisplay}" <%--
+<div class="element type-slider${justOneSlide ? ' just-one-slide' : ' use-embla-slider'}${isHeroSlider ? ' hero-slider ' : ' logo-slider '}pivot pivot-full${setCssWrapper123}${setCssVisibility}${' '}${textDisplay}" <%--
 --%>id="<m:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
 --%>><m:nl />
 

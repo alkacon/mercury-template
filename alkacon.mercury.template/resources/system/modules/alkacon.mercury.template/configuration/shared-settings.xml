@@ -3623,8 +3623,8 @@
     <Setting>
       <IncludeName><![CDATA[imageRatioSmall.slider.hero]]></IncludeName>
       <PropertyName><![CDATA[imageRatioSmall]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.imageRatio.large)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.imageRatio.large.help)]]></Description>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio.small)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.small.help)]]></Description>
       <Widget><![CDATA[selectcombo]]></Widget>
       <Default><![CDATA[1-1]]></Default>
       <WidgetConfig><![CDATA[
@@ -3661,8 +3661,8 @@
     <Setting>
       <IncludeName><![CDATA[imageRatioLarge.slider.hero]]></IncludeName>
       <PropertyName><![CDATA[imageRatioLarge]]></PropertyName>
-      <DisplayName><![CDATA[%(key.msg.setting.imageRatio.small)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.imageRatio.small.help)]]></Description>
+      <DisplayName><![CDATA[%(key.msg.setting.imageRatio.large)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.imageRatio.large.help)]]></Description>
       <Widget><![CDATA[selectcombo]]></Widget>
       <Default><![CDATA[2,35-1]]></Default>
       <WidgetConfig><![CDATA[

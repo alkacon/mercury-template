@@ -38,7 +38,7 @@
 <c:set var="boxWrapper"         value="${fn:contains(setCssWrapper, 'box') ? '' : ' box'}" />
 
 <m:nl />
-<div class="element type-linkbox${hasLink ? ' fully-linked' : ''}${boxWrapper}${setCssWrapper}${not empty boxRatio ? ' box-ratio-'.concat(boxRatio) : ''}${not empty verticalAlignment ? ' valign-'.concat(verticalAlignment) : ''}${setEffect}${setCssVisibility}"><%----%>
+<div class="element type-linkbox${hasLink ? ' fully-linked' : ''}${boxWrapper}${setCssWrapperAll}${not empty boxRatio ? ' box-ratio-'.concat(boxRatio) : ''}${not empty verticalAlignment ? ' valign-'.concat(verticalAlignment) : ''}${setEffect}${setCssVisibility}"><%----%>
 <m:nl />
 
 ${setElementPreMarkup}
@@ -46,7 +46,7 @@ ${setElementPreMarkup}
 <m:link link="${value.Link}" testFailTag="span" css="linkbox-link">
 
 <m:section-piece
-    cssWrapper="linkbox-content adjust-headings${setCssWrapper2}${setCssWrapper3}"
+    cssWrapper="linkbox-content adjust-headings${setCssWrapperExtra}"
     pieceLayout="${pieceLayout < 11 ? pieceLayout : 4}"
     sizeDesktop="${sizeDesktop}"
     sizeMobile="${sizeMobile}"

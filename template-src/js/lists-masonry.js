@@ -47,10 +47,12 @@ export function init() {
 
     const imageseriesElements = document.querySelectorAll('.masonry-list .series');
     if (Mercury.debug()) console.info("MasonryList.init() .masonry-list .series elements found: " + imageseriesElements.length);
-    for (const listElement of imageseriesElements) {
-        listElement.addEventListener("imageseries:loaded", function(e) {
-            const listId = e.target.getAttribute('id');
-            createMasonryList(listId, " .images");
-        });
+    for (const imageseriesElement of imageseriesElements) {
+        const initSeries = function(e) {
+            const seriesId = imageseriesElement.getAttribute('id');
+            createMasonryList(seriesId, " .images");
+        };
+        imageseriesElement.addEventListener("imageseries:loaded", initSeries);
+        Mercury.initTabAccordion(imageseriesElement, initSeries);
     }
 }

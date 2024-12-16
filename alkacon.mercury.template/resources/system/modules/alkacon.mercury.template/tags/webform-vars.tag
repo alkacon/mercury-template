@@ -45,12 +45,6 @@
         Return value is the first present of the following:\
         detail-page of the content that uses the form, detail-page of the form, current page." %>
 
-<%@ variable name-given="formBookingPossible" declare="true"
-    description="Will be 'true' if booking with this webform is possible.
-    In case of an incomplete email configuration, this will be false.
-    This can occur in case the form is intended to be used for event bookings,
-    but has been placed on a page directly, i.e. is not shown on the event detail page." %>
-
 <%@ variable name-given="formBookingHasFinalRegistrationDate" declare="true"
     description="Whether there is a final registration date configured in the booking info." %>
 
@@ -134,7 +128,7 @@
     <c:if test="${booking.value.NumOtherDatasets.isSet}">
         ${form.adjustConfigValue("DBConfig/NumOtherDatasets", booking.value.NumOtherDatasets.toString)}
     </c:if>
-     <c:if test="${booking.value.KeepDays.isSet}">
+    <c:if test="${booking.value.KeepDays.isSet}">
         ${form.adjustConfigValue("DBConfig/KeepDays", booking.value.KeepDays.toString)}
     </c:if>
     <c:choose>
@@ -218,11 +212,6 @@
     <c:set var="formDataPath" value="${dataPath}" />
     ${form.adjustConfigValue("DBConfig/ContentPath", formDataPath)}
 </c:if>
-
-<c:set var="formBookingPossible" value="${
-    (booking.value.MailTo.isSet or formXml.value.MailTo.isSet) and
-    (booking.value.MailFrom.isSet or formXml.value.MailFrom.isSet)
-}" />
 
 <c:set var="formBookingHasFinalRegistrationDate" value="${booking.value.FinalRegistrationDate.isSet}" />
 <jsp:useBean id="now" class="java.util.Date" />

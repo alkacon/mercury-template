@@ -40,6 +40,7 @@ import lazySizes from 'lazysizes';
 import * as AnalyticElements from './analytics.js';
 import * as CommentElements from './comments.js';
 import * as DynamicListElemements from './lists.js';
+import * as DynamicListFilterElemements from './lists-filter.js';
 import * as Icons from './icons.js';
 import * as NavigationElements from './navigation.js';
 import * as PrivacyPolicy from './privacy-policy.js';
@@ -807,6 +808,12 @@ const Mercury = function (jQ) {
             window.DynamicList = DynamicListElemements;
         } catch (err) {
             console.warn("List.init() error", err);
+        }
+        
+        try {
+            DynamicListFilterElemements.init(jQ);
+        } catch (err) {
+            console.warn("ListFilter.init() error", err);
         }
 
         try {

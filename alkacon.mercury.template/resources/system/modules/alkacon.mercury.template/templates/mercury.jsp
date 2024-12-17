@@ -22,6 +22,12 @@
 <c:set var="cmsstatus" value="${cms.isEditMode ? ' opencms-page-editor' : null}${cms.isEditMode and cms.modelGroupPage ? ' opencms-group-editor' : null}" />
 <c:set var="pageclass" value="${templateVariant}${allowTemplateMods ? ' '.concat(contentProperties['mercury.css.class']) : null}" />
 
+<c:set var="canonicalLinks">
+    <m:meta-canonical renderMetaTags="${true}" >
+        <m:meta-info canonicalURL="${canonicalURL}" contentPropertiesSearch="${contentPropertiesSearchDetail}" />
+    </m:meta-canonical>
+</c:set>
+
 <!DOCTYPE html>
 <html lang="${cms.locale}" class="noscript${cmsstatus}${pageclass}">
 <head>
@@ -64,9 +70,7 @@ var __isOnline=${cms.isOnlineProject},
 <%-- Load the main JavaScript in async mode --%>
 <script async src="<m:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
 
-<m:meta-canonical renderMetaTags="${true}" >
-    <m:meta-info canonicalURL="${canonicalURL}" contentPropertiesSearch="${contentPropertiesSearchDetail}" />
-</m:meta-canonical>
+${canonicalLinks}
 
 <cms:enable-ade />
 

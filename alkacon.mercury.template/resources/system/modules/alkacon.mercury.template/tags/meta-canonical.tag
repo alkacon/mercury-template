@@ -48,7 +48,7 @@
     --%>
     <c:if test="${isListPage and param.page ne '1'}">
         <c:set var="pageNum" value="${cms.wrap[param.page].toInteger}" />
-        <c:set var="canonicalParams" value="${empty pageNum ? null : '?page='.concat(pageNum)}" />
+        <c:set var="canonicalParams" value="${empty pageNum ? null : '?page='.concat(pageNum)}" scope="request" />
     </c:if>
 
     <%--
@@ -59,7 +59,7 @@
     <c:set var="detailContentLink" value="${cms.detailRequest ? cms.detailContent.link : null}" />
     <c:set var="locales" value="${cms.site.translationLocales}" />
     <c:if test="${locales.size() > 1}">
-        <c:set var="hreflangURLs">
+        <c:set var="hreflangURLs" scope="request">
             <c:set var="requestedLocaleNotAvailable" value="${false}" />
             <c:forEach var="locale" items="${locales}" varStatus="status">
                 <c:set var="targetLink" value="${null}" />
@@ -90,12 +90,12 @@
                     <%-- Output of alternate language link --%>
                     <link rel="alternate" hreflang="${targetLocale}" href="${cms.site.url}${targetLink}${canonicalParams}"><m:nl /><%----%>
                     <c:if test="${hasRequestLocale and (targetLocale eq param.__locale)}">
-                        <c:set var="canonicalURL" value="${targetLink}" />
+                        <c:set var="canonicalURL" value="${targetLink}" scope="request" />
                     </c:if>
                 </c:if>
             </c:forEach>
             <c:if test="${empty canonicalURL and requestedLocaleNotAvailable and not empty canonicalLocaleURL}">
-                <c:set var="canonicalURL" value="${canonicalLocaleURL}" />
+                <c:set var="canonicalURL" value="${canonicalLocaleURL}" scope="request" />
             </c:if>
         </c:set>
     </c:if>
@@ -108,27 +108,32 @@
         <c:choose>
             <c:when test="${fn:startsWith(cms.meta.canonicalURL, '/') and cms.vfs.exists[cms.meta.canonicalURL]}">
                 <c:set var="res" value="${cms.vfs.resource[cms.meta.canonicalURL]}" />
-                <c:set var="canonicalURL" value="${res.file ? res.link : res.navigationDefaultFile.link}" />
+                <c:set var="canonicalURL" value="${res.file ? res.link : res.navigationDefaultFile.link}" scope="request" />
             </c:when>
             <c:otherwise>
-                <c:set var="canonicalURL" value="${cms.meta.canonicalURL}" />
+                <c:set var="canonicalURL" value="${cms.meta.canonicalURL}" scope="request" />
             </c:otherwise>
         </c:choose>
     </c:if>
 
     <%--
-        Set the canonical URL it is is not set already.
+        Set the canonical URL if not set already.
         It may have been set by the hreflang calculation OR the meta information before.
     --%>
     <c:if test="${empty canonicalURL}">
-        <c:set var="canonicalURL" value="${cms.detailRequest ? detailContentLink : cms.pageResource.link}${canonicalParams}" />
+        <c:set var="canonicalURL" value="${cms.detailRequest ? detailContentLink : cms.pageResource.link}${canonicalParams}" scope="request" />
     </c:if>
     <c:if test="${fn:startsWith(canonicalURL, '/')}">
-        <c:set var="canonicalURL" value="${cms.site.url}${canonicalURL}" />
+        <c:set var="canonicalURL" value="${cms.site.url}${canonicalURL}" scope="request" />
     </c:if>
+
+    <m:load-plugins group="meta-canonical" type="jsp-nocache" />
 
     <c:if test="${renderMetaTags}">
         <%-- Output the canonical URL --%>
+        <c:if test="${cms.isOnlineProject}">
+            <c:set var="ignore">${pageContext.response.setHeader("Link", "<".concat(canonicalURL).concat(">; rel=\"canonical\""))}</c:set>
+        </c:if>
         <link rel="canonical" href="${canonicalURL}"><%----%>
         <m:nl />
         <m:nl />

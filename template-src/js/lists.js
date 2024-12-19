@@ -138,7 +138,7 @@ function getFilterParams(filter) {
         for (var i=0; i < filterGroup.length; i++) {
             var fi = filterGroup[i];
             if (fi.combinable && fi.id != filter.id) {
-                params += fi.getFilterParams();
+                params += fi.impl.getFilterParams();
             }
         }
     }
@@ -193,8 +193,8 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
                     if(folderPath && folderPath.length > currentFolder.length) currentFolder = folderPath;
                 });
                 // clear text input if wanted
-                if (fi.$textsearch && (triggerId != fi.$textsearch.id)) {
-                    fi.$textsearch.val('');
+                if (fi.impl.textSearch && (triggerId != fi.impl.textSearch.$element.id)) {
+                    fi.impl.textSearch.$element.val('');
                 }
             }
             if (triggerId != null) {
@@ -958,10 +958,10 @@ function updateFilterCountsAndResetButtons(id, filterGroup) {
             var fi = filterGroup[i];
             if (fi.combinable) {
                 if (updateCounts) {
-                    params += fi.getCountFilterParams();
+                    params += fi.impl.getCountFilterParams();
                 }
                 if (updateResets) {
-                    resetButtons = resetButtons.concat(fi.getResetButtons());
+                    resetButtons = resetButtons.concat(fi.impl.getResetButtons());
                 }
             }
         }
@@ -986,6 +986,7 @@ function updateFilterCountsAndResetButtons(id, filterGroup) {
  * @param {ResetButtonsMap} resetButtons
  */
 function updateResetButtons(id, resetButtons) {
+
     m_listResetButtons[id] = resetButtons;
     const filters = m_archiveFilterGroups[id];
     filters.forEach((filter) => {
@@ -1044,7 +1045,7 @@ function replaceFilterCounts(filterGroup, ajaxCountJson) {
     filterGroup.forEach((filter) => {
         var elementFacets = ajaxCountJson[filter.id];
         if (undefined !== elementFacets && null !== elementFacets) {
-            filter.updateFilterCounts(elementFacets);
+            filter.impl.updateFilterCounts(elementFacets);
         }
     })
 }
@@ -1154,7 +1155,7 @@ function onDomChange(m) {
 
 /**
  * Calculates the search state parameters.
- * @param {*} filter
+ * @param {ListFilter} filter the filter
  * @param {string} elId id of the element the search state parameters should be calculated for.
  * @param {boolean} resetActive flag, indicating if other active filters should be reset.
  * @param {boolean} countVersion flag, indicating if the state has to be calculated for the count calculation.
@@ -1209,7 +1210,9 @@ export function generateResetButton(filterField, titleAttr) {
     const label = filterField.getAttribute('data-label');
     let onclick = filterField.getAttribute('onclick');
     if (!onclick) onclick = filterField.getAttribute('data-onclick');
-    if (!onclick) onclick = filterField.firstChild.getAttribute('onclick');
+    if (!onclick && filterField.firstChild && filterField.firstChild.getAttribute) {
+        onclick = filterField.firstChild.getAttribute('onclick');
+    }
     result.setAttribute('onclick', onclick);
     if (titleAttr) result.setAttribute('title', titleAttr);
     result.textContent = label ? label : id;
@@ -1243,12 +1246,9 @@ export function generateInputFieldResetButton(archiveId, titleAttr) {
 /**
  * Registers a list filter.
  * @param {HTMLDivElement} filterElement the list filter element to register
- * @param {Function} getFilterParams function that returns the filter parameters for the current filter selection
- * @param {Function} getCountFilterParams function that returns filter parameters for the current filter selection with count information
- * @param {Function} getResetButtons function that returns the reset buttons for the current filter selection
- * @param {Function} updateFilterCounts function that updates the filter counts for the current filter selection
+ * @param {object} filterImpl function that returns the filter parameters for the current filter selection
  */
-export function registerFilter(filterElement, getFilterParams, getCountFilterParams, getResetButtons, updateFilterCounts) {
+export function registerFilter(filterElement, filterImpl) {
 
     // extract the filter data
     var $archiveFilter = jQ(filterElement);
@@ -1261,30 +1261,7 @@ export function registerFilter(filterElement, getFilterParams, getCountFilterPar
     filter.id = $archiveFilter.attr("id");
     filter.elementId = $archiveFilter.data("id");
     filter.hasResetButtons = $archiveFilter.find("#resetbuttons_" + filter.id).length > 0;
-    if (filter.$element === undefined || filter.id === undefined || filter.elementId === undefined) {
-        console.error("DynamicList.registerFilter() filter found with incomplete data, ignoring!");
-        return;
-    }
-    if (getFilterParams === undefined || !(typeof getFilterParams !== Function)) {
-        console.error("DynamicList.registerFilter() no getFilterParams() function found, ignoring!");
-        return;
-    }
-    filter.getFilterParams = getFilterParams;
-    if (getCountFilterParams === undefined || !(typeof getCountFilterParams !== Function)) {
-        console.error("DynamicList.registerFilter() no getCountFilterParams() function found, ignoring!");
-        return;
-    }
-    filter.getCountFilterParams = getCountFilterParams;
-    if (getResetButtons === undefined || !(typeof getResetButtons !== Function)) {
-        console.error("DynamicList.registerFilter() no getResetButtons() function found, ignoring!");
-        return;
-    }
-    filter.getResetButtons = getResetButtons;
-    if (updateFilterCounts === undefined || !(typeof updateFilterCounts !== Function)) {
-        console.error("DynamicList.registerFilter() no updateFilterCounts() function found, ignoring!");
-        return;
-    }
-    filter.updateFilterCounts = updateFilterCounts;
+    filter.impl = filterImpl;
     // store filter data in global array
     m_archiveFilters[filter.id] = filter;
     // store filter in global group array
@@ -1344,9 +1321,10 @@ export function archiveFilter(id, triggerId) {
 export function archiveSearch(id, searchStateParameters) {
     var filter = m_archiveFilters[id];
     // we do never combine the text search when we change the search word. This should reset all other filters always.
-    //var additionalFilters = filter.combine ? getFilterParams(filter) : "";
+    // var additionalFilters = filter.combine ? getFilterParams(filter) : "";
     var additionalFilters= "&reloaded";
-    listFilter(filter.elementId, null, filter.id, searchStateParameters + encodeURIComponent(filter.$textsearch.val()) + additionalFilters, true);
+    const textSearchVal = filter.impl.textSearch ? filter.impl.textSearch.$element.val() : '';
+    listFilter(filter.elementId, null, filter.id, searchStateParameters + encodeURIComponent(textSearchVal) + additionalFilters, true);
 }
 
 /**
@@ -1591,7 +1569,7 @@ export function init(jQuery, debug, verbose) {
         _OpenCmsReinitEditButtons(DEBUG);
     }
 
-    if (waitHandler) waitHandler.ready(); //TODO
+    if (waitHandler) waitHandler.ready();
 }
 
 export function setFlagScrollToAnchor(flagScrollToAnchor) {

@@ -17,126 +17,144 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 // the global objects that must be passed to this module
 /** @type {jQuery} jQuery object */
 let jQ;
 
-/**
- * Returns the URL parameters for the current filter selection.
- */
-function getFilterParams() {
 
-    let params = "";
-    const filter = this;
-    // text search
-    const query = filter.$textsearch.val();
-    if (query !== undefined && query != "") {
-        params += "&" + filter.$textsearch.attr("name") + "=" + encodeURIComponent(query);
-    }
-    filter.$element.find(".active").each( function() {
-        params += DynamicList.calculateStateParameter(filter, this.id, false);
-    });
-    // Folder is a bit tricky, here currenpage is on
-    // each item, with a parent folder of the clicked on
-    // but only the clicked one should be set
-    // so we only take the parameter with the longest path
-    // into account
-    let pageP = "";
-    filter.$element.find("li.currentpage").each( function() {
-        const p = DynamicList.calculateStateParameter(filter, this.id, false);
-        if (p.length > pageP.length) {
-            pageP = p;
+/**
+ * Abstract class for filter boxes.
+ */
+class A_ListFilterBox {
+
+    constructor($element) {
+        // unfold categories if on desktop and responsive setting is used
+        if ($element) {
+            if (Mercury.debug()) {
+                console.info("Lists.init() collapse elements found for filter id " + this.id + ": " + $collapses.length);
+            }
+            if (($element.hasClass("op-lg") && Mercury.gridInfo().isMinLg())
+                || ($element.hasClass("op-md") && Mercury.gridInfo().isMinMd())
+                || ($element.hasClass("op-sm") && Mercury.gridInfo().isMinSm())) {
+                $element.collapse("show");
+            }
         }
-    });
-    params += pageP;
-    return params;
+        // attach key listeners for keyboard support
+        $element.find("li > a").on("keydown", function(e) {
+            if (e.type == "keydown" && (e.which == 13 || e.which == 32)) {
+                jQ(this).click();
+                e.preventDefault();
+            }
+        });
+    }
+}
+
+
+/**
+ * Text search filter
+ */
+class TextSearch {
+
+    /**
+     * Creates a new text search filter.
+     */
+    constructor($element, parent) {
+        this.$element = $element;
+        this.parent = parent;
+    }
+
+    /**
+     * Returns the URL parameters for the current filter selection with count information.
+     */
+    getCountFilterParams() {
+
+        return "&s=" + encodeURIComponent(this.parent.id);
+    }
+
+    /**
+     * Returns the URL parameters for the current filter selection.
+     */
+    getFilterParams() {
+    
+        const query = this.$element.val();
+        if (query) {
+            return "&" + this.$element.attr("name") + "=" + encodeURIComponent(query);
+        }
+        return "";
+    }
+
+    /**
+     * Returns the reset buttons for the current filter selection.
+     */
+    getResetButtons() {
+
+        const query = this.$element.val();
+        if (query) {
+            const buttonTitle = this.parent.data.resetbuttontitle;
+            return [DynamicList.generateInputFieldResetButton(this.parent.id, buttonTitle)];
+        }
+        return [];
+    }
 }
 
 /**
- * Returns the URL parameters for the current filter selection with count information.
+ * Archive filter
  */
-function getCountFilterParams() {
+class ArchiveFilter extends A_ListFilterBox {
 
-    const filter = this;
-    let params = "";
-    const query = filter.$textsearch.val();
-    if (query !== undefined && query != "") {
-        params +=
-            "&" +
-            filter.$textsearch.attr("name") +
-            "=" +
-            encodeURIComponent(query);
+    /**
+     * Creates a new archive filter.
+     */
+    constructor($element, parent) {
+        super($element);
+        this.$element = $element;
+        this.parent = parent;
     }
-    filter.$element.find(".active").each(function() {
-        params += DynamicList.calculateStateParameter(filter, this.id, false, true);
-    });
-    let pageP = "";
-    filter.$element.find("li.currentpage").each(function() {
-        const p = DynamicList.calculateStateParameter(filter, this.id, false, true);
-        if (p.length > pageP.length) {
-            pageP = p;
-        }
-    });
-    params += pageP;
-    // Tell which filters are shown in the current filter element
-    if (filter.search == "true") {
-        params += "&s=" + encodeURIComponent(filter.id);
-    }
-    if (filter.categories == "true") {
-        params += "&c=" + encodeURIComponent(filter.id);
-    }
-    if (filter.archive == "true") {
-        params += "&a=" + encodeURIComponent(filter.id);
-    }
-    if (filter.folders == "true") {
-        params += "&f=" + encodeURIComponent(filter.id);
-    }
-    return params;
-}
 
-/**
- * Returns the reset buttons for the current filter selection.
- */
-function getResetButtons() {
+    /**
+     * Returns the URL parameters for the current filter selection with count information.
+     */
+    getCountFilterParams() {
 
-    const filter = this;
-    const resetButtons = [];
-    const query = filter.$textsearch.val();
-    if (query !== undefined && query != "") {
-        resetButtons.push(DynamicList.generateInputFieldResetButton(filter.id, filter.resetbuttontitle));
+        return "&a=" + encodeURIComponent(this.parent.id);
     }
-    filter.$element.find(".active").each(function() {
-        resetButtons.push(DynamicList.generateResetButton(this, filter.resetbuttontitle));
-    });
-    let pageP = "";
-    let checkedElement;
-    filter.$element.find("li.currentpage").each(function() {
-        let p = DynamicList.calculateStateParameter(filter, this.id, false, true);
-        if (p.length > pageP.length) {
-            pageP = p;
-            checkedElement = this;
-        }
-    });
-    if (checkedElement !== undefined) {
-        resetButtons.push(DynamicList.generateResetButton(checkedElement, filter.resetbuttontitle));
+
+    /**
+     * Returns the URL parameters for the current filter selection.
+     */
+    getFilterParams(countInfo) {
+
+        let self = this;
+        let params = "";
+        this.$element.find(".active").each(function() {
+            params += DynamicList.calculateStateParameter(self.parent.data, this.id, false, countInfo);
+        });
+        return params;
     }
-    return resetButtons;
-}
 
-/**
- * Updates the filter counts for the current filter selection.
- */
-function updateFilterCounts(elementFacets) {
+    /**
+     * Returns the reset buttons for the current filter selection.
+     */
+    getResetButtons() {
 
-    const filter = this;
-    const archiveFilter = elementFacets["a"];
-    const categoryFilter = elementFacets["c"];
-    const folderFilter = elementFacets["f"];
-    if (archiveFilter != null) {
-        const $el = filter.$element.find(".archive");
-        $el.find("li[data-value]").each(function(_, li) {
+        const self = this;
+        const resetButtons = [];
+        this.$element.find(".active").each(function() {
+            const buttonTitle = self.parent.data.resetbuttontitle;
+            resetButtons.push(DynamicList.generateResetButton(this, buttonTitle));
+        });
+        return resetButtons;
+    }
+
+    /**
+     * Updates the filter counts for the current filter selection.
+     */
+    updateFilterCounts(elementFacets) {
+
+        this.$element.find("li[data-value]").each(function(_, li) {
             const val = li.getAttribute("data-value");
-            let count = archiveFilter[val];
+            let count = elementFacets[val];
             if (count == null) {
                 count = "0";
             }
@@ -162,11 +180,62 @@ function updateFilterCounts(elementFacets) {
             }
         });
     }
-    if (categoryFilter != null) {
-        const $catEl = filter.$element.find(".categories");
-        $catEl.find("li[data-value]").each(function(_, li) {
+}
+
+class CategoryFilter extends A_ListFilterBox {
+
+    /**
+     * Creates a new category filter.
+     */
+    constructor($element, parent) {
+        super($element);
+        this.$element = $element;
+        this.parent = parent;
+    }
+
+    /**
+     * Returns the URL parameters for the current filter selection with count information.
+     */
+    getCountFilterParams() {
+
+        return "&c=" + encodeURIComponent(this.parent.id);
+    }
+
+    /**
+     * Returns the URL parameters for the current filter selection.
+     */
+    getFilterParams(countInfo) {
+
+        let self = this;
+        let params = "";
+        this.$element.find(".active").each(function() {
+            params += DynamicList.calculateStateParameter(self.parent.data, this.id, false, countInfo);
+        });
+        return params;
+    }
+
+    /**
+     * Returns the reset buttons for the current filter selection.
+     */
+    getResetButtons() {
+
+        const self = this;
+        const resetButtons = [];
+        this.$element.find(".active").each(function() {
+            const buttonTitle = self.parent.data.resetbuttontitle;
+            resetButtons.push(DynamicList.generateResetButton(this, buttonTitle));
+        });
+        return resetButtons;
+    }
+
+    /**
+     * Updates the filter counts for the current filter selection.
+     */
+    updateFilterCounts(elementFacets) {
+
+        this.$element.find("li[data-value]").each(function(_, li) {
             const val = li.getAttribute("data-value");
-            let count = categoryFilter[val];
+            let count = elementFacets[val];
             if (count == null) {
                 count = "0";
             };
@@ -189,11 +258,82 @@ function updateFilterCounts(elementFacets) {
             }
         });
     }
-    if (folderFilter != null) {
-        const $catEl = filter.$element.find(".folders");
-        $catEl.find("li[data-value]").each(function(_, li) {
+}
+
+/**
+ * Folder filter
+ */
+class FolderFilter extends A_ListFilterBox {
+
+    /**
+     * Creates a new folder filter.
+     */
+    constructor($element, parent) {
+        super($element);
+        this.$element = $element;
+        this.parent = parent;
+    }
+
+    /**
+     * Returns the URL parameters for the current filter selection with count information.
+     */
+    getCountFilterParams() {
+
+        return "&f=" + encodeURIComponent(this.parent.id);
+    }
+
+    /**
+     * Returns the URL parameters for the current filter selection.
+     * The folder filter is a bit tricky, here currenpage is on
+     * each item, with a parent folder of the clicked on
+     * but only the clicked one should be set
+     * so we only take the parameter with the longest path
+     * into account
+     */                     
+    getFilterParams(countInfo) {
+
+        const self = this;
+        let params = "";
+        this.$element.find("li.currentpage").each(function() {
+            const p = DynamicList.calculateStateParameter(self.parent.data, this.id, false, countInfo);
+            if (p.length > params.length) {
+                params = p;
+            }
+        });
+        return params;
+    }
+
+    /**
+     * Returns the reset buttons for the current filter selection.
+     */
+    getResetButtons() {
+
+        const self = this;
+        let params = "";
+        let checkedElement;
+        const resetButtons = [];
+        this.$element.find("li.currentpage").each(function() {
+            let p = DynamicList.calculateStateParameter(self.parent.data, this.id, false, true);
+            if (p.length > params.length) {
+                params = p;
+                checkedElement = this;
+            }
+        });
+        if (checkedElement !== undefined) {
+            const buttonTitle = self.parent.data.resetbuttontitle;
+            resetButtons.push(DynamicList.generateResetButton(checkedElement, buttonTitle));
+        }
+        return resetButtons;
+    }
+
+    /**
+     * Updates the filter counts for the current filter selection.
+     */
+    updateFilterCounts(elementFacets) {
+
+        this.$element.find("li[data-value]").each(function(_, li) {
             const val = li.getAttribute("data-value");
-            const count = folderFilter[val];
+            const count = elementFacets[val];
             const shouldDisable = (null == count || count == "0");
             const isDisabled = li.classList.contains("disabled");
             if (isDisabled != shouldDisable) {
@@ -213,51 +353,137 @@ function updateFilterCounts(elementFacets) {
 }
 
 /**
+ * Standard Mercury list filters.
+ * <li>Text search filter
+ * <li>Category filter
+ * <li>Archive filter
+ * <li>Folder filter
+ */
+class ListFilter {
+
+    /**
+     * Creates a new list filter.
+     * @param jQ the jQuery object
+     * @param element the HTML element
+     */
+    constructor(jQ, element) {
+        this.$element = jQ(element);
+        this.id = this.$element.attr("id");
+        this.data = this.$element.data("filter");
+        if (this.data.search == "true") {
+            this.textSearch = new TextSearch(this.$element.find("#textsearch_" + this.id), this);
+        }
+        if (this.data.categories == "true") {
+            this.categoryFilter = new CategoryFilter(this.$element.find("#cats_" + this.id), this);
+        }
+        if (this.data.archive == "true") {
+            this.archiveFilter = new ArchiveFilter(this.$element.find("#arch_" + this.id), this);
+        }
+        if (this.data.folders == "true") {
+            this.folderFilter = new FolderFilter(this.$element.find("#folder_" + this.id), this);
+        }
+        this.$directlink = this.$element.find(".directlink"); //TODO
+    }
+
+    /**
+     * Returns the URL parameters for the current filter selection.
+     */
+    getFilterParams(countInfo = false) {
+    
+        let params = "";
+        if (this.textSearch) {
+            params += this.textSearch.getFilterParams();
+        }
+        if (this.categoryFilter) {
+            params += this.categoryFilter.getFilterParams(countInfo);
+        }
+        if (this.archiveFilter) {
+            params += this.archiveFilter.getFilterParams(countInfo);
+        }
+        if (this.folderFilter) {
+            params += this.folderFilter.getFilterParams(countInfo);
+        }
+        return params;
+    }
+
+    /**
+     * Returns the URL parameters for the current filter selection with count information.
+     */
+    getCountFilterParams() {
+    
+        let params = this.getFilterParams(true);
+        // Tell which filters are shown in the current filter element
+        if (this.textSearch) {
+            params += this.textSearch.getCountFilterParams();
+        }
+        if (this.categoryFilter) {
+            params += this.categoryFilter.getCountFilterParams();
+        }
+        if (this.archiveFilter) {
+            params += this.archiveFilter.getCountFilterParams();
+        }
+        if (this.folderFilter) {
+            params += this.folderFilter.getCountFilterParams();
+        }
+        return params;
+    }
+
+    /**
+     * Returns the reset buttons for the current filter selection.
+     */
+    getResetButtons() {
+    
+        let resetButtons = [];
+        if (this.textSearch) {
+            resetButtons = resetButtons.concat(this.textSearch.getResetButtons());
+        }
+        if (this.categoryFilter) {
+            resetButtons = resetButtons.concat(this.categoryFilter.getResetButtons());
+        }
+        if (this.archiveFilter) {
+            resetButtons = resetButtons.concat(this.archiveFilter.getResetButtons());
+        }
+        if (this.folderFilter) {
+            resetButtons = resetButtons.concat(this.folderFilter.getResetButtons());
+        }
+        return resetButtons;
+    }
+
+    /**
+     * Updates the filter counts for the current filter selection.
+     */
+    updateFilterCounts(elementFacets) {
+
+        if (this.categoryFilter && elementFacets["c"]) {
+            this.categoryFilter.updateFilterCounts(elementFacets["c"]);
+        }
+        if (this.archiveFilter && elementFacets["a"]) {
+            this.archiveFilter.updateFilterCounts(elementFacets["a"]);
+        }
+        if (this.folderFilter && elementFacets["f"]) {
+            this.folderFilter.updateFilterCounts(elementFacets["f"]);
+        }
+    }
+}
+
+/**
  * Initialize the list filters.
  */
 export function init(jQuery) {
 
     jQ = jQuery;
-    const $listArchiveFilters = jQ(".type-list-filter");
+    const $listFilters = jQ(".type-list-filter");
     if (Mercury.debug()) {
-        console.info("Lists.init() .type-list-filter elements found: " + $listArchiveFilters.length);
+        console.info("Lists.init() .type-list-filter elements found: " + $listFilters.length);
     }
-    if ($listArchiveFilters.length > 0) {
-        $listArchiveFilters.each(function() {
-            let filter = DynamicList.registerFilter(this, getFilterParams, getCountFilterParams, getResetButtons, updateFilterCounts);
-            if (filter !== undefined) {
-                const $archiveFilter = jQ(this);
-                filter.$textsearch = $archiveFilter.find("#textsearch_" + filter.id);
-                filter.$directlink = $archiveFilter.find(".directlink");
-                // unfold categories if on desktop and responsive setting is used
-                const $collapses = $archiveFilter.find("#cats_" + filter.id + ", #folder_" + filter.id  + ", #arch_" + filter.id);
-                if ($collapses.length > 0) {
-                    if (Mercury.debug()) {
-                        console.info("Lists.init() collapse elements found for filter id " + filter.id + ": " + $collapses.length);
-                    }
-                    $collapses.each(function() {
-                        const $collapse = jQ(this);
-                        if (($collapse.hasClass("op-lg") && Mercury.gridInfo().isMinLg())
-                            || ($collapse.hasClass("op-md") && Mercury.gridInfo().isMinMd())
-                            || ($collapse.hasClass("op-sm") && Mercury.gridInfo().isMinSm())) {
-                            $collapse.collapse("show");
-                        }
-                    });
-                }
-                // attach key listeners for keyboard support
-                $archiveFilter.find("li > a").on("keydown", function(e) {
-                    if (e.type == "keydown" && (e.which == 13 || e.which == 32)) {
-                        jQ(this).click();
-                        e.preventDefault();
-                    }
-                });
-                if (Mercury.debug()) {
-                    console.info("Lists.init() .type-list-filter data found - id=" + filter.id + ", elementId=" + filter.elementId);
-                }
-            } else {
-                if (Mercury.debug()) {
-                    console.info("Lists.init() .type-list-filter found without data, ignoring!");
-                }
+    if ($listFilters.length > 0) {
+        $listFilters.each(function() {
+            let listFilter = new ListFilter(jQ, this);
+            let filter = DynamicList.registerFilter(this, listFilter);
+            if (filter !== undefined && Mercury.debug()) {
+                console.info("Lists.init() .type-list-filter data found - id=" + filter.id + ", elementId=" + filter.elementId);
+            } else if (Mercury.debug()) {
+                console.info("Lists.init() .type-list-filter found without data, ignoring!");
             }
         });
     }

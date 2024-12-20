@@ -135,7 +135,7 @@ function getFilterParams(filter) {
     var filterGroup = m_archiveFilterGroups[filter.elementId];
     var params = "";
     if (filterGroup !== undefined) {
-        for (var i=0; i < filterGroup.length; i++) {
+        for (var i = 0; i < filterGroup.length; i++) {
             var fi = filterGroup[i];
             if (fi.combinable && fi.id != filter.id) {
                 params += fi.impl.getFilterParams();
@@ -234,13 +234,13 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
     }
 
     var listGroup = m_listGroups[id];
-    if (typeof listGroup !== "undefined") {
+    if (listGroup !== undefined) {
         // required list is an element on this page
-        for (var i=0; i<listGroup.length; i++) {
+        for (var i = 0; i < listGroup.length; i++) {
             updateInnerList(listGroup[i].id, searchStateParameters, true);
         }
         if (adjustCounts || hasResetButtons) {
-          updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup);
+            updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup);
         }
         updateDirectLink(filter, searchStateParameters);
     } else {
@@ -1163,7 +1163,7 @@ function onDomChange(m) {
  */
 export function calculateStateParameter(filter, elId, resetActive, countVersion = false) {
     var $el = $( '#' + elId);
-    var value = $el.data("value")
+    var value = $el.data("value");
     var paramkey =
             elId.indexOf('cat_') == 0
                 ? (resetActive && $el.hasClass("active")

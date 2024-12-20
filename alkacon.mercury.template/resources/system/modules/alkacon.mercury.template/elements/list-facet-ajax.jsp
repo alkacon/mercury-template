@@ -42,6 +42,7 @@
                 addParamToMap("f");
                 addParamToMap("a");
                 addParamToMap("c");
+                addParamToMap("d");
             }
 
             private void addParamToMap(String paramKey) {
@@ -67,6 +68,9 @@
             public Set<String> getSearchFilters() {
                 return m_map.get("s");
             }
+            public Set<String> getCalendarFilters() {
+                return m_map.get("d");
+            }
 
             public Set<String> getExcludeTags(String filterId, String filterType) {
                 Set<String> tags = new HashSet<>();
@@ -87,6 +91,14 @@
     <%-- make sure the 'en' locale is used to read the values of the list configuration --%>
     <c:set var="ignore" value="${conf.init(conf.cmsObject, cms.wrap['en'].toLocale, conf.rawContent, conf.file)}" />
     <c:set var="multiDay" value="${conf.value['FilterMultiDay'] eq 'true'}" />
+    <c:choose>
+    <c:when test="${multiDay}">
+        <c:set var="rangeField">instancedate_${cms.locale}_dt</c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="rangeField">instancedaterange_${cms.locale}_dr</c:set>
+    </c:otherwise>
+    </c:choose>
     <cms:jsonarray var="fieldFacets">
         <c:forEach var="ff" items="${helper.folderFilters}">
             <cms:jsonobject>
@@ -117,32 +129,44 @@
         </c:forEach>
     </cms:jsonarray>
     <c:set var="facetConfig">"fieldfacets" : ${fieldFacets}</c:set>
-    <c:if test="${not empty helper.archiveFilters}">
-        <c:choose>
-        <c:when test="${multiDay}">
-            <c:set var="rangeField">instancedate_${cms.locale}_dt</c:set>
-        </c:when>
-        <c:otherwise>
-            <c:set var="rangeField">instancedaterange_${cms.locale}_dr</c:set>
-        </c:otherwise>
-        </c:choose>
+    <c:if test="${not empty helper.archiveFilters or not empty helper.calendarFilters}">
         <cms:jsonarray var="rangeFacets">
-            <c:forEach var="fa" items="${helper.archiveFilters}">
-                <cms:jsonobject>
-                    <cms:jsonvalue key="range">${rangeField}</cms:jsonvalue>
-                    <cms:jsonvalue key="name">${fa}_a</cms:jsonvalue>
-                    <cms:jsonvalue key="start">NOW/YEAR-20YEARS</cms:jsonvalue>
-                    <cms:jsonvalue key="end">NOW/MONTH+5YEARS</cms:jsonvalue>
-                    <cms:jsonvalue key="gap">+1MONTHS</cms:jsonvalue>
-                    <cms:jsonvalue key="hardend">false</cms:jsonvalue>
-                    <cms:jsonvalue key="mincount" value="1" />
-                    <cms:jsonarray key="excludeTags">
-                        <c:forEach var="tag" items="${helper.getExcludeTags(fa,'a')}">
-                            <cms:jsonvalue>${tag}</cms:jsonvalue>
-                        </c:forEach>
-                    </cms:jsonarray>
-                </cms:jsonobject>
-            </c:forEach>
+            <c:if test="${not empty helper.archiveFilters}">
+                <c:forEach var="fa" items="${helper.archiveFilters}">
+                    <cms:jsonobject>
+                        <cms:jsonvalue key="range">${rangeField}</cms:jsonvalue>
+                        <cms:jsonvalue key="name">${fa}_a</cms:jsonvalue>
+                        <cms:jsonvalue key="start">NOW/YEAR-20YEARS</cms:jsonvalue>
+                        <cms:jsonvalue key="end">NOW/MONTH+5YEARS</cms:jsonvalue>
+                        <cms:jsonvalue key="gap">+1MONTHS</cms:jsonvalue>
+                        <cms:jsonvalue key="hardend">false</cms:jsonvalue>
+                        <cms:jsonvalue key="mincount" value="1" />
+                        <cms:jsonarray key="excludeTags">
+                            <c:forEach var="tag" items="${helper.getExcludeTags(fa,'a')}">
+                                <cms:jsonvalue>${tag}</cms:jsonvalue>
+                            </c:forEach>
+                        </cms:jsonarray>
+                    </cms:jsonobject>
+                </c:forEach>
+            </c:if>
+            <c:if test="${not empty helper.calendarFilters}">
+                <c:forEach var="fd" items="${helper.calendarFilters}">
+                    <cms:jsonobject>
+                        <cms:jsonvalue key="range">${rangeField}</cms:jsonvalue>
+                        <cms:jsonvalue key="name">${fd}_d</cms:jsonvalue>
+                        <cms:jsonvalue key="start">NOW/YEAR-20YEARS</cms:jsonvalue>
+                        <cms:jsonvalue key="end">NOW/MONTH+5YEARS</cms:jsonvalue>
+                        <cms:jsonvalue key="gap">+1DAYS</cms:jsonvalue>
+                        <cms:jsonvalue key="hardend">false</cms:jsonvalue>
+                        <cms:jsonvalue key="mincount" value="1" />
+                        <cms:jsonarray key="excludeTags">
+                            <c:forEach var="tag" items="${helper.getExcludeTags(fd,'d')}">
+                                <cms:jsonvalue>${tag}</cms:jsonvalue>
+                            </c:forEach>
+                        </cms:jsonarray>
+                    </cms:jsonobject>
+                </c:forEach>
+            </c:if>
         </cms:jsonarray>
         <c:set var="facetConfig">${facetConfig}, "rangefacets" : ${rangeFacets}</c:set>
     </c:if>

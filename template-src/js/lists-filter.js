@@ -123,7 +123,7 @@ class ArchiveFilter extends A_ListFilterBox {
     /**
      * Returns the URL parameters for the current filter selection.
      */
-    getFilterParams(countInfo) {
+    getFilterParams(countInfo = false) {
 
         let self = this;
         let params = "";
@@ -204,7 +204,7 @@ class CategoryFilter extends A_ListFilterBox {
     /**
      * Returns the URL parameters for the current filter selection.
      */
-    getFilterParams(countInfo) {
+    getFilterParams(countInfo = false) {
 
         let self = this;
         let params = "";
@@ -289,8 +289,8 @@ class FolderFilter extends A_ListFilterBox {
      * but only the clicked one should be set
      * so we only take the parameter with the longest path
      * into account
-     */                     
-    getFilterParams(countInfo) {
+     */
+    getFilterParams(countInfo = false) {
 
         const self = this;
         let params = "";

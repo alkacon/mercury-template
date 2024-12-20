@@ -99,7 +99,7 @@
         --%>"folderparamkey":"${folderFacetController.config.paramKey}", <%--
         --%>"combinable": true, <%--
         --%>"combine": ${combine},<%--
-        --%>"resetbuttontitle": "${resetButtonTitle}"<%--_
+        --%>"resetbuttontitle": "${resetButtonTitle}"<%--
         --%><c:if test="${not empty targetUri}">, "target":"<cms:link>${targetUri}</cms:link>"</c:if><%--
         --%><c:if test="${not empty initparams}">, "initparams":"${initparams}"</c:if><%--
         --%>}'><%----%>

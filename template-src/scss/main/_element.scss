@@ -34,6 +34,10 @@
         margin-bottom: 0;
     }
 
+    &.default-margin {
+        margin-bottom: var(--#{$prefix}default-margin);
+    }
+
     &.default-margin-small {
         margin-bottom: var(--#{$prefix}default-margin-small);
     }

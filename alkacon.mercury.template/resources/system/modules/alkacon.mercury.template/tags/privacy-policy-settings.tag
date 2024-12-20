@@ -31,7 +31,7 @@
 
 <div class="pp-toggle pp-toggle-technical animated"><%----%>
     <input id="cookies-accepted-technical" type="checkbox" class="toggle-check" checked disabled><%----%>
-    <label for="cookies-accepted-technical" class="toggle-label"><%----%>
+    <label for="cookies-accepted-technical" class="toggle-label" title="<fmt:message key='msg.page.privacypolicy.toggle.label.technical' />"><%----%>
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
             --%>data-checked="<fmt:message key="msg.page.privacypolicy.toggle.active" />" <%--
@@ -40,13 +40,13 @@
             <span class="toggle-slider"></span><%----%>
         </span><%----%>
     </label><%----%>
-    <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.technical" /></div><%----%>
+    <div class="toggle-text" aria-hidden="true"><fmt:message key="msg.page.privacypolicy.toggle.label.technical" /></div><%----%>
 </div><%----%>
 <m:nl />
 
 <div class="pp-toggle pp-toggle-external animated"><%----%>
     <input id="cookies-accepted-external" type="checkbox" class="toggle-check optional"><%----%>
-    <label for="cookies-accepted-external" class="toggle-label"><%----%>
+    <label for="cookies-accepted-external" class="toggle-label" title="<fmt:message key='msg.page.privacypolicy.toggle.label.external' />"><%----%>
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
             --%>data-checked="<fmt:message key="msg.page.privacypolicy.toggle.active" />" <%--
@@ -55,13 +55,13 @@
             <span class="toggle-slider"></span><%----%>
         </span><%----%>
     </label><%----%>
-    <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></div><%----%>
+    <div class="toggle-text" aria-hidden="true"><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></div><%----%>
 </div><%----%>
 <m:nl />
 
 <div class="pp-toggle pp-toggle-statistical animated"><%----%>
     <input id="cookies-accepted-statistical" type="checkbox" class="toggle-check optional"><%----%>
-    <label for="cookies-accepted-statistical" class="toggle-label"><%----%>
+    <label for="cookies-accepted-statistical" class="toggle-label" title="<fmt:message key='msg.page.privacypolicy.toggle.label.statistical' />"><%----%>
         <span class="toggle-box"><%----%>
             <span class="toggle-inner" <%--
             --%>data-checked="<fmt:message key="msg.page.privacypolicy.toggle.active" />" <%--
@@ -70,7 +70,7 @@
             <span class="toggle-slider"></span><%----%>
         </span><%----%>
     </label><%----%>
-    <div class="toggle-text"><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></div><%----%>
+    <div class="toggle-text" aria-hidden="true"><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></div><%----%>
 </div><%----%>
 <m:nl />
 

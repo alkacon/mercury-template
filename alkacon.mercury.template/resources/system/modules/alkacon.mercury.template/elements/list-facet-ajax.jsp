@@ -93,10 +93,10 @@
     <c:set var="multiDay" value="${conf.value['FilterMultiDay'] eq 'true'}" />
     <c:choose>
     <c:when test="${multiDay}">
-        <c:set var="rangeField">instancedate_${cms.locale}_dt</c:set>
+        <c:set var="rangeField">instancedaterange_${cms.locale}_dr</c:set>
     </c:when>
     <c:otherwise>
-        <c:set var="rangeField">instancedaterange_${cms.locale}_dr</c:set>
+        <c:set var="rangeField">instancedate_${cms.locale}_dt</c:set>
     </c:otherwise>
     </c:choose>
     <cms:jsonarray var="fieldFacets">

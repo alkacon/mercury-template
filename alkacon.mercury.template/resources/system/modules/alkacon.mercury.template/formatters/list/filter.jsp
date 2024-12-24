@@ -66,16 +66,16 @@
     <c:set var="initparams" value="" />
     <c:if test="${not empty param.facet_category_exact}">
         <c:set var="initparams" value="&facet_category_exact=${param.facet_category_exact}" />
-       </c:if>
+    </c:if>
     <c:if test="${not empty param.q}">
         <c:set var="initparams" value="${initparams}&q=${param.q}" />
-       </c:if>
+    </c:if>
     <c:if test="${not empty param.facet_instancedate}">
         <c:set var="initparams" value="${initparams}&facet_instancedate=${param.facet_instancedate}" />
-       </c:if>
+    </c:if>
     <c:if test="${not empty param['facet_parent-folders']}">
         <c:set var="initparams" value="${initparams}&facet_parent-folders=${param['facet_parent-folders']}" />
-       </c:if>
+    </c:if>
     <c:if test="${not empty initparams}">
         <c:set var="initparams">${initparams.replace("'","&#39;")}</c:set>
         <c:set var="initparams" value="reloaded${initparams}" />
@@ -466,12 +466,13 @@
             <m:nl />
         </c:if>
 
-        <c:if test="${showDirectLink}">
+        <c:if test="${showDirectLink and not directLinkRendered}">
             <div class="directlink"><%----%>
                 <m:link link="${cms.site.url}${cms.requestContext.uri}" css="btn btn-block oct-meta-info external" newWin="${true}">
                     <fmt:message key="msg.page.list.directlink.label" />
                 </m:link>
             </div><%----%>
+            <c:set var="directLinkRendered" value="${true}" scope="request" />
             <m:nl />
         </c:if>
     </div><%----%>

@@ -137,6 +137,9 @@
                 </c:catch>
             </c:if>
         </c:if>
+        <c:if test="${not empty param['calendarday']}">
+            <c:set var="initparams" value="${initparams}&calendarday=${param['calendarday']}" />
+        </c:if>
         <c:if test="${not empty param['coordinates']}">
             <c:set var="initparams" value="${initparams}&coordinates=${param['coordinates']}" />
         </c:if>

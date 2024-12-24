@@ -53,13 +53,16 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @typedef {Object.<string, HTMLElement[]>} ResetButtonsPerList Object holding list resource ids as properties and the reset buttons map as value.
  *
  * @typedef {Object} ListFilter Wrapper for a list's filter.
- * @property {JQuery<HTMLElement>} $element the HTML element of the filter.
+ * @property {HTMLElement} element the HTML element of the filter.
  * @property {string} id the id attribute of the filter HTML element.
  * @property {string} elementId the id of the list element the filter belongs to.
- * @property {?JQuery<HTMLElement>} $textsearch  the search form of the filter (for full text search).
+ * @property {Object} data returns the value of the "filter" data attribute as parsed JSON object.
+ * @property {Function} getResetButtons returns the reset buttons for the current filter selection.
+ * @property {Function} getFilterParams returns the URL parameters for the current filter selection.
+ * @property {Function} getCountFilterParams returns the URL parameters for the current filter selection with count information.
+ * @property {Function} updateDirectLink Updates the direct link with the actual search state parameters.
+ * @property {Function} updateFilterCounts Updates the filter counts for the current filter selection.
  * @property {boolean} hasResetButtons flag, indicating if the filter has reset buttons shown.
- * @property {string} resetbuttontitle the (locale specific) title attribute for reset buttons.
- * @property {string} initparams the initial search state parameters to apply on first load of the list.
  *
  * @typedef {Object.<string, ListFilter>} ListFilterMap Object holding only list filters as property values.
  *
@@ -132,13 +135,14 @@ function splitRequestParameters(paramstring) {
  */
 // retrieves the set filters from other filters and combines the filter parameters
 function getFilterParams(filter) {
+
     var filterGroup = m_archiveFilterGroups[filter.elementId];
     var params = "";
     if (filterGroup !== undefined) {
         for (var i = 0; i < filterGroup.length; i++) {
             var fi = filterGroup[i];
-            if (fi.combinable && fi.id != filter.id) {
-                params += fi.impl.getFilterParams();
+            if (fi.data.combinable && fi.id != filter.id) {
+                params += fi.getFilterParams();
             }
         }
     }
@@ -157,74 +161,81 @@ function getFilterParams(filter) {
  */
 function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers) {
 
-    if (DEBUG) console.info("Lists.listFilter() called elementId=" + id);
-
+    if (Mercury.debug()) {
+        console.info("Lists.listFilter() called elementId=" + id);
+    }
     // reset filters of not sorting
-    var filterGroup = m_archiveFilterGroups[id];
-    var filter = m_archiveFilters[filterId]
-    var removeAllFilters = !(filter && filter.combine);
-    if ((triggerId != "SORT") && (typeof filterGroup !== "undefined")) {
-        // We have more than one filter element, so we can combine them and have to adjust counts
-        // I.e., if in one filter element we click a category
-        // the facet counts in the other filter elements decrease
-        var adjustCounts = filterGroup.length > 1;
-        // potentially the same filter may be on the same page
-        // here we make sure to reset them all
-        var triggeredWasActive = triggerId != null && jQ("#" + triggerId).hasClass("active");
-        // check if reset buttons need to be shown.
-        var hasResetButtons = m_listResetButtons[id] != undefined;
-        for (var i=0; i < filterGroup.length; i++) {
-            var fi = filterGroup[i];
+    const filterGroup = m_archiveFilterGroups[id];
+    const filter = m_archiveFilters[filterId]
+    const removeAllFilters = !(filter && filter.data.combine);
+    // We have more than one filter element, so we can combine them and have to adjust counts
+    // I.e., if in one filter element we click a category
+    // the facet counts in the other filter elements decrease
+    const adjustCounts = filterGroup.length > 1;
+    // potentially the same filter may be on the same page
+    // here we make sure to reset them all
+    const triggeredWasActive = triggerId != null && document.querySelector("#" + triggerId) && 
+            document.querySelector("#" + triggerId).classList.contains("active");
+    // check if reset buttons need to be shown.
+    const hasResetButtons = m_listResetButtons[id] != undefined;
+    if ((triggerId != "SORT") && (filterGroup !== undefined)) {
+        for (let i = 0; i < filterGroup.length; i++) {
+            const fi = filterGroup[i];
             // remove all active / highlighted filters
             // unless filters should be combined
             // TODO: Is there any uncombinable filter at all presently?
-            var currentFolder = "";
+            let currentFolder = "";
             // if triggerId is null, we have a changed query string and this means always to reset all filters.
-            if (removeOthers && (removeAllFilters || !fi.combinable || fi.id == filterId || triggerId == null)) {
-                var $elactive = fi.$element.find(".active");
-                $elactive.removeClass("active");
+            if (removeOthers && (removeAllFilters || !fi.data.combinable || fi.id == filterId || triggerId == null)) {
+                const elactive = fi.element.querySelector(".active");
+                if (elactive) {
+                    elactive.classList.remove("active");
+                }
                 // clear folder filter
-                var $current = fi.$element.find("li.currentpage").each(function() {
-                    var $c = $(this);
+                fi.element.querySelectorAll("li.currentpage").forEach((element) => {
+                    var $c = $(element);
                     $c.children().trigger("blur");
                     $c.removeClass("currentpage");
                     $c.parentsUntil("ul.list-group").removeClass("currentpage");
-                    var folderPath = this.getAttribute('data-value');
-                    if(folderPath && folderPath.length > currentFolder.length) currentFolder = folderPath;
+                    var folderPath = element.dataset.value;
+                    if (folderPath && folderPath.length > currentFolder.length) {
+                        currentFolder = folderPath;
+                    }
                 });
                 // clear text input if wanted
-                if (fi.impl.textSearch && (triggerId != fi.impl.textSearch.$element.id)) {
-                    fi.impl.textSearch.$element.val('');
+                if (fi.textSearch && (triggerId != fi.textSearch.element.id)) {
+                    fi.textSearch.element.value = "";
                 }
             }
-            if (triggerId != null) {
-                var $current = fi.$element.find("#" + triggerId).first();
-                if (DEBUG) console.info("Lists.listFilter() Current has class active? : " + $current.hasClass("active") + " - " + $current.attr("class"));
+            const current = fi.element.querySelector("#" + triggerId);
+            if (triggerId != null && current) {
+                if (Mercury.debug()) {
+                    console.info("Lists.listFilter() Current has class active? : " + current.classList.contains("active") + " - " + current.classList);
+                }
                 // activate clicked folder filter, if it wasn't the highlighted before
                 if (triggerId.indexOf("folder_") == 0) {
-                    var folderElem = document.getElementById(triggerId);
-                    var elemValue = folderElem.getAttribute('data-value');
-                    if(currentFolder !== elemValue) {
-                        $current.addClass("currentpage");
-                        $current.parentsUntil("ul.list-group").addClass("currentpage");
+                    var folderElement = document.getElementById(triggerId);
+                    var elementValue = folderElement.dataset.value;
+                    if (currentFolder !== elementValue) {
+                        current.classList.add("currentpage");
+                        jQ(current).parentsUntil("ul.list-group").addClass("currentpage");
                     }
                 } else if (triggeredWasActive){
-                    $current.removeClass("active");
+                    current.classList.remove("active");
                 } else {
-                    $current.addClass("active");
+                    current.classList.add("active");
                 }
             } else if (fi.id == filterId && (typeof searchStateParameters === 'string' || searchStateParameters instanceof String) && searchStateParameters.length > 0) {
                 // highlight possibly already checked category restrictions
-                var catparamkey = fi.catparamkey;
-                if(typeof catparamkey !== 'undefined') {
+                var catparamkey = fi.data.catparamkey;
+                if (catparamkey !== undefined) {
                     var params = splitRequestParameters(searchStateParameters);
                     var initValue = params[catparamkey];
-                        if (typeof initValue !== 'undefined' && initValue != '') {
-                            fi.$element.find("li").each(function () {
-                            var $this = $(this);
-                            var itemValue = $this.data("value");
+                        if (initValue !== undefined && initValue != '') {
+                            fi.element.querySelectorAll("li").forEach((element) => {
+                            var itemValue = element.dataset.value;
                             if (itemValue === initValue) {
-                                $this.addClass("active");
+                                element.classList.add("active");
                             }
                         });
                     }
@@ -232,51 +243,35 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
             }
         }
     }
-
     var listGroup = m_listGroups[id];
     if (listGroup !== undefined) {
         // required list is an element on this page
-        for (var i = 0; i < listGroup.length; i++) {
+        for (let i = 0; i < listGroup.length; i++) {
             updateInnerList(listGroup[i].id, searchStateParameters, true);
         }
         if (adjustCounts || hasResetButtons) {
             updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup);
         }
-        updateDirectLink(filter, searchStateParameters);
+        // update direct link
+        filterGroup.forEach((fi) => {
+            if (fi.updateDirectLink) {
+                fi.updateDirectLink(searchStateParameters);
+            }
+        });
     } else {
         var archive = m_archiveFilters[filterId];
         // list is not on this page, check filter target attribute
-        var target = archive.target;
-        if (typeof target !== "undefined" && target !== window.location.pathname && target + "index.html" !== window.location.pathname) {
-            if (DEBUG) console.info("Lists.listFilter() No list group found on page, trying redirect to " + target);
+        var target = archive.data.target;
+        if (target !== undefined && target !== window.location.pathname && target + "index.html" !== window.location.pathname) {
+            if (Mercury.debug()) {
+                console.info("Lists.listFilter() No list group found on page, trying redirect to " + target);
+            }
             var params = splitRequestParameters("reloaded=true&" + searchStateParameters);
-
             Mercury.post(target, params);
         } else {
             console.error("Lists.listFilter() Unable to load list!\nNo dynamic list found on the page and property 'mercury.list' not set.");
         }
     }
-}
-
-/**
- * Updates the direct link for a changed search state.
- *
- * @param {Object} filter the filter
- * @param {string} searchStateParameters the search state paramters
- */
-function updateDirectLink(filter, searchStateParameters) {
-    if (!filter.$directlink) {
-        return;
-    }
-    var link = filter.$directlink.find("a");
-    if (!link) {
-        return;
-    }
-    var url = link.attr("href");
-    if (url && url.indexOf("?") >= 0) {
-        url = url.substring(0, url.indexOf("?"));
-    }
-    link.attr("href", url + "?" + searchStateParameters);
 }
 
 /**
@@ -292,7 +287,9 @@ function updateDirectLink(filter, searchStateParameters) {
  */
 function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad = false, waitHandler = undefined) {
 
-    if (waitHandler) waitHandler.wait();
+    if (waitHandler) {
+        waitHandler.wait();
+    }
     searchStateParameters = searchStateParameters || "";
     reloadEntries = reloadEntries || false;
 
@@ -367,13 +364,17 @@ function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad
                 const params = new URLSearchParams(searchStateParameters);
                 loadMultiplePages(list, ajaxOptions, params, 1, page, waitHandler);
             } else {
-                if (waitHandler) waitHandler.wait();
+                if (waitHandler) {
+                    waitHandler.wait();
+                }
                 jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function (ajaxListHtml) {
                     generateListHtml(list, reloadEntries, ajaxListHtml, page, true, waitHandler);
                 }, "html");
             }
         }
-        if (waitHandler) waitHandler.ready();
+        if (waitHandler) {
+            waitHandler.ready();
+        }
     }
 }
 
@@ -905,6 +906,7 @@ function getPageSize(page, pageSizes) {
  * NOTE: works currently only for lists where not all entries are loaded upfront.
  */
 function handleAutoLoaders() {
+
     if (m_autoLoadLists != null) {
         for (var i=0; i<m_autoLoadLists.length; i++) {
 
@@ -956,12 +958,12 @@ function updateFilterCountsAndResetButtons(id, filterGroup) {
         var params = "&reloaded";
         for (var i = 0; i < filterGroup.length; i++) {
             var fi = filterGroup[i];
-            if (fi.combinable) {
+            if (fi.data.combinable) {
                 if (updateCounts) {
-                    params += fi.impl.getCountFilterParams();
+                    params += fi.getCountFilterParams();
                 }
                 if (updateResets) {
-                    resetButtons = resetButtons.concat(fi.impl.getResetButtons());
+                    resetButtons = resetButtons.concat(fi.getResetButtons());
                 }
             }
         }
@@ -1039,13 +1041,13 @@ function buildAjaxCountLink(list, searchStateParameters) {
  */
 function replaceFilterCounts(filterGroup, ajaxCountJson) {
 
-    if(DEBUG) {
+    if (Mercury.debug()) {
         console.info("Lists.replaceFilterCounts() called with ajaxCountJson", ajaxCountJson);
     }
     filterGroup.forEach((filter) => {
         var elementFacets = ajaxCountJson[filter.id];
-        if (undefined !== elementFacets && null !== elementFacets) {
-            filter.impl.updateFilterCounts(elementFacets);
+        if (elementFacets) {
+            filter.updateFilterCounts(elementFacets);
         }
     })
 }
@@ -1162,6 +1164,7 @@ function onDomChange(m) {
  * @returns {string} the search state parameters corresponding to the filter action.
  */
 export function calculateStateParameter(filter, elId, resetActive, countVersion = false) {
+
     var $el = $( '#' + elId);
     var value = $el.data("value");
     var paramkey =
@@ -1170,18 +1173,18 @@ export function calculateStateParameter(filter, elId, resetActive, countVersion 
                     ? ''
                     : (countVersion
                         ? 'facet_' + encodeURIComponent(filter.id + '_c')
-                        : filter.catparamkey))
+                        : filter.data.catparamkey))
             : elId.indexOf('folder_') == 0
                 ? (resetActive && $el.hasClass("currentpage")
                     ? ''
                     :  (countVersion
                         ?'facet_' + encodeURIComponent(filter.id + '_f')
-                        : filter.folderparamkey))
+                        : filter.data.folderparamkey))
             : (resetActive && $el.hasClass("active")
                     ? ''
                     : (countVersion
                         ? 'facet_' + encodeURIComponent(filter.id + '_a')
-                        : filter.archiveparamkey));
+                        : filter.data.archiveparamkey));
     var stateParameter =
         paramkey !== undefined && paramkey != '' && value !== undefined && value != ''
             ? '&' + paramkey + '=' + encodeURIComponent(value)
@@ -1245,23 +1248,14 @@ export function generateInputFieldResetButton(archiveId, titleAttr) {
 
 /**
  * Registers a list filter.
- * @param {HTMLDivElement} filterElement the list filter element to register
- * @param {object} filterImpl function that returns the filter parameters for the current filter selection
+ * @param {ListFilter} filter the list filter to register
  */
-export function registerFilter(filterElement, filterImpl) {
+export function registerFilter(filter) {
 
-    // extract the filter data
-    var $archiveFilter = jQ(filterElement);
-    var filter = $archiveFilter.data("filter");
-    if (filter === undefined) {
+    if (filter.data === undefined) {
         console.error("DynamicList.registerFilter() filter found without data, ignoring!");
         return;
     }
-    filter.$element = $archiveFilter;
-    filter.id = $archiveFilter.attr("id");
-    filter.elementId = $archiveFilter.data("id");
-    filter.hasResetButtons = $archiveFilter.find("#resetbuttons_" + filter.id).length > 0;
-    filter.impl = filterImpl;
     // store filter data in global array
     m_archiveFilters[filter.id] = filter;
     // store filter in global group array
@@ -1275,12 +1269,12 @@ export function registerFilter(filterElement, filterImpl) {
       // tell list, that it has to track reset buttons
       m_listResetButtons[filter.elementId] = [];
     }
-    if (filter.initparams !== undefined && filter.initparams != "") {
+    if (filter.data.initparams !== undefined && filter.data.initparams != "") {
         if (Mercury.debug()) {
-            console.info("DynamicList.registerFilter() data filter init params - " + filter.initparams);
+            console.info("DynamicList.registerFilter() data filter init params - " + filter.data.initparams);
         }
-        // highlight filter correctly
-        listFilter(filter.elementId, null, filter.id, filter.initparams, false);
+        // apply the list filter on page load
+        listFilter(filter.elementId, null, filter.id, filter.data.initparams, false);
     }
     return filter;
 }
@@ -1293,22 +1287,24 @@ export function registerFilter(filterElement, filterImpl) {
  * @param {string} searchStateParameters the search state parameters representing the filter action.
  */
 export function facetFilter(id, triggerId, searchStateParameters) {
+
     listFilter(id, triggerId, null, searchStateParameters, true);
 }
 
 /**
  * Applies an archive filter option to the list.
  *
- * @param {string} idthe id of the list the filter belongs to.
+ * @param {string} id the id of the list the filter belongs to.
  * @param {string} triggerId the id of the HTML element that triggered the filter action.
  */
 export function archiveFilter(id, triggerId) {
+
     var filter = m_archiveFilters[id];
     // if filters of other filter elements should be combined with that one - get the other filters that are set
-    var additionalFilters = filter.combine ? getFilterParams(filter) : "";
+    var additionalFilters = filter.data.combine ? getFilterParams(filter) : "";
     // calculate the filter query part for the just selected item
     var additionalStateParameter = calculateStateParameter(filter, triggerId, true);
-    listFilter(filter.elementId, triggerId, id, filter.searchstatebase + additionalFilters + additionalStateParameter, true);
+    listFilter(filter.elementId, triggerId, id, filter.data.searchstatebase + additionalFilters + additionalStateParameter, true);
 }
 
 
@@ -1319,11 +1315,12 @@ export function archiveFilter(id, triggerId) {
  * @param {string} triggerId the id of the HTML element that triggered the filter action.
  */
 export function archiveSearch(id, searchStateParameters) {
+
     var filter = m_archiveFilters[id];
     // we do never combine the text search when we change the search word. This should reset all other filters always.
     // var additionalFilters = filter.combine ? getFilterParams(filter) : "";
     var additionalFilters= "&reloaded";
-    const textSearchVal = filter.impl.textSearch ? filter.impl.textSearch.$element.val() : '';
+    const textSearchVal = filter.textSearch ? filter.textSearch.element.value : '';
     listFilter(filter.elementId, null, filter.id, searchStateParameters + encodeURIComponent(textSearchVal) + additionalFilters, true);
 }
 
@@ -1346,7 +1343,7 @@ export function switchPage(id, page) {
 
     // there may be media elements in the list
     Mercury.update('#' + list.id);
-    if (! list.$element.visible()) {
+    if (!list.$element.visible()) {
         if (DEBUG) console.info("Lists.switchPage() - scrolling to anchor");
         if (m_flagScrollToAnchor) {
             Mercury.scrollToAnchor(list.$element, -20);
@@ -1385,6 +1382,7 @@ export function appendPage(id, page) {
  * @param {boolean} reloadEntries a flag, indicating if the currently shown results should be reloaded/replaced (or if new results should only be appended).
  */
 export function update(id, searchStateParameters, reloadEntries) {
+
     updateInnerList(id, searchStateParameters, reloadEntries == "true");
 }
 
@@ -1546,6 +1544,18 @@ export function init(jQuery, debug, verbose) {
             // only enable scroll listener if we have at least one autoloading gallery
             window.addEventListener("scroll", handleAutoLoaders, { passive: true });
         }
+
+        // unfold filterboxes if on desktop and responsive setting is used
+        document.querySelectorAll(".filterbox .collapse").forEach((element) => {
+            if (Mercury.debug()) {
+                console.info("Lists.init() collapse elements found for filter id " + element.id);
+            }
+            if ((element.classList.contains("op-lg") && Mercury.gridInfo().isMinLg())
+                || (element.classList.contains("op-md") && Mercury.gridInfo().isMinMd())
+                || (element.classList.contains("op-sm") && Mercury.gridInfo().isMinSm())) {
+                jQ(element).collapse("show");
+            }
+        });
     }
 
     var $staticGroupListElements = jQ('.type-static-list .list-with-groups.list-entries');

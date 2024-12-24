@@ -811,7 +811,7 @@ const Mercury = function (jQ) {
         }
         
         try {
-            DynamicListFilterElemements.init(jQ);
+            DynamicListFilterElemements.init();
         } catch (err) {
             console.warn("ListFilter.init() error", err);
         }

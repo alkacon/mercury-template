@@ -18,39 +18,6 @@
  */
 
 
-// the global objects that must be passed to this module
-/** @type {jQuery} jQuery object */
-let jQ;
-
-
-/**
- * Abstract class for filter boxes.
- */
-class A_ListFilterBox {
-
-    constructor($element) {
-        // unfold categories if on desktop and responsive setting is used
-        if ($element) {
-            if (Mercury.debug()) {
-                console.info("Lists.init() collapse elements found for filter id " + this.id + ": " + $collapses.length);
-            }
-            if (($element.hasClass("op-lg") && Mercury.gridInfo().isMinLg())
-                || ($element.hasClass("op-md") && Mercury.gridInfo().isMinMd())
-                || ($element.hasClass("op-sm") && Mercury.gridInfo().isMinSm())) {
-                $element.collapse("show");
-            }
-        }
-        // attach key listeners for keyboard support
-        $element.find("li > a").on("keydown", function(e) {
-            if (e.type == "keydown" && (e.which == 13 || e.which == 32)) {
-                jQ(this).click();
-                e.preventDefault();
-            }
-        });
-    }
-}
-
-
 /**
  * Text search filter
  */
@@ -58,14 +25,17 @@ class TextSearch {
 
     /**
      * Creates a new text search filter.
+     * @param element the HTML element
+     * @param parent the parent filter
      */
-    constructor($element, parent) {
-        this.$element = $element;
+    constructor(element, parent) {
+        this.element = element;
         this.parent = parent;
     }
 
     /**
      * Returns the URL parameters for the current filter selection with count information.
+     * @return the URL parameters for the current filter selection with count information
      */
     getCountFilterParams() {
 
@@ -74,22 +44,24 @@ class TextSearch {
 
     /**
      * Returns the URL parameters for the current filter selection.
+     * @return the URL parameters for the current filter selection
      */
     getFilterParams() {
     
-        const query = this.$element.val();
+        const query = this.element.value;
         if (query) {
-            return "&" + this.$element.attr("name") + "=" + encodeURIComponent(query);
+            return "&" + this.element.getAttribute("name") + "=" + encodeURIComponent(query);
         }
         return "";
     }
 
     /**
      * Returns the reset buttons for the current filter selection.
+     * @return the reset buttons for the current filter selection
      */
     getResetButtons() {
 
-        const query = this.$element.val();
+        const query = this.element.value;
         if (query) {
             const buttonTitle = this.parent.data.resetbuttontitle;
             return [DynamicList.generateInputFieldResetButton(this.parent.id, buttonTitle)];
@@ -101,19 +73,22 @@ class TextSearch {
 /**
  * Archive filter
  */
-class ArchiveFilter extends A_ListFilterBox {
+class ArchiveFilter {
 
     /**
      * Creates a new archive filter.
+     * @param element the HTML element
+     * @param parent the parent filter
      */
-    constructor($element, parent) {
-        super($element);
-        this.$element = $element;
+    constructor(element, parent) {
+
+        this.element = element;
         this.parent = parent;
     }
 
     /**
      * Returns the URL parameters for the current filter selection with count information.
+     * @return the URL parameters for the current filter selection with count information
      */
     getCountFilterParams() {
 
@@ -122,39 +97,43 @@ class ArchiveFilter extends A_ListFilterBox {
 
     /**
      * Returns the URL parameters for the current filter selection.
+     * @param countInfo whether to request count information
+     * @return the URL parameters for the current filter selection
      */
     getFilterParams(countInfo = false) {
 
         let self = this;
         let params = "";
-        this.$element.find(".active").each(function() {
-            params += DynamicList.calculateStateParameter(self.parent.data, this.id, false, countInfo);
+        this.element.querySelectorAll(".active").forEach((element) => {
+            params += DynamicList.calculateStateParameter(self.parent, element.id, false, countInfo);
         });
         return params;
     }
 
     /**
      * Returns the reset buttons for the current filter selection.
+     * @return the reset buttons for the current filter selection
      */
     getResetButtons() {
 
         const self = this;
         const resetButtons = [];
-        this.$element.find(".active").each(function() {
+        this.element.querySelectorAll(".active").forEach((element) => {
             const buttonTitle = self.parent.data.resetbuttontitle;
-            resetButtons.push(DynamicList.generateResetButton(this, buttonTitle));
+            resetButtons.push(DynamicList.generateResetButton(element, buttonTitle));
         });
         return resetButtons;
     }
 
     /**
      * Updates the filter counts for the current filter selection.
+     * @param elementFacets element facets map with date as key and count as value
      */
     updateFilterCounts(elementFacets) {
 
-        this.$element.find("li[data-value]").each(function(_, li) {
-            const val = li.getAttribute("data-value");
-            let count = elementFacets[val];
+        this.element.querySelectorAll("li[data-value]").forEach((li) => {
+            const value = li.dataset.value;
+            let count = elementFacets[value];
             if (count == null) {
                 count = "0";
             }
@@ -182,19 +161,25 @@ class ArchiveFilter extends A_ListFilterBox {
     }
 }
 
-class CategoryFilter extends A_ListFilterBox {
+/**
+ * Category filter
+ */
+class CategoryFilter {
 
     /**
      * Creates a new category filter.
+     * @param element the HTML element
+     * @param parent the parent filter
      */
-    constructor($element, parent) {
-        super($element);
-        this.$element = $element;
+    constructor(element, parent) {
+
+        this.element = element;
         this.parent = parent;
     }
 
     /**
      * Returns the URL parameters for the current filter selection with count information.
+     * @return the URL parameters for the current filter selection with count information
      */
     getCountFilterParams() {
 
@@ -203,39 +188,43 @@ class CategoryFilter extends A_ListFilterBox {
 
     /**
      * Returns the URL parameters for the current filter selection.
+     * @param countInfo whether to request count information
+     * @return the URL parameters for the current filter selection
      */
     getFilterParams(countInfo = false) {
 
         let self = this;
         let params = "";
-        this.$element.find(".active").each(function() {
-            params += DynamicList.calculateStateParameter(self.parent.data, this.id, false, countInfo);
+        this.element.querySelectorAll(".active").forEach((element) => {
+            params += DynamicList.calculateStateParameter(self.parent, element.id, false, countInfo);
         });
         return params;
     }
 
     /**
      * Returns the reset buttons for the current filter selection.
+     * @return the reset buttons for the current filter selection
      */
     getResetButtons() {
 
         const self = this;
         const resetButtons = [];
-        this.$element.find(".active").each(function() {
+        this.element.querySelectorAll(".active").forEach((element) => {
             const buttonTitle = self.parent.data.resetbuttontitle;
-            resetButtons.push(DynamicList.generateResetButton(this, buttonTitle));
+            resetButtons.push(DynamicList.generateResetButton(element, buttonTitle));
         });
         return resetButtons;
     }
 
     /**
      * Updates the filter counts for the current filter selection.
+     * @param elementFacets element facets map with date as key and count as value
      */
     updateFilterCounts(elementFacets) {
 
-        this.$element.find("li[data-value]").each(function(_, li) {
-            const val = li.getAttribute("data-value");
-            let count = elementFacets[val];
+        this.element.querySelectorAll("li[data-value]").forEach((li) => {
+            const value = li.dataset.value;
+            let count = elementFacets[value];
             if (count == null) {
                 count = "0";
             };
@@ -263,19 +252,22 @@ class CategoryFilter extends A_ListFilterBox {
 /**
  * Folder filter
  */
-class FolderFilter extends A_ListFilterBox {
+class FolderFilter {
 
     /**
      * Creates a new folder filter.
+     * @param element the HTML element
+     * @param parent the parent filter
      */
-    constructor($element, parent) {
-        super($element);
-        this.$element = $element;
+    constructor(element, parent) {
+
+        this.element = element;
         this.parent = parent;
     }
 
     /**
      * Returns the URL parameters for the current filter selection with count information.
+     * @return the URL parameters for the current filter selection with count information
      */
     getCountFilterParams() {
 
@@ -289,13 +281,14 @@ class FolderFilter extends A_ListFilterBox {
      * but only the clicked one should be set
      * so we only take the parameter with the longest path
      * into account
+     * @param countInfo whether to request count information
      */
     getFilterParams(countInfo = false) {
 
         const self = this;
         let params = "";
-        this.$element.find("li.currentpage").each(function() {
-            const p = DynamicList.calculateStateParameter(self.parent.data, this.id, false, countInfo);
+        this.element.querySelectorAll("li.currentpage").forEach((element) => {
+            const p = DynamicList.calculateStateParameter(self.parent, element.id, false, countInfo);
             if (p.length > params.length) {
                 params = p;
             }
@@ -305,6 +298,7 @@ class FolderFilter extends A_ListFilterBox {
 
     /**
      * Returns the reset buttons for the current filter selection.
+     * @return the reset buttons for the current filter selection
      */
     getResetButtons() {
 
@@ -312,11 +306,11 @@ class FolderFilter extends A_ListFilterBox {
         let params = "";
         let checkedElement;
         const resetButtons = [];
-        this.$element.find("li.currentpage").each(function() {
-            let p = DynamicList.calculateStateParameter(self.parent.data, this.id, false, true);
+        this.element.querySelectorAll("li.currentpage").forEach((element) => {
+            let p = DynamicList.calculateStateParameter(self.parent, element.id, false, true);
             if (p.length > params.length) {
                 params = p;
-                checkedElement = this;
+                checkedElement = element;
             }
         });
         if (checkedElement !== undefined) {
@@ -328,12 +322,13 @@ class FolderFilter extends A_ListFilterBox {
 
     /**
      * Updates the filter counts for the current filter selection.
+     * @param elementFacets element facets map with date as key and count as value
      */
     updateFilterCounts(elementFacets) {
 
-        this.$element.find("li[data-value]").each(function(_, li) {
-            const val = li.getAttribute("data-value");
-            const count = elementFacets[val];
+        this.element.querySelectorAll("li[data-value]").forEach((li) => {
+            const value = li.dataset.value;
+            const count = elementFacets[value];
             const shouldDisable = (null == count || count == "0");
             const isDisabled = li.classList.contains("disabled");
             if (isDisabled != shouldDisable) {
@@ -363,30 +358,69 @@ class ListFilter {
 
     /**
      * Creates a new list filter.
-     * @param jQ the jQuery object
      * @param element the HTML element
      */
-    constructor(jQ, element) {
-        this.$element = jQ(element);
-        this.id = this.$element.attr("id");
-        this.data = this.$element.data("filter");
+    constructor(element) {
+        this.element = element;
+        this._data = null;
         if (this.data.search == "true") {
-            this.textSearch = new TextSearch(this.$element.find("#textsearch_" + this.id), this);
+            this.textSearch = new TextSearch(this.element.querySelector("#textsearch_" + this.id), this);
         }
         if (this.data.categories == "true") {
-            this.categoryFilter = new CategoryFilter(this.$element.find("#cats_" + this.id), this);
+            this.categoryFilter = new CategoryFilter(this.element.querySelector("#cats_" + this.id), this);
         }
         if (this.data.archive == "true") {
-            this.archiveFilter = new ArchiveFilter(this.$element.find("#arch_" + this.id), this);
+            this.archiveFilter = new ArchiveFilter(this.element.querySelector("#arch_" + this.id), this);
         }
         if (this.data.folders == "true") {
-            this.folderFilter = new FolderFilter(this.$element.find("#folder_" + this.id), this);
+            this.folderFilter = new FolderFilter(this.element.querySelector("#folder_" + this.id), this);
         }
-        this.$directlink = this.$element.find(".directlink"); //TODO
+        this.directlink = this.element.querySelector(".directlink"); //TODO
+    }
+
+    /**
+     * Laziliy initializes and returns the dataset value as JSON.
+     * @return the dataset value as JSON
+     */
+    get data() {
+
+        if (!this._data) {
+            const filterData = this.element.dataset.filter;
+            this._data = JSON.parse(filterData);
+        }
+        return this._data;
+    }
+
+    /**
+     * Returns the element id of this filter.
+     * @return the element id of this filter
+     */
+    get elementId() {
+
+        return this.element.dataset.id;
+    }
+
+    /**
+     * Returns whether this filter can have reset buttons.
+     * @return whether this filter can have reset buttons
+     */
+    get hasResetButtons() {
+
+        return this.element.querySelector("#resetbuttons_" + this.id) !== null;
+    }
+
+    /**
+     * Returns the id of this filter.
+     * @return the id of this filter
+     */
+    get id() {
+
+        return this.element.getAttribute("id");
     }
 
     /**
      * Returns the URL parameters for the current filter selection.
+     * @param countInfo whether to request count information
      */
     getFilterParams(countInfo = false) {
     
@@ -408,6 +442,7 @@ class ListFilter {
 
     /**
      * Returns the URL parameters for the current filter selection with count information.
+     * @return the URL parameters for the current filter selection with count information
      */
     getCountFilterParams() {
     
@@ -430,6 +465,7 @@ class ListFilter {
 
     /**
      * Returns the reset buttons for the current filter selection.
+     * @return the reset buttons for the current filter selection
      */
     getResetButtons() {
     
@@ -450,7 +486,28 @@ class ListFilter {
     }
 
     /**
+     * Updates the direct link with the actual search state parameters.
+     * @param searchStateParameters the actual search state parameters
+     */
+    updateDirectLink(searchStateParameters) {
+
+        const element = this.element.querySelector(".directlink");
+        if (!element) {
+            return;
+        }
+        const link = element.querySelector("a");
+        if (!link) {
+            return;
+        }
+        var url = link.getAttribute("href");
+        if (url && url.indexOf("?") >= 0) {
+            url = url.substring(0, url.indexOf("?"));
+        }
+        link.setAttribute("href", url + "?" + searchStateParameters);
+    }
+    /**
      * Updates the filter counts for the current filter selection.
+     * @param elementFacets element facets map with date as key and count as value
      */
     updateFilterCounts(elementFacets) {
 
@@ -467,24 +524,21 @@ class ListFilter {
 }
 
 /**
- * Initialize the list filters.
+ * Initializes the list filters.
  */
-export function init(jQuery) {
+export function init() {
 
-    jQ = jQuery;
-    const $listFilters = jQ(".type-list-filter");
+    const listFilters = document.querySelectorAll(".type-list-filter");
     if (Mercury.debug()) {
-        console.info("Lists.init() .type-list-filter elements found: " + $listFilters.length);
+        console.info("Lists.init() .type-list-filter elements found: " + listFilters.length);
     }
-    if ($listFilters.length > 0) {
-        $listFilters.each(function() {
-            let listFilter = new ListFilter(jQ, this);
-            let filter = DynamicList.registerFilter(this, listFilter);
-            if (filter !== undefined && Mercury.debug()) {
-                console.info("Lists.init() .type-list-filter data found - id=" + filter.id + ", elementId=" + filter.elementId);
-            } else if (Mercury.debug()) {
-                console.info("Lists.init() .type-list-filter found without data, ignoring!");
-            }
-        });
-    }
+    listFilters.forEach((element) => {
+        const listFilter = new ListFilter(element);
+        const register = DynamicList.registerFilter(listFilter);
+        if (register !== undefined && Mercury.debug()) {
+            console.info("Lists.init() .type-list-filter data found - id=" + listFilter.id + ", elementId=" + listFilter.elementId);
+        } else if (Mercury.debug()) {
+            console.info("Lists.init() .type-list-filter found without data, ignoring!");
+        }
+    });
 }

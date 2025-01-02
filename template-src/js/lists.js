@@ -203,12 +203,12 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
                     }
                 });
                 // clear text input if wanted
-                if (fi.textSearch && (triggerId != fi.textSearch.element.id)) {
+                if (fi.textSearch && triggerId && (triggerId != fi.textSearch.element.id)) {
                     fi.textSearch.element.value = "";
                 }
             }
             const current = fi.element.querySelector("#" + triggerId);
-            if (triggerId != null && current) {
+            if (triggerId && current) {
                 if (Mercury.debug()) {
                     console.info("Lists.listFilter() Current has class active? : " + current.classList.contains("active") + " - " + current.classList);
                 }
@@ -1154,44 +1154,6 @@ function onDomChange(m) {
 
 /****** Exported functions ******/
 
-
-/**
- * Calculates the search state parameters.
- * @param {ListFilter} filter the filter
- * @param {string} elId id of the element the search state parameters should be calculated for.
- * @param {boolean} resetActive flag, indicating if other active filters should be reset.
- * @param {boolean} countVersion flag, indicating if the state has to be calculated for the count calculation.
- * @returns {string} the search state parameters corresponding to the filter action.
- */
-export function calculateStateParameter(filter, elId, resetActive, countVersion = false) {
-
-    var $el = $( '#' + elId);
-    var value = $el.data("value");
-    var paramkey =
-            elId.indexOf('cat_') == 0
-                ? (resetActive && $el.hasClass("active")
-                    ? ''
-                    : (countVersion
-                        ? 'facet_' + encodeURIComponent(filter.id + '_c')
-                        : filter.data.catparamkey))
-            : elId.indexOf('folder_') == 0
-                ? (resetActive && $el.hasClass("currentpage")
-                    ? ''
-                    :  (countVersion
-                        ?'facet_' + encodeURIComponent(filter.id + '_f')
-                        : filter.data.folderparamkey))
-            : (resetActive && $el.hasClass("active")
-                    ? ''
-                    : (countVersion
-                        ? 'facet_' + encodeURIComponent(filter.id + '_a')
-                        : filter.data.archiveparamkey));
-    var stateParameter =
-        paramkey !== undefined && paramkey != '' && value !== undefined && value != ''
-            ? '&' + paramkey + '=' + encodeURIComponent(value)
-            : '';
-    return stateParameter;
-}
-
 /**
  * @param {HTMLElement} filterField
  * @param {string} titleAttr
@@ -1299,11 +1261,11 @@ export function facetFilter(id, triggerId, searchStateParameters) {
  */
 export function archiveFilter(id, triggerId) {
 
-    var filter = m_archiveFilters[id];
+    const filter = m_archiveFilters[id];
     // if filters of other filter elements should be combined with that one - get the other filters that are set
-    var additionalFilters = filter.data.combine ? getFilterParams(filter) : "";
+    const additionalFilters = filter.data.combine ? getFilterParams(filter) : "";
     // calculate the filter query part for the just selected item
-    var additionalStateParameter = calculateStateParameter(filter, triggerId, true);
+    const additionalStateParameter = filter.getFilterParams(false, triggerId);
     listFilter(filter.elementId, triggerId, id, filter.data.searchstatebase + additionalFilters + additionalStateParameter, true);
 }
 

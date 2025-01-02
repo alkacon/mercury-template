@@ -98,14 +98,30 @@ class ArchiveFilter {
     /**
      * Returns the URL parameters for the current filter selection.
      * @param countInfo whether to request count information
+     * @param triggerId the id of the element that triggered the filter selection
      * @return the URL parameters for the current filter selection
      */
-    getFilterParams(countInfo = false) {
+    getFilterParams(countInfo = false, triggerId) {
 
-        let self = this;
+        const triggerElement = this.element.querySelector("#" + triggerId);
+        if (triggerId && triggerElement && triggerElement.classList.contains("active")) {
+            return "";
+        }
+        const elements = triggerId ? [triggerElement] : this.element.querySelectorAll(".active");
+        const parentId = this.parent.id;
+        const paramkey = this.parent.data.archiveparamkey;
         let params = "";
-        this.element.querySelectorAll(".active").forEach((element) => {
-            params += DynamicList.calculateStateParameter(self.parent, element.id, false, countInfo);
+        elements.forEach((element) => {
+            const value = element.dataset.value;
+            if (value) {
+                params += "&";
+                if (countInfo) {
+                    params += "facet_" + encodeURIComponent(parentId + "_a");
+                } else {
+                    params += paramkey;
+                }
+                params += "=" + encodeURIComponent(value);
+            }
         });
         return params;
     }
@@ -189,14 +205,30 @@ class CategoryFilter {
     /**
      * Returns the URL parameters for the current filter selection.
      * @param countInfo whether to request count information
+     * @param triggerId the id of the element that triggered the filter selection
      * @return the URL parameters for the current filter selection
      */
-    getFilterParams(countInfo = false) {
+    getFilterParams(countInfo = false, triggerId) {
 
-        let self = this;
+        const triggerElement = this.element.querySelector("#" + triggerId);
+        if (triggerId && triggerElement && triggerElement.classList.contains("active")) {
+            return "";
+        }
+        const elements = triggerId ? [triggerElement] : this.element.querySelectorAll(".active");
+        const parentId = this.parent.id;
+        const paramkey = this.parent.data.catparamkey;
         let params = "";
-        this.element.querySelectorAll(".active").forEach((element) => {
-            params += DynamicList.calculateStateParameter(self.parent, element.id, false, countInfo);
+        elements.forEach((element) => {
+            const value = element.dataset.value;
+            if (value) {
+                params += "&";
+                if (countInfo) {
+                    params += "facet_" + encodeURIComponent(parentId + "_c");
+                } else {
+                    params += paramkey;
+                }
+                params += "=" + encodeURIComponent(value);
+            }
         });
         return params;
     }
@@ -283,12 +315,28 @@ class FolderFilter {
      * into account
      * @param countInfo whether to request count information
      */
-    getFilterParams(countInfo = false) {
+    getFilterParams(countInfo = false, triggerId) {
 
-        const self = this;
+        const triggerElement = this.element.querySelector("#" + triggerId);
+        if (triggerId && triggerElement && triggerElement.classList.contains("active")) {
+            return "";
+        }
+        const elements = triggerId ? [triggerElement] : this.element.querySelectorAll("li.currentpage");
+        const parentId = this.parent.id;
+        const paramkey = this.parent.data.folderparamkey;
         let params = "";
-        this.element.querySelectorAll("li.currentpage").forEach((element) => {
-            const p = DynamicList.calculateStateParameter(self.parent, element.id, false, countInfo);
+        elements.forEach((element) => {
+            let p = "";
+            const value = element.dataset.value;
+            if (value) {
+                p += "&";
+                if (countInfo) {
+                    p += "facet_" + encodeURIComponent(parentId + "_a");
+                } else {
+                    p += paramkey;
+                }
+                p += "=" + encodeURIComponent(value);
+            }
             if (p.length > params.length) {
                 params = p;
             }
@@ -307,7 +355,7 @@ class FolderFilter {
         let checkedElement;
         const resetButtons = [];
         this.element.querySelectorAll("li.currentpage").forEach((element) => {
-            let p = DynamicList.calculateStateParameter(self.parent, element.id, false, true);
+            let p = self.getFilterParams(false, element.id);
             if (p.length > params.length) {
                 params = p;
                 checkedElement = element;
@@ -421,21 +469,23 @@ class ListFilter {
     /**
      * Returns the URL parameters for the current filter selection.
      * @param countInfo whether to request count information
+     * @param triggerId the id of the element that triggered the filter selection
+     * @return the URL parameters for the current filter selection
      */
-    getFilterParams(countInfo = false) {
+    getFilterParams(countInfo = false, triggerId) {
     
         let params = "";
         if (this.textSearch) {
             params += this.textSearch.getFilterParams();
         }
         if (this.categoryFilter) {
-            params += this.categoryFilter.getFilterParams(countInfo);
+            params += this.categoryFilter.getFilterParams(countInfo, triggerId);
         }
         if (this.archiveFilter) {
-            params += this.archiveFilter.getFilterParams(countInfo);
+            params += this.archiveFilter.getFilterParams(countInfo, triggerId);
         }
         if (this.folderFilter) {
-            params += this.folderFilter.getFilterParams(countInfo);
+            params += this.folderFilter.getFilterParams(countInfo, triggerId);
         }
         return params;
     }
@@ -505,6 +555,7 @@ class ListFilter {
         }
         link.setAttribute("href", url + "?" + searchStateParameters);
     }
+
     /**
      * Updates the filter counts for the current filter selection.
      * @param elementFacets element facets map with date as key and count as value

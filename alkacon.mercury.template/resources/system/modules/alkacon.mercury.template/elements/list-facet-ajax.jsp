@@ -37,7 +37,7 @@
 
             public Helper(HttpServletRequest request) {
                 m_req = request;
-                m_map = new HashMap<>(4);
+                m_map = new HashMap<>(5);
                 addParamToMap("s");
                 addParamToMap("f");
                 addParamToMap("a");

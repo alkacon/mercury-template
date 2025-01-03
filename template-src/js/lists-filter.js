@@ -47,7 +47,7 @@ class TextSearch {
      * @return the URL parameters for the current filter selection
      */
     getFilterParams() {
-    
+
         const query = this.element.value;
         if (query) {
             return "&" + this.element.getAttribute("name") + "=" + encodeURIComponent(query);
@@ -107,7 +107,7 @@ class ArchiveFilter {
         if (triggerId && triggerElement && triggerElement.classList.contains("active")) {
             return "";
         }
-        const elements = triggerId ? [triggerElement] : this.element.querySelectorAll(".active");
+        const elements = triggerId ? (triggerElement ? [triggerElement] : []) : this.element.querySelectorAll(".active");
         const parentId = this.parent.id;
         const paramkey = this.parent.data.archiveparamkey;
         let params = "";
@@ -214,7 +214,7 @@ class CategoryFilter {
         if (triggerId && triggerElement && triggerElement.classList.contains("active")) {
             return "";
         }
-        const elements = triggerId ? [triggerElement] : this.element.querySelectorAll(".active");
+        const elements = triggerId ? (triggerElement ? [triggerElement] : []) : this.element.querySelectorAll(".active");
         const parentId = this.parent.id;
         const paramkey = this.parent.data.catparamkey;
         let params = "";
@@ -321,7 +321,7 @@ class FolderFilter {
         if (triggerId && triggerElement && triggerElement.classList.contains("active")) {
             return "";
         }
-        const elements = triggerId ? [triggerElement] : this.element.querySelectorAll("li.currentpage");
+        const elements = triggerId ? (triggerElement ? [triggerElement] : []) : this.element.querySelectorAll("li.currentpage");
         const parentId = this.parent.id;
         const paramkey = this.parent.data.folderparamkey;
         let params = "";
@@ -331,7 +331,7 @@ class FolderFilter {
             if (value) {
                 p += "&";
                 if (countInfo) {
-                    p += "facet_" + encodeURIComponent(parentId + "_a");
+                    p += "facet_" + encodeURIComponent(parentId + "_f");
                 } else {
                     p += paramkey;
                 }

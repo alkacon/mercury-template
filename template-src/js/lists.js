@@ -202,9 +202,19 @@ function listFilter(id, triggerId, filterId, searchStateParameters, removeOthers
                         currentFolder = folderPath;
                     }
                 });
-                // clear text input if wanted
+                // clear text input and remove query string if wanted
                 if (fi.textSearch && triggerId && (triggerId != fi.textSearch.element.id)) {
                     fi.textSearch.element.value = "";
+                    if (searchStateParameters.includes("&")) {
+                        const tokens = searchStateParameters.split("&");
+                        const removeQ = [];
+                        for (let token of tokens) {
+                            if (!token.startsWith("q=")) {
+                                removeQ.push(token);
+                            }
+                        }
+                        searchStateParameters = removeQ.join("&");
+                    }
                 }
             }
             const current = fi.element.querySelector("#" + triggerId);

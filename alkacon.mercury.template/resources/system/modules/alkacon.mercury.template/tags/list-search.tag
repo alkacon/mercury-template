@@ -82,7 +82,19 @@
     "geofilter" : {
         "coordinates": "${param.coordinates}",
         "radius" : "${param.radius}"
-    }
+    },
+    "rangefacets": [
+        <c:if test="${not empty param.calendarday}">
+        {
+            "range": "${instancedaterangefield}",
+            "name": "calendarday",
+            "start": "NOW",
+            "end": "NOW",
+            "gap" : "+1DAYS",
+            "mincount": 1
+        }
+        </c:if>
+    ]
     <c:if test="${isSortGeodist}">, ${geodistSortOptions}</c:if>
     <c:if test="${isFacetCountQuery}">, ${facetConfig}</c:if>
 }

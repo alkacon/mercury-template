@@ -126,7 +126,7 @@
     <c:when test="${setDetailLinkWin eq 'blankSubsite' and cms.isLinkToDifferentSubSite(linkToDetail)}">
         <c:set var="setLinkNewWin" value="${true}" />
     </c:when>
-    <c:when test="${setDetailLinkWin eq 'always'}">
+    <c:when test="${setDetailLinkWin eq 'blankAlways'}">
         <c:set var="setLinkNewWin" value="${true}" />
     </c:when>
     <c:otherwise>

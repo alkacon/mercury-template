@@ -562,10 +562,11 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
             // no results means we don't need any pagination element
             list.$pagination.hide();
         }
-        // make sure that entries are shown if the list was empty
-        list.$entries.show();
         // reset the min-height of the list now that the elements are visible
-        list.$entries.animate({'min-height': "0px"}, 500);
+        list.$entries.animate({'min-height': "0px"}, 500, function() {
+            // make sure that entries are shown if the list was empty before
+            list.$entries.show();
+        });
     }
 
     setTimeout(function() {

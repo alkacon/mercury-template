@@ -352,7 +352,7 @@
 
                         <%-- Check, if some item has been rendered at all and, if yes, if some nesting levels have to be closed. --%>
                         <c:if test="${not empty startFolderPath}">
-                            <li id="${folderId}" data-value="${previousFolder}"${isCurrentPage ? ' class="currentpage enabled"' : ' class="enabled"'}><%----%>
+                            <li id="${folderId}" data-value="${previousFolder}"${isCurrentPage ? ' class="currentpage enabled"' : ' class="enabled"'} data-label="${label}"><%----%>
                                 <a ${onclick} href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>" class="nav-label">${label}</a><%----%>
                             </li><%----%>
                             <c:if test="${previousDeps > startDeps}">

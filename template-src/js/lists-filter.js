@@ -243,7 +243,9 @@ class CategoryFilter {
         const resetButtons = [];
         this.element.querySelectorAll(".active").forEach((element) => {
             const buttonTitle = self.parent.data.resetbuttontitle;
-            resetButtons.push(DynamicList.generateResetButton(element, buttonTitle));
+            if (!element.classList.contains("levelAll")) {
+                resetButtons.push(DynamicList.generateResetButton(element, buttonTitle));
+            }
         });
         return resetButtons;
     }

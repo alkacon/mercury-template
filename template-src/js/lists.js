@@ -114,6 +114,9 @@ var m_flagScrollToAnchor = true;
 /** @type {ResetButtonsPerList} reset buttons to display per list. */
 var m_listResetButtons = {};
 
+/** @type {boolean} whether we are in the initial load state. */
+var m_isInitialLoad = true;
+
 /**
  * Splits the request parameters in a key-value map.
  * @param {string} paramstring
@@ -378,7 +381,7 @@ function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad
                     waitHandler.wait();
                 }
                 jQ.get(buildAjaxLink(list, ajaxOptions, searchStateParameters), function (ajaxListHtml) {
-                    generateListHtml(list, reloadEntries, ajaxListHtml, page, true, waitHandler);
+                    generateListHtml(list, reloadEntries, ajaxListHtml, page, isInitialLoad, waitHandler);
                 }, "html");
             }
         }
@@ -463,6 +466,7 @@ function buildAjaxLink(list, ajaxOptions, searchStateParameters) {
  * @returns {void}
 */
 function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = false, waitHandler = undefined) {
+
     if (DEBUG) console.info("Lists.generateListHtml() called");
 
     var $result = jQ(listHtml);
@@ -597,7 +601,7 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
     Mercury.update('#' + list.id);
 
     if (resultData.reloaded == "true" && reloadEntries && !isInitialLoad) {
-        if (! list.$element.visible()) {
+        if (!list.$element.visible()) {
             if (DEBUG) console.info("Lists.generateListHtml() Scrolling to anchor");
             if (m_flagScrollToAnchor) {
                 Mercury.scrollToAnchor(list.$element, -20);
@@ -608,6 +612,8 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
     updateURLPageMarker(list,page);
     // We have to wait till Animations finished.
     if(waitHandler) setTimeout(waitHandler.ready, 750);
+    // initial load is finished
+    m_isInitialLoad = false; 
 }
 
 /**
@@ -1358,7 +1364,7 @@ export function appendPage(id, page) {
  */
 export function update(id, searchStateParameters, reloadEntries) {
 
-    updateInnerList(id, searchStateParameters, reloadEntries == "true");
+    updateInnerList(id, searchStateParameters, reloadEntries == "true", m_isInitialLoad);
 }
 
 /**

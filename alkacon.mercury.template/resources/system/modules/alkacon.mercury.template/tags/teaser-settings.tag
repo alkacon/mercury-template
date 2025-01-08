@@ -117,18 +117,21 @@
 </c:if>
 
 <c:choose>
-<c:when test="${setDetailLinkWin eq null}">
-    <c:set var="setLinkNewWin" value="${false}" />
-</c:when>
-<c:when test="${setDetailLinkWin eq 'blankSite' and cms.isLinkToDifferentSite(linkToDetail)}">
-    <c:set var="setLinkNewWin" value="${true}" />
-</c:when>
-<c:when test="${setDetailLinkWin eq 'blankSubsite' and cms.isLinkToDifferentSubSite(linkToDetail)}">
-    <c:set var="setLinkNewWin" value="${true}" />
-</c:when>
-<c:otherwise>
-    <c:set var="setLinkNewWin" value="${false}" />
-</c:otherwise>
+    <c:when test="${setDetailLinkWin eq null}">
+        <c:set var="setLinkNewWin" value="${false}" />
+    </c:when>
+    <c:when test="${setDetailLinkWin eq 'blankSite' and cms.isLinkToDifferentSite(linkToDetail)}">
+        <c:set var="setLinkNewWin" value="${true}" />
+    </c:when>
+    <c:when test="${setDetailLinkWin eq 'blankSubsite' and cms.isLinkToDifferentSubSite(linkToDetail)}">
+        <c:set var="setLinkNewWin" value="${true}" />
+    </c:when>
+    <c:when test="${setDetailLinkWin eq 'always'}">
+        <c:set var="setLinkNewWin" value="${true}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="setLinkNewWin" value="${false}" />
+    </c:otherwise>
 </c:choose>
 
 <c:if test="${setting.dateFormatAddTime.toBoolean and fn:startsWith(setDateFormat, 'fmt-') and not fn:endsWith(setDateFormat, '-TIME')}">

@@ -348,7 +348,7 @@ function updateInnerList(id, searchStateParameters, reloadEntries, isInitialLoad
             )
 
             // show the spinner
-            if (visibleHeight > 0) {
+            if (visibleHeight > 0 || list.$noresults != null) {
                 list.$spinner.css("top", spinnerPos + "%").fadeIn(250);
             }
 
@@ -511,7 +511,7 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
     if (list.loadAll) {
         if (list.pageEntries.size == 0) {
             list.$entries.hide();
-                if (list.$noresults != null) {
+            if (list.$noresults != null) {
                 var $noResultsElements = $result.find(".list-no-entries");
                 if ($noResultsElements.length > 0) {
                     list.$noresults.empty();
@@ -562,6 +562,8 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
             // no results means we don't need any pagination element
             list.$pagination.hide();
         }
+        // make sure that entries are shown if the list was empty
+        list.$entries.show();
         // reset the min-height of the list now that the elements are visible
         list.$entries.animate({'min-height': "0px"}, 500);
     }

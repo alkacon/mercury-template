@@ -425,7 +425,7 @@ class ListFilter {
         if (this.data.folders == "true") {
             this.folderFilter = new FolderFilter(this.element.querySelector("#folder_" + this.id), this);
         }
-        this.directlink = this.element.querySelector(".directlink"); //TODO
+        this.directlink = this.element.querySelector(".directlink");
     }
 
     /**

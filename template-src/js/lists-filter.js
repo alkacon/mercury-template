@@ -68,6 +68,14 @@ class TextSearch {
         }
         return [];
     }
+
+    /**
+     * Resets the value.
+     */
+    resetAll() {
+
+        this.element.value = "";
+    }
 }
 
 /**
@@ -139,6 +147,33 @@ class ArchiveFilter {
             resetButtons.push(DynamicList.generateResetButton(element, buttonTitle));
         });
         return resetButtons;
+    }
+
+    /**
+     * Resets all filter selections.
+     */
+    resetAll() {
+
+        const active = this.element.querySelector(".active");
+        if (active) {
+            active.classList.remove("active");
+        }
+    }
+
+    /**
+     * Toggles a filter selection.
+     * @param triggerId ID of the element that triggered the toggle
+     */
+    toggle(triggerId) {
+
+        const trigger = this.element.querySelector("#" + triggerId);
+        const active = this.element.querySelector(".active");
+        this.resetAll();
+        if (trigger && active && trigger.isSameNode(active)) {
+            // active selection is deselected
+        } else {
+            trigger.classList.add("active");
+        }
     }
 
     /**
@@ -251,6 +286,33 @@ class CategoryFilter {
     }
 
     /**
+     * Resets all filter selections.
+     */
+    resetAll() {
+
+        const active = this.element.querySelector(".active");
+        if (active) {
+            active.classList.remove("active");
+        }
+    }
+
+    /**
+     * Toggles a filter selection.
+     * @param triggerId ID of the element that triggered the toggle
+     */
+    toggle(triggerId) {
+
+        const trigger = this.element.querySelector("#" + triggerId);
+        const active = this.element.querySelector(".active");
+        this.resetAll();
+        if (trigger && active && trigger.isSameNode(active)) {
+            // active selection is deselected
+        } else {
+            trigger.classList.add("active");
+        }
+    }
+
+    /**
      * Updates the filter counts for the current filter selection.
      * @param elementFacets element facets map with date as key and count as value
      */
@@ -316,6 +378,8 @@ class FolderFilter {
      * so we only take the parameter with the longest path
      * into account
      * @param countInfo whether to request count information
+     * @param triggerId the id of the element that triggered the filter selection
+     * @return the URL parameters for the current filter selection
      */
     getFilterParams(countInfo = false, triggerId) {
 
@@ -368,6 +432,41 @@ class FolderFilter {
             resetButtons.push(DynamicList.generateResetButton(checkedElement, buttonTitle));
         }
         return resetButtons;
+    }
+
+    /**
+     * Resets all filter selections.
+     */
+    resetAll() {
+
+        this.element.querySelectorAll(".currentpage").forEach((element) => {
+            element.classList.remove("currentpage");
+            element.firstElementChild.blur();
+        });
+    }
+
+    /**
+     * Toggles a filter selection.
+     * @param triggerId ID of the element that triggered the toggle
+     */
+    toggle(triggerId) {
+
+        const trigger = this.element.querySelector("#" + triggerId);
+        const active = Array.from(this.element.querySelectorAll("li.currentpage")).pop();
+        this.resetAll();
+        if (trigger && active && trigger.isSameNode(active)) {
+            // the active selection is deselected
+        } else if (trigger) {
+            trigger.classList.add("currentpage");
+            let element = trigger;
+            while(element.parentElement) {
+                element.classList.add("currentpage");
+                element = element.parentElement;
+                if (element.classList.contains("list-group")) {
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -535,6 +634,42 @@ class ListFilter {
             resetButtons = resetButtons.concat(this.folderFilter.getResetButtons());
         }
         return resetButtons;
+    }
+
+    /**
+     * Resets all filter selsections.
+     * @param whether to reset the textsearch
+     */
+    resetAll(textsearch = true) {
+
+        this.textSearch && textsearch && this.textSearch.resetAll();
+        this.categoryFilter && this.categoryFilter.resetAll();
+        this.folderFilter && this.folderFilter.resetAll();
+        this.archiveFilter && this.archiveFilter.resetAll();
+    }
+
+    /**
+     * Toggles a filter selection.
+     * @param triggerId ID of the element that triggered the toggle
+     */
+    toggle(triggerId) {
+
+        if (triggerId.startsWith("cat_")) {
+            this.textSearch && this.textSearch.resetAll();
+            this.archiveFilter && this.archiveFilter.resetAll();
+            this.folderFilter && this.folderFilter.resetAll();
+            this.categoryFilter && this.categoryFilter.toggle(triggerId);
+        } else if (triggerId.startsWith("folder_")) {
+            this.textSearch && this.textSearch.resetAll();
+            this.categoryFilter && this.categoryFilter.resetAll();
+            this.archiveFilter && this.archiveFilter.resetAll();
+            this.folderFilter && this.folderFilter.toggle(triggerId);
+        } else if (triggerId.startsWith("y_")) {
+            this.textSearch && this.textSearch.resetAll();
+            this.categoryFilter && this.categoryFilter.resetAll();
+            this.folderFilter && this.folderFilter.resetAll();
+            this.archiveFilter && this.archiveFilter.toggle(triggerId);
+        } 
     }
 
     /**

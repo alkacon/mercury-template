@@ -108,9 +108,7 @@
                         <li id="cat_${categoryFilterId}" data-param="" class="enabled levelAll"><%----%>
                             <a tabindex="0" onclick="DynamicList.archiveFilter(<%--
                                  --%>'${categoryFilterId}', <%--
-                                 --%>'cat_${categoryFilterId}', <%--
-                                 --%>''<%--
-                                 --%>); return false;" href="<cms:link>${targetUri}?${basicSearchStateParameters}</cms:link>"><%----%>
+                                 --%>'cat_${categoryFilterId}'); return false;" href="<cms:link>${targetUri}?${basicSearchStateParameters}</cms:link>"><%----%>
                                  <span class="li-entry"><%----%>
                                      <span class="li-label"><fmt:message key="msg.page.list.facet.category.all" /></span><%----%>
                                  </span><%----%>

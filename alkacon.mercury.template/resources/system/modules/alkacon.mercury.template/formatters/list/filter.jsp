@@ -97,7 +97,6 @@
         --%>"catparamkey":"${categoryFacetController.config.paramKey}", <%--
         --%>"archiveparamkey":"${rangeFacetController.config.paramKey}", <%--
         --%>"folderparamkey":"${folderFacetController.config.paramKey}", <%--
-        --%>"combinable": true, <%--
         --%>"combine": ${combine},<%--
         --%>"resetbuttontitle": "${resetButtonTitle}"<%--
         --%><c:if test="${not empty targetUri}">, "target":"<cms:link>${targetUri}</cms:link>"</c:if><%--

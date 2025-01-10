@@ -144,9 +144,8 @@ function getFilterParams(filter) {
     var filterGroup = m_archiveFilterGroups[filter.elementId];
     var params = "";
     if (filterGroup !== undefined) {
-        for (var i = 0; i < filterGroup.length; i++) {
-            var fi = filterGroup[i];
-            if (fi.data.combinable && fi.id != filter.id) {
+        for (const fi of filterGroup) {
+            if (fi.data.combine && fi.id != filter.id) {
                 params += fi.getFilterParams();
             }
         }
@@ -169,8 +168,7 @@ function listFilter(id, filterId, searchStateParameters) {
     }
     const filterGroup = m_archiveFilterGroups[id];
     // We have more than one filter element, so we can combine them and have to adjust counts
-    // I.e., if in one filter element we click a category
-    // the facet counts in the other filter elements decrease
+    // I.e., if in one filter element we click a category the facet counts in the other filter elements decrease
     const adjustCounts = filterGroup.length > 1;
     // check if reset buttons need to be shown.
     const hasResetButtons = m_listResetButtons[id] != undefined;
@@ -181,7 +179,7 @@ function listFilter(id, filterId, searchStateParameters) {
             updateInnerList(listGroup[i].id, searchStateParameters, true);
         }
         if (adjustCounts || hasResetButtons) {
-            updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup);
+            updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup, filterId);
         }
         // update direct link
         filterGroup.forEach((fi) => {
@@ -892,15 +890,14 @@ function updateFilterCountsAndResetButtons(id, filterGroup) {
     }
     if (updateCounts || updateResets) {
         var params = "&reloaded";
-        for (var i = 0; i < filterGroup.length; i++) {
-            var fi = filterGroup[i];
-            if (fi.data.combinable) {
+        for (const fi of filterGroup) {
+            if (fi.data.combine) {
                 if (updateCounts) {
                     params += fi.getCountFilterParams();
                 }
-                if (updateResets) {
-                    resetButtons = resetButtons.concat(fi.getResetButtons());
-                }
+            }
+            if (updateResets) {
+                resetButtons = resetButtons.concat(fi.getResetButtons());
             }
         }
         if (updateCounts) {
@@ -1202,8 +1199,17 @@ export function facetFilter(id, triggerId, searchStateParameters) {
 export function archiveFilter(id, triggerId) {
 
     const filter = m_archiveFilters[id];
-    // if filters of other filter elements should be combined with that one - get the other filters that are set
+    const filterGroup = m_archiveFilterGroups[filter.elementId];
+    // if this is a combined filter, get the parameters of the other combined filters in the group
     const additionalFilters = filter.data.combine ? getFilterParams(filter) : "";
+    // if this is not a combined filter, reset all other filters in the group
+    if (!filter.data.combined) {
+        for (const fi of filterGroup) {
+            if (fi.id !== filter.id) {
+                fi.resetAll(true);
+            }
+        }
+    }
     // calculate the filter query part for the just selected item
     const additionalStateParameter = filter.getFilterParams(false, triggerId);
     filter.toggle(triggerId);

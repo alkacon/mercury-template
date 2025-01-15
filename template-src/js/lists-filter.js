@@ -31,6 +31,12 @@ class TextSearch {
     constructor(element, parent) {
         this.element = element;
         this.parent = parent;
+        const self = this;
+        const form = this.element.closest("form");
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            DynamicList.archiveSearch(self.parent);
+        });
     }
 
     /**
@@ -63,8 +69,7 @@ class TextSearch {
 
         const query = this.element.value;
         if (query) {
-            const buttonTitle = this.parent.data.resetbuttontitle;
-            return [DynamicList.generateInputFieldResetButton(this.parent.id, buttonTitle)];
+            return [DynamicList.generateInputFieldResetButton(this.parent, this.element)];
         }
         return [];
     }
@@ -92,6 +97,16 @@ class ArchiveFilter {
 
         this.element = element;
         this.parent = parent;
+        const self = this;
+        const toggles = this.element.querySelectorAll(".fi-toggle");
+        toggles.forEach((toggle) => {
+            toggle.addEventListener("click", (event) => {
+                event.preventDefault();
+                const li = event.target.closest("li");
+                const monthId = li.dataset.monthId;
+                DynamicList.archiveFilter(self.parent, monthId);
+            });
+        });
     }
 
     /**
@@ -143,8 +158,7 @@ class ArchiveFilter {
         const self = this;
         const resetButtons = [];
         this.element.querySelectorAll(".active").forEach((element) => {
-            const buttonTitle = self.parent.data.resetbuttontitle;
-            resetButtons.push(DynamicList.generateResetButton(element, buttonTitle));
+            resetButtons.push(DynamicList.generateResetButton(self.parent, element, "archive"));
         });
         return resetButtons;
     }
@@ -226,6 +240,16 @@ class CategoryFilter {
 
         this.element = element;
         this.parent = parent;
+        const self = this;
+        const toggles = this.element.querySelectorAll(".fi-toggle");
+        toggles.forEach((toggle) => {
+            toggle.addEventListener("click", (event) => {
+                event.preventDefault();
+                const li = event.target.closest("li");
+                const categoryId = li.dataset.categoryId;
+                DynamicList.archiveFilter(self.parent, categoryId);
+            })
+        });
     }
 
     /**
@@ -277,9 +301,8 @@ class CategoryFilter {
         const self = this;
         const resetButtons = [];
         this.element.querySelectorAll(".active").forEach((element) => {
-            const buttonTitle = self.parent.data.resetbuttontitle;
             if (!element.classList.contains("levelAll")) {
-                resetButtons.push(DynamicList.generateResetButton(element, buttonTitle));
+                resetButtons.push(DynamicList.generateResetButton(self.parent, element, "categories"));
             }
         });
         return resetButtons;
@@ -359,6 +382,15 @@ class FolderFilter {
 
         this.element = element;
         this.parent = parent;
+        const self = this;
+        const toggles = this.element.querySelectorAll(".fi-toggle");
+        toggles.forEach((toggle) => {
+            toggle.addEventListener("click", (event) => {
+                event.preventDefault();
+                const folderId = event.target.dataset.folderId;
+                DynamicList.archiveFilter(self.parent, folderId);
+            });
+        })
     }
 
     /**
@@ -428,8 +460,7 @@ class FolderFilter {
             }
         });
         if (checkedElement !== undefined) {
-            const buttonTitle = self.parent.data.resetbuttontitle;
-            resetButtons.push(DynamicList.generateResetButton(checkedElement, buttonTitle));
+            resetButtons.push(DynamicList.generateResetButton(self.parent, checkedElement, "folders"));
         }
         return resetButtons;
     }

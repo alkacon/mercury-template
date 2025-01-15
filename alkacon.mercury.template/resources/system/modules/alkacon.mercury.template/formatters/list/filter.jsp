@@ -110,29 +110,23 @@
             </c:if>
             <c:set var="searchResetLabel"><fmt:message key="msg.page.search.inlist.resetlabel" /></c:set>
             <div class="filterbox search"><%----%>
-            <m:nl />
-
-                <form class="styled-form bo-none" id="queryform_${filterId}" onsubmit="DynamicList.archiveSearch(<%--
-                    --%>'${filterId}', <%--
-                --%>'${search.controller.common.config.queryParam}='<%--
-                --%>); <%--
-                   --%>return false;" action="<cms:link>${targetUri}</cms:link>"><%----%>
-
+                <m:nl />
+                <form class="styled-form bo-none" id="queryform_${filterId}" action="<cms:link>${targetUri}</cms:link>"><%----%>
                     <c:set var="fieldId">textsearch_${filterId}</c:set>
-                        <c:set var="escapedQuery">${fn:replace(search.controller.common.state.query,'"','&quot;')}</c:set>
-                        <input type="hidden" name="${search.controller.common.config.lastQueryParam}" value="${escapedQuery}" /><%----%>
-                        <input type="hidden" name="${search.controller.common.config.reloadedParam}" /><%----%>
-                        <label for="${fieldId}" class="input"><%----%>
-                            <span class="sr-only"><c:out value="${searchLabel}" /></span><%----%>
-                            <m:icon icon="search" tag="span" cssWrapper="icon-prepend" inline="${false}" />
-                            <input <%--
-                            --%>name="${search.controller.common.config.queryParam}" <%--
-                            --%>id="${fieldId}" <%--
-                            --%>type="text" <%--
-                            --%>value="${escapedQuery}" <%--
-                            --%>data-label="${fn:replace(searchResetLabel,'"','&quot;')}" <%--
-                            --%>placeholder="<c:out value="${searchLabel}" />"><%----%>
-                        </label><%----%>
+                    <c:set var="escapedQuery">${fn:replace(search.controller.common.state.query,'"','&quot;')}</c:set>
+                    <input type="hidden" name="${search.controller.common.config.lastQueryParam}" value="${escapedQuery}" /><%----%>
+                    <input type="hidden" name="${search.controller.common.config.reloadedParam}" /><%----%>
+                    <label for="${fieldId}" class="input"><%----%>
+                        <span class="sr-only"><c:out value="${searchLabel}" /></span><%----%>
+                        <m:icon icon="search" tag="span" cssWrapper="icon-prepend" inline="${false}" />
+                        <input <%--
+                        --%>name="${search.controller.common.config.queryParam}" <%--
+                        --%>id="${fieldId}" <%--
+                        --%>type="text" <%--
+                        --%>value="${escapedQuery}" <%--
+                        --%>data-label="${fn:replace(searchResetLabel,'"','&quot;')}" <%--
+                        --%>placeholder="<c:out value="${searchLabel}" />"><%----%>
+                    </label><%----%>
                 </form><%----%>
             </div><%----%>
             <m:nl />
@@ -222,19 +216,19 @@
                         <c:if test="${hasMultiplePaths}">
                             <c:set var="folderId">folder_${filterId}_0</c:set>
                             <c:out escapeXml='false' value='<li id="${folderId}" data-param="" class="currentpage enabled">' />
-                                <c:set var="onclick">onclick="DynamicList.archiveFilter(<%--
-                                                --%>'${filterId}', <%--
-                                                --%>'${folderId}'<%--
-                                            --%>); return false;"</c:set>
-                                <c:set var="collapseId">${collapseIdPrefix}_${0}</c:set>
-                                <a ${onclick} href="<cms:link>${targetUri}?${basicSearchParameters}</cms:link>" class="nav-label"><fmt:message key="msg.page.list.facet.folder.all"/></a><%--
-                            --%><a href="<cms:link>${targetUri}?${basicSearchParameters}</cms:link>" <%--
-                                --%>class="collapse show" <%--
-                                --%>data-bs-toggle="collapse" <%--
-                                --%>data-bs-target="#${collapseId}" <%--
-                                --%>aria-expanded="true" <%--
-                                --%>aria-controls="${collapseId}">&nbsp;</a><%----%>
-                                <c:out escapeXml='false' value='<ul class="collapse show" id="${collapseId}">' />
+                            <c:set var="collapseId">${collapseIdPrefix}_${0}</c:set>
+                            <a class="nav-label fi-toggle" <%--
+                                --%>data-folder-id="${folderId}" <%--
+                                --%>href="<cms:link>${targetUri}?${basicSearchParameters}</cms:link>">
+                                <fmt:message key="msg.page.list.facet.folder.all"/>
+                            </a><%----%>
+                            <a href="<cms:link>${targetUri}?${basicSearchParameters}</cms:link>" <%--
+	                            --%>class="collapse show" <%--
+	                            --%>data-bs-toggle="collapse" <%--
+	                            --%>data-bs-target="#${collapseId}" <%--
+	                            --%>aria-expanded="true" <%--
+	                            --%>aria-controls="${collapseId}">&nbsp;</a><%----%>
+                            <c:out escapeXml='false' value='<ul class="collapse show" id="${collapseId}">' />
                         </c:if>
 
                         <%-- Clear the start folder path. This implies that we have not rendered any item yet. --%>
@@ -273,7 +267,7 @@
                                 <c:otherwise>
                                     <c:set var="liAttrs">id="${folderId}" data-value="${previousFolder}" ${isCurrentPage ? ' class="currentpage enabled"' : 'class="enabled"'} data-label="${label.replace('"','&quot;')}"</c:set>
                                     <c:out escapeXml='false' value='<li ${liAttrs}>' />
-                                    <a ${onclick} href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>" class="nav-label">${label}</a><%----%>
+                                    <a class="nav-label fi-toggle" data-folder-id="${folderId}" href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>">${label}</a><%----%>
                                     <m:nl />
 
                                     <c:choose>
@@ -321,38 +315,27 @@
                                 </c:choose>
 
                                 <%-- Prepare values for the next iteration. --%>
-
                                 <c:set var="sitePath" value="${cms.sitePath[folder]}" />
                                 <c:set var="previousFolder" value="${folder}" />
-
                                 <c:set var="label">${cms.vfs.readPropertiesLocale[sitePath][cms.locale]["Title"]}</c:set>
                                 <c:if test="${empty label}">
                                     <c:set var="label">${cms.vfs.resource[sitePath].name}</c:set>
                                 </c:if>
-
                                 <c:set var="folderId" value="folder_${filterId}_${status.count}" />
-
-                                <c:set var="onclick">onclick="DynamicList.archiveFilter(<%--
-                                                --%>'${filterId}', <%--
-                                                --%>'${folderId}'<%--
-                                            --%>); return false;"<%--
-                            --%></c:set>
-
                                 <c:set var="isCurrentPage" value="${false}" />
-                                   <c:forEach var="checkedItem" items="${checkedEntries}">
-                                       <c:if test="${fn:startsWith(checkedItem, folder)}">
-                                           <c:set var="isCurrentPage" value="${true}" />
-                                       </c:if>
-                                   </c:forEach>
-
-                                   <c:set var="previousDeps" value="${currentDeps}" />
-                               </c:if>
+                                <c:forEach var="checkedItem" items="${checkedEntries}">
+                                    <c:if test="${fn:startsWith(checkedItem, folder)}">
+                                        <c:set var="isCurrentPage" value="${true}" />
+                                    </c:if>
+                                </c:forEach>
+                                <c:set var="previousDeps" value="${currentDeps}" />
+                            </c:if>
                         </c:forEach>
 
                         <%-- Check, if some item has been rendered at all and, if yes, if some nesting levels have to be closed. --%>
                         <c:if test="${not empty startFolderPath}">
                             <li id="${folderId}" data-value="${previousFolder}"${isCurrentPage ? ' class="currentpage enabled"' : ' class="enabled"'} data-label="${label}"><%----%>
-                                <a ${onclick} href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>" class="nav-label">${label}</a><%----%>
+                                <a class="nav-label fi-toggle" data-folder-id="${folderId}" href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>">${label}</a><%----%>
                             </li><%----%>
                             <c:if test="${previousDeps > startDeps}">
                                 <c:forEach begin="1" end="${previousDeps - startDeps}">
@@ -380,7 +363,7 @@
             <%-- Open the facet if it has a checked entry independent of the according element setting. --%>
             <c:set var="archiveOpen" value="${archiveOpen || not empty checkedItem}"/>
             <div class="filterbox archive"><%----%>
-            <m:nl />
+                <m:nl />
 
                 <button type="button" <%--
                 --%>class="btn btn-block li-label ${archiveOpen ? '' : 'collapsed'}" <%--
@@ -409,7 +392,7 @@
                         </c:otherwise>
                     </c:choose>
                     <c:forEach var="facetItem" items="${rangeFacet.counts}" varStatus="status">
-                        <c:set var="active">${rangeFacetController.state.isChecked[facetItem.value] ? ' class="active enabled"' : ' class="enabled"'}</c:set>
+                        <c:set var="classList">${rangeFacetController.state.isChecked[facetItem.value] ? 'active enabled' : 'enabled'}</c:set>
                         <fmt:parseDate var="fDate" pattern="yyyy-MM-dd'T'HH:mm:ss'Z'" value="${facetItem.value}" timeZone="UTC"/>
                         <c:set var="currYear"><fmt:formatDate value="${fDate}" pattern="yyyy" /></c:set>
                         <c:set var="activeYear" value="${currYear eq showedYear}" />
@@ -442,10 +425,10 @@
                         <c:set var="yearHtml">
                             ${yearHtml}
                             <m:nl />
-                            <li id="${monthId}" ${active} tabindex="0" data-value="${facetItem.value}" data-label="${currMonth}${' '}${currYear}" onclick="DynamicList.archiveFilter(<%--
-                                    --%>'${filterId}', <%--
-                                --%>'${monthId}'<%--
-                                --%>); return false;"><%----%>
+                            <li id="${monthId}" class="${classList.concat(' fi-toggle')}" tabindex="0"
+                                data-value="${facetItem.value}"
+                                data-label="${currMonth}${' '}${currYear}"
+                                data-month-id="${monthId}">
                                 <a href="<cms:link>${targetUri}?${active ? basicSearchParameters : archiveQueryMap[facetItem.value]}</cms:link>" ><%----%>
                                     <span class="li-entry"><%----%>
                                         <span class="li-label">${currMonth}</span><span class="li-count">${facetItem.count}</span><%----%>

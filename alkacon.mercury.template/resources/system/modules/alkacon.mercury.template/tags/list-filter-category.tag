@@ -58,12 +58,10 @@
     <c:if test="${not empty catFilters}">
         <c:choose>
         <c:when test="${fn:startsWith(catFilters,'whitelist:')}">
-            <c:set var="catFilters"
-                value="${fn:replace(catFilters,'whitelist:','')}" />
+            <c:set var="catFilters" value="${fn:replace(catFilters,'whitelist:','')}" />
         </c:when>
         <c:when test="${fn:startsWith(catFilters,'blacklist:')}">
-            <c:set var="catFilters"
-                value="${fn:replace(catFilters,'blacklist:','')}" />
+            <c:set var="catFilters" value="${fn:replace(catFilters,'blacklist:','')}" />
             <c:set var="blacklistFilter" value="true" />
         </c:when>
         </c:choose>
@@ -105,13 +103,14 @@
 
                 <c:if test="${blacklistFilter != isMatchedByFilter}">
                     <c:if test="${showAllOption}">
-                        <li id="cat_${categoryFilterId}" data-param="" class="enabled levelAll"><%----%>
-                            <a tabindex="0" onclick="DynamicList.archiveFilter(<%--
-                                 --%>'${categoryFilterId}', <%--
-                                 --%>'cat_${categoryFilterId}'); return false;" href="<cms:link>${targetUri}?${basicSearchStateParameters}</cms:link>"><%----%>
-                                 <span class="li-entry"><%----%>
-                                     <span class="li-label"><fmt:message key="msg.page.list.facet.category.all" /></span><%----%>
-                                 </span><%----%>
+                        <li id="cat_${categoryFilterId}" class="enabled levelAll" <%--
+                            --%>data-category-id="cat_${categoryFilterId}" <%--
+                            --%>data-param=""><%----%>
+                            <a tabindex="0" class="fi-toggle" <%--
+                                --%>href="<cms:link>${targetUri}?${basicSearchStateParameters}</cms:link>"><%----%>
+                                <span class="li-entry"><%----%>
+                                    <span class="li-label"><fmt:message key="msg.page.list.facet.category.all" /></span><%----%>
+                                </span><%----%>
                              </a><%----%>
                         </li><%----%>
                         <m:nl />
@@ -119,11 +118,12 @@
                     </c:if>
 
                     <c:set var="currentLevel" value="${fn:length(fn:split(value.name, '/'))}" />
-                    <li id="${catId}" data-value="${value.name}" class="enabled level${currentLevel}${active ? ' active' : ''}" data-label="${label.replace('"','&quot')}"><%----%>
-                        <a tabindex="0" onclick="DynamicList.archiveFilter(<%--
-                            --%>'${categoryFilterId}', <%--
-                            --%>'${catId}'<%--
-                            --%>);return false;" href="<cms:link>${targetUri}?${empty active ? basicSearchStateParameters.checkFacetItem[facetController.config.name][value.name] : basicSearchStateParameters}</cms:link>"><%----%>
+                    <li id="${catId}" class="enabled level${currentLevel}${active ? ' active' : ''}" <%--
+                        --%>data-category-id="${catId}" <%--
+                        --%>data-value="${value.name}" <%--
+                        --%>data-label="${label.replace('"','&quot')}"><%----%>
+                        <a tabindex="0" class="fi-toggle" <%--
+                            --%>href="<cms:link>${targetUri}?${empty active ? basicSearchStateParameters.checkFacetItem[facetController.config.name][value.name] : basicSearchStateParameters}</cms:link>"><%----%>
                             <span class="li-entry"><%----%>
                                 <span class="li-label">${label}</span><%----%>
                                 <c:if test="${showCatCount}">

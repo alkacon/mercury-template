@@ -156,12 +156,12 @@ function getFilterParams(filter) {
 /**
  * Applies a list filter.
  *
- * @param {string} id the id of the list to apply the filter for.
- * @param {string} filterId the id of the list filter element.
+ * @param {string} id the filter to apply.
+ * @param {ListFilter} filter the filter.
  * @param {string} searchStateParameters the search state parameters corresponding to the filter action.
  * @returns {void}
  */
-function listFilter(id, filterId, searchStateParameters) {
+function listFilter(id, filter, searchStateParameters) {
 
     if (Mercury.debug()) {
         console.info("Lists.listFilter() called elementId=" + id);
@@ -179,7 +179,7 @@ function listFilter(id, filterId, searchStateParameters) {
             updateInnerList(listGroup[i].id, searchStateParameters, true);
         }
         if (adjustCounts || hasResetButtons) {
-            updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup, filterId);
+            updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup);
         }
         // update direct link
         filterGroup.forEach((fi) => {
@@ -188,7 +188,7 @@ function listFilter(id, filterId, searchStateParameters) {
             }
         });
     } else {
-        var archive = m_archiveFilters[filterId];
+        var archive = m_archiveFilters[filter.id];
         // list is not on this page, check filter target attribute
         var target = archive.data.target;
         if (target !== undefined && target !== window.location.pathname && target + "index.html" !== window.location.pathname) {
@@ -930,7 +930,7 @@ function updateResetButtons(id, resetButtons) {
         if (buttonElement) {
             buttonElement.textContent = '';
             resetButtons.forEach((button) => {
-                buttonElement.appendChild(button.cloneNode(true))
+                buttonElement.appendChild(button)
             });
         }
     });
@@ -1088,56 +1088,53 @@ function onDomChange(m) {
 /****** Exported functions ******/
 
 /**
- * @param {HTMLElement} filterField
- * @param {string} titleAttr
+ * Creates a reset button for an archive filter.
+ * @param {ListFilter} filter the filter
+ * @param {HTMLElement} toggle the element toggling the filter selection
+ * @param {string} className extra class name for the filter button
  * @returns {HTMLElement} the reset button
  */
-export function generateResetButton(filterField, titleAttr) {
+export function generateResetButton(filter, toggle, className) {
 
-    /** @type {HTMLElement} */
     const result = document.createElement("button");
-    const id = filterField.id;
-    const type = id.startsWith('folder_')
-        ? 'folders'
-        : (id.startsWith('y_')
-            ? 'archive'
-            : (id.startsWith('cat_') ? 'categories' : undefined))
+    const label = toggle.dataset.label;
+    const titleAttr = filter.data.resetbuttontitle;
     result.classList.add("resetbutton");
-    if (type != undefined) result.classList.add(type);
-    result.id = "reset_" + id;
-    const label = filterField.getAttribute('data-label');
-    let onclick = filterField.getAttribute('onclick');
-    if (!onclick) onclick = filterField.getAttribute('data-onclick');
-    if (!onclick && filterField.firstChild && filterField.firstChild.getAttribute) {
-        onclick = filterField.firstChild.getAttribute('onclick');
+    result.classList.add(className);
+    result.textContent = label ? label : toggle.id;
+    if (titleAttr) {
+        result.setAttribute('title', titleAttr);
     }
-    result.setAttribute('onclick', onclick);
-    if (titleAttr) result.setAttribute('title', titleAttr);
-    result.textContent = label ? label : id;
+    result.addEventListener("click", (event) => {
+        event.preventDefault();
+        archiveFilter(filter, toggle.id);
+    });
     return result;
 }
 
 /**
- * @param {string} archiveId
- * @param {string} titleAttr
+ * Creates a reset button for an archive search.
+ * @param {ListFilter} filter the list filter
+ * @param {HTMLElement} input the input element
  * @returns {HTMLElement} the reset button
  */
-export function generateInputFieldResetButton(archiveId, titleAttr) {
+export function generateInputFieldResetButton(filter, input) {
 
-    /** @type {HTMLElement} */
     const result = document.createElement("button");
+    const titleAttr = filter.data.resetbuttontitle;
     result.classList.add("resetbutton");
     result.classList.add("textsearch");
-    result.id = "reset_textsearch_" + archiveId;
-    const form = document.getElementById('queryform_' + archiveId)
-    const submitAction = form.getAttribute('onsubmit');
-    const inputField = document.getElementById('textsearch_' + archiveId);
-    const labelPlain = inputField.getAttribute('data-label');
-    const label = labelPlain ? labelPlain.replace('%(query)', inputField.value) : inputField.value;
-    let onclick = "document.getElementById('textsearch_" + archiveId + "').value = ''; " + submitAction;
-    result.setAttribute('onclick', onclick);
-    if (titleAttr) result.setAttribute('title', titleAttr);
+    if (titleAttr) {
+        result.setAttribute('title', titleAttr);
+    }
+    const labelPlain = input.dataset.label;
+    const label = labelPlain ? labelPlain.replace('%(query)', input.value) : input.value;
     result.textContent = label;
+    result.addEventListener("click", (event) => {
+        event.preventDefault();
+        input.value = "";
+        archiveSearch(filter);
+    });
     return result;
 }
 
@@ -1193,17 +1190,16 @@ export function facetFilter(id, triggerId, searchStateParameters) {
 /**
  * Applies an archive filter option to the list.
  *
- * @param {string} id the id of the list the filter belongs to.
+ * @param {ListFilter} filter the list filter
  * @param {string} triggerId the id of the HTML element that triggered the filter action.
  */
-export function archiveFilter(id, triggerId) {
+export function archiveFilter(filter, triggerId) {
 
-    const filter = m_archiveFilters[id];
     const filterGroup = m_archiveFilterGroups[filter.elementId];
     // if this is a combined filter, get the parameters of the other combined filters in the group
     const additionalFilters = filter.data.combine ? getFilterParams(filter) : "";
     // if this is not a combined filter, reset all other filters in the group
-    if (!filter.data.combined) {
+    if (!filter.data.combine) {
         for (const fi of filterGroup) {
             if (fi.id !== filter.id) {
                 fi.resetAll(true);
@@ -1213,18 +1209,17 @@ export function archiveFilter(id, triggerId) {
     // calculate the filter query part for the just selected item
     const additionalStateParameter = filter.getFilterParams(false, triggerId);
     filter.toggle(triggerId);
-    listFilter(filter.elementId, id, filter.data.searchstatebase + additionalFilters + additionalStateParameter);
+    listFilter(filter.elementId, filter, filter.data.searchstatebase + additionalFilters + additionalStateParameter);
 }
 
 
 /**
  * Applies an query filter to the list.
  *
- * @param {string} id the id of the list the filter belongs to.
+ * @param {ListFilter} filter the parent list filter the text search belongs to.
  */
-export function archiveSearch(id) {
+export function archiveSearch(filter) {
 
-    const filter = m_archiveFilters[id];
     const filterGroup = m_archiveFilterGroups[filter.elementId];
     // we do never combine the text search when we change the search word, thus reset all other filters of the group.
     for (const fi of filterGroup) {

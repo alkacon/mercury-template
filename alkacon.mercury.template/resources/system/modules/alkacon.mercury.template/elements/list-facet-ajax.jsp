@@ -141,6 +141,7 @@
                         <cms:jsonvalue key="gap">+1MONTHS</cms:jsonvalue>
                         <cms:jsonvalue key="hardend">false</cms:jsonvalue>
                         <cms:jsonvalue key="mincount" value="1" />
+                        <cms:jsonvalue key="isAndFacet" value="${false}"/>
                         <cms:jsonarray key="excludeTags">
                             <c:forEach var="tag" items="${helper.getExcludeTags(fa,'a')}">
                                 <cms:jsonvalue>${tag}</cms:jsonvalue>
@@ -159,6 +160,7 @@
                         <cms:jsonvalue key="gap">+1DAYS</cms:jsonvalue>
                         <cms:jsonvalue key="hardend">false</cms:jsonvalue>
                         <cms:jsonvalue key="mincount" value="1" />
+                        <cms:jsonvalue key="isAndFacet" value="${false}"/>
                         <cms:jsonarray key="excludeTags">
                             <c:forEach var="tag" items="${helper.getExcludeTags(fd,'d')}">
                                 <cms:jsonvalue>${tag}</cms:jsonvalue>

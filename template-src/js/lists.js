@@ -889,7 +889,7 @@ function updateFilterCountsAndResetButtons(id, filterGroup) {
         );
     }
     if (updateCounts || updateResets) {
-        var params = "&reloaded";
+        let params = "&reloaded";
         for (const fi of filterGroup) {
             if (fi.data.combine) {
                 if (updateCounts) {
@@ -1166,7 +1166,7 @@ export function registerFilter(filter) {
             console.info("DynamicList.registerFilter() data filter init params - " + filter.data.initparams);
         }
         // apply the list filter on page load
-        listFilter(filter.elementId, filter.id, filter.data.initparams);
+        listFilter(filter.elementId, filter, filter.data.initparams);
     }
     return filter;
 }

@@ -76,8 +76,7 @@
     "pagesize" : "${pageSize}",
     "pagenavlength" : 5,
     "additionalrequestparams" : [
-        { "param" : "calendarday", "solrquery" : "fq={!tag%3Dcalendarday}${instancedaterangefield}:(%(value))" }
-        <c:if test="${isSortGeodist}">, ${geodistAdditionalParams}</c:if>
+        <c:if test="${isSortGeodist}">${geodistAdditionalParams}</c:if>
     ],
     "geofilter" : {
         "coordinates": "${param.coordinates}",
@@ -85,6 +84,22 @@
     }
     <c:if test="${isSortGeodist}">, ${geodistSortOptions}</c:if>
     <c:if test="${isFacetCountQuery}">, ${facetConfig}</c:if>
+}
+</c:set>
+<c:set var="additionalSearchConfigs">
+{
+    "rangefacets": [
+        {
+            "range": "${instancedaterangefield}",
+            "name": "calendarday",
+            "start": "NOW/MONTH-20YEARS",
+            "end": "NOW/MONTH+5YEARS",
+            "gap": "+1DAYS",
+            "isAndFacet": false,
+            "ignoreAllFacetFilters": true,
+            "mincount": 1
+        }
+    ]
 }
 </c:set>
 
@@ -95,6 +110,7 @@
     var="searchResultWrapper"
     configFile="${config.filename}"
     configString="${searchConfig}"
+    additionalConfigs="${additionalSearchConfigs}"
     addContentInfo="${addContentInfo}"
 />
 

@@ -1165,9 +1165,10 @@ export function registerFilter(filter) {
         if (Mercury.debug()) {
             console.info("DynamicList.registerFilter() data filter init params - " + filter.data.initparams);
         }
-        // apply the list filter on page load
-        listFilter(filter.elementId, filter, filter.data.initparams);
     }
+    // apply the list filter and update counts on page load
+    const searchStateParameters = filter.data.initparams ? filter.data.initparams : "";
+    listFilter(filter.elementId, filter, searchStateParameters);
     return filter;
 }
 

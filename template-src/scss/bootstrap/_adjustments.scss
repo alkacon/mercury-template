@@ -32,6 +32,15 @@
     html.opencms-page-editor #{$parent} {
         opacity: .5;
         background-image: $disabled-bg;
+
+        &.type-slider {
+            .slide-wrapper {
+                transition: none !important;
+                &.slide-active {
+                    opacity: .5 !important;
+                }
+            }
+        }
     }
 }
 

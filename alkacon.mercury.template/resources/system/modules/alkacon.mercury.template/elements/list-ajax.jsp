@@ -34,19 +34,14 @@
     <jsp:useBean id="settings" class="java.util.HashMap" />
     <c:if test="${not empty param.pid}">
         <c:set var="pageBean" value="${cms.getPage(param.pid, param.loc)}" />
-        <c:set var="sortBarInstanceId">${param.sid}</c:set>
-        <c:set var="instanceId">${param.eid}</c:set>
-        <c:forEach var="element" items="${pageBean.elements}">
-            <c:if test="${element.instanceId eq instanceId or element.instanceId eq sortBarInstanceId}">
-                ${settings.putAll(element.settings)}
-            </c:if>
-        </c:forEach>
+        <c:set var="ignore" value="${settings.putAll(pageBean.getSettingsForElement(param.eid))}"/>
+        <c:set var="ignore" value="${settings.putAll(pageBean.getSettingsForElement(param.sid))}"/>
     </c:if>
 
     <div class="element type-dynamic-list list-content ${settings.listCssWrapper}">
     <c:set var="listTag" value="${empty settings.listTag ? 'ul' : settings.listTag}" />
     <c:set var="count">${settings.itemsPerPage}</c:set>
-    <c:set var="loadAll" value="${settings.loadAll eq 'true'}" />
+    <c:set var="loadAll" value="${settings.loadAll.toBoolean}" />
     <c:set var="multiDay" value="${conf.value['FilterMultiDay'] eq 'true'}" />
 
     ${'<'}${listTag} class="list-entries ${settings.listWrapper}${'\">'}

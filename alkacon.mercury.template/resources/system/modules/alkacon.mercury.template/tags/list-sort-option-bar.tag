@@ -31,7 +31,7 @@
         <div class="btn-group"><%----%>
 
             <%-- ####### Sort by title ######## --%>
-            <c:if test="${settings.showsorttitle}">
+            <c:if test="${settings.showsorttitle.toBoolean}">
                 <c:set var="buttonLabel"><fmt:message key="msg.page.list.sort.title.label" /></c:set>
                 <m:list-sort-button
                     elementId="${elementId}"
@@ -42,7 +42,7 @@
             </c:if>
 
             <%-- ####### Sort by date ######## --%>
-            <c:if test="${settings.showsortdate}">
+            <c:if test="${settings.showsortdate.toBoolean}">
                 <c:set var="buttonLabel"><fmt:message key="msg.page.list.sort.date.label" /></c:set>
                 <m:list-sort-button
                     elementId="${elementId}"
@@ -53,7 +53,7 @@
             </c:if>
 
             <%-- ####### Sort by order ######## --%>
-            <c:if test="${settings.showsortorder}">
+            <c:if test="${settings.showsortorder.toBoolean}">
                 <c:set var="buttonLabel"><fmt:message key="msg.page.list.sort.order.label" /></c:set>
                 <m:list-sort-button
                     elementId="${elementId}"
@@ -64,7 +64,7 @@
             </c:if>
 
             <%-- ####### Category filter ######## --%>
-            <c:if test="${settings.showfacetcategory}">
+            <c:if test="${settings.showfacetcategory.toBoolean}">
                 <c:set var="buttonLabel"><fmt:message key="msg.page.list.facet.category.label" /></c:set>
                 <c:set var="noSelection"><fmt:message key="msg.page.list.facet.category.all" /></c:set>
                 <m:list-sort-category

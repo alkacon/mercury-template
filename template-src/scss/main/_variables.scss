@@ -872,6 +872,7 @@ $map-popup-bg:                      $white !default;
 $map-link-font-weight:              var(--#{$prefix}font-weight-bold) !default;
 $map-marker-padding:                5px !default; // map markers should NOT depend on default margins and not use rem
 $map-marker-spacer-y:               $map-marker-padding !default;
+$map-marker-sm-scale:               0.8 !default;
 
 // Map colors (for marker groups)
 

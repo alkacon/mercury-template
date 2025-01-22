@@ -20,13 +20,20 @@
  */
 
 .type-map {
+    --#{$prefix}map-info-scale: 1;
+
     --#{$prefix}map-popup-color: #{$map-popup-color};
     --#{$prefix}map-popup-bg: #{$map-popup-bg};
-    --#{$prefix}map-header-size: #{$map-header-size};
-    --#{$prefix}map-font-size: #{$map-text-size};
     --#{$prefix}map-font-weight: #{$map-text-weight};
-    --#{$prefix}map-marker-padding: #{$map-marker-padding};
-    --#{$prefix}map-marker-spacer-y: #{$map-marker-spacer-y};
+
+    --#{$prefix}map-font-size: calc(var(--#{$prefix}map-info-scale) * #{$map-text-size});
+    --#{$prefix}map-header-size: calc(var(--#{$prefix}map-info-scale) * #{$map-header-size});
+    --#{$prefix}map-marker-padding: calc(var(--#{$prefix}map-info-scale) * #{$map-marker-padding});
+    --#{$prefix}map-marker-spacer-y: calc(var(--#{$prefix}map-info-scale) * #{$map-marker-spacer-y});
+
+    @include media-breakpoint-down(sm) {
+        --#{$prefix}map-info-scale: #{$map-marker-sm-scale};
+    }
 
     .mapbuttons {
         margin-top: calc(0.5 * var(--#{$prefix}element-margin));
@@ -84,7 +91,6 @@
 
     .map-marker {
         --#{$prefix}contact-spacer-y: var(--#{$prefix}map-marker-spacer-y);
-
         display: block;
         color: var(--#{$prefix}map-popup-color);
         font-size: var(--#{$prefix}map-font-size);
@@ -94,6 +100,12 @@
         margin: 0 !important;
 
         @include contact-base;
+
+        @include media-breakpoint-down(sm) {
+            .heading {
+                word-break: break-all;
+            }
+        }
 
         h3, .h3, h4, .h4 {
             line-height: 1.1;
@@ -106,9 +118,9 @@
         }
 
         .facility-icons {
-            --#{$prefix}acc-icon-size: calc(0.75 * #{$acc-icon-size});
-            --#{$prefix}acc-font-size: calc(0.75 * #{$acc-font-size});
-            --#{$prefix}acc-margin: calc(0.75 * var(--#{$prefix}ws-margin));
+            --#{$prefix}acc-icon-size: calc(var(--#{$prefix}map-info-scale) * 0.75 * #{$acc-icon-size});
+            --#{$prefix}acc-font-size: calc(var(--#{$prefix}map-info-scale) * 0.75 * #{$acc-font-size});
+            --#{$prefix}acc-margin: calc(var(--#{$prefix}map-info-scale) * 0.75 * var(--#{$prefix}ws-margin));
         }
 
         .link,
@@ -120,15 +132,15 @@
 
         .link,
         .marker-route {
-            margin-top: var(--#{$prefix}paragraph-margin-bottom);
+            margin-top: calc(var(--#{$prefix}map-info-scale) * var(--#{$prefix}paragraph-margin-bottom));
         }
         .marker-route {
             form {
-                margin-top: var(--#{$prefix}contact-spacer-y);
+                margin-top: calc(var(--#{$prefix}map-info-scale) * var(--#{$prefix}contact-spacer-y));
             }
             .form-control {
-                padding: calc(#{$btn-padding} - 1px);
-                margin-right: calc(0.5 * var(--#{$prefix}ws-margin));
+                padding: calc(var(--#{$prefix}map-info-scale) * #{$btn-padding} - 1px);
+                margin-right: calc(var(--#{$prefix}map-info-scale) * 0.5 * var(--#{$prefix}ws-margin));
                 border: 1px solid $form-border-color;
                 border-radius: $form-input-border-radius;
             }
@@ -147,7 +159,9 @@
     }
 
     .maplibregl-popup {
-        max-height: 50%; // limit height of popup
+         // limit width height of info window popup
+        max-height: 75% !important;
+        max-width: min(400px, 75%) !important;
     }
 
     .maplibregl-popup-content {

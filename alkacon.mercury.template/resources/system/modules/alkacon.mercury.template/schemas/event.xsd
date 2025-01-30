@@ -84,6 +84,12 @@
                         <mapping type="dynamic" class="org.opencms.search.fields.CmsMacroSearchFieldMapping">%(stringtemplate:bookingReminder)</mapping>
                     </solrfield>
                 </searchsetting>
+                <searchsetting element="AddressChoice/PoiLink" searchcontent="false">
+                    <solrfield targetfield="geopoi" sourcefield="*_s" />
+                </searchsetting>
+                <searchsetting element="AddressChoice/Address/Name" searchcontent="false">
+                    <solrfield targetfield="geoname" sourcefield="*_s" />
+                </searchsetting>
             </searchsettings>
             <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
             <parameters>

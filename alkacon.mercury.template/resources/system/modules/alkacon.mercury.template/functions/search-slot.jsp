@@ -66,19 +66,19 @@
             --%>><%----%>
 
             <%--We add this parameter to ensure that it is really searched and search is not starting in initial mode --%>
-            <input type="hidden" name="reloaded" /><%----%>
+            <input type="hidden" name="reloaded"><%----%>
 
                 <%-- Search query --%>
                 <div class="search-query"><%----%>
-                    <section class="input-group"><%----%>
+                    <div class="section input-group"><%----%>
                         <div class="input button"><%----%>
                             <label for="searchFormQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                             <input id="searchFormQuery" name="q" <%--
                                 --%>value="" class="form-control" type="text" autocomplete="off" <%--
-                                --%>placeholder="<c:out value="${slotText}" />" /><%----%>
+                                --%>placeholder="<c:out value="${slotText}" />"><%----%>
                             <button class="btn btn-submit-search" type="submit"  title="<fmt:message key="msg.page.search" />">${slotButton}</button><%----%>
                         </div><%----%>
-                    </section><%----%>
+                    </div><%----%>
                 </div><%----%>
 
         </form><%----%>

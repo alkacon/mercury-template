@@ -215,7 +215,7 @@
 <c:if test="${not empty groupId}">
     <c:set var="bodyPreMarkup">
         ${preGroupMarkup}
-        ${'<div class=\"type-list-group\" listgroup=\"'}${groupId}${'\">'}
+        ${'<div class=\"type-list-group\" data-listgroup=\"'}${groupId}${'\">'}
     </c:set>
     <c:set var="bodyPostMarkup">${'</div>'}</c:set>
 </c:if>
@@ -412,4 +412,3 @@
     </jsp:attribute>
 
 </m:piece>
-

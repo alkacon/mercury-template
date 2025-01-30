@@ -160,7 +160,7 @@
 
     .maplibregl-popup {
          // limit width height of info window popup
-        max-height: 75% !important;
+        max-height: max(200px, 50%) !important;
         max-width: min(400px, 75%) !important;
     }
 

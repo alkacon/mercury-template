@@ -101,7 +101,7 @@
                             --%>data-bs-toggle="collapse"${' '}<%--
                             --%>data-bs-target="#${targetMenuId}"${' '}<%--
                             --%>${isCurrentPage ? 'aria-expanded=\"true\" class=\"collapse show\"' : 'aria-expanded=\"false\"'}${' '}<%--
-                            --%>aria-controls="${targetMenuId}"<%--
+                            --%>aria-controls="${targetMenuId}"${' '}<%--
                             --%>aria-label="<fmt:message key="msg.page.navigation.sublevel.toggle"><fmt:param>${navText}</fmt:param></fmt:message>"<%--
                         --%></c:if><%--
                         --%>${'>'}${navText}</a><%----%>

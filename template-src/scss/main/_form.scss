@@ -100,6 +100,7 @@
     }
 
     .webform_subfields,
+    .section,
     section {
         margin-bottom: var(--#{$prefix}form-section-margin-bottom);
         &:last-child {
@@ -616,6 +617,7 @@
             padding: calc(0.5 * var(--#{$prefix}form-padding-y)) calc(0.5 * var(--#{$prefix}form-padding-x));
         }
 
+        .section,
         section {
             margin-bottom: calc(0.5 * var(--#{$prefix}form-section-margin-bottom));
         }

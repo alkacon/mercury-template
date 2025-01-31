@@ -84,11 +84,10 @@
                         <mapping type="dynamic" class="org.opencms.search.fields.CmsMacroSearchFieldMapping">%(stringtemplate:bookingReminder)</mapping>
                     </solrfield>
                 </searchsetting>
-                <searchsetting element="AddressChoice/PoiLink" searchcontent="false">
-                    <solrfield targetfield="geopoi" sourcefield="*_s" />
-                </searchsetting>
-                <searchsetting element="AddressChoice/Address/Name" searchcontent="false">
-                    <solrfield targetfield="geoname" sourcefield="*_s" />
+                <searchsetting element="AddressChoice" searchcontent="false">
+                    <solrfield targetfield="geoplace" sourcefield="*_s" locale="none">
+                        <mapping type="dynamic" class="org.opencms.search.fields.CmsMacroSearchFieldMapping">%(stringtemplate:addressChoice)</mapping>
+                    </solrfield>
                 </searchsetting>
             </searchsettings>
             <edithandler class="org.opencms.workplace.editors.directedit.CmsDateSeriesEditHandler" />
@@ -136,11 +135,19 @@
 						!%false%!
 					!%%endif%%!
                 !%]]></param>
-
                 <param name="detailPageUrl"><![CDATA[%!
                     !%%if (content.value.("Title").isSet)%%content.value.("Title")%%endif%%!
                     !%%if (! content.value.("Dates").toDateSeries.isSeries)%%!
                         !%-%content.value.("Dates").toDateSeries.first.startInstance.format.("yyyy.MM.dd")%%!
+                    !%%endif%%!
+                !%]]></param>
+                <param name="addressChoice"><![CDATA[%!
+                    !%%if (content.value.("AddressChoice").isSet && content.value.("AddressChoice").value.("PoiLink").isSet)%%!
+                        !%poi:%content.value.("AddressChoice").value.("PoiLink").toResource.structureId%%!
+                    !%%elseif (content.value.("AddressChoice").isSet && content.value.("AddressChoice").value.("Address").isSet && content.value.("AddressChoice").value.("Address").value.("Name").isSet)%%!
+                        !%name:%content.value.("AddressChoice").value.("Address").value.("Name")%%!
+                    !%%else%%!
+                        !%unkown%!
                     !%%endif%%!
                 !%]]></param>
             </parameters>

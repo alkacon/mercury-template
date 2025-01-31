@@ -392,7 +392,7 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
     if (DEBUG) console.info("Lists.generateListHtml() Search result - list=" + list.id + ", reloaded=" + list.pageData.reloaded + ", start=" + list.pageData.start + ", end=" + list.pageData.end + ", entries=" + list.pageData.found + ", pages=" + list.pageData.pages + ", currentPage=" + list.pageData.currentPage + ", page to show=" + page);
 
     var $newEntries;
-    var $groups = $result.find("div[listgroup]");
+    var $groups = $result.find("div[data-listgroup]");
     var hasGroups = $groups.length > 0;
     if (hasGroups) {
         // the search results should be grouped
@@ -528,7 +528,7 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
     // We have to wait till Animations finished.
     if(waitHandler) setTimeout(waitHandler.ready, 750);
     // initial load is finished
-    m_isInitialLoad = false; 
+    m_isInitialLoad = false;
 }
 
 /**
@@ -725,12 +725,12 @@ function generatePaginationItem(liClasses, isDisabled, isActive, page, title, la
  *
  *    Consider the following example:
  *    <div class="list-entry">
- *          <div listgroup="xy-1">
+ *          <div data-listgroup="xy-1">
  *              Content from group 1.
  *          </div>
  *    <div>
  *    <div>
- *          <div listgroup="xy-2">
+ *          <div data-listgroup="xy-2">
  *              Content from group 2.
  *          </div>
  *    <div>
@@ -746,7 +746,7 @@ function generatePaginationItem(liClasses, isDisabled, isActive, page, title, la
  *    <div>
  *
  * 2. In the formatter of the list element, mark the div to be extracted
- *    like this: <div class="list-group" listgroup="${some_group_id}">.
+ *    like this: <div class="list-group" data-listgroup="${some_group_id}">.
  *    The group ID must be created in the formatter.
  *    It must be the same for each element that belongs to the same group.
  *
@@ -769,8 +769,8 @@ function combineGroups($groups, isStatic) {
     var hasGroups = false;
     $groups.each(function(index) {
         var $this = $(this);
-        var thisGroupId = $this.attr("listgroup");
-        $this.removeAttr("listgroup");
+        var thisGroupId = $this.attr("data-listgroup");
+        $this.removeAttr("data-listgroup");
         var $thisListEntry = $this.parents(".list-entry");
         if (Mercury.isEditMode()) {
             // reshuffle edit points
@@ -875,7 +875,7 @@ function updateFilterCountsAndResetButtons(id, filterGroup) {
     }
     let list = m_lists[id];
     /** @type {HTMLElement[]} */
-    let resetButtons = []; 
+    let resetButtons = [];
     const updateCounts = list.ajaxCount !== undefined;
     const updateResets = m_listResetButtons[list.elementId] !== undefined;
     if (!updateCounts && DEBUG) {
@@ -1474,7 +1474,7 @@ export function init(jQuery, debug, verbose) {
             var $list = jQ(this);
             var $clone = $list.clone();
 
-            var $groups = $clone.find("div[listgroup]");
+            var $groups = $clone.find("div[data-listgroup]");
             if ($groups.length > 0) {
                 // the search results should be grouped
                 if (DEBUG) console.info("Lists.init() Found static list with " + $groups.length + " groups");

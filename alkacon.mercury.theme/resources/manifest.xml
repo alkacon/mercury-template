@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>18.0.35</version>
+		<version>18.0.42</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -117626,6 +117626,10 @@
 					<name>Title</name>
 					<value><![CDATA[Area - One row]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Bereich - Eine Zeile]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117642,6 +117646,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Area - Main content left / Column right]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Bereich - Hauptinhalt links / Spalte rechts]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117660,6 +117668,10 @@
 					<name>Title</name>
 					<value><![CDATA[Area - Column left / Main content right]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Bereich - Spalte links / Hauptinhalt rechts]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117676,6 +117688,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Area - Row in full screen width]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Bereich - Zeile in voller Bildschirmbreite]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117704,6 +117720,10 @@
 					<name>Title</name>
 					<value><![CDATA[[Deprecated] Mercury header with logo left]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[[Veraltet] Mercury Kopfbereich mit Logo links]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117720,6 +117740,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury footer full]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury Fußbereich komplett]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117738,6 +117762,10 @@
 					<name>Title</name>
 					<value><![CDATA[Mercury footer reduced]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury Fußbereich reduziert]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117755,6 +117783,10 @@
 					<name>Title</name>
 					<value><![CDATA[Mercury side column group]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury Gruppe für Seitenspalte]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117771,6 +117803,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury header with flexible layout options]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury Kopfbereich mit flexiblen Darstellungsmöglichkeiten]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117799,6 +117835,10 @@
 					<name>Title</name>
 					<value><![CDATA[Row 1 column (12 - full)]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 1 Spalte (12 - Voll)]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117815,6 +117855,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Row 2 columns (3 - 9) [From display size LG]]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (3 - 9) [Ab Bildschrimgröße LG]]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117833,6 +117877,10 @@
 					<name>Title</name>
 					<value><![CDATA[Row 2 columns (4 - 8) [From display size LG]]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (4 - 8) [Ab Bildschrimgröße LG]]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117849,6 +117897,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Row 2 columns (6 - 6) [all display sizes]]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (6 - 6) [Alle Bildschirmgrößen]]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117867,6 +117919,10 @@
 					<name>Title</name>
 					<value><![CDATA[Row 2 columns (6 - 6) [from display size MD]]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (6 - 6) [Ab Bildschirmgröße MD]]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117883,6 +117939,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Row 2 columns (6 - 6) [from display size LG]]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (6 - 6) [Ab Bildschirmgröße LG]]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117901,6 +117961,10 @@
 					<name>Title</name>
 					<value><![CDATA[Row 2 columns (8 - 4) [From display size LG]]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (8 - 4) [Ab Bildschrimgröße LG]]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117917,6 +117981,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Row 2 columns (9 - 3) [From display size LG]]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (9 - 3) [Ab Bildschrimgröße LG]]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117935,6 +118003,10 @@
 					<name>Title</name>
 					<value><![CDATA[Row 3 columns (4 - 4 - 4) [from display size LG]]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 3 Spalten (4 - 4 - 4) [Ab Bildschirmgröße LG]]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117951,6 +118023,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Row 4 columns (3 - 3 - 3 - 3) [from display size LG]]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 4 Spalten (3 - 3 - 3 - 3) [Ab Bildschirmgröße LG]]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -117969,6 +118045,10 @@
 					<name>Title</name>
 					<value><![CDATA[Row 6 columns (2 - 2 - 2 - 2 - 2 - 2) [from display size XL]]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 6 Spalten (2 - 2 - 2 - 2 - 2 - 2) [Ab Bildschirmgröße XL]]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -117986,6 +118066,10 @@
 					<name>Title</name>
 					<value><![CDATA[Row for tiles only]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row für Kachel-Elemente]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -118002,6 +118086,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Row 1 column (adjustable width)]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 1 Spalte (Einstellbare Breite)]]></value>
 				</property>
 			</properties>
 			<relations/>

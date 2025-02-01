@@ -25,6 +25,7 @@
     --#{$prefix}map-popup-color: #{$map-popup-color};
     --#{$prefix}map-popup-bg: #{$map-popup-bg};
     --#{$prefix}map-font-weight: #{$map-text-weight};
+    --#{$prefix}map-header-weight: #{$map-header-weight};
 
     --#{$prefix}map-font-size: calc(var(--#{$prefix}map-info-scale) * #{$map-text-size});
     --#{$prefix}map-header-size: calc(var(--#{$prefix}map-info-scale) * #{$map-header-size});
@@ -110,11 +111,13 @@
         h3, .h3, h4, .h4 {
             line-height: 1.1;
             font-size: var(--#{$prefix}map-header-size);
+            font-weight: var(--#{$prefix}map-header-weight);
             color: var(--#{$prefix}map-popup-color);
         }
 
         h4, .h4 {
             font-size: var(--#{$prefix}map-font-size);
+            font-weight: var(--#{$prefix}map-header-weight);
         }
 
         .facility-icons {

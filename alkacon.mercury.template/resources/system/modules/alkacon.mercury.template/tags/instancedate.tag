@@ -10,14 +10,19 @@
 <%@ attribute name="format" type="java.lang.String" required="true"
     description="The format for the date, or 'none' which means no date will be shown." %>
 
+<%@ attribute name="bundle" type="java.lang.String" required="false"
+    description="The resurce bundle to use. Will use 'alkacon.mercury.template.messages' if not set." %>
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:if test="${(not empty date) and (date.start.time > 0) and (format != 'none')}">
+    <c:set var="bundle" value="${empty bundle ? 'alkacon.mercury.template.messages' : bundle}" />
     <fmt:setLocale value="${cms.locale}" />
-    <cms:bundle basename="alkacon.mercury.template.messages">
+    <cms:bundle basename="${bundle}">
         <c:if test="${fn:startsWith(format, 'fmt-')}">
             <c:set var="formatKey">msg.setting.dateFormat.${fn:substringAfter(format, 'fmt-')}.format</c:set>
             <c:set var="format"><fmt:message key="${formatKey}"/></c:set>

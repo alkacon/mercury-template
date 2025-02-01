@@ -271,8 +271,8 @@ $form-font-weight-label:            get-font-weight($form-font-family, $form-fon
 $form-font-weight-input:            get-font-weight($form-font-family, $form-font-weight-input);
 $form-font-weight-option:           get-font-weight($form-font-family, $form-font-weight-option);
 
-$map-text-weight:                   $font-weight-light !default;
-$map-header-weight:                 $font-weight-normal !default;
+$map-text-weight:                   var(--#{$prefix}body-font-weight) !default;
+$map-header-weight:                 var(--#{$prefix}font-weight-headings) !default;
 
 $font-family-fancy:                 $font-family-base !default;
 $font-family-fancy:                 get-font-family($font-family-fancy);

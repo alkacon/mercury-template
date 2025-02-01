@@ -34,6 +34,12 @@
 <%@ attribute name="showRoute" type="java.lang.Boolean" required="false"
     description="If true, show route option in the marker info window. Currently only supported for Google maps, not OSM. Default is 'false'." %>
 
+<%@ attribute name="markupTop" type="java.lang.String" required="false"
+    description="Additional markup that will be included at the start of the generated infoMarkup." %>
+
+<%@ attribute name="markupBottom" type="java.lang.String" required="false"
+    description="Additional markup that will be included at the end of the generated infoMarkup." %>
+
 
 <%@ variable name-given="markerData" declare="true"
     description="A map that contains the marker data read for the location as properties." %>
@@ -241,6 +247,9 @@
     <c:set var="markerInfoMarkup">
 
         <div class="map-marker${empty cssWrapper ? '' : ' '.concat(cssWrapper)}"><%----%>
+            <c:if test="${not empty markupTop}">
+                ${markupTop}
+            </c:if>
             <c:if test="${not empty markerHeading}">
                 <div class="heading"><%----%>
                     ${markerHeading}
@@ -265,6 +274,9 @@
                         <input type="hidden" name="daddr" value="${markerData.lat},${markerData.lng}"/><%----%>
                     </form><%----%>
                 </div><%----%>
+            </c:if>
+            <c:if test="${not empty markupBottom}">
+                ${markupBottom}
             </c:if>
         </div><%----%>
     </c:set>

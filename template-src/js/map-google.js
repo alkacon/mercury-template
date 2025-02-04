@@ -408,7 +408,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
     let buildLayer = function(layerJson, others) {
         const features = layerJson.features || [];
         const markers = [];
-        const featuresColor = others ? undefined : Mercury.getThemeJSON("map-center", "#000000");
+        const featuresColor = others || !geoJsonOthers ? undefined : Mercury.getThemeJSON("map-center", "#000000");
         for (let i = 0; i < features.length; i++) {
             const feature = features[i];
             const coordinates = feature.geometry.coordinates;

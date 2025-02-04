@@ -57,9 +57,9 @@ function getPuempel(color) {
     };
 }
 
-function getFeatureGraphic() {
+function getFeatureGraphic(color) {
 
-    const color = Mercury.getThemeJSON("map-color[0]", "#ffffff");
+    color = color ? color : Mercury.getThemeJSON("map-color[0]", "#ffffff");
     return getPuempel(color);
 }
 
@@ -78,11 +78,11 @@ function getCenterPointGraphic() {
     }
 }
 
-function getClusterGraphic() {
+function getClusterGraphic(color) {
 
+    color = color ? color : Mercury.getThemeJSON("map-cluster", "#999999");
     return {
         render: function({count, position}, stats) {
-            const color = Mercury.getThemeJSON("map-cluster", "#999999");
             const perceivedColor = tinycolor(color);
             const strokeColor = tinycolor(color).darken(20);
             const textColor = perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
@@ -365,8 +365,9 @@ function showSingleMap(mapData, filterByGroup){
 /**
  * Loads and displays a GeoJSON file.
  */
-export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
+export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOthers) {
 
+    count = count || 0; // needed for other map providers only
     if (DEBUG) console.info("Google update markers for map with id: " + mapId);
     let map;
     try {
@@ -377,8 +378,6 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
     if (!map) { // no cookie consent yet
         return;
     }
-    const features = geoJson.features || [];
-    const markers = [];
     const boundsNorthEast = {lat: null, lng: null};
     const boundSouthWest = {lat: null, lng: null};
     let checkBounds = function(coordinates) {
@@ -406,37 +405,48 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo) {
     if (centerPoint) {
         checkBounds([map.getCenter().lng(), map.getCenter().lat()]); // bounding box includes the center point
     }
-    for (let i = 0; i < features.length; i++) {
-        const feature = features[i];
-        const coordinates = feature.geometry.coordinates;
-        const infoCoordinates = feature.properties.coords;
-        checkBounds(coordinates);
-        const marker = new google.maps.Marker({
-            position: new google.maps.LatLng(coordinates[1], coordinates[0]),
-            map: map,
-            icon: getFeatureGraphic(),
-            zIndex: i
-        });
-        markers.push(marker);
-        const infoWindow = new google.maps.InfoWindow({
-            marker: marker,
-            zIndex: i
-        });
-        marker.addListener("click", function(event) {
-            if (m_maps[mapId].infoWindow) {
-                m_maps[mapId].infoWindow.close();
+    let buildLayer = function(layerJson, others) {
+        const features = layerJson.features || [];
+        const markers = [];
+        const featuresColor = others ? undefined : Mercury.getThemeJSON("map-center", "#000000");
+        for (let i = 0; i < features.length; i++) {
+            const feature = features[i];
+            const coordinates = feature.geometry.coordinates;
+            const infoCoordinates = feature.properties.coords;
+            if (!others) {
+                checkBounds(coordinates);
             }
-            const ajaxUrl = ajaxUrlMarkersInfo + "&coordinates=" + infoCoordinates;
-            fetch(ajaxUrl)
-                .then(response => response.text())
-                .then(data => {
-                    infoWindow.setContent(data);
-                    infoWindow.open(map, marker);
-                });
-            m_maps[mapId].infoWindow = infoWindow;
-        });
+            const marker = new google.maps.Marker({
+                position: new google.maps.LatLng(coordinates[1], coordinates[0]),
+                map: map,
+                icon: getFeatureGraphic(featuresColor),
+                zIndex: i
+            });
+            markers.push(marker);
+            const infoWindow = new google.maps.InfoWindow({
+                marker: marker,
+                zIndex: i
+            });
+            marker.addListener("click", function() {
+                if (m_maps[mapId].infoWindow) {
+                    m_maps[mapId].infoWindow.close();
+                }
+                const ajaxUrl = ajaxUrlMarkersInfo + "&coordinates=" + infoCoordinates;
+                fetch(ajaxUrl)
+                    .then(response => response.text())
+                    .then(data => {
+                        infoWindow.setContent(data);
+                        infoWindow.open(map, marker);
+                    });
+                m_maps[mapId].infoWindow = infoWindow;
+            });
+        }
+        new MarkerClusterer({markers: markers, map: map, renderer: getClusterGraphic(featuresColor)});
     }
-    new MarkerClusterer({markers: markers, map: map, renderer: getClusterGraphic()});
+    if (geoJsonOthers) {
+        buildLayer(geoJsonOthers, true);
+    }
+    buildLayer(geoJson);
     if (boundsNorthEast.lat) { // catch no center point and no features
         const bounds = new google.maps.LatLngBounds();
         bounds.extend(boundsNorthEast);

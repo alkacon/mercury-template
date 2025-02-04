@@ -63,7 +63,7 @@ function getCenterPointGraphic() {
 }
 
 function getClusterGraphic() {
-    const color = Mercury.getThemeJSON("map-cluster", "#999999");
+    let color = Mercury.getThemeJSON("map-cluster", "#999999");
     const strokeColor = tinycolor(color).darken(20);
     return {
         'circle-color': color,
@@ -74,17 +74,28 @@ function getClusterGraphic() {
 }
 
 function getClusterGraphicTextColor() {
-    const color = Mercury.getThemeJSON("map-cluster", "#999999");
+    let color = Mercury.getThemeJSON("map-cluster", "#999999");
     const perceivedColor = tinycolor(color);
     return perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
 }
 
-function getFeatureGraphic(imageId, color) {
+function getFeaturesGraphic(imageId, color) {
     color = color === undefined ? Mercury.getThemeJSON("map-color[0]", "#ffffff") : color;
     const svg = window.btoa(getPuempel(color));
     const image = new Image(19, 34);
     image.src = `data:image/svg+xml;base64,${svg}`;
-    image.id = "featureGraphic" + imageId;
+    image.id = "featuresGraphic" + imageId;
+    image.style.display = "none";
+    document.querySelector("body").appendChild(image);
+    return document.getElementById(image.id);
+}
+
+function getOthersGraphic(imageId, color) {
+    color = color === undefined ? Mercury.getThemeJSON("map-color[0]", "#ffffff") : color;
+    const svg = window.btoa(getPuempel(color));
+    const image = new Image(19, 34);
+    image.src = `data:image/svg+xml;base64,${svg}`;
+    image.id = "othersGraphic" + imageId;
     image.style.display = "none";
     document.querySelector("body").appendChild(image);
     return document.getElementById(image.id);
@@ -237,7 +248,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
                 } else if (typeof groups[group] === "undefined" ) {
                     var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
                     if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + color);
-                    groups[group] = getFeatureGraphic(mapData.id + group, color);
+                    groups[group] = getFeaturesGraphic(mapData.id + group, color);
                 }
             }
         }
@@ -255,7 +266,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
             }
         } else {
             map.on("styleimagemissing", function(event) {
-                const key = event.id.substring("featureGraphic".length);
+                const key = event.id.substring("featuresGraphic".length);
                 if (!map.hasImage(event.id) && groups[key]) {
                     map.addImage(event.id, groups[key]);
                 }
@@ -307,7 +318,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
                             filter: ["==", "group", group],
                             layout: {
                                 "icon-allow-overlap": true,
-                                "icon-image": "featureGraphic" + group,
+                                "icon-image": "featuresGraphic" + group,
                                 "icon-anchor": "bottom"
                             }
                         }, "clusters");
@@ -432,6 +443,83 @@ function getBoundsAndInfos(features, centerPoint, getInfo, infos) {
     return [[boundSouthWest.lng,boundSouthWest.lat],[boundsNorthEast.lng,boundsNorthEast.lat]];
 }
 
+function buildMapLayer(map, source, ajaxUrlMarkersInfo) {
+
+    const clusterLayer = source + "clusters";
+    const clusterCountLayer = source + "cluster-count";
+    const unclusteredPointLayer = source + "unclustered-point";
+    const graphic = source + "Graphic";
+    map.addLayer({
+        id: clusterLayer,
+        type: "circle",
+        source: source,
+        filter: ["has", "point_count"],
+        paint: getClusterGraphic()
+    });
+    map.addLayer({
+        id: clusterCountLayer,
+        type: "symbol",
+        source: source,
+        filter: ["has", "point_count"],
+        layout: {
+            "icon-allow-overlap": false,
+            "text-field": "{point_count_abbreviated}",
+            "text-size": 14
+        },
+        paint: {
+            "text-color": getClusterGraphicTextColor().toString(),
+        }
+    });
+    map.addLayer({
+        id: unclusteredPointLayer,
+        type: "symbol",
+        source: source,
+        filter: ["!", ["has", "point_count"]],
+        layout: {
+            "icon-allow-overlap": true,
+            "icon-image": graphic,
+            "icon-anchor": "bottom"
+        }
+    });
+    map.on("click", clusterLayer, async (e) => {
+        const features = map.queryRenderedFeatures(e.point, {
+            layers: [clusterLayer]
+        });
+        const clusterId = features[0].properties.cluster_id;
+        const zoom = await map.getSource(source).getClusterExpansionZoom(clusterId);
+        map.easeTo({
+            center: features[0].geometry.coordinates,
+            zoom
+        });
+    });
+    map.on("click", unclusteredPointLayer, function (e) {
+        const coordinates = e.features[0].geometry.coordinates;
+        const infoCoordinates = e.features[0].properties.coords;
+        const ajaxUrl = ajaxUrlMarkersInfo + "&coordinates=" + infoCoordinates;
+        const popup = new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' })
+            .setLngLat(coordinates)
+            .setHTML("<div></div>")
+            .addTo(map);
+        fetch(ajaxUrl)
+            .then(response => response.text())
+            .then(data => {
+                popup.setHTML(data);
+            });
+    });
+    map.on("mouseenter", clusterLayer, function () {
+        map.getCanvas().style.cursor = "pointer";
+    });
+    map.on("mouseleave", clusterLayer, function () {
+        map.getCanvas().style.cursor = "";
+    });
+    map.on("mouseenter", unclusteredPointLayer, function () {
+        map.getCanvas().style.cursor = "pointer";
+    });
+    map.on("mouseleave", unclusteredPointLayer, function () {
+        map.getCanvas().style.cursor = "";
+    });
+}
+
 function getKey(coordinates) {
     let c0 = ("" + coordinates[0].toFixed(5));
     let c1 = ("" + coordinates[1].toFixed(5));
@@ -471,7 +559,7 @@ export function showMarkers(mapId, group){
     }
 }
 
-export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count) {
+export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOthers) {
 
     count = count || 0;
     if (DEBUG && (count == 0)) console.info("OsmMap.showGeoJson() update markers for map id: " + mapId);
@@ -480,16 +568,23 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count) {
         if (DEBUG) console.info("OsmMap.showGeoJson() waiting (" + count + ") for map id: " + mapId);
         if (count <= 10) {
             setTimeout(function() {
-                showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, ++count);
+                showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, ++count, geoJsonOthers);
             }, 200);
         }
         return;
     }
     if (DEBUG && (count > 0)) console.info("OsmMap.showGeoJson() styles loaded, proceeding with map id: " + mapId);
-    if (!map.hasImage("featureGraphic")) {
-        const featureGraphic = getFeatureGraphic(mapId);
-        featureGraphic.addEventListener("load", function() {
-            map.addImage("featureGraphic", featureGraphic);
+    if (!map.hasImage("featuresGraphic")) {
+        const centerPointColor = Mercury.getThemeJSON("map-center", "#000000");
+        const featuresGraphic = getFeaturesGraphic(mapId, geoJsonOthers ? centerPointColor : undefined);
+        featuresGraphic.addEventListener("load", function() {
+            map.addImage("featuresGraphic", featuresGraphic);
+        });
+    }
+    if (geoJsonOthers && !map.hasImage("othersGraphic")) {
+        const othersGraphic = getOthersGraphic(mapId);
+        othersGraphic.addEventListener("load", function() {
+            map.addImage("othersGraphic", othersGraphic);
         });
     }
     map.addSource("features", {
@@ -499,6 +594,15 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count) {
         clusterMaxZoom: m_clusterMaxZoom,
         clusterRadius: m_clusterRadius
     });
+    if (geoJsonOthers) {
+        map.addSource("others", {
+            type: "geojson",
+            data: geoJsonOthers,
+            cluster: true,
+            clusterMaxZoom: m_clusterMaxZoom,
+            clusterRadius: m_clusterRadius
+        });
+    }
     let centerPoint;
     for (let md of m_mapData) {
         if (md.id === mapId && md.markers && md.markers.length > 0) {
@@ -516,75 +620,10 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count) {
             fitted = true;
         }
     });
-    map.addLayer({
-        id: "clusters",
-        type: "circle",
-        source: "features",
-        filter: ["has", "point_count"],
-        paint: getClusterGraphic()
-    });
-    map.addLayer({
-        id: "cluster-count",
-        type: "symbol",
-        source: "features",
-        filter: ["has", "point_count"],
-        layout: {
-            "icon-allow-overlap": false,
-            "text-field": "{point_count_abbreviated}",
-            "text-size": 14
-        },
-        paint: {
-            "text-color": getClusterGraphicTextColor().toString(),
-        }
-    });
-    map.addLayer({
-        id: "unclustered-point",
-        type: "symbol",
-        source: "features",
-        filter: ["!", ["has", "point_count"]],
-        layout: {
-            "icon-allow-overlap": true,
-            "icon-image": "featureGraphic",
-            "icon-anchor": "bottom"
-        }
-    });
-    map.on("click", "clusters", async (e) => {
-        const features = map.queryRenderedFeatures(e.point, {
-            layers: ["clusters"]
-        });
-        const clusterId = features[0].properties.cluster_id;
-        const zoom = await map.getSource("features").getClusterExpansionZoom(clusterId);
-        map.easeTo({
-            center: features[0].geometry.coordinates,
-            zoom
-        });
-    });
-    map.on("click", "unclustered-point", function (e) {
-        const coordinates = e.features[0].geometry.coordinates;
-        const infoCoordinates = e.features[0].properties.coords;
-        const ajaxUrl = ajaxUrlMarkersInfo + "&coordinates=" + infoCoordinates;
-        const popup = new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' })
-            .setLngLat(coordinates)
-            .setHTML("<div></div>")
-            .addTo(map);
-        fetch(ajaxUrl)
-            .then(response => response.text())
-            .then(data => {
-                popup.setHTML(data);
-            });
-    });
-    map.on("mouseenter", "clusters", function () {
-        map.getCanvas().style.cursor = "pointer";
-    });
-    map.on("mouseleave", "clusters", function () {
-        map.getCanvas().style.cursor = "";
-    });
-    map.on("mouseenter", "unclustered-point", function () {
-        map.getCanvas().style.cursor = "pointer";
-    });
-    map.on("mouseleave", "unclustered-point", function () {
-        map.getCanvas().style.cursor = "";
-    });
+    if (geoJsonOthers) {
+        buildMapLayer(map, "others", ajaxUrlMarkersInfo);
+    }
+    buildMapLayer(map, "features", ajaxUrlMarkersInfo);
 }
 
 function showMap(event){

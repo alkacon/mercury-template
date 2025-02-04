@@ -1207,6 +1207,12 @@ export function archiveFilter(filter, triggerId) {
             }
         }
     }
+    // in any case, reset all non-combined filters
+    for (const fi of filterGroup) {
+        if (fi.id !== filter.id && !fi.data.combine) {
+            fi.resetAll(true);
+        }
+    }
     // calculate the filter query part for the just selected item
     const additionalStateParameter = filter.getFilterParams(false, triggerId);
     filter.toggle(triggerId);

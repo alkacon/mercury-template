@@ -42,6 +42,13 @@ const m_maxZoom = 18;
 const m_clusterMaxZoom = 15;
 const m_clusterRadius = 23;
 const m_clusterCircleRadius = 24;
+const m_fitBoundsOptions = {
+    padding: {top: 100, bottom: 100, left: 100, right: 100},
+    maxZoom: 12,
+    maxDuration: 2000,
+    curve: 2,
+    speed: 2
+}
 
 function getPuempel(color) {
 
@@ -260,12 +267,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
         if (map.loaded()) {
             map.getSource("localFeatures").setData(map.geojson);
             if (!fitted && map.geojson.features && map.geojson.features.length > 0) {
-                map.fitBounds(bounds, {
-                    padding: {top: 100, bottom: 100, left: 100, right: 100},
-                    maxZoom: 12,
-                    maxDuration: 2000,
-                    speed: 2
-                });
+                map.fitBounds(bounds, m_fitBoundsOptions);
                 fitted = true;
             }
         } else {
@@ -308,8 +310,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
                         const zoom = await map.getSource("localFeatures").getClusterExpansionZoom(clusterId);
                         map.easeTo({
                             center: features[0].geometry.coordinates,
-                            zoom,
-                            speed: 2
+                            zoom
                         });
                     });
                 }
@@ -366,12 +367,7 @@ function showSingleMapClustered(mapData, filterByGroup) {
                 }
 
                 if (!fitted && map.geojson.features && map.geojson.features.length > 0) {
-                    map.fitBounds(bounds, {
-                        padding: {top: 100, bottom: 100, left: 100, right: 100},
-                        maxZoom: 12,
-                        maxDuration: 2000,
-                        speed: 2
-                    });
+                    map.fitBounds(bounds, m_fitBoundsOptions);
                     fitted = true;
                 }
             });
@@ -450,33 +446,35 @@ function getBoundsAndInfos(features, centerPoint, getInfo, infos) {
     return [[boundSouthWest.lng,boundSouthWest.lat],[boundsNorthEast.lng,boundsNorthEast.lat]];
 }
 
-function buildMapLayer(map, source, ajaxUrlMarkersInfo) {
+function buildMapLayer(map, source, ajaxUrlMarkersInfo, cluster) {
 
     const clusterLayer = source + "clusters";
     const clusterCountLayer = source + "cluster-count";
     const unclusteredPointLayer = source + "unclustered-point";
     const graphic = source + "Graphic";
-    map.addLayer({
-        id: clusterLayer,
-        type: "circle",
-        source: source,
-        filter: ["has", "point_count"],
-        paint: getClusterGraphic()
-    });
-    map.addLayer({
-        id: clusterCountLayer,
-        type: "symbol",
-        source: source,
-        filter: ["has", "point_count"],
-        layout: {
-            "icon-allow-overlap": false,
-            "text-field": "{point_count_abbreviated}",
-            "text-size": 14
-        },
-        paint: {
-            "text-color": getClusterGraphicTextColor().toString(),
-        }
-    });
+    if (cluster) {
+        map.addLayer({
+            id: clusterLayer,
+            type: "circle",
+            source: source,
+            filter: ["has", "point_count"],
+            paint: getClusterGraphic()
+        });
+        map.addLayer({
+            id: clusterCountLayer,
+            type: "symbol",
+            source: source,
+            filter: ["has", "point_count"],
+            layout: {
+                "icon-allow-overlap": false,
+                "text-field": "{point_count_abbreviated}",
+                "text-size": 14
+            },
+            paint: {
+                "text-color": getClusterGraphicTextColor().toString(),
+            }
+        });
+    }
     map.addLayer({
         id: unclusteredPointLayer,
         type: "symbol",
@@ -488,18 +486,19 @@ function buildMapLayer(map, source, ajaxUrlMarkersInfo) {
             "icon-anchor": "bottom"
         }
     });
-    map.on("click", clusterLayer, async (e) => {
-        const features = map.queryRenderedFeatures(e.point, {
-            layers: [clusterLayer]
+    if (cluster) {
+        map.on("click", clusterLayer, async (e) => {
+            const features = map.queryRenderedFeatures(e.point, {
+                layers: [clusterLayer]
+            });
+            const clusterId = features[0].properties.cluster_id;
+            const zoom = await map.getSource(source).getClusterExpansionZoom(clusterId);
+            map.easeTo({
+                center: features[0].geometry.coordinates,
+                zoom
+            });
         });
-        const clusterId = features[0].properties.cluster_id;
-        const zoom = await map.getSource(source).getClusterExpansionZoom(clusterId);
-        map.easeTo({
-            center: features[0].geometry.coordinates,
-            zoom,
-            speed: 2
-        });
-    });
+    }
     map.on("click", unclusteredPointLayer, function (e) {
         const coordinates = e.features[0].geometry.coordinates;
         const infoCoordinates = e.features[0].properties.coords;
@@ -514,12 +513,14 @@ function buildMapLayer(map, source, ajaxUrlMarkersInfo) {
                 popup.setHTML(data);
             });
     });
-    map.on("mouseenter", clusterLayer, function () {
-        map.getCanvas().style.cursor = "pointer";
-    });
-    map.on("mouseleave", clusterLayer, function () {
-        map.getCanvas().style.cursor = "";
-    });
+    if (cluster) {
+        map.on("mouseenter", clusterLayer, function () {
+            map.getCanvas().style.cursor = "pointer";
+        });
+        map.on("mouseleave", clusterLayer, function () {
+            map.getCanvas().style.cursor = "";
+        });
+    }
     map.on("mouseenter", unclusteredPointLayer, function () {
         map.getCanvas().style.cursor = "pointer";
     });
@@ -598,7 +599,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
     map.addSource("features", {
         type: "geojson",
         data: geoJson,
-        cluster: true,
+        cluster: (geoJsonOthers ? false : true),
         clusterMaxZoom: m_clusterMaxZoom,
         clusterRadius: m_clusterRadius
     });
@@ -617,24 +618,18 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
             centerPoint = md;
         }
     }
-
     let bounds = getBoundsAndInfos(geoJson.features || [], (centerPoint ? [centerPoint.centerLng, centerPoint.centerLat] : null), false);
     let fitted = false;
-    map.on("data", function(event) {
+    map.on("data", function() {
         if (!fitted && geoJson.features && geoJson.features.length > 0) {
-            map.fitBounds(bounds, {
-                padding: {top: 100, bottom: 100, left: 100, right: 100},
-                maxZoom: 12,
-                maxDuration: 2000,
-                speed: 2
-            });
+            map.fitBounds(bounds, m_fitBoundsOptions);
             fitted = true;
         }
     });
     if (geoJsonOthers) {
-        buildMapLayer(map, "others", ajaxUrlMarkersInfo);
+        buildMapLayer(map, "others", ajaxUrlMarkersInfo, true);
     }
-    buildMapLayer(map, "features", ajaxUrlMarkersInfo);
+    buildMapLayer(map, "features", ajaxUrlMarkersInfo, false);
 }
 
 function showMap(event){

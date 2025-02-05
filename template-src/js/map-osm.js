@@ -151,29 +151,31 @@ function showSingleMap(mapData) {
         for (var p=0; p < mapData.markers.length; p++) {
             var marker=mapData.markers[p];
             var group = marker.group;
-            if (group === "centerpoint") {
-                if (DEBUG) console.info("OSM new center point added.");
-                groups[group] = getCenterPointGraphic();
-            } else if (typeof groups[group] === "undefined" ) {
-                var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
-                if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + color);
-                groups[group] = getPuempel(color);
+            if (group != "hidden") {
+                if (group === "centerpoint") {
+                    if (DEBUG) console.info("OSM new center point added.");
+                    groups[group] = getCenterPointGraphic();
+                } else if (typeof groups[group] === "undefined" ) {
+                    var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
+                    if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + color);
+                    groups[group] = getPuempel(color);
+                }
+                // create a HTML element for each feature
+                var el = document.createElement('div');
+                el.innerHTML = groups[group];
+                var markerObject = new mapgl.Marker({
+                    anchor: "bottom",
+                    element: el
+                });
+    
+                markerObject.setLngLat([parseFloat(marker.lng), parseFloat(marker.lat)]);
+                if (marker.info.length > 0){
+                    markerObject.setPopup(new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' }).setHTML(marker.info));
+                }
+                markerObject.addTo(m_maps[mapData.id]);
+                markerObject.group=group;
+                m_maps[mapData.id].marker.push(markerObject);
             }
-            // create a HTML element for each feature
-            var el = document.createElement('div');
-            el.innerHTML = groups[group];
-            var markerObject = new mapgl.Marker({
-                anchor: "bottom",
-                element: el
-            });
-
-            markerObject.setLngLat([parseFloat(marker.lng), parseFloat(marker.lat)]);
-            if (marker.info.length > 0){
-                markerObject.setPopup(new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' }).setHTML(marker.info));
-            }
-            markerObject.addTo(m_maps[mapData.id]);
-            markerObject.group=group;
-            m_maps[mapData.id].marker.push(markerObject);
         }
     }
 }
@@ -260,6 +262,8 @@ function showSingleMapClustered(mapData, filterByGroup) {
             if (!fitted && map.geojson.features && map.geojson.features.length > 0) {
                 map.fitBounds(bounds, {
                     padding: {top: 100, bottom: 100, left: 100, right: 100},
+                    maxZoom: 12,
+                    maxDuration: 2000,
                     speed: 2
                 });
                 fitted = true;
@@ -304,7 +308,8 @@ function showSingleMapClustered(mapData, filterByGroup) {
                         const zoom = await map.getSource("localFeatures").getClusterExpansionZoom(clusterId);
                         map.easeTo({
                             center: features[0].geometry.coordinates,
-                            zoom
+                            zoom,
+                            speed: 2
                         });
                     });
                 }
@@ -363,6 +368,8 @@ function showSingleMapClustered(mapData, filterByGroup) {
                 if (!fitted && map.geojson.features && map.geojson.features.length > 0) {
                     map.fitBounds(bounds, {
                         padding: {top: 100, bottom: 100, left: 100, right: 100},
+                        maxZoom: 12,
+                        maxDuration: 2000,
                         speed: 2
                     });
                     fitted = true;
@@ -489,7 +496,8 @@ function buildMapLayer(map, source, ajaxUrlMarkersInfo) {
         const zoom = await map.getSource(source).getClusterExpansionZoom(clusterId);
         map.easeTo({
             center: features[0].geometry.coordinates,
-            zoom
+            zoom,
+            speed: 2
         });
     });
     map.on("click", unclusteredPointLayer, function (e) {
@@ -615,7 +623,10 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
     map.on("data", function(event) {
         if (!fitted && geoJson.features && geoJson.features.length > 0) {
             map.fitBounds(bounds, {
-                padding: {top: 100, bottom: 100, left: 100, right: 100}
+                padding: {top: 100, bottom: 100, left: 100, right: 100},
+                maxZoom: 12,
+                maxDuration: 2000,
+                speed: 2
             });
             fitted = true;
         }

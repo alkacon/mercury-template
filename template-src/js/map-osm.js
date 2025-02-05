@@ -629,7 +629,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
     if (geoJsonOthers) {
         buildMapLayer(map, "others", ajaxUrlMarkersInfo, true);
     }
-    buildMapLayer(map, "features", ajaxUrlMarkersInfo, false);
+    buildMapLayer(map, "features", ajaxUrlMarkersInfo, (geoJsonOthers ? false : true));
 }
 
 function showMap(event){

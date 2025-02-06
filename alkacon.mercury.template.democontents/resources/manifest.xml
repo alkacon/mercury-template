@@ -483,6 +483,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Your choice regarding cookies]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Ihre Wahlmöglichkeiten bezüglich Cookies]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -962,6 +966,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury: Footer full: The OpenCms mailing list]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury: Footer full: Die OpenCms Mailing-Liste]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -5292,6 +5300,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is intuitive]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist intuitiv]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5329,6 +5341,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is just fun]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms macht einfach Spass]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -5378,6 +5394,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is the tool]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist das Werkzeug]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5421,6 +5441,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is easy]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist einfach]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5448,6 +5472,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is powerful]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist mächtig]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -5491,6 +5519,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is simple to use]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist einfach zu bedienen]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -5540,6 +5572,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is feature rich]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms hat viele Funktionen]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5583,6 +5619,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is awesome]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist großartig]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -5632,6 +5672,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms can do it]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mit OpenCms gelingt es]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5659,6 +5703,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is right for the job]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist die richtige Wahl]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -5697,6 +5745,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is reliable]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist zuverlässig]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -5751,6 +5803,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms unlocks your creativity]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms lässt Dich kreativ sein]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5804,6 +5860,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is Open Source]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist Open Source]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5847,6 +5907,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is amazing]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist erstaunlich]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5884,6 +5948,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms saves valuable time]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms spart Dir Zeit]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -5928,6 +5996,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is for you]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist für Dich]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5966,6 +6038,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is modular]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist modular]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -5993,6 +6069,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is customizable]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist anpassbar]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6031,6 +6111,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms makes editing <effortless>]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ermöglicht einfaches arbeiten]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6074,6 +6158,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[OpenCms is the first choice]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms ist die erste Wahl]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6570,6 +6658,10 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
+					<value><![CDATA[Alkacon Software ]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
 					<value><![CDATA[Alkacon Software ]]></value>
 				</property>
 			</properties>
@@ -7336,6 +7428,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Do androids dream of electric sheep?]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Träumen Androiden von elektischen Schafen?]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -7363,6 +7459,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Is OpenCms open source or open sauce?]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Ist OpenCms open source oder öfter süß?]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7392,6 +7492,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Can I use the Mercury Template for my website?]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Kann ich das Mercury Template für meine Website verwenden?]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -7420,6 +7524,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Is it true cannibals don't eat clowns because they taste funny?]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Stimmt es dass Kannibalen keine Clowns mögen weil sie komisch schmecken?]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -7447,6 +7555,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[If a fork is made of gold is it still considered as silverware?]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Wie übersetze ich am besten englische Wortspiele?]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7493,6 +7605,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[When you eat pasta and antipasta, will you still be hungry ?]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Wenn man Pasta and Antipasta isst, ist man dann immer noch hungrig?]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -7520,6 +7636,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[What is the Mercury Template?]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Was ist das Mercury Template?]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7549,6 +7669,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[What happens if you find a penguin in the freezer?]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Was passiert wenn man einen Pinguin im Kühlschrank findet?]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -7577,6 +7701,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Is is safe to update to a new OpenCms version?]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Kann ich problemlos auf eine neue OpenCms Version updaten?]]></value>
+				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -7604,6 +7732,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[How comes software this great is free?]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Warum ist diese phantastische Software kostenfrei?]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7716,6 +7848,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Mercury: Footer full: Stay connected]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury: Footer full: In den sozialen Medien]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -7732,6 +7868,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury: Footer full: The OpenCms mailing list form]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury: Footer full: Die OpenCms Mailing-Liste]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -7777,6 +7917,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Clipart image series]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Clipart Bilderserie]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -7793,6 +7937,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Buildings, Machines, Things]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Gebäude, Maschinen, Dinge]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8051,6 +8199,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Row 2 Cols (4 - 4) [Narrow]]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (4 - 4) [Kompakt]]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -8067,6 +8219,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Row 2 Cols (4 - 4) [Narrow push / pull]]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 2 Spalten (4 - 4) [Kompakt / push - pull]]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8129,6 +8285,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Service links for head navigation]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Head links]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -8179,6 +8339,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Link sequence: Link sequence as row]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Link sequence: Neue Link-Sequenz]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -8928,6 +9092,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[ [Meta Infos] OpenCms Mercury template demo from Alkacon Software]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[ [Meta Infos] OpenCms Mercury Template Demo von Alkacon Software]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9050,6 +9218,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Alkacon Software POI]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Alkacon Software POI]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9077,6 +9249,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Blog articles: Our Blog]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Tagebuch Einträge: Unser Tagebuch]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9093,6 +9269,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Responsive]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Responsiv]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9111,6 +9291,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Welcome to the OpenCms demo: Grid Layout]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Willkommen bei der OpenCms Demo: Layout-Raster]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9127,6 +9311,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Welcome to the OpenCms demo: Inline Editing]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Willkommen bei der OpenCms Demo: Direktes Bearbeiten]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9145,6 +9333,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Welcome to the OpenCms demo: Total Control]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Willkommen bei der OpenCms Demo: Totale Kontrolle]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9161,6 +9353,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Powerful and feature rich CMS]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mächtiges CMS mit vielen Funktionen]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9179,6 +9375,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[About OpenCms]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Über OpenCms]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9195,6 +9395,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[It's Open Source]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Es ist Open Source]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9213,6 +9417,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms can do it!]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms kann es einfach!]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9230,6 +9438,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms has all the features]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms hat alle Funktionen]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9246,6 +9458,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Full control over the created HTML]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Totale Kontrolle über das erzeugte HTML]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9366,6 +9582,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Post a new article: Post a new blog article]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Neuen Eintrag erstellen: Erstellen Sie einen neuen Tagebuch-Eintrag]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9382,6 +9602,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Frequently asked questions: About the Mercury Template?]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Häufig gestellte Fragen: Was ist das Mercury Template?]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9400,6 +9624,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Frequently asked questions: Top features of OpenCms?]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Häufig gestellte Fragen: Funktionen von OpenCms?]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9416,6 +9644,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Frequently asked questions: How to migrate to OpenCms?]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Häufig gestellte Fragen: Wie zu OpenCms wechseln?]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9468,6 +9700,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Frequently asked questions: Top questions]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Häufig gestellte Fragen: Die wichtigsten Fragen]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9484,6 +9720,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Frequently asked questions: Professional support is available!]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Häufig gestellte Fragen: Professionelle Hilfe ist verfügbar!]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9740,6 +9980,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Welcome to the OpenCms demo: Responsive Mercury Template]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Willkommen bei der OpenCms Demo: Responsives Mercury Template]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9756,6 +10000,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Welcome to the OpenCms demo: Easy to use Workplace]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Willkommen bei der OpenCms Demo: Einfache Benutzeroberfläche]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9774,6 +10022,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Welcome to the OpenCms demo: Great options for developers]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Willkommen bei der OpenCms Demo: Tolle Möglichkeiten für Entwickler]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9791,6 +10043,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Multi-Language: English text page]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mehrsprachig: Deutsche Textseite]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9807,6 +10063,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Multi-Language: This box is blue!]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mehrsprachig: Diese Kiste ist blau!]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9944,6 +10204,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Intuitive]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Intuitiv]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9960,6 +10224,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Simple]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Einfach]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -9978,6 +10246,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Fun]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Es macht Spass]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -9994,6 +10266,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Responsive]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Responsiv]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10029,6 +10305,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Machine]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Maschine]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -10045,6 +10325,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Architecture]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Architektur]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10080,6 +10364,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Mercury: Footer full: Contact us]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury: Footer full: Kontakt]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -10096,6 +10384,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury: Footer full: About OpenCms]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury: Footer full: Über OpenCms]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10130,6 +10422,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Mercury: Footer full: More information]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury: Footer full: Mehr Informationen]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10199,6 +10495,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Multi-Language: Powerful]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mehrsprachig: Mächtig]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -10215,6 +10515,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Multi-Language: Intuitive]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mehrsprachig: Intuitiv]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10233,6 +10537,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Multi-Language: Responsive]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mehrsprachig: Responsiv]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -10249,6 +10557,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Multi-Language: Fun]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mehrsprachig: Es macht Spaß]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -10760,6 +11072,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Backgrounds: Unlimited formatting]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Backgrounds: OpenCms kann es einfach!]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -10776,6 +11092,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Design]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Architektur]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -11484,6 +11804,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Article detail: Shariff Social media for blog detail]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Internet-Tagebuch Eintrag: Shariff Social Media für Blog Detail]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -11555,6 +11879,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Welcome to the OpenCms demo: 4 Technicals]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Willkommen bei der OpenCms Demo: 4 Technicals]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -11606,6 +11934,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms Promo Slider]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[OpenCms Promo Slider]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -11631,6 +11963,10 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
+					<value><![CDATA[FAQ Tab]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
 					<value><![CDATA[FAQ Tab]]></value>
 				</property>
 			</properties>
@@ -11746,6 +12082,10 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Contact form]]></value>
 				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Kontakt Formular]]></value>
+				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -11796,6 +12136,10 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Sample form]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Beispiel-Formular]]></value>
 				</property>
 			</properties>
 			<relations/>

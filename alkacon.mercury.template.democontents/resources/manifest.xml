@@ -6658,11 +6658,11 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Alkacon Software ]]></value>
+					<value><![CDATA[Alkacon Software]]></value>
 				</property>
 				<property>
 					<name>Title_de</name>
-					<value><![CDATA[Alkacon Software ]]></value>
+					<value><![CDATA[Alkacon Software]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6829,7 +6829,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ One More Thing (16.10.22)]]></value>
+					<value><![CDATA[One More Thing (16.10.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6882,7 +6882,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Pre-Release Poster Party (02.08.22)]]></value>
+					<value><![CDATA[Pre-Release Poster Party (02.08.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6920,7 +6920,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Conclave of Advice Experts (21.07.22), Annual conference]]></value>
+					<value><![CDATA[Conclave of Advice Experts (21.07.22), Annual conference]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -6964,7 +6964,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Core Developer Convention (29.11.22)]]></value>
+					<value><![CDATA[Core Developer Convention (29.11.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7061,7 +7061,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Mindful Members Mingling (02.10.22), Conference and expo]]></value>
+					<value><![CDATA[Mindful Members Mingling (02.10.22), Conference and expo]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7139,7 +7139,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Sane Security Conference (14.06.22)]]></value>
+					<value><![CDATA[Sane Security Conference (14.06.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7187,7 +7187,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Mixed Meeting of Important People (24.09.22)]]></value>
+					<value><![CDATA[Mixed Meeting of Important People (24.09.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -7284,7 +7284,7 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ Happy Hacking Days (04.04.22)]]></value>
+					<value><![CDATA[Happy Hacking Days (04.04.22)]]></value>
 				</property>
 			</properties>
 			<relations>
@@ -9090,11 +9090,11 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[ [Meta Infos] OpenCms Mercury template demo from Alkacon Software]]></value>
+					<value><![CDATA[[Meta Infos] OpenCms Mercury template demo from Alkacon Software]]></value>
 				</property>
 				<property>
 					<name>Title_de</name>
-					<value><![CDATA[ [Meta Infos] OpenCms Mercury Template Demo von Alkacon Software]]></value>
+					<value><![CDATA[[Meta Infos] OpenCms Mercury Template Demo von Alkacon Software]]></value>
 				</property>
 			</properties>
 			<relations/>

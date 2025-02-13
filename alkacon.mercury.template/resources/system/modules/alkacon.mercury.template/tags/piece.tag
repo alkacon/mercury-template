@@ -341,7 +341,7 @@
 
 ${'<'}${pieceTag}${' '}
     ${'class=\"'}
-        ${empty cssWrapper ? '' : cssWrapper.concat(' ')}
+        ${empty cssWrapper ? '' : fn:trim(cssWrapper).concat(' ')}
         ${empty pieceClass ? 'piece' : pieceClass}
         ${empty pieceOption ? '' : ' '.concat(pieceOption)}
         ${empty pieceFeatureMarker ? '' : pieceFeatureMarker}
@@ -363,13 +363,13 @@ ${piecePreMarkup}
 </c:if>
 
 <c:if test="${showBody}">
-    <div class="body${empty cssBody ? '' : ' '.concat(cssBody)}"${empty attrBody ? '' : ' '.concat(attrBody)}><%----%>
+    <div class="body${empty cssBody ? '' : ' '.concat(fn:trim(cssBody))}"${empty attrBody ? '' : ' '.concat(attrBody)}><%----%>
         ${bodyPreMarkup}
         <c:if test="${showHeading and inlineHeading}">
             ${headingMarkup}
         </c:if>
         <c:if test="${showText}">
-            <div class="text${empty cssText ? '' : ' '.concat(cssText)}"${empty attrText ? '' : ' '.concat(attrText)}><%----%>
+            <div class="text${empty cssText ? '' : ' '.concat(fn:trim(cssText))}"${empty attrText ? '' : ' '.concat(attrText)}><%----%>
                 <m:decorate>
                     ${pieceText}
                 </m:decorate>

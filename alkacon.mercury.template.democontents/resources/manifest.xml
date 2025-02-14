@@ -6660,10 +6660,6 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[Alkacon Software]]></value>
 				</property>
-				<property>
-					<name>Title_de</name>
-					<value><![CDATA[Alkacon Software]]></value>
-				</property>
 			</properties>
 			<relations>
 				<relation>
@@ -9216,10 +9212,6 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[Alkacon Software POI]]></value>
-				</property>
-				<property>
-					<name>Title_de</name>
 					<value><![CDATA[Alkacon Software POI]]></value>
 				</property>
 			</properties>
@@ -11934,10 +11926,6 @@ This module also creates a set of demo users during the import.]]></description>
 					<name>Title</name>
 					<value><![CDATA[OpenCms Promo Slider]]></value>
 				</property>
-				<property>
-					<name>Title_de</name>
-					<value><![CDATA[OpenCms Promo Slider]]></value>
-				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
@@ -11963,10 +11951,6 @@ This module also creates a set of demo users during the import.]]></description>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[FAQ Tab]]></value>
-				</property>
-				<property>
-					<name>Title_de</name>
 					<value><![CDATA[FAQ Tab]]></value>
 				</property>
 			</properties>

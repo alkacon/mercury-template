@@ -156,6 +156,7 @@
         <cms:jsonvalue key="css" value="${cssPath}" />
     </c:if>
     <cms:jsonvalue key="markerCluster" value="${empty markerCluster ? false : markerCluster}" />
+    <cms:jsonvalue key="markerTitle"><fmt:message key="msg.page.map.marker.title" /></cms:jsonvalue>
 </cms:jsonobject>
 
 <fmt:message var="cookieMessage" key="msg.page.privacypolicy.message.map-${provider}" />

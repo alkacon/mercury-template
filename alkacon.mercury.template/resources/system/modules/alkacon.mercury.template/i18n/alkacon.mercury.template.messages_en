@@ -895,6 +895,7 @@ msg.page.map.button.showmarkers=Show all
 msg.page.map.google.nokey=No Google Map API key found. Unable to display the map.
 msg.page.map.info.empty=Information not available
 msg.page.map.link.default.text=Show website
+msg.page.map.marker.title=Click for more details on this coordinate point
 msg.page.map.osm.nokey=No OpenStreetMap API key found. Unable to display the map.
 msg.page.map.route=Directions to this location
 msg.page.map.route.button=Show directions

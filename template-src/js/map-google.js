@@ -32,6 +32,9 @@ var m_maps = {};
 // all map data sets found on the page, as array for easy iteration
 var m_mapData = [];
 
+// all map data sets found on the page, as map for fast access
+var m_mapDataMap = {};
+
 // map styling
 var m_mapStyle = [];
 
@@ -78,7 +81,7 @@ function getCenterPointGraphic() {
     }
 }
 
-function getClusterGraphic(color) {
+function getClusterGraphic(color, markerTitle) {
 
     color = color ? color : Mercury.getThemeJSON("map-cluster", "#999999");
     return {
@@ -88,6 +91,7 @@ function getClusterGraphic(color) {
             const textColor = perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
             const svg = window.btoa(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" stroke="${strokeColor}" stroke-width="2" fill="${color}"/></svg>`);
             return new google.maps.Marker({
+                title: markerTitle,
                 position,
                 icon: {
                     url: `data:image/svg+xml;base64,${svg}`,
@@ -350,7 +354,7 @@ function showSingleMap(mapData, filterByGroup){
         }
     }
     if (mapData.markerCluster) {
-        new MarkerClusterer({markers: markers, map: map, renderer: getClusterGraphic()});
+        new MarkerClusterer({markers: markers, map: map, renderer: getClusterGraphic(undefined, mapData.markerTitle)});
     }
     // store map in global array, required e.g. to select marker groups etc.
     var map = {
@@ -378,6 +382,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
     if (!map) { // no cookie consent yet
         return;
     }
+    const mapData = m_mapDataMap[m_maps[mapId].id];
     const boundsNorthEast = {lat: null, lng: null};
     const boundSouthWest = {lat: null, lng: null};
     let checkBounds = function(coordinates) {
@@ -417,6 +422,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
                 checkBounds(coordinates);
             }
             const marker = new google.maps.Marker({
+                title: mapData.markerTitle,
                 position: new google.maps.LatLng(coordinates[1], coordinates[0]),
                 map: map,
                 icon: getFeatureGraphic(featuresColor),
@@ -441,7 +447,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
                 m_maps[mapId].infoWindow = infoWindow;
             });
         }
-        new MarkerClusterer({markers: markers, map: map, renderer: getClusterGraphic(featuresColor)});
+        new MarkerClusterer({markers: markers, map: map, renderer: getClusterGraphic(featuresColor, mapData.markerTitle)});
     }
     if (geoJsonOthers) {
         buildLayer(geoJsonOthers, true);
@@ -525,6 +531,7 @@ export function init(jQuery, debug) {
                         mapData.showPlaceholder = Mercury.initPlaceholder($mapElement, showMap);
                         if (DEBUG) console.info("GoogleMap found with id: " + mapData.id);
                         m_mapData.push(mapData);
+                        m_mapDataMap[mapData.id] = mapData;
                         if (! mapData.showPlaceholder) {
                             $mapElement.removeClass('placeholder');
                         }

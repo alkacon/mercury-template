@@ -50,11 +50,13 @@
                                     <c:out value='<li><a href=\"${navLink}\">' escapeXml="false" />
                                     <c:if test="${not empty navImage}">
                                         <c:set var="navTitle" value="${empty navText ? navElem.title : null}" />
+                                        <c:set var="navImageAlt" value="${cms.vfs.property[navImage]['Title']}" />
                                         <c:set var="navImageMarkup">
                                             <c:choose>
                                                 <c:when test="${fn:startsWith(navImage, '/')}">
                                                     <img src="<cms:link>${navImage}</cms:link>" height="12" width="12"<%--
                                                     --%><c:if test="${not empty navTitle}">
+                                                            <c:out value=" alt=\"${navImageAlt}\"" escapeXml="false" />
                                                             <c:out value=" title=\"${navTitle}\"" escapeXml="false" />
                                                         </c:if><%--
                                                     --%>/><%----%>

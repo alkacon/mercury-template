@@ -32,7 +32,7 @@
 }
 
 .facility-icons {
-    // may also be used outsie poi, e.g. in a map
+    // may also be used outside poi, e.g. in a map
     line-height: 1;
     margin-top: var(--#{$prefix}paragraph-margin-bottom);
     margin-bottom: var(--#{$prefix}paragraph-margin-bottom);
@@ -66,4 +66,33 @@
             width: auto;
         }
     }
+}
+
+@font-face {
+    // Inline 2 icons from the Mercury icon font as a base64 encoded WOFF font
+    // Inlining the icons here in the CSS is more efficient than inlining the SVG directly in the HTML,
+    // because the icons are only loaded once in the CSS, while in the HTML they would be inlined for each marker
+    font-display: auto;
+    font-family: 'map-facilities';
+    font-style: normal;
+    font-weight: normal;
+    src: url(data:application/x-font-woff;charset=utf-8;base64,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) format('woff');
+}
+.cif.cif-facilities::before {
+   font-family: 'map-facilities' !important;
+    text-rendering: auto;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.cif-facilities-wc::before {
+    // Icon 1: wc (toilet) - mapped to "w"
+    content: "w";
+}
+.cif-facilities-accessible-wc::before {
+    // Icon 2: wc-accessible (accessible toilet) - mapped to "x"
+    content: "x";
 }

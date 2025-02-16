@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="flag-icons-eac" viewBox="0 0 640 480">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="icon" viewBox="0 0 640 480">
   <path id="eac-a" fill="#fff" fill-opacity="1" fill-rule="nonzero" stroke="none" stroke-dasharray="none" stroke-miterlimit="4" stroke-opacity="1" stroke-width="3.1" d="M0 326.4h640V348H0z"/>
   <use xlink:href="#eac-a" width="600" height="330" transform="translate(0 -194.4)"/>
   <path id="eac-b" fill="#0087ff" fill-opacity="1" fill-rule="nonzero" stroke="none" stroke-dasharray="none" stroke-miterlimit="4" stroke-opacity="1" stroke-width="3.1" d="M0 348h640v132H0z"/>

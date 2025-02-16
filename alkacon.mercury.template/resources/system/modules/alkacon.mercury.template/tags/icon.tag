@@ -35,6 +35,12 @@
 <%@ attribute name="fromImage" type="java.lang.Boolean" required="false"
     description="If 'true', then do NOT use an icon from a default font but treat the 'icon' parameter as path to an image resource." %>
 
+<%@ attribute name="useSvg" type="java.lang.Boolean" required="false"
+    description="If 'true', load the icon using 'svg use:href', i.e. from an exernal file.
+    This is an alternative to displaying SVG icons with the 'inline' attribute.
+    Compared to loading the icon with 'img src', this allows for styling the icon with CSS 'fill' etc.
+    NOTE: This requires that the SVG icon has the attribute id='icon' set at the root svg node." %>
+
 <%@ attribute name="ariaLabel" required="false"
     description="The aria-label attribute to add to the generated tag.
     In case this is set, an attribut 'role=img' is also added.
@@ -54,7 +60,7 @@
 <c:set var="ariaHidden"     value="${empty ariaHidden ? empty ariaLabel : ariaHidden}" />
 <c:set var="icon"           value="${fn:trim(icon)}" />
 <c:choose>
-    <c:when test="${fromImage}">
+    <c:when test="${fromImage or useSvg}">
         <c:set var="inline"         value="${false}" />
     </c:when>
     <c:when test="${fn:startsWith(icon, 'cif-')}">
@@ -103,9 +109,8 @@
             <c:out value="${fn:replace(iconResource.content, 'xmlns=\"http://www.w3.org/2000/svg\" ', '')}" escapeXml="${false}" />
         </c:set>
     </c:when>
-    <c:when test="${fromImage or imgsrc}">
+    <c:when test="${fromImage or useSvg or imgsrc}">
         <m:icon-resource icon="${icon}" setFallback="${true}" fromImage="${fromImage}" />
-        <c:set var="iconClass" value="ico ico-img ${iconName}" />
         <c:choose>
             <c:when test="${not iconIsValid}">
                 <c:set var="iconClass" value="ico ico-svg ico-inline ${iconName} ico-missing" />
@@ -114,9 +119,24 @@
                 </c:set>
             </c:when>
             <c:otherwise>
-                <c:set var="iconMarkup">
-                    <m:image-direct image="${iconResource}" />
-                </c:set>
+                <c:choose>
+                    <c:when test="${useSvg}">
+                        <c:set var="iconClass" value="ico ico-svg ico-usesvg ${iconName}" />
+                        <c:set var="iconMarkup">
+                            <m:image-vars image="${iconResource}">
+                                <svg viewBox="0 0 ${imageWidth}${' '}${imageHeight}"><%----%>
+                                    <use href="${imageUrl}#icon"><%----%>
+                                </svg><%----%>
+                            </m:image-vars>
+                        </c:set>
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="iconClass" value="ico ico-img ${iconName}" />
+                        <c:set var="iconMarkup">
+                            <m:image-direct image="${iconResource}" />
+                        </c:set>
+                    </c:otherwise>
+                </c:choose>
             </c:otherwise>
         </c:choose>
     </c:when>

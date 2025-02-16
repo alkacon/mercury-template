@@ -9,37 +9,19 @@
 
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%
-   String value = (String)getJspContext().getAttribute("value");
-   String result = "";
-   if (value.startsWith("#") && (value.length()==4) || (value.length()==7)) {
-       try {
-           String rs, gs, bs;
-           if (value.length()==4) {
-               rs = value.substring(1, 2);
-               rs = rs + rs;
-               gs = value.substring(2, 3);
-               gs = gs + gs;
-               bs = value.substring(3, 4);
-               bs = bs + bs;
-           } else {
-               rs = value.substring(1, 3);
-               gs = value.substring(3, 5);
-               bs = value.substring(5, 7);
-           }
-           int r = Integer.valueOf(rs, 16);
-           int g = Integer.valueOf(gs, 16);
-           int b = Integer.valueOf(bs, 16);
-           result = "" + r + "," + g + "," + b;
-       } catch (Exception e) {
-           // ignore
-       }
-   } else if ("transparent".equals(value.trim())) {
-        result = "255, 255, 255, 0";
-   }
-   getJspContext().setAttribute("result", result);
-%>
+<c:choose>
+    <c:when test="${'transparent' eq fn:trim(value)}">
+        <c:set var="result" value="255, 255, 255, 0" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="rgb" value="${cms.color.hexToRgb(value)}" />
+        <c:if test="${not empty rgb}">
+            <c:set var="result" value="${rgb[0]}, ${rgb[1]}, ${rgb[2]}" />
+        </c:if>
+    </c:otherwise>
+</c:choose>
 <c:out value="${result}" />
 
 

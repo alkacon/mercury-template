@@ -431,8 +431,9 @@
         <c:if test="${not empty styleAttr}">
               <c:set var="styleAttr">${' '}style="${styleAttr}"</c:set>
         </c:if>
+        <c:set var="tagName" value="${useAsideTag ? 'aside' : 'main'}" />
 
-        <main class="area-content ${areaCss}"${styleAttr}><%----%>
+        <${tagName} class="area-content ${areaCss}"${styleAttr}><%----%>
 
             <c:set target="${valueMap}" property="Type"             value="row" />
             <c:set target="${valueMap}" property="Name"             value="main" />
@@ -441,7 +442,7 @@
             <m:container value="${valueMap}" title="${title}" />
 
             <m:nl />
-        </main><%----%>
+        </${tagName}><%----%>
     </c:when>
 
 
@@ -450,8 +451,9 @@
         <c:set var="asideFirst"                 value="${not showSideLast}" />
         <c:set var="asideWide"                  value="${'true' eq cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.side.wide']}" />
         <c:set var="asideOnTop"                 value="${setting.asideOnTop.toBoolean}" />
+        <c:set var="tagName"                    value="${useAsideTag ? 'aside' : 'main'}" />
 
-        <main class="area-content ${areaCss}"><%----%>
+        <${tagName} class="area-content ${areaCss}"><%----%>
             <div class="container"><%----%>
                 <div class="row"><%----%>
                     <c:set target="${valueMap}" property="Type"             value="row" />
@@ -469,7 +471,7 @@
                     <m:nl />
                 </div><%----%>
             </div><%----%>
-        </main><%----%>
+        </${tagName}><%----%>
     </c:when>
 
 

@@ -318,7 +318,8 @@
                     <c:set var="sort" value="${controllers.sorting}" />
                         <div class="select"><%----%>
                             <%-- Display select box with sort options where the currently chosen option is selected --%>
-                            <select name="${sort.config.sortParam}" class="form-control" onchange="submitSearchForm()"><%----%>
+                            <fmt:message key="msg.page.search.sort" var="sortLabel" />
+                            <select aria-label="${sortLabel}" name="${sort.config.sortParam}" class="form-control" onchange="submitSearchForm()"><%----%>
                             <m:nl/>
                                 <c:forEach var="option" items="${sort.config.sortOptions}">
                                     <option value="${option.paramValue}" ${sort.state.checkSelected[option]?"selected":""}>${option.label}</option><%----%>

@@ -126,7 +126,7 @@ $if(field.parameters)$$if(field.parameters.full)$$else$<div class="inline-group"
 $!  !$<div id="$field.name$_box">
 $!  !$$field.items:{
 $!      !$<label for="$field.name$_$i0$" class="$if(field.parameters)$$if(field.parameters.toggle)$toggle$else$checkbox$endif$$else$checkbox$endif$$if(errormessage)$ state-error$endif$">
-$!          !$<input id="$field.name$_$i0$" type="checkbox" name="$field.name$" value="$it.value$" class="check"$if(it.selected)$ checked="checked"$endif$/><i></i>$it.label$
+$!          !$<input id="$field.name$_$i0$" type="checkbox" name="$field.name$" value="$it.value$" class="check"$if(it.selected)$ checked="checked"$endif$/><i></i><span>$it.label$</span>
 $!      !$</label>
 $!  !$}$
 $!  !$</div>
@@ -253,7 +253,7 @@ $row_start(field=field)$
 $!  !$<div id="$field.name$_box">
 $!      !$$field.items:{
 $!          !$<label for="$field.name$_$i0$" class="$if(field.parameters)$$if(field.parameters.toggle)$toggle$else$radio$endif$$else$radio$endif$$if(errormessage)$ state-error$endif$">
-$!              !$<input type="radio" name="$field.name$" id="$field.name$_$i0$" value="$it.value$" class="radio"$if(it.selected)$ checked="checked"$endif$$if(field.hasSubFields)$ onchange="toggleWebformSubFields(this);"$endif$/><i></i>$it.label$
+$!              !$<input type="radio" name="$field.name$" id="$field.name$_$i0$" value="$it.value$" class="radio"$if(it.selected)$ checked="checked"$endif$$if(field.hasSubFields)$ onchange="toggleWebformSubFields(this);"$endif$/><i></i><span>$it.label$</span>
 $!          !$</label>
 $!      !$}$
 $!  !$</div>

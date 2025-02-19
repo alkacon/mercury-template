@@ -69,44 +69,70 @@
     </c:forEach>
     <c:set var="searchscope">(${searchscope})</c:set>
 </c:if>
-<c:set var="types"><%--
-    --%>binary<%--
-    --%>,containerpage<%--
-    --%>,plain<%--
- --%></c:set>
+<%-- Use types specified via property "search.types.override", if provided. --%>
+<c:set var="types" value="${cms.vfs.propertySearch[cms.uri()]['search.types.override']}"/>
+<c:if test="${empty types}">
+    <c:set var="types"><%--
+        --%>binary<%--
+        --%>,containerpage<%--
+        --%>,plain<%--
+    --%></c:set>
 
-<c:set var="additionalTypes" value="${cms.vfs.propertySearch[cms.uri()]['search.types.additional']}"/>
-<c:if test="${not empty additionalTypes}">
-    <c:set var="types">${types},${additionalTypes}</c:set>
+    <c:set var="additionalTypes" value="${cms.vfs.propertySearch[cms.uri()]['search.types.additional']}"/>
+    <c:if test="${not empty additionalTypes}">
+        <c:set var="types">${types},${additionalTypes}</c:set>
+    </c:if>
+
+    <%-- automatically determine the types to search for by the availability of detail pages. --%>
+    <c:set var="adeManager" value="<%= org.opencms.main.OpenCms.getADEManager() %>" />
+    <c:set var="adeConfig" value="${adeManager.lookupConfiguration(cms.vfs.cmsObject, cms.pageResource.rootPath)}" />
+
+    <c:choose>
+        <c:when test="${not empty adeConfig.defaultDetailPage}">
+            <c:set var="allAvailableTypes" value="${adeConfig.resourceTypes}" />
+            <c:forEach var="type" items="${allAvailableTypes}">
+                <c:if test="${not type.detailPagesDisabled}">
+                    <c:set var="types">${types},${type.typeName}</c:set>
+                </c:if>
+            </c:forEach>
+        </c:when>
+        <c:otherwise>
+        <c:set var="detailPages" value="${adeConfig.allDetailPages}" />
+            <c:forEach var="page" items="${detailPages}">
+                <c:if test="${not fn:startsWith(page.type,'function@')}">
+                    <c:set var="types">${types},${page.type}</c:set>
+                </c:if>
+            </c:forEach>
+        </c:otherwise>
+    </c:choose>
+
+    <c:set var="exTypes" value="${cms.vfs.propertySearch[cms.uri()]['search.types.exclude']}"/>
+    <c:set var="excludeTypes" value="${[]}" />
+    <c:if test="${not empty exTypes }">
+        <c:forTokens var="type" items="${exTypes}" delims=",">
+            <c:set var="ignore" value="${excludeTypes.add(fn:trim(type))}" />
+        </c:forTokens>
+    </c:if>
 </c:if>
-
-<%-- automatically determine the types to search for by the availability of detail pages. --%>
-<c:set var="adeManager" value="<%= org.opencms.main.OpenCms.getADEManager() %>" />
-<c:set var="adeConfig" value="${adeManager.lookupConfiguration(cms.vfs.cmsObject, cms.pageResource.rootPath)}" />
-
-<c:choose>
-    <c:when test="${not empty adeConfig.defaultDetailPage}">
-        <c:set var="allAvailableTypes" value="${adeConfig.resourceTypes}" />
-        <c:forEach var="type" items="${allAvailableTypes}">
-            <c:if test="${not type.detailPagesDisabled}">
-                <c:set var="types">${types},${type.typeName}</c:set>
-            </c:if>
-        </c:forEach>
-    </c:when>
-    <c:otherwise>
-    <c:set var="detailPages" value="${adeConfig.allDetailPages}" />
-        <c:forEach var="page" items="${detailPages}">
-            <c:if test="${not fn:startsWith(page.type,'function@')}">
-                <c:set var="types">${types},${page.type}</c:set>
-            </c:if>
-        </c:forEach>
-    </c:otherwise>
-</c:choose>
-
 <c:set var="typesRestriction" value="" />
-<c:forEach var="type" items="${fn:split(types,',')}" varStatus="status">
-    <c:set var="typesRestriction">${typesRestriction}${status.first ? '' : ' OR '}${fn:trim(type)}</c:set>
-</c:forEach>
+<c:choose>
+<c:when test="${empty excludeTypes}">
+<c:set var="isFirst" value="${true}" />
+    <c:forTokens var="type" items="${types}" delims="," varStatus="status">
+        <c:set var="typesRestriction">${typesRestriction}${status.first ? '' : ' OR '}${fn:trim(type)}</c:set>
+    </c:forTokens>
+</c:when>
+<c:otherwise>
+    <c:set var="isFirst" value="${true}" />
+    <c:forTokens var="type" items="${types}" delims=",">
+        <c:set var="t" value="${fn:trim(type)}"/>
+        <c:if test="${not excludeTypes.contains(t)}">
+            <c:set var="typesRestriction">${typesRestriction}${isFirst ? '' : ' OR '}${t}</c:set>
+            <c:set var="isFirst" value="${false}" />
+        </c:if>
+    </c:forTokens>
+</c:otherwise>
+</c:choose>
 
 <c:set var="returnFields">disptitle_${cms.locale}_sort,disptitle_sort,lastmodified,${cms.locale}_excerpt,id,path,mercury.detail.link_dprop,description_${cms.locale},search.boost_mvs</c:set>
 <c:set var="boostPage" value="${20}" />

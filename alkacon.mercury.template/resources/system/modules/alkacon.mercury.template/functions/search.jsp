@@ -368,8 +368,8 @@
                             <h3 tabindex="0"><fmt:message key="msg.page.search.failed" /></h3><%----%>
                             <p><%----%>
                                 <fmt:message key="msg.page.search.query.changed">
-                                    <fmt:param>${common.state.query}</fmt:param>
-                                    <fmt:param>${search.finalQuery.query}</fmt:param>
+                                    <fmt:param>${cms:escapeHtml(common.state.query)}</fmt:param>
+                                    <fmt:param>${cms:escapeHtml(search.finalQuery.query)}</fmt:param>
                                 </fmt:message>
                             </p><%----%>
                         </div><%----%>

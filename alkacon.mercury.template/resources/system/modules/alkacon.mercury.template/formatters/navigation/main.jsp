@@ -127,19 +127,21 @@
             <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
             <c:set var="isFinalCurrentPage" value="${isCurrentPage and currentPageFolder eq cms.sitePath[navElem.resource.rootPath]}" />
 
-            <c:set var="menuType" value="${isCurrentPage ? 'active ' : ''}" />
-            <c:set var="menuType" value="${isFinalCurrentPage ? menuType.concat('final ') : menuType}" />
-            <c:set var="menuType" value="${i == 0 ? menuType.concat('nav-first ') : menuType}" />
-            <c:set var="menuType" value="${i == navLength ? menuType.concat('nav-last ') : menuType}" />
+            <m:concat var="menuType" strings="${[
+                isCurrentPage ? 'active' : '',
+                isFinalCurrentPage ? 'final' : '',
+                i == 0 ? 'nav-first' : '',
+                i == navLength ? 'nav-last' : ''
+            ]}" leadSpace="${false}" />
 
             <%-- ###### Check for mega menu ######--%>
             <c:set var="megaMenu" value="" />
             <c:if test="${isTopLevel}">
 
                 <c:if test="${empty navTarget and not empty navElem.info and not fn:startsWith(navElem.info, '#') and not fn:startsWith(navElem.info, '/')}">
-                    <%-- Append navInfo as CSS class, make sure this contains no invalid characters by running it through file translation --%>
-                    <m:set-content-disposition name="${fn:toLowerCase(fn:trim(navElem.info))}" suffix="" setFilenameOnly="${true}"/>
-                    <c:set var="menuType" value="${menuType.concat(contentDispositionFilename)}" />
+                    <%-- Append navInfo as CSS class, make sure this contains no invalid characters by running it through c:out --%>
+                    <c:set var="menuTypeCss"><c:out value="${fn:trim(navElem.info)}" /></c:set>
+                    <m:concat var="menuType" strings="${[menuType, menuTypeCss]}" leadSpace="${false}" />
                 </c:if>
 
                 <c:set var="megaMenuFile" value="${cms.sitemapConfig.attribute['template.mega.menu.filename'].isSetNotNone ? cms.sitemapConfig.attribute['template.mega.menu.filename'] : 'mega.menu'}" />
@@ -154,13 +156,13 @@
                 <c:set var="megaMenuRes" value="${cms.vfs.xml[megaMenuVfsPath]}" />
                 <c:if test="${not empty megaMenuRes}">
                     <c:set var="megaMenu" value=' data-megamenu="${megaMenuRes.resource.link}"' />
-                    <c:set var="menuType" value="${menuType.concat(' ').concat('mega')}" />
+                    <m:concat var="menuType" strings="${[menuType, 'mega']}" leadSpace="${false}" />
                     <c:choose>
                         <c:when test="${megaMenuRes.resource.property['mercury.mega.display'] eq 'mobile'}">
-                            <c:set var="menuType" value="${menuType.concat(' mega-mobile')}" />
+                            <m:concat var="menuType" strings="${[menuType, 'mega-mobile']}" leadSpace="${false}" />
                         </c:when>
                         <c:when test="${not startSubMenu}">
-                            <c:set var="menuType" value="${menuType.concat(' mega-only')}" />
+                            <m:concat var="menuType" strings="${[menuType, 'mega-only']}" leadSpace="${false}" />
                         </c:when>
                     </c:choose>
                 </c:if>
@@ -185,13 +187,12 @@
                 </c:otherwise>
             </c:choose>
 
-            <c:set var="menuType" value="${startSubMenu or hasMegaMenu ? menuType.concat(' expand') : menuType}" />
+            <m:concat var="menuType" strings="${[menuType, startSubMenu or hasMegaMenu ? 'expand' : '']}" leadSpace="${false}" />
 
             <c:out value='<li class="${menuType}"${megaMenu}>${empty menuType ? "" : nl}' escapeXml="false" />
 
             <c:set var="navText"><c:out value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
                 ? navElem.title : navElem.navText}" /></c:set>
-
 
             <c:choose>
 
@@ -241,7 +242,7 @@
                 </c:when>
             </c:choose>
 
-            <c:if test="${nextLevel < navElem.navTreeLevel}">
+            <c:if test="${nextLevel lt navElem.navTreeLevel}">
                 <c:forEach begin="1" end="${navElem.navTreeLevel - nextLevel}" >
                     <c:out value='</li>${nl}</ul>${nl}' escapeXml="false" />
                 </c:forEach>

@@ -367,6 +367,8 @@ $dropshadow:                        rgba(0, 0, 0, 0.3) !default;
 $panel-shadow:                      0px 1px 1px rgba(0, 0, 0, .05) !default;
 $nav-shadow:                        0 6px 12px $dropshadow !default;
 
+// Disabled background-image, used for model group editor and elsewhere to mark "disabled" elements
+$disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(0,0,0,0.1) 10px,rgba(0,0,0,0.1) 20px);
 
 // Buttons
 
@@ -832,15 +834,14 @@ $policy-banner-opacity:             0.95 !default;
 
 $togglebox-height:                  4rem !default;
 $togglebox-width:                   20rem !default;
-$togglebox-border-color:            $text-dark !default;
 $togglebox-border-size:             0.1rem !default;
 $togglebox-slider-margin:           0.2rem !default;
+$togglebox-border-color:            $text-dark !default;
 $togglebox-disabled-color:          $disabled-color !default;
 $togglebox-slider-color:            $grey-light !default;
+$togglebox-disabled-bg:             $disabled-bg !default;
 
-$cookie-notice-bg-color:            var(--#{$prefix}highlight-color) !default;
-$cookie-notice-color:               var(--#{$prefix}highlight-fg-color) !default;
-$cookie-notice-alt-color:           $cookie-notice-color !default;
+$cookie-notice-bg-color:            $highlight-color !default; // must be a real color value, not a css variable
 $cookie-notice-font-size-mobile:    1.2rem !default;
 $cookie-notice-font-size-desktop:   $font-size-base !default;
 $cookie-notice-large-font-size:     125% !default;
@@ -1035,10 +1036,6 @@ $inset-color:                       $grey-light !default;
 $effect-static-border:              1px solid $grey-light !default;
 $transition-timing:                 $default-transition-time !default; // default timing used for :hover and other transitions
 $transition-function:               ease; // default timing function used for :hover and other transitions
-
-
-// Disabled background-image, used for model group editor and elsewhere to mark "disabled" elements
-$disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(0,0,0,0.1) 10px,rgba(0,0,0,0.1) 20px);
 
 // Disabled cursor, used e.g. for disabled buttons in list pagination
 $cursor-disabled:                   not-allowed !default;

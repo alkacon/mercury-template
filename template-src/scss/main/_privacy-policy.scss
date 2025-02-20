@@ -35,11 +35,13 @@
     }
 
     .banner {
+        @include set-box-colors($policy-banner-background, true, true);
+        color: var(--#{$prefix}body-color);
+        background-color: var(--#{$prefix}body-bg);
+
         display: none; // will be shown by JavaScript
         box-shadow: 0px -3px 10px 2px $dropshadow;
-        background-color: $policy-banner-background;
         opacity: $policy-banner-opacity;
-        color: get-text-color($policy-banner-background);
         padding: 20px;
         width: 100vw;
 
@@ -54,10 +56,6 @@
                 bottom: 0;
             }
         }
-    }
-
-    * {
-        color: get-text-color($policy-banner-background);
     }
 
     .title {
@@ -185,6 +183,7 @@
         min-width: auto;
         border: none;
         &:not(:hover):not(:focus) {
+            color: var(--#{$prefix}body-color);
             background-color: transparent;
         }
     }
@@ -353,8 +352,13 @@
 
         .toggle-inner::before,
         .toggle-inner::after {
-            background-color: $grey-light !important;
-            color: $grey !important;
+            background-color: $togglebox-disabled-color !important;
+            color: get-text-color($togglebox-disabled-color) !important;
+        }
+
+        .toggle-inner::before,
+        .toggle-inner::after {
+            background-image: $togglebox-disabled-bg;
         }
     }
 }
@@ -589,8 +593,10 @@ html.keyboard-nav {
 
 #mercury-page .external-cookie-notice {
     // #mercury-page .element selectors added to give rules higher importance
-    color: $cookie-notice-color;
-    background-color: $cookie-notice-bg-color;
+    @include set-box-colors($cookie-notice-bg-color, true, true);
+    color: var(--#{$prefix}body-color);
+    background-color: var(--#{$prefix}body-bg);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -631,7 +637,6 @@ html.keyboard-nav {
 
     .cookie-footer {
         font-size: $cookie-notice-small-font-size;
-        color: $cookie-notice-alt-color;
 
         > *:last-child {
             margin-bottom: 0;
@@ -659,9 +664,6 @@ html.keyboard-nav {
                 height: $cookie-notice-togglebox-height;
                 line-height: $cookie-notice-togglebox-height;
                 font-size: $cookie-notice-small-font-size;
-            }
-            &::after {
-                background-color: $cookie-notice-bg-color;
             }
         }
 

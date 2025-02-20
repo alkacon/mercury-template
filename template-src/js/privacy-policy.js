@@ -402,7 +402,7 @@ function createExternalElementToggle(heading, message, footer, isModal) {
             (typeof m_policy.togLEx !== "undefined" ?
                 '<div class=\"cookie-switch pp-toggle pp-toggle-external animated\">' +
                     '<input id=\"' + toggleId + '\" type=\"checkbox\" class=\"toggle-check\"' + (isModal ? ' disabled' : '') + '>' +
-                    '<label for=\"' + toggleId + '\" class=\"toggle-label\">' +
+                    '<label for=\"' + toggleId + '\" class=\"toggle-label\" title=\"' + m_policy.togLEx + '\">' +
                         '<span class=\"toggle-box\">' +
                             '<span class=\"toggle-inner\" data-checked=\"' + m_policy.togOn + '\" data-unchecked=\"' + m_policy.togOff + '\"></span>' +
                             '<span class=\"toggle-slider\"></span>' +

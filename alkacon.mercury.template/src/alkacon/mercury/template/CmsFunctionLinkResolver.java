@@ -88,6 +88,14 @@ public final class CmsFunctionLinkResolver {
                     ? link.substring(OPENCMS_PREFIX.length()).trim()
                     : link.trim();
 
+                    // remove and store #hash suffix
+                    String anchor = "";
+                    int apos = iLink.indexOf('#');
+                    if (apos != -1) {
+                        anchor = iLink.substring(apos - 1);
+                        iLink = iLink.substring(0, apos - 1);
+                    }
+
                     if (iLink.startsWith(LINK_FUNCTION)) {
 
                         // link to a function detail page
@@ -125,6 +133,9 @@ public final class CmsFunctionLinkResolver {
                             // links between localized regular pages
                             result = cmsBean.getLocaleResource().get(targetLocale).getLink();
                         }
+                    }
+                    if ((result != null) && (anchor != null)) {
+                        result = result + anchor;
                     }
                 }
             }

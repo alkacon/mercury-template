@@ -92,7 +92,7 @@ public final class CmsFunctionLinkResolver {
                     String anchor = "";
                     int apos = iLink.indexOf('#');
                     if (apos != -1) {
-                        anchor = iLink.substring(apos - 1);
+                        anchor = iLink.substring(apos);
                         iLink = iLink.substring(0, apos - 1);
                     }
 

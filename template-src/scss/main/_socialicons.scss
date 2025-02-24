@@ -32,6 +32,14 @@
 }
 
 .social-icons {
+    --#{$prefix}sl-margin: #{$social-links-margin};
+    --#{$prefix}sl-size: #{$social-links-size};
+    --#{$prefix}sl-box-height: #{$social-links-box-height};
+    --#{$prefix}sl-border-width: #{$social-links-border-width};
+    --#{$prefix}sl-border-radius: #{$social-links-border-radius};
+    --#{$prefix}sl-color: #{$social-links-color};
+    --#{$prefix}sl-bg: #{$social-links-bg};
+
     list-style: none;
     font-size: 0;
     padding: 0;
@@ -46,34 +54,36 @@
 
     &.element {
         // social icons use display flex, so margin of items must be subtracted from element default margin
-        margin-bottom: calc(var(--#{$prefix}element-margin) - $social-links-margin);
+        margin-bottom: calc(var(--#{$prefix}element-margin) - var(--#{$prefix}sl-margin));
     }
 
     li {
+        --#{$prefix}sl-box-inner-height: calc(var(--#{$prefix}sl-box-height) - 2 * var(--#{$prefix}sl-border-width));
+
         display: inline-block;
         margin-top: 0;
         margin-left: 0;
-        margin-right: $social-links-margin;
-        margin-bottom: $social-links-margin;
+        margin-right: var(--#{$prefix}sl-margin);
+        margin-bottom: var(--#{$prefix}sl-margin);
         vertical-align: middle;
 
         a {
-            color: $social-links-color;
-            background-color: $social-links-bg;
-            width: $social-links-box-height;
-            height: $social-links-box-height;
+            color: var(--#{$prefix}sl-color);
+            background-color: var(--#{$prefix}sl-bg);
+            width: var(--#{$prefix}sl-box-height);
+            height: var(--#{$prefix}sl-box-height);
             display: block;
-            @if ($social-links-border-width != 0) {
-                border: $social-links-border-width solid $social-links-color;
+            @if (var(--#{$prefix}sl-border-width) != 0) {
+                border: var(--#{$prefix}sl-border-width) solid var(--#{$prefix}sl-color);
             } @else {
                 border: none;
             }
 
-            font-size: $social-links-size;
-            border-radius: $social-links-border-radius;
+            font-size: var(--#{$prefix}sl-size);
+            border-radius: var(--#{$prefix}sl-border-radius);
 
             * {
-                color: $social-links-color;
+                color: var(--#{$prefix}sl-color);
             }
 
             &:hover {
@@ -100,27 +110,34 @@
     }
 
     .ico,
+    .ico-svg,
     .fa,
     .fas,
     .fab {
-        width: #{$social-links-box-height - 2*$social-links-border-width};
-        line-height: #{$social-links-box-height - 2*$social-links-border-width};
-        text-align: center;
-        font-size: $social-links-size;
-    }
-
-    .ico-svg {
         line-height: 1;
-        height: #{$social-links-box-height - 2*$social-links-border-width};
         display: inline-flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
+        min-width: var(--#{$prefix}sl-box-inner-height);
+        height: var(--#{$prefix}sl-box-inner-height);
+        font-size: var(--#{$prefix}sl-size);
     }
 
-    .bgi {
-        width: #{$social-links-box-height - 2*$social-links-border-width};
-        height: #{$social-links-box-height - 2*$social-links-border-width};
-        vertical-align: top;
+    // Social icons with border
+    &.social-icons-border {
+        --#{$prefix}sl-color: var(--#{$prefix}link-color);
+        --#{$prefix}sl-bg: var(--#{$prefix}body-bg);
+        --#{$prefix}sl-border-width: #{$social-links-circle-border-width};
+    }
+
+    // Round social icons
+    &.social-icons-circle {
+        --#{$prefix}sl-border-radius: 100%;
+    }
+
+    // Larger social icons
+    &.social-icons-large {
+        --#{$prefix}sl-size: #{$social-links-size-large};
     }
 }
 
@@ -135,7 +152,7 @@
 
     .share_text {
         display: inline-block;
-        line-height: $social-links-box-height;
+        line-height: var(--#{$prefix}sl-box-height);
     }
 }
 
@@ -225,6 +242,7 @@
     .social-icons li.#{$social-link} a {
         &:hover {
             background-color: $social-color;
+            border-color: $social-color;
         }
     }
 }

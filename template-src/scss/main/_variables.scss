@@ -312,7 +312,7 @@ $lead-font-size-mobile:             round($lead-font-size * 9) * 0.1 !default;
 $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text
 $text-contrast-threshold:           2.5 !default;
 
-$text-use-wcag-contrast:            false !default; // if true, then $text-contrast-threshold is set to predefined values and $text-lightness-threshold is ignored
+$text-use-wcag-contrast:            true !default; // if true, then $text-contrast-threshold is set to predefined values and $text-lightness-threshold is ignored
 $wacg-conformance-level:            "AA" !default; // if this is not set to "AAA" then "AA" is assumed, see https://www.w3.org/WAI/WCAG21/Understanding/conformance#conformance-requirements
 @if $text-use-wcag-contrast {
     @if $wacg-conformance-level == "AAA" {
@@ -971,12 +971,12 @@ $color-pbg-twitter:                 $color-x !default;
 $social-links-bg:                   var(--#{$prefix}grey) !default;
 $social-links-color:                var(--#{$prefix}body-color) !default;
 $social-links-size:                 20px !default;
+$social-links-size-large:           30px !default;
 $social-links-margin:               var(--#{$prefix}default-margin-small) !default;
-$social-links-size-half:            $social-links-size * 0.5 !default;
-$social-links-box-height:           $social-links-size * 2 !default;
+$social-links-box-height:           calc(2 * var(--#{$prefix}sl-size)) !default;
 $social-links-border-radius:        var(--#{$prefix}btn-border-radius) !default;
-$social-links-border-width:         0 !default;
-
+$social-links-border-width:         0px !default;
+$social-links-circle-border-width:  calc(0.1 * var(--#{$prefix}sl-size)) !default;
 
 // Layout rows
 

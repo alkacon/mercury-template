@@ -33,7 +33,7 @@
 
     <%-- If no navigation items are found, no output must be generated online --%>
 
-    <div class="element type-nav-side pivot${setCssWrapperAll}"><%----%>
+    <nav class="element type-nav-side pivot${setCssWrapperAll}"><%----%>
     <m:nl />
 
         <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
@@ -144,7 +144,7 @@
         </ul><%----%>
         <m:nl />
 
-    </div><%----%>
+    </nav><%----%>
 
 </m:nav-items>
 </m:nav-vars>

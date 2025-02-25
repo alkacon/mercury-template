@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="link"
+    display-name="icon-link"
     body-content="empty"
     trimDirectiveWhitespaces="true"
     description="Generates a link with optional icon prefix.
@@ -18,6 +18,10 @@
 <%@ attribute name="addLi" type="java.lang.String" required="false"
     description="If provided, adds an LI tag around the generated href tag with a class containing the argument value." %>
 
+<%@ attribute name="inline" type="java.lang.Boolean" required="false"
+    description="Controls if the icon should be inlined as SVG (the default),
+    or rendered from an icon font." %>
+
 <%@ attribute name="resultMap" type="java.util.HashMap" required="false"
     description="If provided, store the results in this map and do NOT generate any HTML output." %>
 
@@ -31,17 +35,18 @@
 <c:set var="linkText" value="${link.value.Text}" />
 <c:set var="autoLi" value="${addLi ne 'none'}" />
 <c:set var="addLi" value="${autoLi ? addLi : null}" />
+<c:set var="inline" value="${empty inline or inline}" />
 
 <c:set var="linkParts" value="${fn:split(linkText, '||')}" />
 <c:forEach var="linkPart" items="${linkParts}">
     <c:choose>
         <c:when test="${fn:startsWith(linkPart, 'icon:')}">
             <c:set var="iconClass" value="${fn:substringAfter(linkPart, 'icon:')}" />
-            <c:set var="linkIcon"><m:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" inline="${true}" /></c:set>
+            <c:set var="linkIcon"><m:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon" inline="${inline}" /></c:set>
         </c:when>
         <c:when test="${fn:startsWith(linkPart, 'icon-last:')}">
             <c:set var="iconClass" value="${fn:substringAfter(linkPart, 'icon-last:')}" />
-            <c:set var="linkIcon"><m:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon icon-last" inline="${true}" /></c:set>
+            <c:set var="linkIcon"><m:icon icon="${iconClass}" tag="span" cssWrapper="ls-icon icon-last" inline="${inline}" /></c:set>
             <c:if test="${not empty addSpan}">
                 <c:set var="addSpan" value="${addSpan} icon-last" />
             </c:if>

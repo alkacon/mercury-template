@@ -103,7 +103,7 @@
     .share_text {
         display: none;
         text-align: left;
-        padding-right: var(--#{$prefix}default-margin-small);
+        padding-right: var(--#{$prefix}ws-margin);
         font-size: var(--#{$prefix}body-font-size);
         font-family: var(--#{$prefix}btn-font-family);
         font-weight: $btn-font-weight;
@@ -123,24 +123,26 @@
         font-size: var(--#{$prefix}sl-size);
     }
 
-    // Social icons with border
-    &.social-icons-border {
+    &.outlined {
         --#{$prefix}sl-color: var(--#{$prefix}link-color);
         --#{$prefix}sl-bg: var(--#{$prefix}body-bg);
         --#{$prefix}sl-border-width: #{$social-links-circle-border-width};
     }
 
-    // Round social icons
-    &.social-icons-circle {
+    &.rounded {
         --#{$prefix}sl-border-radius: 100%;
     }
 
-    // Larger social icons
-    &.social-icons-large {
+    &.enlarged {
         --#{$prefix}sl-size: #{$social-links-size-large};
     }
 }
 
+.ls-buttons {
+    .social-icons {
+        margin-bottom: calc(-1 *  var(--#{$prefix}sl-margin));
+    }
+}
 
 // Add class 'verbose' to see the 'share' text right to the icons
 

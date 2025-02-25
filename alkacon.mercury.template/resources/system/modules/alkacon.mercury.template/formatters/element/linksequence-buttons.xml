@@ -2,24 +2,26 @@
 
 <NewFormatters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/formatters/new_formatter.xsd">
   <NewFormatter language="en">
-    <NiceName><![CDATA[%(key.type.m-linksequence.name)%(key.type.for-header.suffix)]]></NiceName>
+    <NiceName><![CDATA[%(key.type.m-linksequence.formatter.buttons)]]></NiceName>
     <Type><![CDATA[m-linksequence]]></Type>
-    <Key><![CDATA[m/element/linksequence-header]]></Key>
+    <Key><![CDATA[m/element/linksequence-buttons]]></Key>
     <Jsp>
       <link type="WEAK">
         <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/linksequence.jsp]]></target>
         <uuid>8970f120-10a0-40c9-8796-4a3f5df368ac</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-linksequence.description.formatter)]]></Description>
-    <Rank><![CDATA[7000]]></Rank>
+    <Description><![CDATA[%(key.type.m-linksequence.description.formatter.buttons)]]></Description>
+    <Rank><![CDATA[8000]]></Rank>
     <Match>
       <Types>
-        <ContainerType><![CDATA[linksequence-header]]></ContainerType>
+        <ContainerType><![CDATA[element]]></ContainerType>
+        <ContainerType><![CDATA[m-element]]></ContainerType>
+        <ContainerType><![CDATA[linksequence]]></ContainerType>
       </Types>
     </Match>
     <AutoEnabled>false</AutoEnabled>
-    <SearchContent>false</SearchContent>
+    <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>
     <IncludeSettings>
       <link type="WEAK">
@@ -31,16 +33,26 @@
       <IncludeName><![CDATA[cssWrapper.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[hsize.element.0]]></IncludeName>
+      <IncludeName><![CDATA[cssWrapper2.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[linksequenceType.linksequence]]></IncludeName>
+      <IncludeName><![CDATA[cssWrapper3.default]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[iconClass.header.metaLinks]]></IncludeName>
+      <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[addCssWrapper.header.metaLinks]]></IncludeName>
+      <IncludeName><![CDATA[buttonStyle.linksequence]]></IncludeName>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[linksequenceType]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[ls-buttons]]></Default>
+    </Setting>
+    <Setting>
+      <PropertyName><![CDATA[iconClass]]></PropertyName>
+      <Widget><![CDATA[hidden]]></Widget>
+      <Default><![CDATA[none]]></Default>
     </Setting>
   </NewFormatter>
 </NewFormatters>

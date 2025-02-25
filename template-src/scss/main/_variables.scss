@@ -957,6 +957,7 @@ $color-instagram:                   #c13584 !default;
 $color-mail:                        #999999 !default;
 $color-wallsio:                     #000000 !default;
 $color-slideshare:                  #e98325 !default;
+$color-generic:                     $body-color !default;
 
 
 // List of preview background (pbg) colors
@@ -1001,7 +1002,8 @@ $social-links:
     (instagram, $color-instagram),
     (mail, $color-mail),
     (wallsio, $color-wallsio),
-    (slideshare, $color-slideshare) !default;
+    (slideshare, $color-slideshare),
+    (generic, $color-generic) !default;
 
 
 // Tooltips

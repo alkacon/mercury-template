@@ -888,6 +888,12 @@
       </AddFormatter>
       <AddFormatter>
         <link type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/linksequence-buttons.xml]]></target>
+          <uuid>adc8544f-f338-11ef-aab6-0242ac11002b</uuid>
+        </link>
+      </AddFormatter>
+      <AddFormatter>
+        <link type="WEAK">
           <target><![CDATA[/system/modules/alkacon.mercury.template/formatters/element/linksequence-header.xml]]></target>
           <uuid>3a1d86f0-ce5b-11e9-a312-0242ac11002b</uuid>
         </link>

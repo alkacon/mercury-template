@@ -3717,6 +3717,24 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[buttonStyle.linksequence]]></IncludeName>
+      <PropertyName><![CDATA[buttonStyle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.linksequence.buttonStyle)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.linksequence.buttonStyle.help)]]></Description>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[squared]]></Default>
+      <WidgetConfig><![CDATA[
+        squared:          %(key.msg.setting.linksequence.buttonStyle.squared)|
+        rounded:          %(key.msg.setting.linksequence.buttonStyle.rounded)|
+        squared outlined: %(key.msg.setting.linksequence.buttonStyle.squared) %(key.msg.setting.linksequence.buttonStyle.outlined)|
+        rounded outlined: %(key.msg.setting.linksequence.buttonStyle.rounded) %(key.msg.setting.linksequence.buttonStyle.outlined)|
+        squared enlarged: %(key.msg.setting.linksequence.buttonStyle.squared) %(key.msg.setting.linksequence.buttonStyle.enlarged)|
+        rounded enlarged: %(key.msg.setting.linksequence.buttonStyle.rounded) %(key.msg.setting.linksequence.buttonStyle.enlarged)|
+        squared outlined enlarged: %(key.msg.setting.linksequence.buttonStyle.squared) %(key.msg.setting.linksequence.buttonStyle.outlined) %(key.msg.setting.linksequence.buttonStyle.enlarged)|
+        rounded outlined enlarged: %(key.msg.setting.linksequence.buttonStyle.rounded) %(key.msg.setting.linksequence.buttonStyle.outlined) %(key.msg.setting.linksequence.buttonStyle.enlarged)|
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[theme.shariff]]></IncludeName>
       <PropertyName><![CDATA[theme]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.shariff.theme)]]></DisplayName>

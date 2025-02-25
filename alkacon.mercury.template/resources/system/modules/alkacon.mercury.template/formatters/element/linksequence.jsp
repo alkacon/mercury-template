@@ -23,6 +23,7 @@
 <c:set var="iconClass"              value="${setting.iconClass.useDefault('caret-right').toString}" />
 <c:set var="linksequenceType"       value="${setting.linksequenceType.toString}" />
 <c:set var="expandOption"           value="${setting.expandOption.useDefault('closed disable-lg').toString}" />
+<c:set var="buttonStyle"            value="${setting.buttonStyle.toString}" />
 
 <c:set var="emptyLinkSequence"      value="${empty content.valueList.LinkEntry}" />
 <c:set var="ade"                    value="${cms.isEditMode}" />
@@ -52,6 +53,10 @@
             <c:set var="iconPrefix" value="${fn:startsWith(iconClass, 'cif-') ? 'cif ' : 'fa-'}" />
             <c:set var="aWrapper">${iconPrefix}${iconClass}</c:set><%-- m:icon --%>
         </c:if>
+    </c:when>
+    <c:when test="${linksequenceType eq 'ls-buttons'}">
+        <c:set var="lsButtons" value="${true}" />
+        <c:set var="ulWrapper">class="social-icons ${buttonStyle}"</c:set>
     </c:when>
     <c:otherwise>
         <c:set var="expanding"  value="${linksequenceType eq 'ls-expand' and not emptyLinkSequence}" />
@@ -96,7 +101,32 @@
         <c:when test="${not emptyLinkSequence}">
             <ul ${ulWrapper}><%----%>
                 <c:forEach var="link" items="${content.valueList.LinkEntry}" varStatus="status">
-                    <m:link-icon link="${link}" css="${aWrapper}" addSpan="ls-item" addLi="ls-li${not empty liWrapper ? ' '.concat(liWrapper) : ''}" />
+                    <c:choose>
+                        <c:when test="${lsButtons}">
+                            <jsp:useBean id="linkMap" class="java.util.HashMap" />
+                            <m:link-icon link="${link}" inline="${false}" resultMap="${linkMap}" />
+                            <c:if test="${not empty linkMap.icon}">
+                                <c:set var="iconClass" value="${not fn:contains(linkMap.iconClass, '-') ? linkMap.iconClass : 'generic'}" />
+                                <li class="ls-item ${iconClass}"><%----%>
+                                    <m:link
+                                        link="${linkMap.link}"
+                                        title="${linkMap.message}"
+                                        forceText="${linkMap.icon}" />
+                                </li><%----%>
+                            </c:if>
+                            <c:if test="${false}">
+                                <!-- CHECK2 -->
+                            </c:if>
+                        </c:when>
+                        <c:otherwise>
+                            <m:link-icon
+                                link="${link}"
+                                css="${aWrapper}"
+                                addSpan="ls-item"
+                                addLi="ls-li${not empty liWrapper ? ' '.concat(liWrapper) : ''}"
+                            />
+                        </c:otherwise>
+                    </c:choose>
                 </c:forEach>
             </ul><%----%>
         </c:when>

@@ -38,14 +38,16 @@
 
         <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
+        <c:set var="navLinksPlugin" value="${empty cms.plugins['nav-links'] ? null : cms.plugins['nav-links'].get(0)}" />
         <c:set var="navLength" value="${empty navItems ? 0 : fn:length(navItems) - 1}" />
+
         <ul class="nav-side"><%----%>
             <m:nl />
             <c:forEach var="i" begin="0" end="${navLength}" >
 
                 <c:set var="navElem" value="${navItems[i]}" />
-                <c:set var="nextLevel" value="${i < navLength ? navItems[i+1].navTreeLevel : navStartLevel}" />
-                <c:set var="startSubMenu" value="${nextLevel > navElem.navTreeLevel}" />
+                <c:set var="nextLevel" value="${i lt navLength ? navItems[i+1].navTreeLevel : navStartLevel}" />
+                <c:set var="startSubMenu" value="${nextLevel gt navElem.navTreeLevel}" />
                 <c:set var="isTopLevel" value="${navElem.navTreeLevel eq navStartLevel}" />
                 <c:set var="isCurrentPage" value="${fn:startsWith(currentPageUri, cms.sitePath[navElem.resource.rootPath])}" />
                 <c:set var="isFinalCurrentPage" value="${isCurrentPage and currentPageFolder eq cms.sitePath[navElem.resource.rootPath]}" />
@@ -68,8 +70,15 @@
                     <c:set var="lastNavLevel" value="${navElem}" />
                 </c:if>
 
+                <c:if test="${not empty navLinksPlugin}">
+                    <%-- Call plugin that can manipulate the navLink or navText --%>
+                    <c:set var="reqScopeNavElem" value="${navElem}" scope="request" />
+                    <cms:include file="${navLinksPlugin.path}" cacheable="false" />
+                </c:if>
+
                 <c:choose>
-                    <c:when test="${(not empty lastNavLevel) and fn:startsWith(navElem.info, '#')}">
+                    <c:when test="${(navElem.resource.typeId eq 15) and (not empty lastNavLevel) and fn:startsWith(navElem.info, '#')}">
+                        <%-- Navigation resource is a redirect. This is interpreted as an anchor link to the parent page (which is stored in lastNavLevel). --%>
                         <c:set var="navLink"><cms:link>${lastNavLevel.resourceName}${navElem.info}</cms:link></c:set>
                     </c:when>
                     <c:otherwise>

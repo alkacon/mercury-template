@@ -162,8 +162,7 @@
     </c:if>
 
     <c:if test="${not justOneSlide}">
-        <c:set var="sliderData">${' '}<%--
-        --%>data-slider='{<%--
+        <c:set var="sliderData">data-slider='{<%--
             --%>"transition": "${transition}", <%--
             --%>"autoplay": ${autoPlay}, <%--
             --%>"delay": ${rotationTime}, <%--
@@ -177,7 +176,7 @@
     --%></c:set>
     </c:if>
 
-    <div class="slider-box${customClass}${marginClass}${transitionSpeedClass}"${customVars}${sliderData}><m:nl/>
+    <div class="slider-box${customClass}${marginClass}${transitionSpeedClass}"${customVars}${not empty sliderData ? ' '.concat(sliderData) : ''}><m:nl/>
     <div class="slide-definitions${logoRows}"><m:nl/>
 
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">
@@ -234,7 +233,7 @@
                             .concat('" rel="noopener"')
                             .concat(image.value.NewWin.toBoolean ? ' target="_blank"' : '')
                             .concat(' class="slides">')
-                        : '<span class="slides">'}
+                        : '<div class="slides">'}
 
                         <cms:addparams>
                             <cms:param name="cssgrid">${adoptRatioToScreen ? 'col-xs-12 hidden-sm hidden-md hidden-lg hidden-xl hidden-xxl' : cssgridCols}</cms:param>
@@ -316,7 +315,7 @@
 
                         </c:if>
 
-                    ${not empty slideLink ? '</a>':'</span>'}
+                    ${not empty slideLink ? '</a>':'</div>'}
 
                     <c:if test="${showImageCopyright and (not empty copyright)}">
                         <div class="copyright rs_skip" aria-hidden="true">${copyright}</div><m:nl/>
@@ -332,7 +331,7 @@
                             .concat('" rel="noopener"')
                             .concat(image.value.NewWin.toBoolean ? ' target="_blank"' : '')
                             .concat(' class="captions">')
-                        : '<span class="captions">'}
+                        : '<div class="captions">'}
 
                     <div class="caption ${posTop}${' '}${posLeft}"><%----%>
                         <c:if test="${image.value.SuperTitle.isSet}">
@@ -351,7 +350,7 @@
                         </c:if>
                     </div><%----%>
 
-                    ${not empty slideLink ? '</a>':'</span>'}
+                    ${not empty slideLink ? '</a>':'</div>'}
 
                     <m:nl />
                 </c:if>
@@ -374,7 +373,7 @@
         </c:if>
         <c:if test="${showDots}">
             <ul class="slider-dots" role="tablist"><%----%>
-                <li type="button" role="presentation"><%----%>
+                <li><%----%>
                     <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1"><fmt:message key='msg.page.slider.pagination.dots' /></button><%----%>
                 </li><%----%>
             </ul><%----%>

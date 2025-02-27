@@ -112,7 +112,7 @@
 
     </c:when>
     <c:when test="${content.value.Root.value.NavCollection.isSet and type eq 'forSite'}">
-    <%-- This IS a collation of different navigation start folders --%>
+    <%-- This IS a collection of different navigation start folders --%>
     <%-- Only the "forSite" type is supported here --%>
 
         <c:set var="navStartLevel" value="${0}" />

@@ -88,23 +88,23 @@
 <c:choose>
     <c:when test="${useSrcSet and useJsLazyLoading}">
         <c:set var="attributes"><%--
-        --%>src="${srcUrl}" <%-- Note: src Required for IE 10, because of no srcset support in IE 10.
-        --%>srcset="${emptyImg}" <%--
-        --%>data-sizes="auto" <%--
+        --%>src="${srcUrl}"${' '}<%-- Note: src Required for IE 10, because of no srcset support in IE 10.
+        --%>srcset="${emptyImg}"${' '}<%--
+        --%>data-sizes="auto"${' '}<%--
         --%>data-srcset="${srcSet}"</c:set>
         <c:set var="cssImageLazy" value="lazyload" />
     </c:when>
     <c:when test="${not useSrcSet and useJsLazyLoading}">
         <c:set var="attributes"><%--
-        --%>src="${emptyImg}" <%--
+        --%>src="${emptyImg}"${' '}<%--
         --%>data-src="${srcUrl}"</c:set>
         <c:set var="cssImageLazy" value="lazyload" />
     </c:when>
     <c:when test="${useSrcSet and not empty srcSetSizes}">
         <c:set var="attributes"><%--
         --%>src="${srcUrl}"<%--
-        --%>${useLazyLoading ? ' loading=\"lazy\"' : ''} <%--
-        --%>sizes="${srcSetSizes}" <%--
+        --%>${useLazyLoading ? ' loading=\"lazy\"' : ''}${' '}<%--
+        --%>sizes="${srcSetSizes}"${' '}<%--
         --%>srcset="${srcSet}"</c:set>
         <c:set var="useNoScript" value="${false}" />
     </c:when>

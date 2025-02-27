@@ -106,7 +106,7 @@
             <c:set var="iconClass" value="${iconClass} ico-missing" />
         </c:if>
         <c:set var="iconMarkup">
-            <c:out value="${fn:replace(iconResource.content, 'xmlns=\"http://www.w3.org/2000/svg\" ', '')}" escapeXml="${false}" />
+            <c:out value="${fn:replace(fn:replace(iconResource.content, 'id=\"icon\"', ''), 'xmlns=\"http://www.w3.org/2000/svg\" ', '')}" escapeXml="${false}" />
         </c:set>
     </c:when>
     <c:when test="${fromImage or useSvg or imgsrc}">

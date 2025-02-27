@@ -33,16 +33,17 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
-<m:nl />
 <c:choose>
     <c:when test="${(not empty sourceSite) and not (currentSite eq sourceSite)}">
         <c:set var="sourceSiteProps" value="${cms.vfs.readProperties[sourceSite]}" />
         <c:set var="sourceSiteName" value="${not empty sourceSiteProps['mercury.sitename'] ? sourceSiteProps['mercury.sitename'] : sourceSiteProps['Title'] }" />
+        <m:nl />
         <div class="element type-sourcesite pivot ${cssWrapper}"><%----%>
             <fmt:message key="msg.page.sourcesite.other">
                 <fmt:param><a href="${cms.vfs.link[sourceSite.rootPath]}">${sourceSiteName}</a></fmt:param>
             </fmt:message>
         </div><%----%>
+        <m:nl />
     </c:when>
     <c:when test="${isSharedFolder and empty sourceSite and cms.isEditMode}">
         <m:alert-meta icon="info-circle" css="element type-sourcesite pivot ${cssWrapper}">
@@ -65,10 +66,6 @@
             </jsp:attribute>
         </m:alert-meta>
     </c:when>
-    <c:otherwise>
-        <!-- <fmt:message key="msg.page.sourcesite.same" />  --><%----%>
-    </c:otherwise>
 </c:choose>
-<m:nl />
 
 </cms:bundle>

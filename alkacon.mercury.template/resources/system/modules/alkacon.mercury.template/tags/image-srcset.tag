@@ -320,7 +320,7 @@ useNoScript: ${useNoScript}
             </c:otherwise>
         </c:choose>
         <c:set var="srcurl"><cms:link>${ib.vfsUri}</cms:link></c:set>
-        <c:set var="attrImage">role="img"<c:if test="${not empty attrImage}">${' '}${attrImage}</c:if></c:set>
+        <c:set var="attrImage" value="${inlineSvg ? 'role=\"img\"'.concat(not empty attrImage ? ' '.concat(attrImage) : '') : attrImage}" />
         <m:print comment="${true}" test="${DEBUG}">
             image-srcset SVG handling:
 

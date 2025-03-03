@@ -12,7 +12,7 @@
         <uuid>198ae09a-a0af-47b9-832b-8ed1bc7c4c9f</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-section.description.formatter) %(key.type.m-section.description.formatter.tile-element) %(key.type.general.description.tile-row)]]></Description>
+    <Description><![CDATA[%(key.type.m-section.description) %(key.type.m-section.description.formatter.tile-element) %(key.type.general.description.tile-row)]]></Description>
     <Rank><![CDATA[9000]]></Rank>
     <Match>
       <Types>

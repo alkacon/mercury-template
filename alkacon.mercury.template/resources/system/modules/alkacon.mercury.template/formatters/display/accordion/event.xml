@@ -11,7 +11,7 @@
         <uuid>7a172f01-3f20-4cd6-b5d7-26debea32a51</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-event.description.formatter) %(key.type.general.description.teaser.accordion) %(key.type.general.description.teaser.list-only-static)]]></Description>
+    <Description><![CDATA[%(key.type.m-event.description) %(key.type.general.description.teaser.accordion) %(key.type.general.description.teaser.list-only-static)]]></Description>
     <Rank><![CDATA[11000]]></Rank>
     <Match>
       <Types>

@@ -11,7 +11,7 @@
         <uuid>fba10afe-8d09-44ca-b31e-08e90eb44a00</uuid>
       </link>
     </Jsp>
-    <Description><![CDATA[%(key.type.m-job.description.formatter) %(key.type.general.description.teaser.accordion) %(key.type.general.description.teaser.list-only-static)]]></Description>
+    <Description><![CDATA[%(key.type.m-job.description) %(key.type.general.description.teaser.accordion) %(key.type.general.description.teaser.list-only-static)]]></Description>
     <Rank><![CDATA[11000]]></Rank>
     <Match>
       <Types>

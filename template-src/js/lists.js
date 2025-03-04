@@ -159,9 +159,10 @@ function getFilterParams(filter) {
  * @param {string} id the filter to apply.
  * @param {ListFilter} filter the filter.
  * @param {string} searchStateParameters the search state parameters corresponding to the filter action.
+ * @param {boolean} init whether this is the initial page load
  * @returns {void}
  */
-function listFilter(id, filter, searchStateParameters) {
+function listFilter(id, filter, searchStateParameters, init = false) {
 
     if (Mercury.debug()) {
         console.info("Lists.listFilter() called elementId=" + id);
@@ -187,7 +188,7 @@ function listFilter(id, filter, searchStateParameters) {
                 fi.updateDirectLink(searchStateParameters);
             }
         });
-    } else {
+    } else if (!init) {
         var archive = m_archiveFilters[filter.id];
         // list is not on this page, check filter target attribute
         var target = archive.data.target;
@@ -1168,7 +1169,7 @@ export function registerFilter(filter) {
     }
     // apply the list filter and update counts on page load
     const searchStateParameters = filter.data.initparams ? filter.data.initparams : "";
-    listFilter(filter.elementId, filter, searchStateParameters);
+    listFilter(filter.elementId, filter, searchStateParameters, true);
     return filter;
 }
 

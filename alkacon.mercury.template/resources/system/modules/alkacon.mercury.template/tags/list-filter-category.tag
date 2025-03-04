@@ -53,19 +53,24 @@
 <m:nl />
 
     <%-- BEGIN: Calculate category filters --%>
-    <c:set var="catFilters" value="${not empty catfilter ? fn:replace(catfilter,' ','') : ''}" />
-    <c:set var="blacklistFilter" value="${empty catFilters}" />
-    <c:if test="${not empty catFilters}">
+    <c:set var="catfilter" value="${not empty catfilter ? fn:replace(catfilter,' ','') : ''}" />
+    <c:set var="blacklistFilter" value="${empty catfilter}" />
+    <c:set var="folderFilter" value="${false}" />
+    <c:if test="${not empty catfilter}">
         <c:choose>
-        <c:when test="${fn:startsWith(catFilters,'whitelist:')}">
-            <c:set var="catFilters" value="${fn:replace(catFilters,'whitelist:','')}" />
-        </c:when>
-        <c:when test="${fn:startsWith(catFilters,'blacklist:')}">
-            <c:set var="catFilters" value="${fn:replace(catFilters,'blacklist:','')}" />
-            <c:set var="blacklistFilter" value="true" />
-        </c:when>
+            <c:when test="${fn:startsWith(catfilter,'whitelist:')}">
+                <c:set var="catfilter" value="${fn:replace(catfilter,'whitelist:','')}" />
+            </c:when>
+            <c:when test="${fn:startsWith(catfilter,'blacklist:')}">
+                <c:set var="catfilter" value="${fn:replace(catfilter,'blacklist:','')}" />
+                <c:set var="blacklistFilter" value="${true}" />
+            </c:when>
+            <c:when test="${fn:startsWith(catfilter,'folder:')}">
+                <c:set var="catfilter" value="${fn:replace(catfilter,'folder:','')}" />
+                <c:set var="folderFilter" value="${true}" />
+            </c:when>
         </c:choose>
-        <c:set var="catFilters" value='${fn:split(catFilters, ",")}' />
+        <c:set var="catFilters" value='${fn:split(catfilter, ",")}' />
     </c:if>
     <%-- END: Calculate category filters --%>
 
@@ -82,24 +87,31 @@
                 <c:set var="label" value="" />
                 <c:forEach var="category" items="${cms.readPathCategories[value.name]}" varStatus="status">
                     <c:if test="${displayCatPath or status.last}">
-                        <c:set var="label">${label}${category.title}</c:set>
+                        <c:set var="label" value="${label}${category.title}" />
                         <c:set var="catId"><m:idgen prefix="cat_${categoryFilterId}" uuid="${category.id}" /></c:set>
                     </c:if>
-                    <c:set var="catCompareLabel">${catCompareLabel}${category.title}</c:set>
+                    <c:set var="catCompareLabel" value="${catCompareLabel}${category.title}" />
                     <c:if test="${not status.last}">
-                        <c:if test="${displayCatPath}"><c:set var="label" value="${label} / "/></c:if>
-                        <c:set var="catCompareLabel">${catCompareLabel}/</c:set>
+                        <c:set var="label" value="${displayCatPath ? label.conact(' / ') : label}" />
+                        <c:set var="catCompareLabel" value="${catCompareLabel}/" />
                     </c:if>
                 </c:forEach>
                 <%-- END: Calculate category label --%>
 
-                <c:set var="catCompareLabel" value="${fn:replace(catCompareLabel,' ','')}" />
-                <c:set var="isMatchedByFilter" value="false" />
-                <c:forEach var="filterValue" items="${catFilters}" varStatus="status">
-                    <c:if test="${isMatchedByFilter or fn:contains(catCompareLabel, filterValue)}">
-                        <c:set var="isMatchedByFilter" value="true" />
-                    </c:if>
-                </c:forEach>
+                <c:choose>
+                    <c:when test="${folderFilter}">
+                        <c:set var="isMatchedByFilter" value="${fn:contains(value.name, catfilter)}" />
+                    </c:when>
+                    <c:otherwise>
+                        <c:set var="catCompareLabel" value="${fn:replace(catCompareLabel,' ','')}" />
+                        <c:set var="isMatchedByFilter" value="${false}" />
+                        <c:forEach var="filterValue" items="${catFilters}" varStatus="status">
+                            <c:if test="${isMatchedByFilter or fn:contains(catCompareLabel, filterValue)}">
+                                <c:set var="isMatchedByFilter" value="${true}" />
+                            </c:if>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
 
                 <c:if test="${blacklistFilter != isMatchedByFilter}">
                     <c:if test="${showAllOption}">

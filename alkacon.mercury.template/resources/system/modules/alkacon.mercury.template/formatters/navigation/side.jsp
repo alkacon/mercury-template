@@ -29,12 +29,12 @@
     type="forSite"
     content="${content}"
     currentPageFolder="${currentPageFolder}"
-    currentPageUri="${currentPageUri}" >
+    currentPageUri="${currentPageUri}">
 
     <%-- If no navigation items are found, no output must be generated online --%>
 
     <nav class="element type-nav-side pivot${setCssWrapperAll}"><%----%>
-    <m:nl />
+        <m:nl />
 
         <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
@@ -137,7 +137,7 @@
                    <c:out value="<ul${allOpen ? ' ' : ' class=\"collapse'.concat(collapseIn).concat('\" ')} id=\"${targetMenuId}\" aria-label=\"${navText}\">" escapeXml="false" />
                 </c:if>
 
-                <c:if test="${nextLevel < navElem.navTreeLevel}">
+                <c:if test="${nextLevel lt navElem.navTreeLevel}">
                     <c:forEach begin="1" end="${navElem.navTreeLevel - nextLevel}" >
                         <c:out value='</li></ul>' escapeXml="false" />
                         <m:nl />

@@ -138,6 +138,7 @@
         <c:set var="placeholderMessage"><fmt:message key="msg.page.placeholder.media.youtube" /></c:set>
         <c:set var="youTubeId" value="${content.value.MediaContent.value.YouTube.value.YouTubeId}" />
         <c:set var="defaultPreview"><m:attribute-schema-param param="mercuryYouTubePreviewDefault" /></c:set>
+        <c:set var="defaultPreviewExternalForbidden" value="${cms.sitemapConfig.attribute['mercuryYouTubePreviewExternalForbidden'].toBoolean}" />
         <c:set var="youTubePreviewImg" value="${content.value.MediaContent.value.YouTube.value.YouTubePreview.isSet
             ? content.value.MediaContent.value.YouTube.value.YouTubePreview
             : defaultPreview}"
@@ -146,6 +147,12 @@
             ? not empty image ? 'none' : 'hqdefault.jpg'
             : youTubePreviewImg}"
         />
+        <c:if test="${defaultPreviewExternalForbidden}">
+            <c:if test="${empty image}">
+                <c:set var="image" value="${defaultPreview}" />
+            </c:if>
+            <c:set var="youTubePreviewImg" value="none" />
+        </c:if>
         <c:set var="template"><%--
         --%><iframe class="youtube-video" src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
             --%>autoplay=1&rel=0&iv_load_policy=3&fs=0&enablejsapi=1${autoPlay ? '&mute=1':''}" <%--

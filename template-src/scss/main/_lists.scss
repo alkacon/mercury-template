@@ -342,6 +342,7 @@
 
         &.box {
             padding: 0 0 var(--#{$prefix}box-padding) 0;
+            &.only-text,
             &.pnv {
                 padding-top: var(--#{$prefix}box-padding);
             }

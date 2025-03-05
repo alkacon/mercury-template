@@ -97,8 +97,8 @@
                 </Setting>
                 <Setting>
                     <PropertyName>Availability</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.Availability)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.Availability.help)]]></Description>
+                    <DisplayName><![CDATA[%(key.label.Availability.Slider)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Availability.Slider.help)]]></Description>
                 </Setting>
                 <Setting>
                     <PropertyName>Availability/Expiration</PropertyName>

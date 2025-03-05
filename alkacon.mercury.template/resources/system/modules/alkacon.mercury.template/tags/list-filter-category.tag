@@ -92,7 +92,7 @@
                     </c:if>
                     <c:set var="catCompareLabel" value="${catCompareLabel}${category.title}" />
                     <c:if test="${not status.last}">
-                        <c:set var="label" value="${displayCatPath ? label.conact(' / ') : label}" />
+                        <c:set var="label" value="${displayCatPath ? label.concat(' / ') : label}" />
                         <c:set var="catCompareLabel" value="${catCompareLabel}/" />
                     </c:if>
                 </c:forEach>

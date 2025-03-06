@@ -3039,6 +3039,7 @@
               op-sm:           %(key.msg.option.show.op-sm)|
               op-md:           %(key.msg.option.show.op-md)|
               op-lg:           %(key.msg.option.show.op-lg)|
+              inline:          %(key.msg.option.show.filter.inline)|
               closed:          %(key.msg.option.show.folded)|
               hidden:          %(key.msg.option.hide)
         ]]></WidgetConfig>

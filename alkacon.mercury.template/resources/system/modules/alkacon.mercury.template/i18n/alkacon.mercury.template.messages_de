@@ -661,6 +661,7 @@ msg.option.role.author=Autor
 msg.option.role.developer=Template-Entwickler
 msg.option.role.editor=Redakteur
 msg.option.show=Anzeigen
+msg.option.show.filter.inline=Ausgeklappt in einer Reihe anzeigen
 msg.option.show.folded=Eingeklappt anzeigen
 msg.option.show.op-lg=Ab Bildschirmgröße LG ausgeklappt anzeigen
 msg.option.show.op-md=Ab Bildschirmgröße MD ausgeklappt anzeigen

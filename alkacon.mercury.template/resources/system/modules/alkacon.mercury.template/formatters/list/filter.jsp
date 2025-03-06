@@ -31,9 +31,10 @@
 
     <c:set var="categoryLabel"  value="${setting.headline.toString}" />
     <c:set var="categoryVal"    value="${setting.showcategories.toString}" />
-    <c:set var="categoriesOpen" value="${categoryVal eq 'opened'}" />
-    <c:set var="categoriesResp" value="${categoryVal.contains('op-')}" />
-    <c:set var="showCategories" value="${(categoriesOpen || categoriesResp || categoryVal eq 'closed') and not empty categoryFacetResult and cms:getListSize(categoryFacetResult.values) > 0}" />
+    <c:set var="categoriesInline" value="${categoryVal eq 'inline'}" />
+    <c:set var="categoriesOpen" value="${categoriesInline or categoryVal eq 'opened'}" />
+    <c:set var="categoriesResp" value="${not categoriesOpen and categoryVal.contains('op-')}" />
+    <c:set var="showCategories" value="${(categoriesOpen or categoriesInline or categoriesResp or (categoryVal eq 'closed')) and not empty categoryFacetResult and cms:getListSize(categoryFacetResult.values) gt 0}" />
     <c:set var="showCatCount"   value="${not fn:contains(setting.showCatCount.useDefault('true').toString, 'false')}" />
     <c:set var="showAllOption"  value="${not fn:contains(setting.showCatCount.useDefault('true').toString, 'hide-all')}" />
 
@@ -41,13 +42,13 @@
     <c:set var="archiveVal"     value="${setting.showarchive.toString}" />
     <c:set var="archiveOpen"    value="${archiveVal eq 'opened'}" />
     <c:set var="archiveResp"    value="${archiveVal.contains('op-')}" />
-    <c:set var="showArchive"    value="${(archiveOpen || archiveResp || archiveVal eq 'closed') and not empty rangeFacet and cms:getListSize(rangeFacet.counts) > 0}" />
+    <c:set var="showArchive"    value="${(archiveOpen || archiveResp || archiveVal eq 'closed') and not empty rangeFacet and cms:getListSize(rangeFacet.counts) gt 0}" />
 
     <c:set var="folderLabel"    value="${setting.folderlabel.toString}" />
     <c:set var="folderVal"      value="${setting.showfolders.toString}" />
     <c:set var="foldersOpen"    value="${folderVal eq 'opened'}" />
     <c:set var="foldersResp"    value="${folderVal.contains('op-')}" />
-    <c:set var="showFolders"    value="${(foldersOpen || foldersResp || setting.showfolders.toString eq 'closed') and not empty folderFacetResult and cms:getListSize(folderFacetResult.values) > 0}" />
+    <c:set var="showFolders"    value="${(foldersOpen || foldersResp || setting.showfolders.toString eq 'closed') and not empty folderFacetResult and cms:getListSize(folderFacetResult.values) gt 0}" />
 
     <c:set var="showDirectLink" value="${cms.isEditMode and 'true' eq cms.readAttributeOrProperty[cms.requestContext.uri]['mercury.list.filter.directlink']}" />
 
@@ -84,7 +85,7 @@
     <c:set var="resetButtonTitle"><fmt:message key="msg.page.list.resetbutton.title" /></c:set>
 
     <m:nl />
-    <div class="element type-list-filter pivot ${cssWrapper}" <%--
+    <div class="element type-list-filter${categoriesInline ? ' inline-list ' : ''} pivot ${cssWrapper}" <%--
     --%>id="${filterId}" <%--
     --%>data-id="${elementId}" <%--
     --%>data-filter='{<%--

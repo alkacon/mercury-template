@@ -1183,6 +1183,16 @@
             }
         }
     }
+
+    &.inline-list {
+        .filterbox {
+            ul {
+                li {
+                    display: inline-block;
+                }
+            }
+        }
+    }
 }
 
 // List facet / sort options

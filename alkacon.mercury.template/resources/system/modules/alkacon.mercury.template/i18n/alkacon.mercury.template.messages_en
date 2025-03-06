@@ -661,6 +661,7 @@ msg.option.role.author=Author
 msg.option.role.developer=Template developer
 msg.option.role.editor=Editor
 msg.option.show=Show
+msg.option.show.filter.inline=Show unfolded in a row
 msg.option.show.folded=Show folded
 msg.option.show.op-lg=Show unfolded from screen size LG
 msg.option.show.op-md=Show unfolded from screen size MD

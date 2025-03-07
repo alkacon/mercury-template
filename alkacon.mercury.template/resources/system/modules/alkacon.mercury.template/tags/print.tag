@@ -39,10 +39,10 @@ boolean test = getBoolean("test", true);
 
 if (test) {
 
-    boolean isComment = getBoolean("comment", false);
     boolean isJs = getBoolean("script", false);
     String del = getString("delimiter", isJs ? "" : "\n");
     boolean compact = !"\n".equals(del);
+    boolean isComment = getBoolean("comment", !isJs && !compact);
 
     %><jsp:doBody var="body" /><%
 

@@ -267,7 +267,7 @@
 
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-lg hidden-md hidden-xs</cms:param>
-                                <div class="slide-sm visible-sm"><%----%>
+                                <div class="slide-sm visible-sm rs_skip"><%----%>
                                     <m:image-simple
                                         image="${image}"
                                         lazyLoad="${lazyLoad}"
@@ -279,7 +279,7 @@
 
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-lg hidden-sm hidden-xs</cms:param>
-                                <div class="slide-md visible-md"><%----%>
+                                <div class="slide-md visible-md rs_skip"><%----%>
                                     <m:image-simple
                                         image="${image}"
                                         lazyLoad="${lazyLoad}"
@@ -291,7 +291,7 @@
 
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-xs hidden-sm hidden-md</cms:param>
-                                <div class="slide-lg visible-lg"><%----%>
+                                <div class="slide-lg visible-lg rs_skip"><%----%>
                                     <m:image-simple
                                         image="${image}"
                                         lazyLoad="${lazyLoad}"
@@ -303,7 +303,7 @@
 
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-lg hidden-xs hidden-sm hidden-md</cms:param>
-                                <div class="slide-xl visible-xl"><%----%>
+                                <div class="slide-xl visible-xl rs_skip"><%----%>
                                     <m:image-simple
                                         image="${image}"
                                         lazyLoad="${lazyLoad}"
@@ -364,15 +364,15 @@
 
     <c:if test="${not justOneSlide}">
         <c:if test="${showArrows}">
-            <button class="slider-nav-btn prev-btn" aria-label="<fmt:message key='msg.page.list.pagination.previous.title' />" type="button"><%----%>
+            <button class="slider-nav-btn prev-btn rs_skip" aria-label="<fmt:message key='msg.page.list.pagination.previous.title' />" type="button"><%----%>
                 <fmt:message key='msg.page.list.pagination.previous.title' /><%----%>
             </button><%----%>
-            <button class="slider-nav-btn next-btn" aria-label="<fmt:message key='msg.page.list.pagination.next.title' />" type="button"><%----%>
+            <button class="slider-nav-btn next-btn rs_skip" aria-label="<fmt:message key='msg.page.list.pagination.next.title' />" type="button"><%----%>
                 <fmt:message key='msg.page.list.pagination.next.title' /><%----%>
             </button><%----%>
         </c:if>
         <c:if test="${showDots}">
-            <ul class="slider-dots" role="tablist"><%----%>
+            <ul class="slider-dots rs_skip" role="tablist"><%----%>
                 <li><%----%>
                     <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1"><fmt:message key='msg.page.slider.pagination.dots' /></button><%----%>
                 </li><%----%>

@@ -34,6 +34,7 @@
 
     <c:set var="showMap"                value="${setting.showMap.toBoolean}" />
     <c:set var="mapRatio"               value="${setting.mapRatio.toString}" />
+    <c:set var="mapRatioLg"             value="${setting.mapRatioLg.useDefault(mapRatio).toString}" />
     <c:set var="mapZoom"                value="${setting.mapZoom.toString}" />
     <c:set var="showFacilities"         value="${setting.showFacilities.toBoolean}" />
     <c:set var="showGeoInfo"            value="${setting.showGeoInfo.toBoolean}" />
@@ -87,6 +88,7 @@
                         provider="auto"
                         id="${id}"
                         ratio="${mapRatio}"
+                        ratioLg="${mapRatioLg}"
                         zoom="${mapZoom}"
                         markers="${[markerData]}"
                         subelementWrapper="poi-map"

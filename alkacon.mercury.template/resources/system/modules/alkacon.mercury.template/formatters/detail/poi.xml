@@ -55,7 +55,10 @@
       <IncludeName><![CDATA[hsize.element.2]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[mapRatio.default]]></IncludeName>
+      <IncludeName><![CDATA[mapRatio.sizeMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapRatio.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[mapZoom.fromCoords]]></IncludeName>

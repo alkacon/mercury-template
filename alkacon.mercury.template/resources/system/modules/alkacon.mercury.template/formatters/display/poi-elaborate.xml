@@ -57,7 +57,10 @@
       <IncludeName><![CDATA[hsize.listTeaser]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[mapRatio.default]]></IncludeName>
+      <IncludeName><![CDATA[mapRatio.sizeMobile.default]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mapRatio.sizeDesktop.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[mapZoom.fromCoords]]></IncludeName>

@@ -67,6 +67,7 @@ $slider-text-below-breakpoint: md !default;
         // slider will be using the text over and below the image with full background color
         // changing the --main-theme variables (e.g. when using "box" classes) should NOT change the slider colors
         --#{$prefix}slider-bg: #{to-rgb($main-theme)};
+        --#{$prefix}slider-bg-opacity: #{$slider-background-opacity};
         --#{$prefix}slider-fg: #{$main-theme-fg};
         --#{$prefix}slider-caption-top: var(--#{$prefix}slider-bg);
         --#{$prefix}slider-caption-sub: var(--#{$prefix}slider-bg);
@@ -96,12 +97,12 @@ $slider-text-below-breakpoint: md !default;
                 }
             }
             strong {
-                background-color: rgb(var(--#{$prefix}slider-caption-top), $slider-background-opacity);
+                background-color: rgb(var(--#{$prefix}slider-caption-top), var(--#{$prefix}slider-bg-opacity));
                 padding-top: var(--#{$prefix}default-margin-verysmall);
                 padding-bottom: var(--#{$prefix}default-margin-verysmall);
             }
             small {
-                background-color: rgb(var(--#{$prefix}slider-caption-sub), $slider-background-opacity);
+                background-color: rgb(var(--#{$prefix}slider-caption-sub), var(--#{$prefix}slider-bg-opacity));
                 padding-top: 2px;
                 padding-bottom: 2px;
                 margin-top: var(--#{$prefix}default-margin-verysmall);
@@ -143,7 +144,7 @@ $slider-text-below-breakpoint: md !default;
             padding: $slider-caption-padding;
             position: absolute;
             max-width: calc(100% - (2 * var(--#{$prefix}default-margin)));
-            background-color: rgb(var(--#{$prefix}slider-bg), $slider-background-opacity);
+            background-color: rgb(var(--#{$prefix}slider-bg), var(--#{$prefix}slider-bg-opacity));
             border-radius: var(--#{$prefix}slider-caption-border-radius);
             overflow: hidden;
             z-index: $overflow-z-index;
@@ -533,51 +534,44 @@ $slider-text-below-breakpoint: md !default;
     opacity: 0;
     transition: opacity 0.5s linear;
 
-    li {
+    button {
         position: relative;
         display: inline-block;
         margin: 0 0.25rem;
-        padding: 0;
+        padding: 5px;
 
-        button {
-            margin: 0;
-            padding: 5px;
+        &::before {
+            content: " ";
+            display: block;
+            width: $slider-dot-size;
+            height: $slider-dot-size;
+            background-size: $slider-dot-size;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjA4IDEyOGE4MCA4MCAwIDEgMS0xNjAgMCA4MCA4MCAwIDAgMSAxNjAgMHoiLz4NCjwvc3ZnPg==");
+            opacity: $slider-opacity-inactive;
+        }
 
+        &:hover,
+        &:focus {
             &::before {
-                content: " ";
-                display: block;
-                width: $slider-dot-size;
-                height: $slider-dot-size;
-                background-size: $slider-dot-size;
-                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2Ij4NCiAgPHBhdGggZD0iTTI1NSAxMjhhMTI3IDEyNyAwIDEgMS0yNTQtLjEgMTI3IDEyNyAwIDAgMSAyNTMuOS4xeiIvPg0KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjA4IDEyOGE4MCA4MCAwIDEgMS0xNjAgMCA4MCA4MCAwIDAgMSAxNjAgMHoiLz4NCjwvc3ZnPg==");
-                opacity: $slider-opacity-inactive;
-            }
-
-            &:hover,
-            &:focus {
-                &::before {
-                    opacity: $slider-opacity-active;
-                }
-            }
-
-            &.active::before {
                 opacity: $slider-opacity-active;
             }
+        }
+
+        &.active::before {
+            opacity: $slider-opacity-active;
         }
     }
 }
 
 html.mobile {
-    .slider-dots {
-        li button {
-            &:hover {
-                &::before {
-                    opacity: $slider-opacity-inactive;
-                }
+    button {
+        &:hover {
+            &::before {
+                opacity: $slider-opacity-inactive;
             }
-            &.active::before {
-                opacity: $slider-opacity-active;
-            }
+        }
+        &.active::before {
+            opacity: $slider-opacity-active;
         }
     }
 }

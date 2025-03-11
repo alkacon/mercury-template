@@ -136,25 +136,30 @@
             <c:set var="customVars">--my-slider-bg:${rgbVal};</c:set>
         </c:if>
     </c:if>
-    <c:if test="${value.TextColor.isSet}">
-        <c:set var="rgbVal" value="${cms.color.toRgb(value.TextColor)}" />
-        <c:if test="${not empty rgbVal}">
-            <%-- text color must nor be RGB, we use this as check for valid values --%>
-            <c:set var="customVars">${customVars}--my-slider-fg:${value.TextColor};</c:set>
-        </c:if>
-    </c:if>
     <c:if test="${not empty bgColorHead}">
-        <c:set var="customClass" value=" custom" />
-        <c:set var="rgbVal" value="${cms.color.toRgb(bgColorHead)}" />
-        <c:if test="${not empty rgbVal}">
-            <c:set var="customVars">${customVars}--my-slider-caption-top:${rgbVal};</c:set>
-        </c:if>
+        <c:set var="rgbValHead" value="${cms.color.toRgb(bgColorHead)}" />
     </c:if>
     <c:if test="${not empty bgColorSub}">
-        <c:set var="customClass" value=" custom" />
-        <c:set var="rgbVal" value="${cms.color.toRgb(bgColorSub)}" />
-        <c:if test="${not empty rgbVal}">
-            <c:set var="customVars">${customVars}--my-slider-caption-sub:${rgbVal};</c:set>
+        <c:set var="rgbValSub" value="${cms.color.toRgb(bgColorSub)}" />
+    </c:if>
+    <c:choose>
+        <c:when test="${not empty rgbValHead and (rgbValHead eq rgbValSub)}">
+            <c:set var="customVars">--my-slider-bg:${rgbValHead};</c:set>
+        </c:when>
+        <c:otherwise>
+            <c:if test="${not empty rgbValHead}">
+                <c:set var="customClass" value=" custom" />
+                <c:set var="customVars">${customVars}--my-slider-caption-top:${rgbValHead};</c:set>
+            </c:if>
+            <c:if test="${not empty rgbValSub}">
+                <c:set var="customClass" value=" custom" />
+                <c:set var="customVars">${customVars}--my-slider-caption-sub:${rgbValSub};</c:set>
+            </c:if>
+        </c:otherwise>
+    </c:choose>
+    <c:if test="${value.TextColor.isSet}">
+        <c:if test="${cms.color.isValid(value.TextColor)}">
+            <c:set var="customVars">${customVars}--my-slider-fg:${cms.color.toHex(value.TextColor)};</c:set>
         </c:if>
     </c:if>
     <c:if test="${not empty customVars}">
@@ -216,6 +221,7 @@
         <c:set var="validRange" value="" />
         <c:if test="${not empty dateRelease or not empty dateExpiration}">
              <c:set var="validRange">
+                ${' '}style="display: none;"<%----%>
                 <c:if test="${not empty dateRelease}">${' '}data-release="${dateRelease}"</c:if>
                 <c:if test="${not empty dateExpiration}">${' '}data-expiration="${dateExpiration}"</c:if>
              </c:set>
@@ -318,7 +324,9 @@
                     ${not empty slideLink ? '</a>':'</div>'}
 
                     <c:if test="${showImageCopyright and (not empty copyright)}">
-                        <div class="copyright rs_skip" aria-hidden="true">${copyright}</div><m:nl/>
+                        <div class="copyright rs_skip" aria-hidden="true"><%----%>
+                            <m:out value="${copyright}" lenientEscaping="${true}" />
+                        </div><m:nl/>
                     </c:if>
                 </div><m:nl/>
 
@@ -372,11 +380,9 @@
             </button><%----%>
         </c:if>
         <c:if test="${showDots}">
-            <ul class="slider-dots rs_skip" role="tablist"><%----%>
-                <li><%----%>
-                    <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1"><fmt:message key='msg.page.slider.pagination.dots' /></button><%----%>
-                </li><%----%>
-            </ul><%----%>
+            <div class="slider-dots rs_skip" role="tablist"><%----%>
+                <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1"><fmt:message key='msg.page.slider.pagination.dots' /></button><%----%>
+            </div><%----%>
         </c:if>
     </c:if>
     </div><%----%>

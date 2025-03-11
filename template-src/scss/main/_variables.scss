@@ -74,7 +74,7 @@ $con-margin:                        20px !default;
 
 $theme-colors:                        () !default;
 
-// Pre-matched color configuration in case a theme color is uses as background color
+// Pre-matched color configuration in case a theme color is used as background color
 // This is a map in the following format:
 //    (bg-color-to-match: (map with variable names to match)) - For example:
 //    ( $color-red: (
@@ -86,23 +86,10 @@ $theme-colors:                        () !default;
 //      )
 //    )
 // See the "set-box-colors()" mixin for the values that are read from the map
-// If no definitions are provided, an algorithm will try to pick suitable colors based on the default background, text and link colors
+// If no definitions are provided, the WCAG algorithm will be used to pick suitable colors text and link colors based on the background
 
 $theme-matched-colors:             () !default;
-$theme-matched-defaults:           (
-    $con-col-orange: (
-        "body-color": $white,
-        "link-color": $con-text-col-dark
-    ),
-    $con-col-cyan: (
-        "body-color": $white,
-        "link-color": $con-text-col-dark
-    ),
-    $con-col-red-light: (
-        "body-color": $white,
-        "link-color": $con-text-col-dark
-    )
-);
+$theme-matched-defaults:           ();
 $theme-matched-colors-merged:      map-merge($theme-matched-defaults, $theme-matched-colors);
 
 // Default margins / spacing
@@ -288,6 +275,7 @@ $font-size-sm:                      round($font-size-base * 8) * 0.1 !default;
 
 $line-height-base:                  1.5 !default;
 $headings-line-height:              1.25 !default;
+$touch-targets-min-line-height:     none !default;
 $line-height-lead:                  $line-height-base !default;
 
 

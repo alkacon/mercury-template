@@ -255,10 +255,15 @@ function initEmblaSliders(sliders) {
         slides.forEach((slide) => {
             const dateRelease = slide.dataset.release != null ? parseInt(slide.dataset.release) : Number.MIN_VALUE;
             const dateExpiration = slide.dataset.expiration != null ? parseInt(slide.dataset.expiration) : Number.MAX_VALUE;
-            if (((clientTime < dateRelease) || (clientTime >= dateExpiration)) && (slideCount > 1)) {
-                if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slide removed - release=" + dateRelease + " expiration=" + dateExpiration + " time=" + clientTime);
-                slide.parentNode.removeChild(slide);
-                slideCount--;
+            if  (slideCount > 1) {
+                if ((clientTime < dateRelease) || (clientTime >= dateExpiration)) {
+                    if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slide removed - release=" + dateRelease + " expiration=" + dateExpiration + " time=" + clientTime);
+                    slide.parentNode.removeChild(slide);
+                    slideCount--;
+                } else {
+                    if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slide enabeld - release=" + dateRelease + " expiration=" + dateExpiration + " time=" + clientTime);
+                    slide.removeAttribute('style');
+                }
             }
         });
         options.slides = slideCount;

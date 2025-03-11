@@ -9,6 +9,7 @@
 
 <%@ attribute name="escapeXml" type="java.lang.Boolean" required="false"
     description="Similar to c:out escapeXml, the difference being that even if 'true' (the default), the char '&' is NOT escaped to '&amp;'.
+    This effectivly allows to use HTML entities like '&nbsp;' in the input.
     Otherwise this is identical to c:out." %>
 
 <%@ attribute name="lenientEscaping" type="java.lang.Boolean" required="false"

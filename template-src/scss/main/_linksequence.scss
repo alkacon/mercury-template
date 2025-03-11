@@ -256,3 +256,11 @@
         }
     }
 }
+
+// increase line height for touch targets
+@if (variable-exists(touch-targets-min-line-height) and ($touch-targets-min-line-height != null) and $touch-targets-min-line-height != 'none') {
+    .type-linksequence.ls-bullets ul,
+    .type-contact .tablerow {
+        line-height: max(#{$touch-targets-min-line-height}, var(--#{$prefix}body-line-height) * var(--#{$prefix}body-font-size));
+    }
+}

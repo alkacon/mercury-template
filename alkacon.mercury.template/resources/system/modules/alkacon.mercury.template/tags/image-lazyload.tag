@@ -177,9 +177,9 @@
     </c:if>
 
     <c:if test="${not empty copyright}">
-        <div class="copyright image-copyright" aria-hidden="true">
+        <div class="copyright image-copyright" aria-hidden="true"><%----%>
             <m:out value="${copyright}" lenientEscaping="${true}" />
-        </div>
+        </div><%----%>
     </c:if>
 
 </m:padding-box>

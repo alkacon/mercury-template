@@ -42,6 +42,7 @@ $font-style-headings:           normal !default;
 
 $line-height-base:              1.4 !default;
 $headings-line-height:          1.25 !default;
+$touch-targets-min-line-height: 24px !default;
 $text-dark:                     #555 !default;
 $headings-color:                #222 !default;
 $headings-margin-bottom:        1.5rem !default;
@@ -65,8 +66,8 @@ $social-links-bg:               $grey-light !default;
 $social-links-color:            $text-dark !default;
 $social-links-size:             1.5rem !default;
 
-$btn-bg:                   $grey-light !default;
-$btn-hover-bg:             $main-theme !default;
+$btn-bg:                        $grey-light !default;
+$btn-hover-bg:                  $main-theme !default;
 
 // Import the other files
 @import './demo-defaults';
@@ -79,3 +80,23 @@ $nav-mobile-side-content-move:  true !default;
 $nav-header-ver-padding:        5px !default;
 
 @import '../imports';
+
+.piece {
+    .text a:not(.btn) {
+        text-decoration-line: underline;
+        text-decoration-style: dotted;
+        text-decoration-color: var(--#{$prefix}body-color);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.2rem;
+        &:hover {
+            text-decoration-style: solid;
+        }
+    }
+}
+
+a:hover {
+    text-decoration-style: solid;
+    text-decoration-color: var(--#{$prefix}body-color);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2rem;
+}

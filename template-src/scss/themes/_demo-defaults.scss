@@ -20,44 +20,26 @@
 $white:                         #fff !default;
 $black:                         #000 !default;
 
-$text-light:                    $white !default;
-$text-dark:                     #555 !default;
-
+$blue-light:                    #1b7db6 !default;
 $blue:                          #144382 !default;
-$blue-light:                    #2197db !default;
-$blue-lighter:                  lighten($blue-light, 42%) !default;
-$blue-dark:                     darken($blue, 10%) !default;
-$blue-darker:                   darken($blue, 15%) !default;
-
-$red:                           #b31b34 !default;
-$red-light:                     #ff264a !default;
-$red-lighter:                   lighten($red-light, 37%) !default;
-$red-dark:                      darken($red, 9%) !default;
-$red-darker:                    darken($red, 21%) !default;
+$blue-dark:                     #0d2c56 !default;
 
 $orange:                        #ffa826 !default;
-$orange-light:                  adjust-hue($orange, 10deg) !default;
-$orange-lighter:                adjust-hue($orange, 20deg) !default;
-$orange-dark:                   darken($orange, 8%) !default;
-$orange-darker:                 darken($orange, 16%) !default;
+$purple:                        #c03bc0 !default;
+$red:                           #b31b34 !default;
 
-$grey:                          #a8adb4 !default;
 $grey-lighter:                  #eeeef0 !default;
 $grey-light:                    #dddddf !default;
-$grey-dark:                     darken($grey, 15%) !default;
-$grey-darker:                   darken($grey, 30%) !default;
+$grey:                          #a8adb4 !default;
+$grey-dark:                     #717781 !default;
+$grey-darker:                   #5a6069 !default;
 
-$cyan:                          #1bb39a !default;
 $yellow:                        #ffd900 !default;
 $green:                         #00af33 !default;
-$green-light:                   lighten($green, 20%) !default;
+$cyan:                          #008489 !default;
 
-$blue-cyan:                     mix($blue, $cyan) !default;
-$violet:                        mix($blue, $red) !default;
-$brown:                         mix($blue, $orange) !default;
-$red-orange:                    mix($red, $orange) !default;
-$red-cyan:                      mix($red, $cyan) !default;
-
+$text-light:                    $white !default;
+$text-dark:                     #555 !default;
 
 // Nav colors
 
@@ -75,16 +57,14 @@ $theme-colors:
  (grey,           $grey),
  (grey-light,       $grey-light),
  (grey-lighter,     $grey-lighter),
- (violet,         $violet),
+ (purple,         $purple),
  (green,          $green),
  (yellow,         $yellow),
  (cyan,           $cyan),
  (blue-dark,        $blue-dark),
  (blue,           $blue),
  (blue-light,       $blue-light),
- (orange-dark,      $red-orange),
  (orange,         $orange),
- (red-dark,         $red-dark),
  (red,            $red),
  (white,          $white),
  (default,          $main-theme)

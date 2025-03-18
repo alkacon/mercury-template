@@ -36,10 +36,10 @@
 <c:set var="showDots"               value="${setting.showDots.toBoolean}" />
 <c:set var="isDraggable"            value="${setting.isDraggable.useDefault('true').toBoolean}" />
 <c:set var="visibleSlideSetting"    value="${setting.visibleSlides.toString}" />
-<c:set var="textDisplay"            value="${setting.textDisplay.toString}" />
+<c:set var="textDisplay"            value="${setting.textDisplay.isSetNotNone ? setting.textDisplay.toString : null}" />
 
-<c:set var="bgColorHead"            value="${setting.textColorHead.isSet and not (setting.textColorHead eq 'css') ? setting.textColorHead.toString : ''}" />
-<c:set var="bgColorSub"             value="${setting.textColorSub.isSet and not (setting.textColorSub eq 'css') ? setting.textColorSub.toString : ''}" />
+<c:set var="bgColorHead"            value="${setting.textColorHead.isSet and not (setting.textColorHead eq 'css') ? setting.textColorHead.toString : null}" />
+<c:set var="bgColorSub"             value="${setting.textColorSub.isSet and not (setting.textColorSub eq 'css') ? setting.textColorSub.toString : null}" />
 
 <c:set var="sliderType"             value="${setting.sliderType.toString}" />
 <c:set var="sliderType"             value="${not autoPlay and sliderType eq 'timed' ? 'hero' : sliderType}" />
@@ -48,7 +48,7 @@
 <c:choose>
     <c:when test="${sliderType eq 'logo'}">
     <%-- Logo slider --%>
-        <c:set var="visibleSlideList" value="${fn:split(visibleSlideSetting, '-')}" />
+        <c:set var="visibleSlideList"   value="${fn:split(visibleSlideSetting, '-')}" />
         <c:set var="visibleSlideConfig" value="${[0, 0, 0, 0, 0, 0]}" />
         <c:forEach var="sC"             items="${visibleSlideList}" varStatus="status">
             <c:set var="slideCount"     value="${cms.wrap[sC].toInteger}" />
@@ -71,6 +71,12 @@
             </c:otherwise>
         </c:choose>
         <c:set var="isHeroSlider" value="${false}" />
+        <c:set var="showSlideText" value="${not empty textDisplay}" />
+        <c:if test="${showSlideText}">
+            <c:set var="setEffect" value="${null}" />
+            <c:set var="bgColorHead" value="${textDisplay ne 'css' ? textDisplay : null}" />
+            <c:set var="textDisplay" value="title-below-logo" />
+        </c:if>
         <c:set var="marginClass" value=" lm-10" />
         <c:set var="transition" value="logo" />
         <c:set var="cssgutter" value="20" />
@@ -83,6 +89,7 @@
     <c:when test="${sliderType eq 'timed'}">
     <%-- Time depending hero slider --%>
         <c:set var="isHeroSlider" value="${true}" />
+        <c:set var="showSlideText" value="${true}" />
         <c:set var="marginClass" value=" tr-timed" />
         <c:set var="transition" value="timed" />
         <c:set var="autoPlay" value="${false}" />
@@ -98,6 +105,7 @@
     <c:otherwise>
     <%-- Hero slider (default) --%>
         <c:set var="isHeroSlider" value="${true}" />
+        <c:set var="showSlideText" value="${true}" />
         <c:set var="marginClass" value="${marginClass}${' tr-'.concat(transition)}" />
         <c:set var="transitionSpeedClass" value="${transitionSpeed <  4 ? ' sp-slow' : ' sp-medium'}" />
         <c:set var="transitionSpeedClass" value="${transitionSpeed <  8 ? transitionSpeedClass : ' sp-fast'}" />
@@ -143,7 +151,7 @@
         <c:set var="rgbValSub" value="${cms.color.toRgb(bgColorSub)}" />
     </c:if>
     <c:choose>
-        <c:when test="${not empty rgbValHead and (rgbValHead eq rgbValSub)}">
+        <c:when test="${not empty rgbValHead and (not isHeroSlider or (rgbValHead eq rgbValSub))}">
             <c:set var="customVars">--my-slider-bg:${rgbValHead};</c:set>
         </c:when>
         <c:otherwise>
@@ -227,6 +235,9 @@
              </c:set>
         </c:if>
 
+        <c:set var="copyright" value="${null}" />
+        <c:set var="copyrightJsonLd" value="${null}" />
+
         <m:nl />
 
         <div class="slide-wrapper${isHeroSlider ? '' : ' col'}${isHiddenSlide ? ' hide-noscript rs_skip' : ' slide-active'}${' '}${animationTrigger}"${not empty validRange ? ' '.concat(validRange) : '' }><%----%>
@@ -252,6 +263,11 @@
                                     externalCopyright="${showImageCopyright}"
                                     title="${image.value.SuperTitle.toString()}">
                                         <c:set var="copyright" value="${imageCopyrightHtml}" />
+                                        <c:if test="${not empty imageCopyright}">
+                                            <c:set var="copyrightJsonLd">
+                                                <m:data-image imageBean="${imageBean}" copyright="${imageCopyright}" />
+                                            </c:set>
+                                        </c:if>
                                 </m:image-simple>
                             </div><m:nl/>
                         </cms:addparams>
@@ -323,6 +339,9 @@
 
                     ${not empty slideLink ? '</a>':'</div>'}
 
+                    <c:if test="${not empty copyrightJsonLd}">
+                        ${copyrightJsonLd}
+                    </c:if>
                     <c:if test="${showImageCopyright and (not empty copyright)}">
                         <div class="copyright rs_skip" aria-hidden="true"><%----%>
                             <m:out value="${copyright}" lenientEscaping="${true}" />
@@ -330,8 +349,7 @@
                     </c:if>
                 </div><m:nl/>
 
-                <c:if test="${not (sliderType eq 'logo')
-                    and (image.value.SuperTitle.isSet || image.value.TitleLine1.isSet || image.value.TitleLine2.isSet)}">
+                <c:if test="${showSlideText and (image.value.SuperTitle.isSet || image.value.TitleLine1.isSet || image.value.TitleLine2.isSet)}">
 
                     ${not empty slideLink ?
                         '<a href="'
@@ -343,16 +361,16 @@
 
                     <div class="caption ${posTop}${' '}${posLeft}"><%----%>
                         <c:if test="${image.value.SuperTitle.isSet}">
-                            <strong ${textStyle}><m:out value="${image.value.SuperTitle}" lenientEscaping="${true}" /></strong><%----%>
+                            <strong><m:out value="${image.value.SuperTitle}" lenientEscaping="${true}" /></strong><%----%>
                         </c:if>
-                        <c:if test="${image.value.TitleLine1.isSet or image.value.TitleLine2.isSet}">
+                        <c:if test="${isHeroSlider and (image.value.TitleLine1.isSet or image.value.TitleLine2.isSet)}">
                             <div class="subcaption"><%----%>
                                 <c:if test="${image.value.TitleLine1.isSet}">
-                                    <small ${textStyle}><m:out value="${image.value.TitleLine1}" lenientEscaping="${true}" /></small><%----%>
+                                    <small><m:out value="${image.value.TitleLine1}" lenientEscaping="${true}" /></small><%----%>
                                 </c:if>
                                 <c:if test="${image.value.TitleLine2.isSet}">
                                     <%-- br needed here for "custom" CSS setting when subcaption has different color --%>
-                                    <br><small ${textStyle}><m:out value="${image.value.TitleLine2}" lenientEscaping="${true}" /></small><%----%>
+                                    <br><small><m:out value="${image.value.TitleLine2}" lenientEscaping="${true}" /></small><%----%>
                                 </c:if>
                             </div><%----%>
                         </c:if>

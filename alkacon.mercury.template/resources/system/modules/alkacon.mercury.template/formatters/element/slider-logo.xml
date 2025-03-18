@@ -55,6 +55,9 @@
       <IncludeName><![CDATA[transitionSpeed.slider]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[textDisplay.slider.logo]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[effect.slider.logo]]></IncludeName>
     </Setting>
     <Setting>

@@ -203,6 +203,7 @@
                         />
                     </cms:addparams>
                 </c:if>
+                <m:data-image imageBean="${imageBean}" copyright="${imageCopyright}" />
                 <c:if test="${showCopyright and not empty imageCopyrightHtml}">
                     <div class="copyright image-copyright" aria-hidden="true"><%----%>
                         <m:out value="${imageCopyrightHtml}" lenientEscaping="${true}" />

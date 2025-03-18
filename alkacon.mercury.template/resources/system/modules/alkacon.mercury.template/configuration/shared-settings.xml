@@ -3556,6 +3556,21 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[textDisplay.slider.logo]]></IncludeName>
+      <PropertyName><![CDATA[textDisplay]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.slider.textDisplay)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.slider.textDisplay.logo.help)]]></Description>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[none]]></Default>
+      <WidgetConfig><![CDATA[
+        none:               %(key.msg.setting.slider.textDisplay.logo.none)|
+        css:                %(key.msg.setting.slider.textColor.css)|
+        #aaa:               %(key.msg.setting.slider.textColor.lightGrey)|
+        #555:               %(key.msg.setting.slider.textColor.darkGrey)|
+        #000:               %(key.msg.setting.slider.textColor.black)
+      ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textColorHead.slider]]></IncludeName>
       <PropertyName><![CDATA[textColorHead]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.slider.textColorHead)]]></DisplayName>

@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>18.0.67</version>
+		<version>18.0.69</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -532,170 +532,170 @@
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-300.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-300.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-300.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-300.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db249b6-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db249b7-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57a9b327-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57a9b328-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-300]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-300]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-300italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-300italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-300italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-300italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db33419-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db3341a-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57aac49a-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57aac49b-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-300italic]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-300italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-500.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-500.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-500.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-500.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db41e7c-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db41e7d-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57ab87ed-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57ab87ee-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-500]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-500]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-500italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-500italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-500italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-500italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db4e1cf-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db4e1d0-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57abfd20-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57abfd21-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-500italic]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-500italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-600.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-600.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-600.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-600.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db57e12-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db57e13-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57ac9963-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57ac9964-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-600]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-600]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-600italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-600italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-600italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-600italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db5f345-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db5f346-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57ad35a6-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57ad35a7-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-600italic]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-600italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-700.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-700.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-700.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-700.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db64168-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db64169-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57add1e9-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57add1ea-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-700]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-700]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-700italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-700italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-700italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-700italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db6b69b-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db6b69c-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57ae6e2c-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57ae6e2d-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-700italic]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-700italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-italic.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-italic.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-italic.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-italic.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db72bce-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db72bcf-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57af0a6f-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57af0a70-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-italic]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-italic]]></value>
 				</property>
 			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-regular.woff2</source>
-			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v20-latin_latin-ext-regular.woff2</destination>
+			<source>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-regular.woff2</source>
+			<destination>system/modules/alkacon.mercury.theme/fonts/exo-2-v24-latin_latin-ext-regular.woff2</destination>
 			<type>plain</type>
-			<uuidstructure>4db7a101-4b2f-11ee-a17f-0242ac11002b</uuidstructure>
-			<uuidresource>4db7a102-4b2f-11ee-a17f-0242ac11002b</uuidresource>
-			<datecreated>Mon, 04 Sep 2023 14:28:23 GMT</datecreated>
+			<uuidstructure>57afa6b2-03f7-11f0-8c0f-0242ac11002b</uuidstructure>
+			<uuidresource>57afa6b3-03f7-11f0-8c0f-0242ac11002b</uuidresource>
+			<datecreated>Tue, 18 Mar 2025 12:48:51 GMT</datecreated>
 			<flags>0</flags>
 			<properties>
 				<property>
 					<name>Title</name>
-					<value><![CDATA[exo-2-v20-latin_latin-ext-regular]]></value>
+					<value><![CDATA[exo-2-v24-latin_latin-ext-regular]]></value>
 				</property>
 			</properties>
 			<relations/>

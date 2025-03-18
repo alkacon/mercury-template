@@ -46,7 +46,7 @@
 
 <c:set var="containerType"          value="${setting.containerType.useDefault('element').toString}" />
 
-<c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? ' compact ' : ''}" />
+<c:set var="compactLayout"          value="${setting.compactLayout.toBoolean ? ' compact' : ''}" />
 
 <c:set var="hsizeTitle"             value="${hsize}" />
 <c:set var="hsize"                  value="${showTitle and value.Title.isSet ? hsize + 1 : hsize}" />
@@ -67,7 +67,7 @@
 
 <m:nl />
 <m:section-piece
-    cssWrapper="${kindModern ? kindCss : cssWrappers}${setCssWrapperParagraphs}"
+    cssWrapper="${kindModern ? 'detail-content '.concat(kindCss) : cssWrappers}${setCssWrapperParagraphs}"
     pieceLayout="${pieceLayout}"
     heading="${showTitle ? value.Title : null}"
     hsize="${hsizeTitle}"

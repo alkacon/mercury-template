@@ -46,19 +46,6 @@ $slider-text-below-breakpoint: md !default;
         }
     }
 
-    &.logo-slider {
-        // optional paddings for logo sliders
-        @each $space in $logo-slider-paddings {
-            .slider-box.lm-#{$space} {
-                margin-left: -#{$space}px;
-                margin-right: -#{$space}px;
-                .slide-wrapper .visual {
-                    margin: #{$space}px;
-                }
-            }
-        }
-    }
-
     .slider-box {
         position: relative;
         overflow: hidden;
@@ -263,6 +250,104 @@ $slider-text-below-breakpoint: md !default;
         }
     }
 
+    @mixin caption-below() {
+        .slide-wrapper,
+        .image-src-box,
+        .image-src-box img {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .captions {
+            background-color: rgb(var(--#{$prefix}slider-bg));
+            width: 100%;
+            display: flex;
+            flex-grow: 10;
+            border-bottom-left-radius: var(--#{$prefix}slider-slide-border-radius);
+            border-bottom-right-radius: var(--#{$prefix}slider-slide-border-radius);
+        }
+
+        .slide-wrapper {
+            .caption {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: var(--#{$prefix}slider-slide-border-radius);
+                border-bottom-right-radius: var(--#{$prefix}slider-slide-border-radius);
+                position: static;
+                max-width: initial;
+                min-height: calc(#{ceil($h2-font-size * 2)} + 10px);
+                background-color: rgb(var(--#{$prefix}slider-bg));
+                opacity: 1 !important;
+                text-align: initial !important;
+                white-space: initial !important;
+                transform: initial !important;
+            }
+            strong {
+                font-size: $h2-font-size;
+                line-height: $headings-line-height;
+                font-weight: var(--#{$prefix}font-weight-headings);
+            }
+            small {
+                display: inline;
+                padding: 0;
+            }
+            small:nth-of-type(2) {
+                &::before {
+                    display: inline-block;
+                    content: "\00a0";
+                }
+            }
+            .subcaption {
+                display: block;
+                padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
+            }
+        }
+    }
+
+    &.logo-slider {
+        .slider-box {
+            @each $space in $logo-slider-paddings {
+                // paddings for logo sliders
+                &.lm-#{$space} {
+                    margin-left: -#{$space}px;
+                    margin-right: -#{$space}px;
+                    .slide-wrapper .visual {
+                        margin: #{$space}px;
+                    }
+                }
+            }
+        }
+
+        &.title-below-logo {
+            @include caption-below;
+
+            .slider-box {
+                .slide-wrapper {
+
+                    .visual {
+                        margin-bottom: 0;
+                    }
+
+                    .caption {
+                        min-height: initial;
+                        strong {
+                            // nested in caption to make it used in all screen sizes
+                            font-size: var(--#{$prefix}body-font-size);
+                        }
+                    }
+                }
+                @each $space in $logo-slider-paddings {
+                    // paddings for logo sliders
+                    &.lm-#{$space} {
+                        .slide-wrapper .captions {
+                            width: calc(100% - 2 * #{$space}px);
+                            margin: 0 #{$space}px #{$space}px #{$space}px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     @include media-breakpoint-down($slider-text-below-breakpoint) {
         &.text-below-on-xs {
@@ -275,19 +360,7 @@ $slider-text-below-breakpoint: md !default;
                 display: none !important;
             }
 
-            .slide-wrapper,
-            .image-src-box,
-            .image-src-box img {
-                border-bottom-left-radius: 0;
-                border-bottom-right-radius: 0;
-            }
-
-            .captions {
-                background-color: rgb(var(--#{$prefix}slider-bg));
-                width: 100%;
-                display: flex;
-                flex-grow: 10;
-            }
+            @include caption-below;
 
             .slider-box {
                 &.custom {
@@ -312,40 +385,6 @@ $slider-text-below-breakpoint: md !default;
                             margin-top: 0;
                         }
                     }
-                }
-            }
-
-            .slide-wrapper {
-                .caption {
-                    border-top-left-radius: 0;
-                    border-top-right-radius: 0;
-                    position: static;
-                    max-width: initial;
-                    min-height: calc(#{ceil($h2-font-size * 2)} + 10px);
-                    background-color: rgb(var(--#{$prefix}slider-bg));
-                    opacity: 1 !important;
-                    text-align: initial !important;
-                    white-space: initial !important;
-                    transform: initial !important;
-                }
-                strong {
-                    font-size: $h2-font-size;
-                    line-height: $headings-line-height;
-                    font-weight: var(--#{$prefix}font-weight-headings);
-                }
-                small {
-                    display: inline;
-                    padding: 0;
-                }
-                small:nth-of-type(2) {
-                    &::before {
-                        display: inline-block;
-                        content: "\00a0";
-                    }
-                }
-                .subcaption {
-                    display: block;
-                    padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
                 }
             }
         }

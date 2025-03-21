@@ -207,6 +207,7 @@
                     subsite="${cms.requestContext.siteRoot}${cms.subSitePath}"
                     count="0"
                     addContentInfo="${true}"
+                    noFacets="${true}"
                 />
             </c:if>
 
@@ -224,6 +225,7 @@
                     noscriptCall="${false}"
                     pageUri="${cms.requestContext.folderUri}"
                     subsite="${cms.requestContext.siteRoot}${cms.subSitePath}"
+                    noFacets="${true}"
                 />
             ${'</'}${listTag}${'>'}
             <m:nl />

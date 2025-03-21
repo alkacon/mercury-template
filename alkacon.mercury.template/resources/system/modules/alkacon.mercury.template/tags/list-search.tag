@@ -20,8 +20,20 @@
 <%@ attribute name="multiDayRangeFacet" type="java.lang.Boolean" required="false"
     description="Whether the range facet shall return all days of a multi-day event or the start day only." %>
 
+<%@ attribute name="calendarStart" type="java.lang.String" required="false"
+    description="The calendar start date." %>
+
+<%@ attribute name="calendarEnd" type="java.lang.String" required="false"
+    description="The calendar start end date." %>
+
+<%@ attribute name="isCalendarFacetQuery" type="java.lang.Boolean" required="false"
+    description="Flag, indicating if we have a calendar facet query." %>
+
 <%@ attribute name="facetConfig" type="java.lang.String" required="false"
     description="If provided, we overwrite the facet config. We do not return results, but only use this to determine the facet counts." %>
+
+<%@ attribute name="noFacets" type="java.lang.Boolean" required="false"
+    description="If set to true, the facet values will not be returned, but active facet filters will still be used. Default= false" %>
 
 <%@ variable name-given="search" scope="AT_END" declare="true" variable-class="org.opencms.jsp.search.result.I_CmsSearchResultWrapper"
     description="The results of the search" %>
@@ -57,9 +69,11 @@
 <c:choose>
     <c:when test="${multiDay eq true}">
         <c:set var="instancedaterangefield">instancedaterange_${cms.locale}_dr</c:set>
+        <c:set var="method">filter</c:set>
     </c:when>
     <c:otherwise>
         <c:set var="instancedaterangefield">instancedate_${cms.locale}_dt</c:set>
+        <c:set var="method">dv</c:set>
     </c:otherwise>
 </c:choose>
 
@@ -86,22 +100,32 @@
     <c:if test="${isFacetCountQuery}">, ${facetConfig}</c:if>
 }
 </c:set>
-<c:set var="additionalSearchConfigs">
-{
-    "rangefacets": [
-        {
-            "range": "${instancedaterangefield}",
-            "name": "calendarday",
-            "start": "NOW/MONTH-20YEARS",
-            "end": "NOW/MONTH+5YEARS",
-            "gap": "+1DAYS",
-            "isAndFacet": false,
-            "ignoreAllFacetFilters": true,
-            "mincount": 1
-        }
-    ]
-}
-</c:set>
+<c:set var="additionalSearchConfigs" value="${[]}"/>
+<c:if test="${noFacets}">
+    <c:set var="additionalConfig">{ "extrasolrparams": "facet=false" }</c:set>
+    <c:set var="ignore" value="${additionalSearchConfigs.add(additionalConfig)}"/>
+</c:if>
+<c:if test="${not isFacetCountQuery && (isCalendarFacetQuery eq true || not empty param.facet_calendarday)}">
+    <c:set var="additionalConfig">
+    {
+
+        "rangefacets": [
+            {
+                "range": "${instancedaterangefield}",
+                "name": "calendarday",
+                "start": "${empty calendarStart ? 'NOW/MONTH' : calendarStart}",
+                "end": "${empty calendarEnd ? 'NOW/MONTH+1MONTHS' : calendarEnd}",
+                "gap": "+1DAYS",
+                "isAndFacet": false,
+                "ignoreAllFacetFilters": true,
+                "mincount": 1,
+                "method": ${method}
+            }
+        ]
+    }
+    </c:set>
+    <c:set var="ignore" value="${additionalSearchConfigs.add(additionalConfig)}"/>
+</c:if>
 
 <%-- ############################################# --%>
 <%-- ####### Perform search based on JSON ######## --%>

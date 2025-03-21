@@ -58,6 +58,7 @@
             pageUri="${param.sitepath}"
             subsite="${param.subsite}"
             multiDayRangeFacet="${multiDay}"
+            noFacets="${not settings.showfacetcategory.toBoolean}"
         />
     ${'</'}${listTag}${'>'}
 

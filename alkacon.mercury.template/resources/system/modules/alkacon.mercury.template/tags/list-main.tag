@@ -43,6 +43,8 @@
 <%@ attribute name="multiDayRangeFacet" type="java.lang.Boolean" required="false"
     description="Whether the range facet shall return all days of a multi-day event or the start day only." %>
 
+<%@ attribute name="noFacets" type="java.lang.Boolean" required="false"
+    description="If set to true, the facet values will not be returned, but active facet filters will still be used. Default= false" %>
 
 <%@ variable name-given="search" scope="AT_END" declare="true" variable-class="org.opencms.jsp.search.result.I_CmsSearchResultWrapper"
     description="The search result given from the search tag." %>
@@ -65,6 +67,7 @@
     count="${count}"
     addContentInfo="${addContentInfo}"
     multiDayRangeFacet="${multiDayRangeFacet}"
+    noFacets="${noFacets}"
 />
 
 <c:set var="categories">${config.value.Category}</c:set>

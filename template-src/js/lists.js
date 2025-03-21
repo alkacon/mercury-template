@@ -1167,9 +1167,11 @@ export function registerFilter(filter) {
             console.info("DynamicList.registerFilter() data filter init params - " + filter.data.initparams);
         }
     }
-    // apply the list filter and update counts on page load
-    const searchStateParameters = filter.data.initparams ? filter.data.initparams : "";
-    listFilter(filter.elementId, filter, searchStateParameters, true);
+    // apply the list filter and update counts on page load if needed
+    const initParams = filter.data.initparams ? filter.data.initparams : "";
+    if (initParams) {
+        listFilter(filter.elementId, filter, initParams, true);
+    }
     return filter;
 }
 

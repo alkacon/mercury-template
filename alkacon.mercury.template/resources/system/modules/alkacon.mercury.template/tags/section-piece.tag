@@ -89,6 +89,9 @@
 <%@ attribute name="headingOption" type="java.lang.String" required="false"
     description="Controls how the heading is displayed. Default is 'full'." %>
 
+<%@ attribute name="headingAsDiv" type="java.lang.Boolean" required="false"
+    description="Controls if headings are generated using regular <h1> ... <h6> tags, or as divs that contain a marker class 'h1' ... 'h6'." %>
+
 <%@ attribute name="showImageCopyright" type="java.lang.Boolean" required="false"
     description="Controls if the image copyright is displayed as image overlay. Default is 'false'." %>
 
@@ -207,6 +210,7 @@
                             level="${hsize}"
                             suffix="${anchorLinkSuffix}"
                             tabindex="${empty anchorLinkSuffix}"
+                            headingAsDiv="${headingAsDiv}"
                             ade="${false}"
                             css="${headingCss}"
                             id="${headingId}">
@@ -222,6 +226,7 @@
                             text="${heading}"
                             level="${hsize}"
                             suffix="${anchorLinkSuffix}"
+                            headingAsDiv="${headingAsDiv}"
                             ade="${ade}"
                             css="${headingCss}"
                             id="${headingId}"

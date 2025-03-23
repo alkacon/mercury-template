@@ -14,7 +14,8 @@
 
 <m:setting-defaults>
 
-<c:set var="hsize"                  value="${setting.hsize.toInteger}" />
+<c:set var="headingAsDiv"           value="${setting.hsize.toString.startsWith('.h')}" />
+<c:set var="hsize"                  value="${headingAsDiv ? cms.wrap(setting.hsize.toString.substring(2)).toInteger : setting.hsize.toInteger}" />
 <c:set var="iconClass"              value="${setting.iconClass.isSet ? setting.iconClass.toString : 'warning'}" />
 
 <c:set var="hasLink"                value="${value.Link.isSet and value.Link.value.URI.isSet}"/>
@@ -26,7 +27,7 @@
     ${setElementPreMarkup}
 
     <m:link link="${value.Link}" setTitle="${true}" css="icon-link">
-        <m:heading level="${hsize}" text="${value.Title}" css="icon-title" ade="${ade}" />
+        <m:heading level="${hsize}" text="${value.Title}" headingAsDiv="${headingAsDiv}" css="icon-title" ade="${ade}" />
         <c:if test="${iconClass ne 'none'}">
             <m:icon icon="${iconClass}" tag="div" cssWrapper="icon-image" inline="${true}" />
             <m:nl />

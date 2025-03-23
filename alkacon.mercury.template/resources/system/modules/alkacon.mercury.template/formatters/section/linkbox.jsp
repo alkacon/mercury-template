@@ -18,7 +18,8 @@
 <c:set var="pieceLayout"        value="${setting.pieceLayout.toInteger}" />
 <c:set var="sizeDesktop"        value="${setting.visualOption.toInteger}" />
 <c:set var="sizeMobile"         value="${setting.sizeMobile.isSetNotNone ? setting.sizeMobile.toInteger : null}" />
-<c:set var="hsize"              value="${setting.hsize.toInteger}" />
+<c:set var="headingAsDiv"       value="${setting.hsize.toString.startsWith('.h')}" />
+<c:set var="hsize"              value="${headingAsDiv ? cms.wrap(setting.hsize.toString.substring(2)).toInteger : setting.hsize.toInteger}" />
 <c:set var="imageRatio"         value="${setting.imageRatio.toString}" />
 <c:set var="linkOption"         value="${setting.linkOption.toString}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
@@ -58,6 +59,7 @@ ${setElementPreMarkup}
     link="${value.Link}"
     suppressLinks="${true}"
     hsize="${hsize}"
+    headingAsDiv="${headingAsDiv}"
     imageRatio="${imageRatio}"
     textOption="${textOption}"
     textAlignment="${textAlignment}"

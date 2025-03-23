@@ -140,6 +140,8 @@
             border: none;
             font-size: 1.8rem;
             min-width: $policy-banner-button-min-width;
+            text-align: center;
+
             @if ($policy-banner-save-button-color == $policy-banner-background) {
                 border-width: 1px;
                 border-style: solid;

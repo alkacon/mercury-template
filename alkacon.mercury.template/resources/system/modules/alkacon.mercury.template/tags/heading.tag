@@ -20,6 +20,9 @@
 <%@ attribute name="prefix" type="java.lang.String" required="false"
     description="Optional prefix for the heading. HTML in this will NOT be escaped." %>
 
+<%@ attribute name="headingAsDiv" type="java.lang.Boolean" required="false"
+    description="Controls if headings are generated using regular <h1> ... <h6> tags, or as divs that contain a marker class 'h1' ... 'h6'." %>
+
 <%@ attribute name="css" type="java.lang.String" required="false"
     description="Optional CSS classes to attach to the heading tag." %>
 
@@ -68,6 +71,10 @@
     <c:if test="${(not empty markupTextOutput) or (not empty text)}">
 
         <c:set var="escapeXml"      value="${empty escapeXml ? true : escapeXml}" />
+        <c:if test="${headingAsDiv}">
+            <c:set var="css" value="h${level}${' '}${css}" />
+            <c:set var="level" value="${7}" />
+        </c:if>
         <c:set var="addTabindex"    value="${empty tabindex ? ((level ge 1) and (level le 4)) : tabindex}" />
         <c:set var="decorate"       value="${empty decorate ? ((level eq 7) and (css eq 'sub-header')) : decorate}" />
 

@@ -94,9 +94,11 @@
     <c:choose>
     <c:when test="${multiDay}">
         <c:set var="rangeField">instancedaterange_${cms.locale}_dr</c:set>
+        <c:set var="method">filter</c:set>
     </c:when>
     <c:otherwise>
         <c:set var="rangeField">instancedate_${cms.locale}_dt</c:set>
+        <c:set var="method">dv</c:set>
     </c:otherwise>
     </c:choose>
     <cms:jsonarray var="fieldFacets">
@@ -161,6 +163,7 @@
                         <cms:jsonvalue key="hardend">false</cms:jsonvalue>
                         <cms:jsonvalue key="mincount" value="1" />
                         <cms:jsonvalue key="isAndFacet" value="${false}"/>
+                        <cms:jsonvalue key="method" value="${method}"/>
                         <cms:jsonarray key="excludeTags">
                             <c:forEach var="tag" items="${helper.getExcludeTags(fd,'d')}">
                                 <cms:jsonvalue>${tag}</cms:jsonvalue>

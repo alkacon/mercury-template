@@ -27,7 +27,7 @@
     ${setElementPreMarkup}
 
     <m:link link="${value.Link}" setTitle="${true}" css="icon-link">
-        <m:heading level="${hsize}" text="${value.Title}" headingAsDiv="${headingAsDiv}" css="icon-title" ade="${ade}" />
+        <m:heading level="${hsize}" text="${value.Title}" headingAsDiv="${headingAsDiv}" tabindex="${not hasLink}" css="icon-title" ade="${ade}" />
         <c:if test="${iconClass ne 'none'}">
             <m:icon icon="${iconClass}" tag="div" cssWrapper="icon-image" inline="${true}" />
             <m:nl />

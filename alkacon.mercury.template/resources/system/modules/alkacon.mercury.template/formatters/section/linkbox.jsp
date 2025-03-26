@@ -60,6 +60,7 @@ ${setElementPreMarkup}
     suppressLinks="${true}"
     hsize="${hsize}"
     headingAsDiv="${headingAsDiv}"
+    headingTabindex="${not hasLink}"
     imageRatio="${imageRatio}"
     textOption="${textOption}"
     textAlignment="${textAlignment}"

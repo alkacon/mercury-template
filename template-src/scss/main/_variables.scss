@@ -92,6 +92,7 @@ $theme-matched-colors:             () !default;
 $theme-matched-defaults:           ();
 $theme-matched-colors-merged:      map-merge($theme-matched-defaults, $theme-matched-colors);
 
+
 // Default margins / spacing
 
 $default-margin:                    2.0rem !default;
@@ -143,6 +144,7 @@ $default-border-radius:             0 !default;
 $copyright-border-radius:           floor($default-border-radius * 0.5) !default;
 $image-border-radius:               var(--#{$prefix}border-radius) !default;
 
+
 // Z-index for OpenCms toolbar and edit points
 
 $oc-z-index:                        100000 !default;                // OC edit points are at 100000
@@ -152,6 +154,7 @@ $overflow-z-index:                  5 !default;                     // Used by e
 
 
 // Further Bootstrap variables
+
 $rfs-breakpoint:                    552px !default;
 
 $primary:                           $main-theme !default;
@@ -197,12 +200,14 @@ $font-style-headings:               get-font-style($font-family-headings, $font-
 
 $font-replace-fa-twitter-icon:      true !default;
 
+
 // Font REM bases
 
 $font-rem-base-print-size:          8px !default;
 $font-rem-base-desktop-size:        10px !default;
 $font-rem-base-mobile-size:         12px !default;
 $font-rem-base-breakpoint:          lg !default;
+
 
 // Fonts used in the navigation
 
@@ -266,6 +271,7 @@ $font-family-fancy:                 get-font-family($font-family-fancy);
 $font-weight-fancy:                 400 !default;
 $font-weight-fancy:                 get-font-weight($font-family-fancy, $font-weight-fancy);
 
+
 // Base font sizes
 
 $font-size-base:                    1.4rem !default;
@@ -297,8 +303,12 @@ $lead-font-size-mobile:             round($lead-font-size * 9) * 0.1 !default;
 
 
 // Controls the lightness threshold where the text is switched
+
 $text-lightness-threshold:          69 !default;  // 58 orange, 69 grey to use light text
 $text-contrast-threshold:           2.5 !default;
+
+
+// WACG contrast focus outline and other accibility settings
 
 $text-use-wcag-contrast:            true !default; // if true, then $text-contrast-threshold is set to predefined values and $text-lightness-threshold is ignored
 $wacg-conformance-level:            "AA" !default; // if this is not set to "AAA" then "AA" is assumed, see https://www.w3.org/WAI/WCAG21/Understanding/conformance#conformance-requirements
@@ -309,6 +319,10 @@ $wacg-conformance-level:            "AA" !default; // if this is not set to "AAA
         $text-contrast-threshold: 4.5;
     }
 }
+$focus-outline-color:               var(--#{$prefix}link-hover-color) !default;
+$focus-outline-style:               solid !default;
+$focus-outline-border-radius:       floor($default-border-radius * 0.5) !default;
+
 
 // Text and page colors
 
@@ -317,7 +331,6 @@ $text-dark:                         #444 !default;
 $body-bg:                           $white !default;
 $body-color:                        $text-dark !default;
 $code-color:                        $black !default;
-$focus-outline-color:               $main-theme-hover !default;
 $highlight-color:                   $grey-lighter !default;
 $highlight-border-color:            $grey-light !default;
 $highlight-fg-color:                get-text-color($highlight-color) !default;
@@ -358,6 +371,7 @@ $nav-shadow:                        0 6px 12px $dropshadow !default;
 // Disabled background-image, used for model group editor and elsewhere to mark "disabled" elements
 $disabled-bg:                       repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(0,0,0,0.1) 10px,rgba(0,0,0,0.1) 20px);
 
+
 // Buttons
 
 $btn-padding:                       0.6rem !default;
@@ -382,6 +396,7 @@ $btn-bg:                            $main-theme !default;
 $btn-fg:                            get-text-color($btn-bg) !default;
 $btn-hover-bg:                      $main-theme-hover !default;
 $btn-hover-fg:                      get-text-color($btn-hover-bg) !default;
+
 
 // Content sections
 
@@ -1027,17 +1042,23 @@ $effect-static-border:              1px solid $grey-light !default;
 $transition-timing:                 $default-transition-time !default; // default timing used for :hover and other transitions
 $transition-function:               ease; // default timing function used for :hover and other transitions
 
+
 // Disabled cursor, used e.g. for disabled buttons in list pagination
 $cursor-disabled:                   not-allowed !default;
+
 
 // Controls if links marked with the CSS "external" get a special icon.
 // Note that this also uses JavaScript for links in HTML WYSIWYG parts.
 $link-external-icon:                true !default;
 
+
 // The height of the OpenCms toolbar visible in edit mode
+
 $opencms-toolbar-height:            52px !default;
 
+
 // Link colors
+
 $link-colors:                       () !default;
 $text-colors:                       $link-colors !default;
 
@@ -1050,18 +1071,26 @@ $border-radiuses:                   () !default;
 $border-positions:                  () !default;
 $border-styles:                     () !default;
 
+
 // Further variables used by generics
+
 $box-padding:                       20px !default;
 $box-border-radius:                 var(--#{$prefix}border-radius) !default;
 $box-force-full-buttons:            false !default;
 
+
 // Spaces used for margins and paddings
+
 $margins-paddings:                  (0, 5, 10, 20, 30, 40) !default;
 
+
 // Spaces used for tile margins
+
 $list-tile-spacers:                 (0, 2, 5, 10, 15) !default;
 $list-tile-spacer-unit:             px !default;
 
+
 // Start of theme JSON with main colors
+
 $themeJSON: '"main-theme":"#{$main-theme}"';
 $themeJSON: append-json($themeJSON, "main-theme-hover", $main-theme-hover);

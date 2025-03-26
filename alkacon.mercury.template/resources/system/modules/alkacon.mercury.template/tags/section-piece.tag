@@ -92,6 +92,11 @@
 <%@ attribute name="headingAsDiv" type="java.lang.Boolean" required="false"
     description="Controls if headings are generated using regular <h1> ... <h6> tags, or as divs that contain a marker class 'h1' ... 'h6'." %>
 
+<%@ attribute name="headingTabindex" type="java.lang.Boolean" required="false"
+    description="Controls adding the 'tabindex' attribute to the generated heading.
+    If not set, use default 'true' when 'hsize' is in range 1 to 4, 'false' for all other sizes.
+    If 'false' is set explicitly, supress genertion of tabindex attribute for all sizes" %>
+
 <%@ attribute name="showImageCopyright" type="java.lang.Boolean" required="false"
     description="Controls if the image copyright is displayed as image overlay. Default is 'false'." %>
 
@@ -148,6 +153,7 @@
 
 <c:set var="ade"                value="${empty ade ? cms.isEditMode : ade}" />
 <c:set var="linkHeading"        value="${empty linkOption or empty link ? false : (linkOption eq 'heading')}" />
+<c:set var="headingTabindex"    value="${empty headingTabindex ? true : headingTabindex}" />
 <c:set var="hsize"              value="${empty hsize ? 2 : (hsize < 1 ? (linkHeading ? 3 : hsize) : hsize)}" />
 <c:set var="showText"           value="${empty text and empty markupText ? false : (empty textOption ? true : (textOption ne 'none'))}" />
 <c:set var="sizeDesktop"        value="${imageRatioLg eq 'no-img' ? 0 : sizeDesktop}" />
@@ -209,7 +215,7 @@
                         <m:heading
                             level="${hsize}"
                             suffix="${anchorLinkSuffix}"
-                            tabindex="${empty anchorLinkSuffix}"
+                            tabindex="${headingTabindex and (empty anchorLinkSuffix)}"
                             headingAsDiv="${headingAsDiv}"
                             ade="${false}"
                             css="${headingCss}"
@@ -226,6 +232,7 @@
                             text="${heading}"
                             level="${hsize}"
                             suffix="${anchorLinkSuffix}"
+                            tabindex="${headingTabindex}"
                             headingAsDiv="${headingAsDiv}"
                             ade="${ade}"
                             css="${headingCss}"

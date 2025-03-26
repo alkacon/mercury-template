@@ -18,7 +18,12 @@
 
 <m:setting-defaults>
 
-<div class="element type-webform${setCssWrapperAll} pivot">
+<c:set var="webformCssWrapper" value="${cms.sitemapConfig.attribute['template.webform.cssWrapper']}"/>
+<c:if test="${webformCssWrapper.isSetNotNone}">
+    <c:set var="setCssWrapperAll" value="${setCssWrapperAll}${' '}${webformCssWrapper.toString}" />
+</c:if>
+
+<div class="element type-webform${setCssWrapperAll}">
 
     <c:set var="formId" value="${cms.element.id.stringValue}" />
     <c:set var="fid" value="${formId.hashCode()}" />

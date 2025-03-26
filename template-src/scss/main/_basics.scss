@@ -70,6 +70,17 @@ html {
             }
         }
 
+        .box,
+        .box-inner {
+            &.fully-linked {
+                // required to make the focus outline visible in keyboard nav
+                > a {
+                    padding: 0;
+                    margin: var(--#{$prefix}box-padding);
+                }
+            }
+        }
+
         .opencms,
         .opencms * {
             &:focus {

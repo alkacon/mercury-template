@@ -22,8 +22,14 @@
 
 // Focus outline color
 @mixin focus-outline($outside: true) {
-    outline-color: $focus-outline-color;
-    outline-style: solid;
+
+    --#{$prefix}focus-outline-color: #{$focus-outline-color};
+    --#{$prefix}focus-outline-style: #{$focus-outline-style};
+    --#{$prefix}focus-outline-border-radius: #{$focus-outline-border-radius};
+
+    outline-color: var(--#{$prefix}focus-outline-color);
+    border-radius: var(--#{$prefix}focus-outline-border-radius);
+    outline-style: var(--#{$prefix}focus-outline-style);
     @if ($outside == true) {
         outline-width: 3px;
         outline-offset: 2px;

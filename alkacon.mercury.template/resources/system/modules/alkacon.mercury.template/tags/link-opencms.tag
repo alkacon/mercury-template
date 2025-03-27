@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="link"
+    display-name="link-opencms"
     body-content="empty"
     trimDirectiveWhitespaces="true"
     description="Resolves an opencms:// link." %>
@@ -14,13 +14,19 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 
 
+<%!
+public static String checkNull(String value) {
+    return (value == null) ? "" : value;
+}
+%>
+
 <c:if test="${not empty targetLink}">
 
     <c:set var="targetLink">
-        <%= alkacon.mercury.template.CmsFunctionLinkResolver.resolve(
+        <%= checkNull(alkacon.mercury.template.CmsFunctionLinkResolver.resolve(
                 (org.opencms.jsp.util.CmsJspStandardContextBean)getJspContext().findAttribute("cms"),
                 (String)getJspContext().getAttribute("targetLink")
-            )
+            ))
         %>
     </c:set>
 

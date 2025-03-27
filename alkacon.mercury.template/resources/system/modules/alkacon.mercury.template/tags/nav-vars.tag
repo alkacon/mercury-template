@@ -23,6 +23,7 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
 <%-- Check for nav path parameter and use this if it exists --%>
@@ -39,6 +40,9 @@
         <c:set var="navPathRes"             value="${cms.vfs.resource[cms.meta.navPathRes]}" />
     </c:when>
 </c:choose>
+
+<%-- Make sure the navPathRes is in the current site --%>
+<c:set var="navPathRes" value="${(not empty navPathRes) and fn:startsWith(navPathRes.rootPath, cms.requestContext.siteRoot) ? navPathRes : null}" />
 
 <c:set var="currentPageFolder"          value="${empty navPathRes ? cms.requestContext.folderUri : navPathRes.sitePathFolder}" />
 <c:set var="currentPageUri"             value="${empty navPathRes ? cms.requestContext.uri : navPathRes.sitePath}" />

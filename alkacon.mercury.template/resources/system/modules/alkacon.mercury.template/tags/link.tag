@@ -122,16 +122,19 @@
                 </c:otherwise>
             </c:choose>
 
+            <c:if test="${not empty targetLink}">
+                <c:if test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:') or fn:startsWith(targetLink, 'opencms:')}">
+                    <c:set var="internal" value="${true}" />
+                </c:if>
+                <c:if test="${(not empty fragment) and (not fn:contains(targetLink, '#'))}">
+                    <c:set var="targetLink" value="${targetLink}#${fragment}" />
+                </c:if>
+                <c:set var="targetLink"><m:link-opencms targetLink="${targetLink}" /></c:set>
+                <%-- targetLink may be returned empty by link-opencms --%>
+            </c:if>
+
             <c:choose>
                 <c:when test="${not empty targetLink}">
-
-                    <c:if test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:') or fn:startsWith(targetLink, 'opencms:')}">
-                        <c:set var="internal" value="${true}" />
-                    </c:if>
-                    <c:if test="${(not empty fragment) and (not fn:contains(targetLink, '#'))}">
-                        <c:set var="targetLink" value="${targetLink}#${fragment}" />
-                    </c:if>
-                    <c:set var="targetLink"><m:link-opencms targetLink="${targetLink}" /></c:set>
 
                     <c:set var="createButton" value="${createButton and empty body}" />
                     <c:if test="${empty body and not internal and not noExternalMarker}">
@@ -212,7 +215,9 @@
 
                 <c:otherwise>
                     <%-- targetLink was empty --%>
-                    ${body}
+                    ${'<span class="empty-href">'}
+                        ${body}
+                    ${'</span>'}
                 </c:otherwise>
 
             </c:choose>

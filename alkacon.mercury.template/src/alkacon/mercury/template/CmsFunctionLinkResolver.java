@@ -22,6 +22,7 @@ package alkacon.mercury.template;
 import org.opencms.ade.detailpage.CmsDetailPageInfo;
 import org.opencms.file.CmsObject;
 import org.opencms.i18n.CmsLocaleManager;
+import org.opencms.jsp.util.CmsJspContentAccessBean;
 import org.opencms.jsp.util.CmsJspStandardContextBean;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
@@ -114,21 +115,28 @@ public final class CmsFunctionLinkResolver {
                         String targetLocale = iLink.substring(LINK_LOCALE.length());
                         if (cmsBean.isDetailRequest()) {
                             // links between localized detail pages
-                            String targetLink = cmsBean.getDetailContent().getSitePath();
-                            String baseUri = cmsBean.getLocaleResource().get(targetLocale).getSitePath();
-                            if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(baseUri)) {
-                                // this content is available in the other locale
-                                cms = OpenCms.initCmsObject(cms);
+                            CmsJspContentAccessBean xmlBean = cmsBean.getDetailContent().getToXml();
+                            boolean hasLocale = (xmlBean != null)
+                                && xmlBean.getHasLocale().get(targetLocale).booleanValue();
+                            if (hasLocale) {
+                                String targetLink = cmsBean.getDetailContent().getSitePath();
+                                String baseUri = cmsBean.getLocaleResource().get(targetLocale).getSitePath();
                                 if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(baseUri)) {
-                                    cms.getRequestContext().setUri(baseUri);
+                                    // this content is available in the other locale
+                                    cms = OpenCms.initCmsObject(cms);
+                                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(baseUri)) {
+                                        cms.getRequestContext().setUri(baseUri);
+                                    }
+                                    cms.getRequestContext().setLocale(CmsLocaleManager.getLocale(targetLocale));
                                 }
-                                cms.getRequestContext().setLocale(CmsLocaleManager.getLocale(targetLocale));
+                                result = OpenCms.getLinkManager().substituteLinkForUnknownTarget(
+                                    cms,
+                                    targetLink,
+                                    null,
+                                    false);
+                            } else {
+                                result = null;
                             }
-                            result = OpenCms.getLinkManager().substituteLinkForUnknownTarget(
-                                cms,
-                                targetLink,
-                                null,
-                                false);
                         } else {
                             // links between localized regular pages
                             result = cmsBean.getLocaleResource().get(targetLocale).getLink();

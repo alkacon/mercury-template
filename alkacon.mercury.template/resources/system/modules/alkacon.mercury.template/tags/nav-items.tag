@@ -191,18 +191,20 @@
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
             <%-- Output HTML debug comment --%>
-            <!-- <fmt:message key="msg.page.navigation.empty" /> -->
+            <m:print>
+                <fmt:message key="msg.page.navigation.empty" />
+            </m:print>
             <c:if test="${not (type eq 'breadCrumb') and cms.isEditMode}">
-                <!--
-                type="${type}"
-                currentPageFolder="${currentPageFolder}"
-                currentPageUri="${currentPageUri}"
-                navStartFolder="${navStartFolder}"
-                navStartLevel="${navStartLevel}"
-                endLevel="${endLevel}"
-                navDepth="${navDepth}"
-                locale="${cms.locale}"
-                -->
+                <m:print>
+                    type="${type}"
+                    currentPageFolder="${currentPageFolder}"
+                    currentPageUri="${currentPageUri}"
+                    navStartFolder="${navStartFolder}"
+                    navStartLevel="${navStartLevel}"
+                    endLevel="${endLevel}"
+                    navDepth="${navDepth}"
+                    locale="${cms.locale}"
+                </m:print>
                 <m:alert-meta icon="warning">
                     <jsp:attribute name="text">
                         <fmt:message key="msg.page.navigation.empty" />

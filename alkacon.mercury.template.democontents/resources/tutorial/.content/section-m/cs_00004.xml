@@ -10,7 +10,7 @@
 <ul>
 <li><strong>Step 1:</strong> Click on the <em><strong>Add content</strong></em> ("Magic wand") button in the toolbar. You will see a list of the available content types that you can use on this page.</li>
 <li><strong>Step 2:</strong> Click on the first entry "Content section". A list of content sections that have already been created is shown in the dialog.</li>
-<li><strong>Step 3:</strong> Locate the list entry titled "<strong>! Default content section (copy model)</strong>". If you set the sort order to "Title Ascending" this should be the first entry in the list. Move the mouse over this element. You will notice some icons appearing on the right side of the element box.</li>
+<li><strong>Step 3:</strong> Locate the list entry titled "<strong>! Default content section (copy model)</strong>". If you set the sort order to "Title Ascending" for the results, this should be the first entry in the list. Move the mouse over this element. You will notice some icons appearing on the right side of the element box.</li>
 <li><strong>Step 4:</strong> Move the cursor over the <em><strong>Move to page </strong></em>icon, click and drag one element into the page. Possible target areas will be highlighted. Place the content anywhere you like, for example right below this paragraph. When you drop the element you should see the new contents placeholder text and image.</li>
 </ul>]]></content>
     </Text>

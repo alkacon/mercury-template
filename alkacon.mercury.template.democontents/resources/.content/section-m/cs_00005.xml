@@ -7,14 +7,5 @@
       <links/>
       <content><![CDATA[<p>Detailed information about new features and improvements in this OpenCms release.</p>]]></content>
     </Text>
-    <Link>
-      <Text><![CDATA[Release Notes]]></Text>
-      <URI>
-        <link internal="true" type="WEAK">
-          <target><![CDATA[/sites/web/opencms/en/overview/news/]]></target>
-          <uuid>34934722-0499-11f0-8c0f-0242ac11002b</uuid>
-        </link>
-      </URI>
-    </Link>
   </ContentSection>
 </ContentSectionData>

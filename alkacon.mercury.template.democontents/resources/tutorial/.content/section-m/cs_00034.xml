@@ -7,7 +7,7 @@
       <links/>
       <content><![CDATA[<p><strong>Formatters</strong> are used to generate the output for all content elements. Each element needs at least one formatter, otherwise it can't be used on a page. Some elements may have multiple formatters which generate different output. The Mercury Template makes heavy use of multiple formatters per element. That way the template can be quickly adopted to your own requirements without coding new formatters.</p>
 <p><em>Please note: This flexibility is an intentional feature of the Mercury Template. Of course, you can also create a template for OpenCms where the user has no or very little choice about how individual elements get displayed.</em></p>
-<p>Below you can see the output of the <strong>It's the same element</strong> generated from two different formatters. The left one is just a plain text output, the right one actually shows an image and generates a more complex &lt;div&gt; structure.</p>]]></content>
+<p>Below you can see the output of <strong>It's the same element</strong> generated from two different formatters. The left one is just a plain text output, the right one actually shows an image and generates a more complex &lt;div&gt; structure.</p>]]></content>
     </Text>
     <Image>
       <Image>

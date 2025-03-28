@@ -5,7 +5,7 @@
     <Title><![CDATA[Link to summary]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>To publish changes, click on the <em><strong>Publish</strong></em> icon on the left side of the toolbar. The OpenCms publish dialog appears. Here you can select what you want to publish. The dialog allows publishing of just the current page, or all changes you have made in your current session, or all changes. When you have selected something, click the "Publish" button below.</p>
+      <content><![CDATA[<p>To publish changes, click on the <em><strong>Publish</strong></em> icon on the left side of the toolbar. The OpenCms publish dialog appears. Here you can select what you want to publish. The dialog allows publishing of just the current page, all changes you have made in your current session, or all changes. After you have selected your options, click the "Publish" button below.</p>
 <h3>This concludes this tutorial</h3>]]></content>
     </Text>
     <Link>

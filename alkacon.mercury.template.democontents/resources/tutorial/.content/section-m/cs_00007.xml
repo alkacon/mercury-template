@@ -5,8 +5,8 @@
     <Title><![CDATA[Edit content inline - directly on the page]]></Title>
     <Text name="Text0">
       <links/>
-      <content><![CDATA[<p>Move your mouse over a text element on the page, for example over <strong>this text here. </strong>You will notice the mouse cursor becomes a "pen" icon. Now click on the text. Text edit controls are shown and you can start changing the content. When you are done, just click outside the highlighted area to save your changes.</p>
-<p>You can also replace images in the page with drag &amp; drop. Open <em><strong>Galleries</strong></em> from the toolbar. Select for example <strong>Demo: People images</strong> from the list of existing galleries. When you place the mouse over any image, you notice the <em><strong>Move to page</strong></em> icon appears. Click there and drag and drop the image to the page. </p>]]></content>
+      <content><![CDATA[<p>Move your mouse over a text element on the page, for example over <strong>this text here. </strong>You will notice that the mouse cursor changes to a "pen" icon. Now click on the text. Text edit controls are shown and you can start changing the content. When you are done, just click outside the highlighted area to save your changes.</p>
+<p>You can also replace images in the page with drag &amp; drop. Open <em><strong>Galleries</strong></em> from the toolbar. Select for example <strong>Demo: People images</strong> from the list of existing galleries. When you place the mouse over any image, the <em><strong>Move to page</strong></em> icon appears. Click on it and drag and drop the image to the page.</p>]]></content>
     </Text>
   </ContentSection>
 </ContentSectionData>

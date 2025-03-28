@@ -6,7 +6,7 @@
     <Text name="Text0">
       <links/>
       <content><![CDATA[<p>Check out the screenshots above for a short demo about how to access the element formatter.</p>
-<p>Each formatter may provide additional <strong>Settings</strong>. Settings allow you to tweak the generated output. It's important to understand that formatter and settings are stored in the <strong>Page</strong>, not in the <strong>Content</strong> itself. So you can use the same content on different pages or even on the same page with different formatters and settings.</p>
+<p>Each formatter may provide additional <strong>Settings</strong>. Settings allow you to tweak the generated output. It's important to understand that the used formatter and settings are stored in the <strong>Page</strong>, not in the <strong>Content</strong> itself. So you can use the same content on different pages or even on the same page with different formatters and settings.</p>
 <p>Go ahead and try to change formatter and settings for some elements on this page to get familiar with the concept.</p>]]></content>
     </Text>
     <Image>

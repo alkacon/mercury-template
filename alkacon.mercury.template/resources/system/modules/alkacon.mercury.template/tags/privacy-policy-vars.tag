@@ -83,6 +83,11 @@
         </c:if>
     </c:if>
     <c:if test="${not empty policyLinkImprint}">
+        <c:set var="policyLinkImprint">
+            <m:link-opencms targetLink="${policyLinkImprint}" />
+        </c:set>
+    </c:if>
+    <c:if test="${not empty policyLinkImprint}">
         <c:set var="hasPolicyLinks" value="${true}" />
         <c:set var="policyTextImprint" value="${value.LinkImprint.value.Text.toString}" />
         <c:if test="${empty policyTextImprint}">
@@ -98,6 +103,11 @@
         </c:if>
     </c:if>
     <c:if test="${not empty policyLinkPolicy}">
+        <c:set var="policyLinkPolicy">
+            <m:link-opencms targetLink="${policyLinkPolicy}" />
+        </c:set>
+    </c:if>
+    <c:if test="${not empty policyLinkPolicy}">
         <c:set var="hasPolicyLinks" value="${true}" />
         <c:set var="policyTextPolicy" value="${value.LinkPolicy.value.Text.toString}" />
         <c:if test="${empty policyTextPolicy}">
@@ -111,6 +121,11 @@
         <c:if test="${not fn:startsWith(policyLinkLegal, '/') and not fn:startsWith(policyLinkLegal, 'http')}">
             <c:set var="policyLinkLegal" value="${null}" />
         </c:if>
+    </c:if>
+    <c:if test="${not empty policyLinkLegal}">
+        <c:set var="policyLinkLegal">
+            <m:link-opencms targetLink="${policyLinkLegal}" />
+        </c:set>
     </c:if>
     <c:if test="${not empty policyLinkLegal}">
         <c:set var="hasPolicyLinks" value="${true}" />

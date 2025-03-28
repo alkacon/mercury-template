@@ -1557,7 +1557,8 @@
       <Default><![CDATA[subsitute]]></Default>
       <WidgetConfig><![CDATA[
         subsitute:  %(key.msg.setting.keyPieceOrigin.subsitute)|
-        none:       %(key.msg.setting.keyPieceOrigin.none)
+        none:       %(key.msg.setting.keyPieceOrigin.none)|
+        hide:       %(key.msg.setting.keyPieceOrigin.hide)
       ]]></WidgetConfig>
     </Setting>
     <Setting>

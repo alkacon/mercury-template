@@ -34,7 +34,9 @@
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showCombinedDownloads"  value="${setting.showCombinedDownloads.toBoolean}" />
-<c:set var="useVisualFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
+<c:set var="hideVisual"             value="${setting.keyPieceOrigin.toString eq 'hide'}" />
+<c:set var="useVisualFromParagraph" value="${not hideVisual and (setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none')}" />
+
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />

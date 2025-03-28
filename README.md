@@ -2,9 +2,22 @@
 
 ### A full-featured, customizable, great looking responsive template for OpenCms ###
 
-The Mercury Template is a complete, modular template for [OpenCms](http://opencms.org). It is based on Bootstrap 5 and allows you to create simple or advanced grid-layouts with drag & drop. It packs a ton of CSS features and JavaScript plugins that have carefully been integrated to be simple to use for the content manager. And it ships with all Java and SASS sources so you can fully customize it for your unique requirements.
+The Mercury Template is a complete, modular template for [OpenCms](https://opencms.org). It is based on Bootstrap 5 and allows you to create simple or advanced grid layouts with drag & drop. It packs a ton of CSS features and JavaScript plugins that have been carefully integrated to be easy to use for the content manager. And it ships with all the Java and SASS sources so you can fully customize it to your unique requirements.
 
 ### Release history ###
+
+**Version 19** - April 2, 2025:
+
+* Updated for OpenCms 19.
+* "Link sequences" can now be displayed as a row of "icon buttons".
+* The "Hero silder" can now be shown / hidden for selected screen sizes.
+* The "Logo slider" can now optionally show the title text below the image.
+* For "Events", there is a new element setting to display the name of the event location / place in list teasers.
+* Map info windows have been optimized to show more information on smaller screens.
+* The full text search results can now optionally show the site or subsite where the content was found.
+* Added support for the Matomo and Piwik Pro tag managers.
+* See [the Mercury documentation website](https://mercury-template.opencms.org/version/) for a detailed description of all the new features.
+* All NPM dependencies have been updated to a recent version.
 
 **Version 18** - October 8, 2024:
 

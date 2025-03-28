@@ -37,9 +37,18 @@
                 <cms:jsonarray var="breadCrumbJson">
 
                     <c:forEach var="navElem" items="${navItems}" varStatus="status">
+                        <c:set var="hasNavPath" value="${fn:startsWith(navElem.description, 'navPath:')}" />
                         <c:if test="${
+                            hasNavPath or
                             ((breadcrumbsIncludeHidden or (status.last and not cms.detailRequest)) and (navElem.navPosition > 0))
                             or (navElem.info ne 'ignoreInDefaultNav')}">
+                            <c:if test="${hasNavPath}">
+                                <c:set var="navPath" value="${fn:substringAfter(navElem.description, 'navPath:')}" />
+                                <c:set var="navPathRes" value="${cms.vfs.resource[navPath]}" />
+                                <c:if test="${not empty navPathRes}">
+                                    <c:set var="navElem" value="${navPathRes.navigation}" />
+                                </c:if>
+                            </c:if>
                             <c:set var="navImage" value="${navElem.navImage}" />
                             <c:set var="navText" value="${(empty navElem.navText or fn:startsWith(navElem.navText, '???'))
                                 ? (empty navImage ? navElem.title : null) : navElem.navText}" />

@@ -39,7 +39,8 @@
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showCombinedDownloads"  value="${setting.showCombinedDownloads.toBoolean}" />
-<c:set var="useVisualFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
+<c:set var="hideVisual"             value="${setting.keyPieceOrigin.toString eq 'hide'}" />
+<c:set var="useVisualFromParagraph" value="${not hideVisual and (setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none')}" />
 
 <c:set var="dateFormat"             value="${setting.dateFormat.toString}" />
 <c:set var="datePrefix"             value="${fn:substringBefore(dateFormat, '|')}" />
@@ -57,7 +58,7 @@
 <c:set var="title"                  value="${value.Title}" />
 <c:set var="preface"                value="${value.Preface}" />
 <c:set var="useVisualFromParagraph" value="${useVisualFromParagraph and not value.Image.value.Image.isSet and firstParagraph.value.Image.isSet}" />
-<c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : (useVisualFromParagraph ? firstParagraph.value.Image : null)}" />
+<c:set var="image"                  value="${not hideVisual and value.Image.value.Image.isSet ? value.Image : (useVisualFromParagraph ? firstParagraph.value.Image : null)}" />
 <c:set var="author"                 value="${value.Author}" />
 
 <c:set var="showAuthor"             value="${author.isSet and setting.showAuthor.toBoolean}" />

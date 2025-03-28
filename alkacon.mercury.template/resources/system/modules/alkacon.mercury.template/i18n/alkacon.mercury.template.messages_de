@@ -1475,6 +1475,7 @@ msg.setting.keyPieceimageRatio.large=Bildformat Key-Visual Bild (Desktop)
 msg.setting.keyPieceimageRatio.small=Bildformat Key-Visual Bild (Mobil)
 msg.setting.keyPieceOrigin=Herkunft Key-Visual Bild
 msg.setting.keyPieceOrigin.help=Legt fest woher das Bild für das Key-Visual stammt.
+msg.setting.keyPieceOrigin.hide=Key-Visual Bild nicht anzeigen
 msg.setting.keyPieceOrigin.none=Bild aus oberster Ebene, ansonsten Key-Visual Bild nicht anzeigen
 msg.setting.keyPieceOrigin.subsitute=Bild aus oberster Ebene, ansonsten Bild aus erstem Absatz
 msg.setting.keyVisualOption=Darstellung des Key-Visual

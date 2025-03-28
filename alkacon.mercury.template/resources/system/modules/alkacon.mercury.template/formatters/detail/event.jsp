@@ -39,7 +39,8 @@
 <c:set var="showImageSubtitle"      value="${setting.showImageSubtitle.toBoolean}" />
 <c:set var="showImageZoom"          value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showCombinedDownloads"  value="${setting.showCombinedDownloads.toBoolean}" />
-<c:set var="useVisualFromParagraph" value="${setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none'}" />
+<c:set var="hideVisual"             value="${setting.keyPieceOrigin.toString eq 'hide'}" />
+<c:set var="useVisualFromParagraph" value="${not hideVisual and (setting.keyPieceOrigin.useDefault('subsitute').toString ne 'none')}" />
 
 <c:set var="showLocation"           value="${setting.showLocation.toBoolean}" />
 <c:set var="setShowMap"             value="${setting.showMap.toString eq 'onload' ? 'true' : (setting.showMap.toString eq 'onclick' ? 'onclick' : 'false')}" />
@@ -64,7 +65,7 @@
 <c:set var="title"                  value="${value.Title}" />
 <c:set var="preface"                value="${value.Preface}" />
 <c:set var="useVisualFromParagraph" value="${useVisualFromParagraph and not value.Image.value.Image.isSet and firstParagraph.value.Image.isSet}" />
-<c:set var="image"                  value="${value.Image.value.Image.isSet ? value.Image : (useVisualFromParagraph ? firstParagraph.value.Image : null)}" />
+<c:set var="image"                  value="${not hideVisual and value.Image.value.Image.isSet ? value.Image : (useVisualFromParagraph ? firstParagraph.value.Image : null)}" />
 <c:set var="locationNote"           value="${value.LocationNote}" />
 <c:set var="type"                   value="${value.Type}" />
 <c:set var="performer"              value="${value.Performer}" />

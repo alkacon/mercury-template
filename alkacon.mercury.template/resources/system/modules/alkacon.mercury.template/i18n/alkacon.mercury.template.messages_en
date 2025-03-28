@@ -1475,6 +1475,7 @@ msg.setting.keyPieceimageRatio.large=Image format key visual (desktop)
 msg.setting.keyPieceimageRatio.small=Image format key visual (mobile)
 msg.setting.keyPieceOrigin=Origin of key visual image
 msg.setting.keyPieceOrigin.help=Controls the origin of the key visual.
+msg.setting.keyPieceOrigin.hide=Do not show a key visual image
 msg.setting.keyPieceOrigin.none=Image set in first level, otherwise do not show a key visual image
 msg.setting.keyPieceOrigin.subsitute=Image set in first level, otherwise use image from first paragraph
 msg.setting.keyVisualOption=Display of key visual

@@ -24,8 +24,8 @@
         <Text><![CDATA[Show me more...]]></Text>
         <URI>
           <link internal="true" type="WEAK">
-            <target><![CDATA[/sites/default/release/]]></target>
-            <uuid>f4dad1fc-3a95-11e9-bd84-0242ac11002b</uuid>
+            <target><![CDATA[/sites/default/tutorial/]]></target>
+            <uuid>f51baae8-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
         </URI>
       </Link>
@@ -61,8 +61,8 @@
         <Text><![CDATA[Show me more...]]></Text>
         <URI>
           <link internal="true" type="WEAK">
-            <target><![CDATA[/sites/default/release/]]></target>
-            <uuid>f4dad1fc-3a95-11e9-bd84-0242ac11002b</uuid>
+            <target><![CDATA[/sites/default/tutorial/]]></target>
+            <uuid>f51baae8-3a95-11e9-bd84-0242ac11002b</uuid>
           </link>
         </URI>
       </Link>

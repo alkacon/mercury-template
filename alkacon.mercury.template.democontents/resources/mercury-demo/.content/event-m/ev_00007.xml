@@ -47,11 +47,11 @@
         <Copyright><![CDATA[(c) Raimond Spekking, via Wikimedia Commons]]></Copyright>
       </Image>
       <Link>
-        <Text><![CDATA[Release notes]]></Text>
+        <Text><![CDATA[Demo]]></Text>
         <URI>
           <link internal="true" type="WEAK">
-            <target><![CDATA[/sites/default/release/]]></target>
-            <uuid>f4dad1fc-3a95-11e9-bd84-0242ac11002b</uuid>
+            <target><![CDATA[/sites/default/mercury-demo/]]></target>
+            <uuid>acb43685-5224-11e5-9495-0242ac11002b</uuid>
           </link>
         </URI>
       </Link>

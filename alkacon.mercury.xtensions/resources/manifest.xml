@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A number of additional functions for the Mercury template that serve as technical demos for OpenCms capabilities or provide functions that are seldom needed in a real installation.]]></description>
-		<version>18.0.0</version>
+		<version>19.0.0</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -21,7 +21,7 @@
 		<userinstalled/>
 		<dateinstalled/>
 		<dependencies>
-			<dependency name="alkacon.mercury.template" version="18.0.0"/>
+			<dependency name="alkacon.mercury.template" version="19.0.0"/>
 		</dependencies>
 		<exportpoints/>
 		<resources>

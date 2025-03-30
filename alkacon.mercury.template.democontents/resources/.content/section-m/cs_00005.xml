@@ -7,5 +7,13 @@
       <links/>
       <content><![CDATA[<p>Detailed information about new features and improvements in this OpenCms release.</p>]]></content>
     </Text>
+    <Link>
+      <Text/>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://www.opencms.org/latest-release/]]></target>
+        </link>
+      </URI>
+    </Link>
   </ContentSection>
 </ContentSectionData>

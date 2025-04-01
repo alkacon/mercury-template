@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>19.0.0</version>
+		<version>19.0.1</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -1699,11 +1699,11 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property type="shared">
 					<name>image.focalpoint</name>
-					<value><![CDATA[817,233]]></value>
+					<value><![CDATA[1086,359]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
-					<value><![CDATA[w:1920,h:500]]></value>
+					<value><![CDATA[w:2500,h:800]]></value>
 				</property>
 			</properties>
 			<relations/>

@@ -61,8 +61,8 @@
 <c:set var="cssWrappers"            value="detail-page type-contact ${kindModern ? null : kindCss}${compactLayout}${setCssWrapperAll}" />
 
 <c:if test="${kindModern}">
-<m:nl />
-<div class="${cssWrappers}"><%----%>
+    <m:nl />
+    <div class="${cssWrappers}"><%----%>
 </c:if>
 
 <m:nl />
@@ -97,6 +97,15 @@
     </jsp:attribute>
 
     <jsp:attribute name="markupText">
+        <c:choose>
+            <%-- Insert json+ld script on top here so it does not interfer with bottom margins --%>
+            <c:when test="${valKind eq 'org'}">
+                <m:data-organization content="${content}" showAddress="${showAddress or showAddressAlways}" showPerson="${setting.showOrganization.toBoolean}" />
+            </c:when>
+            <c:otherwise>
+                <m:data-person content="${content}" showAddress="${showAddress or showAddressAlways}" showOrganization="${setting.showOrganization.toString}" />
+            </c:otherwise>
+        </c:choose>
         <m:contact
             kind="${valKind}"
             link="${value.Link}"
@@ -127,15 +136,6 @@
     </jsp:attribute>
 
 </m:section-piece>
-
-<c:choose>
-    <c:when test="${valKind eq 'org'}">
-        <m:data-organization content="${content}" showAddress="${showAddress or showAddressAlways}" showPerson="${setting.showOrganization.toBoolean}" />
-    </c:when>
-    <c:otherwise>
-        <m:data-person content="${content}" showAddress="${showAddress or showAddressAlways}" showOrganization="${setting.showOrganization.toString}" />
-    </c:otherwise>
-</c:choose>
 
 <c:if test="${kindModern}">
     <m:container-attachment content="${content}" name="attachments" type="${containerType}" />

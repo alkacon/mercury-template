@@ -58,12 +58,12 @@
         </c:if>
         <c:if test="${publicRestrooms}">
             <div title="<fmt:message key='label.Facility.PublicRestrooms' />" class="acc-icon"${tooltip}><%----%>
-                <m:icon useSvg="${true}" icon="my-wc" tag="span" />
+                <m:icon icon="my-wc" tag="span" />
             </div><%----%>
         </c:if>
         <c:if test="${publicRestroomsAccessible}">
             <div title="<fmt:message key='label.Facility.PublicRestroomsAccessible' />" class="acc-icon"${tooltip}><%----%>
-                <m:icon useSvg="${true}" icon="my-accessible-wc" tag="span" />
+                <m:icon icon="my-accessible-wc" tag="span" />
             </div><%----%>
         </c:if>
     </div><%----%>

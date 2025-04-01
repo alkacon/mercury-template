@@ -181,7 +181,7 @@ ${canonicalLinks}
 </c:if>
 
 <%-- Privacy policy banner markup --%>
-<m:privacy-policy-banner contentUri="${contentUri}" contentPropertiesSearch="${contentPropertiesSearch}" />
+<m:privacy-policy-banner contentUri="${cms.requestContext.uri}}" contentPropertiesSearch="${contentPropertiesSearch}" />
 
 </body>
 </html>

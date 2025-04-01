@@ -33,10 +33,6 @@
 
 <c:choose>
     <c:when test="${not empty policyRes}">
-        <c:if test="${fn:startsWith(page, '/shared/')}">
-            <%-- use the root path of the policy file to locate the formatter in case the target is in the shared folder --%>
-            <c:set var="page" value="${policyRes.rootPath}" />
-        </c:if>
         <cms:addparams>
             <cms:param name="template" value="mercury" />
             <cms:param name="path" value="${page}" />

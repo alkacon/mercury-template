@@ -5,6 +5,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
@@ -32,6 +33,10 @@
 
 <c:choose>
     <c:when test="${not empty policyRes}">
+        <c:if test="${fn:startsWith(page, '/shared/')}">
+            <%-- use the root path of the policy file to locate the formatter in case the target is in the shared folder --%>
+            <c:set var="page" value="${policyRes.rootPath}" />
+        </c:if>
         <cms:addparams>
             <cms:param name="template" value="mercury" />
             <cms:param name="path" value="${page}" />

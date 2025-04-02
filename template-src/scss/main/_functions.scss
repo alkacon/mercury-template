@@ -102,6 +102,19 @@
     }
 }
 
+// In the header, the background color may be set "indirect" as background of the complete header
+// The background color given is then "none"
+@function get-header-text-color($bg-color, $text-color) {
+    $result-header-color: none;
+    @if (($bg-color == none) or ($bg-color == transparent)) {
+        $result-header-color: get-text-color($fh-header-bg-color, $text-color);
+    } @else {
+        $result-header-color: get-text-color($bg-color, $text-color);
+    }
+    // @debug "get-header-text-color(#{$bg-color} / #{$fh-header-bg-color}, #{$text-color}) result is #{$result-header-color}";
+    @return $result-header-color;
+}
+
 // Calculates an accent color for the given base color
 // In case the base color is dark, a lighter color is returned, otherwise a darker color
 @function get-accent-color($color, $percentage: 25%) {

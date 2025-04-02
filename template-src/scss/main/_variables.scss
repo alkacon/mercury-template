@@ -558,13 +558,10 @@ $nav-megamenu-bg:                   $nav-bg; // background color for the mega me
 
 $fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
 $fh-meta-bg-color:                  none !default; // background color of the meta / service links
-$fh-meta-color:                     get-text-color($fh-meta-bg-color, $nav-header-text) !default; // font color for meta / service links
-$fh-meta-hover-color:               get-text-color($fh-meta-bg-color, $nav-header-text-hover) !default; // font hover color for meta / service links
 $fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
 $fh-meta-text-transform:            uppercase !default; // text transformation for meta / service links
 $fh-title-font-size:                $h4-font-size !default; // font size for title in header
 $fh-title-bg-color:                 none !default; // background color of the title
-$fh-title-color:                    get-text-color($fh-title-bg-color, $nav-header-text) !default; // background color of the title
 $fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
 $fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
 $fh-ac-bg-color:                    none !default; // color of additional container
@@ -572,6 +569,19 @@ $fh-logo-image-bg:                  none !default; // background color for the l
 $fh-grid-gutter-width:              $grid-gutter-width !default; // grid gutter to use in the header
 $fh-grid-gutter-width-half:         $fh-grid-gutter-width * 0.5 !default; // half grid gutter to use in the header
 
+$fh-meta-color:                     get-header-text-color($fh-meta-bg-color, $nav-header-text) !default; // font color for meta / service links
+$fh-meta-hover-color:               get-header-text-color($fh-meta-bg-color, $nav-header-text-hover) !default; // font hover color for meta / service links
+$fh-title-color:                    get-header-text-color($fh-title-bg-color, $nav-header-text) !default; // background color of the title
+
+@if $text-use-wcag-contrast {
+    // enforce "correct" colors in WCAG even if colors have been set manually by not using !default
+    $nav-text-mobile:               get-header-text-color($nav-mobile-menu-bg-color, $nav-text-mobile);
+    $nav-text-hover-mobile:         get-header-text-color($nav-bg-hover-mobile, $nav-text-hover-mobile);
+    $nav-text-active-mobile:        get-header-text-color($nav-bg-active-mobile, $nav-text-active-mobile);
+    $fh-meta-color:                 get-header-text-color($fh-meta-bg-color, $fh-meta-color);
+    $fh-meta-hover-color:           get-header-text-color($fh-meta-bg-color, $fh-meta-hover-color);
+    $fh-title-color:                get-header-text-color($fh-title-bg-color, $fh-title-color);
+}
 
 // Burger header
 

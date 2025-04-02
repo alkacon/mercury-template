@@ -312,6 +312,8 @@ header {
         }
 
         @include media-breakpoint-down(lg) {
+            background-color: $fh-header-bg-color;
+
             @include hide-mega-menu-content;
 
             &.title-mobile {
@@ -340,10 +342,8 @@ header {
                     font-size: $bh-title-font-size-mobile;
                     text-align: left;
                     display: block;
+                    color: get-header-text-color($fh-title-bg-color, $fh-title-color);
 
-                    @include add-bg-color($fh-title-bg-color) {
-                        color: get-text-color($fh-title-bg-color, $fh-title-color);
-                    }
                     @include make-container();
                     @include media-breakpoint-up(sm) {
                         max-width: map-get($container-max-widths, sm);
@@ -1299,9 +1299,9 @@ header {
 
             @include add-bg-color($fh-title-bg-color) {
                 padding-top: $bh-header-padding-small;
-                .h-title {
-                    color: get-text-color($fh-title-bg-color, $fh-title-color);
-                }
+            }
+            .h-title {
+                color: get-header-text-color($fh-title-bg-color, $fh-title-color);
             }
         }
 
@@ -2042,7 +2042,7 @@ header {
 
 
 .head {
-    background: $fh-header-bg-color;
+    background-color: $fh-header-bg-color;
 }
 
 @if ($feature-header-type == 'flexible') {

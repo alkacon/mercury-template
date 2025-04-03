@@ -192,6 +192,31 @@
     <div class="slider-box${customClass}${marginClass}${transitionSpeedClass}"${customVars}${not empty sliderData ? ' '.concat(sliderData) : ''}><m:nl/>
     <div class="slide-definitions${logoRows}"><m:nl/>
 
+    <c:if test="${adoptRatioToScreen}">
+        <c:choose>
+            <c:when test="${fn:contains(imageRatioXL, '|')}">
+                <c:set var="imageRatios" value="${fn:split(imageRatioXL, '|')}" />
+                <c:set var="imageRatioSM" value="${imageRatios[0]}" />
+                <c:set var="imageRatioMD" value="${empty imageRatios[1] ? imageRatioSM : imageRatios[1]}" />
+                <c:set var="imageRatioLG" value="${empty imageRatios[2] ? imageRatioMD : imageRatios[2]}" />
+                <c:set var="imageRatioXL" value="${empty imageRatios[3] ? imageRatioLG : imageRatios[3]}" />
+            </c:when>
+            <c:otherwise>
+                <m:image-vars image="${image}" ratio="${imageRatioXL}">
+                    <c:set var="ibLg" value="${imageBean}" />
+                </m:image-vars>
+                <c:set var="ibXs" value="${ibLg.scaleRatio[imageRatioXS]}" />
+                <c:set var="w" value="${ibLg.scaler.width}" />
+                <c:set var="h" value="${ibLg.scaler.height}" />
+                <c:set var="hStep" value="${cms:mathRound((ibLg.scaler.height - ibXs.scaler.height) / 4)}" />
+                <c:set var="wStep" value="${cms:mathRound((ibLg.scaler.width- ibXs.scaler.width) / 4)}" />
+                <c:set var="imageRatioSM" value="${w - (3 * wStep)}-${h - (3 * hStep)}" />
+                <c:set var="imageRatioMD" value="${w - (2 * wStep)}-${h - (2 * hStep)}" />
+                <c:set var="imageRatioLG" value="${w - (1 * wStep)}-${h - (1 * hStep)}" />
+            </c:otherwise>
+        </c:choose>
+    </c:if>
+
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">
 
         <c:set var="lazyLoad" value="${true}" />
@@ -273,19 +298,6 @@
                         </cms:addparams>
 
                         <c:if test="${adoptRatioToScreen}">
-
-                            <m:image-vars image="${image}" ratio="${imageRatioXL}">
-                                <c:set var="ibLg" value="${imageBean}" />
-                            </m:image-vars>
-
-                            <c:set var="ibXs" value="${ibLg.scaleRatio[imageRatioXS]}" />
-                            <c:set var="w" value="${ibLg.scaler.width}" />
-                            <c:set var="h" value="${ibLg.scaler.height}" />
-                            <c:set var="hStep" value="${cms:mathRound((ibLg.scaler.height - ibXs.scaler.height) / 4)}" />
-                            <c:set var="wStep" value="${cms:mathRound((ibLg.scaler.width- ibXs.scaler.width) / 4)}" />
-                            <c:set var="imageRatioSM" value="${w - (3 * wStep)}-${h - (3 * hStep)}" />
-                            <c:set var="imageRatioMD" value="${w - (2 * wStep)}-${h - (2 * hStep)}" />
-                            <c:set var="imageRatioLG" value="${w - (1 * wStep)}-${h - (1 * hStep)}" />
 
                             <cms:addparams>
                                 <cms:param name="cssgrid">hidden-xxl hidden-xl hidden-lg hidden-md hidden-xs</cms:param>

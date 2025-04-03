@@ -450,7 +450,6 @@ $nav-text:                          get-text-color($nav-bg) !default; // standar
 $nav-text-hover:                    $nav-theme !default; // hover text color of the nav menu entries
 $nav-text-active:                   get-text-color($nav-bg-active) !default; // the current page in navigation text color in desktop
 $nav-border:                        $grey-light !default; // the border color for the navigation
-$nav-header-text:                   $nav-text !default; // text color in header nav items
 $nav-head-border:                   1px solid $nav-border !default; // border below desktop header, set to "none" to disable
 $nav-setting-fixheader:             true !default; // Valid: true, false, upscroll
 $nav-bg-active-mobile:              $nav-bg-active !default; // the current page in navigation background color in mobile menu
@@ -470,8 +469,25 @@ $nav-handle-right-padding:          40px !default; // padding for nav handles, a
 $nav-head-fixed-opacity:            0.97 !default; // background opacity if header is fixed
 
 
+// Flexible header - background colors
+
+$fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
+$fh-meta-bg-color:                  none !default; // background color of the meta / service links
+$fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
+$fh-meta-text-transform:            uppercase !default; // text transformation for meta / service links
+$fh-title-font-size:                $h4-font-size !default; // font size for title in header
+$fh-title-bg-color:                 none !default; // background color of the title
+$fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
+$fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
+$fh-ac-bg-color:                    none !default; // color of additional container
+$fh-logo-image-bg:                  none !default; // background color for the logo image in the header
+$fh-grid-gutter-width:              $grid-gutter-width !default; // grid gutter to use in the header
+$fh-grid-gutter-width-half:         $fh-grid-gutter-width * 0.5 !default; // half grid gutter to use in the header
+
+
 // Navigation header - applies to the "first level" of the navigation menu
 
+$nav-header-text:                   get-header-text-color($fh-header-bg-color, $nav-text) !default; // text color in header nav items
 $nav-header-text-active:            $nav-theme !default; // the "active page in navigation" text color
 $nav-header-text-hover:             $nav-text-hover !default; // the hover text color for the header nav items
 $nav-header-text-transform:         uppercase !default; // text transformation for header nav items
@@ -555,19 +571,6 @@ $nav-megamenu-bg:                   $nav-bg; // background color for the mega me
 
 
 // Flexible header
-
-$fh-header-bg-color:                $nav-head-bg !default; // color of the header background container
-$fh-meta-bg-color:                  none !default; // background color of the meta / service links
-$fh-meta-font-size:                 $font-size-sm !default; // font size for meta / service links
-$fh-meta-text-transform:            uppercase !default; // text transformation for meta / service links
-$fh-title-font-size:                $h4-font-size !default; // font size for title in header
-$fh-title-bg-color:                 none !default; // background color of the title
-$fh-nav-bg-color:                   none !default; // background color of the first level navigation in LG, XL
-$fh-nav-header-padding-increase:    12px !default; // additional space to add between the first level nav items in LG, XL
-$fh-ac-bg-color:                    none !default; // color of additional container
-$fh-logo-image-bg:                  none !default; // background color for the logo image in the header
-$fh-grid-gutter-width:              $grid-gutter-width !default; // grid gutter to use in the header
-$fh-grid-gutter-width-half:         $fh-grid-gutter-width * 0.5 !default; // half grid gutter to use in the header
 
 $fh-meta-color:                     get-header-text-color($fh-meta-bg-color, $nav-header-text) !default; // font color for meta / service links
 $fh-meta-hover-color:               get-header-text-color($fh-meta-bg-color, $nav-header-text-hover) !default; // font hover color for meta / service links

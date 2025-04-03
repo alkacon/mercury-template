@@ -23,6 +23,7 @@ import org.opencms.ade.detailpage.CmsDetailPageInfo;
 import org.opencms.file.CmsObject;
 import org.opencms.i18n.CmsLocaleManager;
 import org.opencms.jsp.util.CmsJspContentAccessBean;
+import org.opencms.jsp.util.CmsJspObjectValueWrapper;
 import org.opencms.jsp.util.CmsJspStandardContextBean;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
@@ -104,6 +105,12 @@ public final class CmsFunctionLinkResolver {
                         String functionLink = cmsBean.getFunctionDetailPage().get(targetFunction);
                         if (!functionLink.contains("No detail page")) {
                             result = functionLink;
+                        } else {
+                            // no function link found, try to get attribute "function@..." from sitemap configuration
+                            CmsJspObjectValueWrapper sitemapLink = cmsBean.getSitemapConfig().getAttribute().get(iLink);
+                            if (sitemapLink.getIsSet()) {
+                                result = sitemapLink.getToString();
+                            }
                         }
                     } else if (iLink.equals(LINK_LOGIN)) {
 

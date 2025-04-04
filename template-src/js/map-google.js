@@ -214,12 +214,12 @@ function loadGoogleApi() {
             mapKey = "&key=" + m_apiKey;
         }
         var addLibs = "";
-        if (! Mercury.isOnlineProject()) {
+        if (!Mercury.isOnlineProject()) {
             // need to load places API for OpenCms map editor
             addLibs = "&libraries=places"
         }
         if (DEBUG) console.info("GoogleMap API key: " + (mapKey == '' ? '(undefined)' : mapKey));
-        let response = jQ.loadScript("https://maps.google.com/maps/api/js?callback=GoogleMap.initGoogleMaps&language=" + locale + addLibs + mapKey, {}, DEBUG);
+        let response = jQ.loadScript("https://maps.google.com/maps/api/js?callback=GoogleMap.initGoogleMaps&loading=async&language=" + locale + addLibs + mapKey, {}, DEBUG);
         m_googleApiLoaded = true;
         return response;
     } else {

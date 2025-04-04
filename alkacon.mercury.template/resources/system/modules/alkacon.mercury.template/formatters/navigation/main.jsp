@@ -209,7 +209,7 @@
                         <%-- Navigation item with sub-menu and direct child pages --%>
                         <a href="${navLink}"${navTarget}${' '}<%--
                         --%>id="${parentLabelId}"${' '}<%--
-                        --%>class="nav-label"${' '}<%--
+                        --%>class="nav-label"<%--
                         --%>${'>'}${navText}</a><%----%>
 
                         <a href="${navLink}"${navTarget}${' '}<%--
@@ -232,22 +232,24 @@
                     </c:when>
 
                     <c:otherwise>
-                        <%--Navigation item without sub-menu --%>
-                        <a href="${navLink}"${navTarget}${' '}<%----%>
+                        <%-- Navigation item without sub-menu --%>
+                        <a href="${navLink}"${navTarget}<%----%>
                         <c:if test="${hasMegaMenu}">
                             <%-- mega menu requires aria-controls - will be removed by JavaScript if mega menu is not displayed in mobile --%>
-                            aria-controls="${targetMenuId}"${' '}<%----%>
+                            ${' '}aria-controls="${targetMenuId}"<%----%>
                         </c:if>
                         <%----%>${'>'}${navText}</a><%----%>
                     </c:otherwise>
                 </c:choose>
 
                 <c:choose>
+                    <%-- Note: Keep in mind that the mega menu is manipulated by JS depending on the size of the screen --%>
+                    <%-- Just resizing the browser from LG to SM will NOT reveal the "mobile" navigation, you must reload the page! --%>
                     <c:when test="${startSubMenu}">
-                    <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-label="${navText}">${nl}' escapeXml="false" />
+                        <c:out value='${nl}<ul class="nav-menu no-mega" id="${targetMenuId}" aria-label="${navText}">${nl}' escapeXml="false" />
                     </c:when>
                     <c:when test="${hasMegaMenu}">
-                    <c:out value='${nl}<ul class="nav-menu" id="${targetMenuId}" aria-label="${navText}"></ul>' escapeXml="false" />
+                        <c:out value='${nl}<ul class="nav-menu has-mega" id="${targetMenuId}" aria-label="${navText}"></ul>' escapeXml="false" />
                     </c:when>
                 </c:choose>
 

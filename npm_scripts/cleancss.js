@@ -57,7 +57,7 @@ function cleanCss(inputDir, outputDir) {
     // set the rebase path, this is required otherwise the source map file is not found
     cleanCssOptions.rebaseTo = outputDir;
     ensureDir(cleanCssOptions.rebaseTo);
-    const files = globSync(inputDir);
+    const files = globSync( (process.platform === "win32") ?  inputDir.replace(/\\/g, '/') : inputDir);
     for (var i = 0; i < files.length; i++) {
         var f = files[i];
         var o = path.normalize(outputDir + '/' + path.basename(f, '.css') + '.min.css');

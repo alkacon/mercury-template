@@ -45,16 +45,34 @@
         padding: 20px;
         width: 100vw;
 
-        &.fixed {
+        &.top,
+        &.bottom {
+            transition: transform 800ms;
             z-index: $above-oc-z-index + 100; // must be above fixed head navigation
             left: 0;
             position: fixed;
-            &.top {
-                top: 0;
-            }
-            &.bottom {
-                bottom: 0;
-            }
+        }
+
+        &.top {
+            transform: translateY(-100%);
+            top: 0;
+        }
+        &.bottom {
+            bottom: 0;
+            transform: translateY(100%);
+        }
+
+        &.fixed {
+            transform: translateY(0);
+            // z-index: $above-oc-z-index + 100; // must be above fixed head navigation
+            // left: 0;
+            // position: fixed;
+            // &.top {
+            //     top: 0;
+            // }
+            // &.bottom {
+            //     bottom: 0;
+            // }
         }
     }
 
@@ -311,7 +329,6 @@
 
         .buttons {
             .btn {
-                font-size: 1.25rem;
                 padding: $btn-sm-padding;
 
                 &:last-of-type {
@@ -323,6 +340,7 @@
         .links {
             li {
                 display: list-item;
+                line-height: 24px;
                 +li {
                     margin-left: 0;
                 }

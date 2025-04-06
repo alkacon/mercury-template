@@ -350,12 +350,16 @@
     .nav-main-container {
         position: fixed;
         top: 0;
-        height: 100vh;
         background-color: $nav-mobile-bg-color;
         z-index: $z-index-mobile-menu;
         pointer-events: auto;
         overflow-x: hidden;
         opacity: 0;
+
+        height: 100vh;
+        @supports (height: 100dvh) {
+            height: 100dvh;
+        }
 
         .nav-main-group {
             display: block;

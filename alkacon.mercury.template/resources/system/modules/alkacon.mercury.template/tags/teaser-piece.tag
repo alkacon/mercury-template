@@ -342,7 +342,7 @@
             link="${link}"
             newWin="${linkNewWin}"
             title="${linkHeadline ? null : linkTitle}"
-            attr="${linkHeadline ? 'tabindex=\"-1\"' : null}"
+            attr="${linkHeadline ? 'tabindex=\"-1\" aria-hidden=\"true\"' : null}"
             test="${not empty markupVisualOutput and not noLinkOnVisual}">
             ${markupVisualOutput}
         </m:link>

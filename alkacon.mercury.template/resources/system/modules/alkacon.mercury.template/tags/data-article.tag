@@ -35,19 +35,26 @@
         <c:set var="preface"    value="${value['TeaserData/TeaserPreface'].isSet ? value['TeaserData/TeaserPreface'] : (value.Preface.isSet ? value.Preface : value.Paragraph.value.Text)}" />
     </c:otherwise>
 </c:choose>
+
+<m:data-organization-vars content="${content}" logoAsImageObject="${true}">
+    <c:set var="organization" value="${orgJsonLd}" />
+</m:data-organization-vars>
+
 <c:set var="image"              value="${value['TeaserData/TeaserImage'].isSet ? value['TeaserData/TeaserImage'] : (value.Image.isSet ? value.Image : value.Paragraph.value.Image)}" />
 <c:set var="date"               value="${value.Date.isSet ? value.Date : content.file.dateLastModified}" />
+<c:set var="articleType"        value="${empty organization or (content.value.ArticleType.toString eq 'Article') ? 'Article' : 'NewsArticle'}" />
 
 <c:set var="url">${cms.site.url}<cms:link>${content.filename}</cms:link></c:set>
 
 <%--
 # JSON-LD Generation for Mercury article.
 # See: https://schema.org/Article
+# See: https://schema.org/NewsArticle
 # See: https://developers.google.com/search/docs/data-types/article
 --%>
 <cms:jsonobject var="jsonLd">
     <cms:jsonvalue key="@context" value="http://schema.org" />
-    <cms:jsonvalue key="@type" value="Article" />
+    <cms:jsonvalue key="@type" value="${articleType}" />
     <cms:jsonvalue key="url" value="${url}" />
     <cms:jsonvalue key="mainEntityOfPage" value="${url}" />
 
@@ -58,8 +65,8 @@
         <c:out value="${title}" />
     </cms:jsonvalue>
 
-    <cms:jsonvalue key="datePublished"><fmt:formatDate value="${cms:convertDate(date)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
-    <cms:jsonvalue key="dateModified"><fmt:formatDate value="${cms:convertDate(content.file.dateLastModified)}" pattern="yyyy-MM-dd'T'HH:mm" /></cms:jsonvalue>
+    <cms:jsonvalue key="datePublished"><fmt:formatDate value="${cms:convertDate(date)}" pattern="yyyy-MM-dd'T'HH:mm:ssXXX" /></cms:jsonvalue>
+    <cms:jsonvalue key="dateModified"><fmt:formatDate value="${cms:convertDate(content.file.dateLastModified)}" pattern="yyyy-MM-dd'T'HH:mm:ssXXX" /></cms:jsonvalue>
 
     <c:if test="${preface.isSet}">
         <cms:jsonvalue key="articleBody" value="${preface}" />
@@ -79,10 +86,6 @@
         </c:if>
     </cms:jsonobject>
     <cms:jsonvalue key="author" value="${author}" />
-
-    <m:data-organization-vars content="${content}" logoAsImageObject="${true}">
-        <c:set var="organization" value="${orgJsonLd}" />
-    </m:data-organization-vars>
 
     <%-- Publisher is mandatory. According to schema.org, person is possible but not accepted by Google --%>
     <cms:jsonvalue key="publisher" value="${empty organization ? author : organization}" />

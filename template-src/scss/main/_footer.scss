@@ -74,9 +74,10 @@
         z-index: #{$above-oc-z-index + 150}; // the back to top icon should be above the edit points and the privacy policy banner
         width: $nav-toggle-size;
         height: $nav-toggle-size;
-        font-size: round($nav-font-size * 1.75);
-        line-height: $nav-toggle-size - 4;
-        display: block;
+        font-size: $nav-toggle-font-size;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         position: fixed;
         visibility: visible;
         bottom: $grid-gutter-width-half;
@@ -109,21 +110,14 @@
 
         &::after {
             @include icon-font();
-            width: $nav-toggle-size;
-            line-height: floor($nav-toggle-size * 0.95); // fa-angle-up symbol has too much white space on top
             content: "\f106"; // mercury:icon - fa-angle-up
-            position: absolute;
-            text-align: center;
+            padding-bottom: 5px; // fa-angle-up has too much white space on top otherwise
+            line-height: 1;
         }
 
         @include media-breakpoint-down(md) {
             width: round($nav-toggle-size-xs);
             height: round($nav-toggle-size-xs);
-
-            &::after {
-                width: round($nav-toggle-size-xs);
-                line-height: floor($nav-toggle-size-xs * 0.95);
-            }
         }
     }
 }

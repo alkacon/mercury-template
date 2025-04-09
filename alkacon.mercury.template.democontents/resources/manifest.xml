@@ -7832,27 +7832,6 @@ This module also creates a set of demo users during the import.]]></description>
 			<accesscontrol/>
 		</file>
 		<file>
-			<source>mercury-demo/.content/flexible-m/fc_00006.xml</source>
-			<destination>mercury-demo/.content/flexible-m/fc_00006.xml</destination>
-			<type>m-flexible</type>
-			<uuidstructure>f3db3bf5-3a95-11e9-bd84-0242ac11002b</uuidstructure>
-			<uuidresource>f3db3bf6-3a95-11e9-bd84-0242ac11002b</uuidresource>
-			<datecreated>Fri, 18 Nov 2016 15:29:23 GMT</datecreated>
-			<flags>0</flags>
-			<properties>
-				<property>
-					<name>Title</name>
-					<value><![CDATA[Mercury: Footer full: Stay connected]]></value>
-				</property>
-				<property>
-					<name>Title_de</name>
-					<value><![CDATA[Mercury: Footer full: In den sozialen Medien]]></value>
-				</property>
-			</properties>
-			<relations/>
-			<accesscontrol/>
-		</file>
-		<file>
 			<source>mercury-demo/.content/flexible-m/fc_00007.xml</source>
 			<destination>mercury-demo/.content/flexible-m/fc_00007.xml</destination>
 			<type>m-flexible</type>
@@ -8263,6 +8242,27 @@ This module also creates a set of demo users during the import.]]></description>
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Standard link sequence]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>mercury-demo/.content/linksequence-m/ls_00002.xml</source>
+			<destination>mercury-demo/.content/linksequence-m/ls_00002.xml</destination>
+			<type>m-linksequence</type>
+			<uuidstructure>24415e77-150c-11f0-a49d-0242ac11002b</uuidstructure>
+			<uuidresource>24415e78-150c-11f0-a49d-0242ac11002b</uuidresource>
+			<datecreated>Wed, 09 Apr 2025 06:30:34 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury: Footer full: Stay connected]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Mercury: Footer full: In den sozialen Medien]]></value>
 				</property>
 			</properties>
 			<relations/>

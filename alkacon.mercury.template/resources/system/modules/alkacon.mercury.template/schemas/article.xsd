@@ -30,6 +30,7 @@
             <xsd:element name="TeaserData" type="OpenCmsTeaserData" minOccurs="0" />
             <xsd:element name="MetaInfo" type="OpenCmsDetailMetaInfo" minOccurs="0" />
             <xsd:element name="Category" type="OpenCmsDynamicCategory" />
+            <xsd:element name="ArticleType" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Order" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Availability" type="OpenCmsAvailability" minOccurs="0" />
             <xsd:element name="NavPathRes" type="OpenCmsVfsFile" minOccurs="0" />
@@ -144,6 +145,17 @@
                     <PropertyName>Availability</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Availability)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Availability.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>ArticleType</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.ArticleType)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.ArticleType.help)]]></Description>
+                    <Widget><![CDATA[select]]></Widget>
+                    <Default><![CDATA[NewsArticle]]></Default>
+                    <WidgetConfig><![CDATA[
+                        NewsArticle:%(key.label.ArticleType.NewsArticle)|
+                        Article:%(key.label.ArticleType.Article)
+                    ]]></WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Order</PropertyName>

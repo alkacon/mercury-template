@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinkSequenceData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/linksequence.xsd">
+  <LinkSequence language="de">
+    <Title><![CDATA[In den sozialen Medien]]></Title>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms auf Facebook||icon:fa-facebook]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[http://facebook.com/opencms/]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms auf X||icon:twitter]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[http://twitter.com/opencms/]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms auf Xing||icon:xing]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://www.xing.com/communities/groups/opencms-usergroup-7901-1054980]]></target>
+        </link>
+      </URI>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms auf SlideShare||icon:fa-slideshare]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://de.slideshare.net/AlkaconOpenCms]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms auf YouTube||icon:fa-youtube]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://www.youtube.com/alkacon]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms Quellcode auf GitHub||icon:fa-github]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms RSS News Feed||icon:fa-rss]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://www.opencms.org/system/shared/feed/rss]]></target>
+          <query><![CDATA[listid=c3d3a0ac-00cc-11f0-96e6-0242ac11002b]]></query>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+  </LinkSequence>
+  <LinkSequence language="en">
+    <Title><![CDATA[Stay connected]]></Title>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms on Facebook||icon:fa-facebook]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://facebook.com/opencms/]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms on X||icon:twitter]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://twitter.com/opencms/]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms on Xing||icon:xing]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://www.xing.com/communities/groups/opencms-usergroup-7901-1054980]]></target>
+        </link>
+      </URI>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms on SlideShare||icon:fa-slideshare]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://de.slideshare.net/AlkaconOpenCms]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms on YouTube||icon:fa-youtube]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://www.youtube.com/alkacon]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms source code on GitHub||icon:fa-github]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://github.com/alkacon/opencms-core]]></target>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+    <LinkEntry>
+      <Text><![CDATA[OpenCms RSS News Feed||icon:fa-rss]]></Text>
+      <URI>
+        <link internal="false" type="WEAK">
+          <target><![CDATA[https://www.opencms.org/system/shared/feed/rss]]></target>
+          <query><![CDATA[listid=35514805-13ab-11f0-a49d-0242ac11002b]]></query>
+        </link>
+      </URI>
+      <NewWindow>true</NewWindow>
+    </LinkEntry>
+  </LinkSequence>
+</LinkSequenceData>

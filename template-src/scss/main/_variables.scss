@@ -616,6 +616,7 @@ $nav-toggle-bg:                     var(--#{$prefix}main-theme) !default; // col
 $nav-toggle-fg:                     var(--#{$prefix}main-theme-fg) !default; // color of text in toggle button
 $nav-toggle-size:                   40px !default; // height of toggle button
 $nav-toggle-size-xs:                30px !default; // on smaller screens the button size is reduced further
+$nav-toggle-font-size:              round($nav-font-size * 1.75) !default;
 $nav-toggle-bottom:                 5px !default; // bottom positioning of toggle button
 $nav-toggle-stroke-height:          round(0.06 * $nav-toggle-size) !default; // the height of the generated lines in the toggle button that form the menu icon
 $nav-toggle-border-width:           0 !default;
@@ -985,8 +986,10 @@ $color-pbg-twitter:                 $color-x !default;
 
 // Social links / Shariff
 
-$social-links-bg:                   var(--#{$prefix}grey) !default;
-$social-links-color:                var(--#{$prefix}body-color) !default;
+$social-links-bg:                   $grey !default;
+$social-links-color:                get-text-color($social-links-bg) !default;
+$social-links-hover-bg:             $social-links-color !default; // only used in case social icons are generated uinsg a link sequence "as buttons"
+$social-links-hover-color:          get-text-color($social-links-hover-bg, $social-links-bg) !default; // only used in case social icons are generated uinsg a link sequence "as buttons"
 $social-links-size:                 20px !default;
 $social-links-size-large:           30px !default;
 $social-links-margin:               var(--#{$prefix}default-margin-small) !default;

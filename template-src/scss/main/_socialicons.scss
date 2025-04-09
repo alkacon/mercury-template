@@ -138,12 +138,6 @@
     }
 }
 
-.ls-buttons {
-    .social-icons {
-        margin-bottom: calc(-1 *  var(--#{$prefix}sl-margin));
-    }
-}
-
 // Add class 'verbose' to see the 'share' text right to the icons
 
 .social-icons.verbose {
@@ -302,6 +296,26 @@
     // wallsio black does not change if calculated automatically
     &.colored li.wallsio a:hover {
         background-color: #444;
+    }
+}
+
+// adjustments for linksequence with social icons as buttons
+.ls-buttons {
+    --#{$prefix}sl-hover-color: #{$social-links-hover-color};
+    --#{$prefix}sl-hover-bg: #{$social-links-hover-bg};
+
+    .social-icons {
+        margin-bottom: calc(-1 *  var(--#{$prefix}sl-margin));
+
+        li a {
+            &:hover {
+                background-color: var(--#{$prefix}sl-hover-bg);
+                border-color: var(--#{$prefix}sl-hover-bg);
+                * {
+                    color: var(--#{$prefix}sl-hover-color);
+                }
+            }
+        }
     }
 }
 

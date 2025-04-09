@@ -17,7 +17,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-<c:if test="${not empty imageBean and not empty copyright}">
+<c:if test="${(not empty imageBean) and (not empty copyright) and cms.sitemapConfig.attribute['template.image.embed.copyright'].toBoolean}">
 <script type="application/ld+json"><%--
 --%>{"@context":"https://schema.org","@type":"ImageObject","contentUrl":"${imageBean.resource.toLink.onlineLink}","copyrightNotice":"<m:out value="${copyright}" />"}<%--
 --%></script><%----%>

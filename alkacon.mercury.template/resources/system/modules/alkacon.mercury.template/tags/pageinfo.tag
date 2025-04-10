@@ -32,11 +32,12 @@
 <%-- OSM style URL --%>
 <c:set var="osmStyleUrl" value="${contentPropertiesSearch['osm.styleurl']}" />
 
-<%-- Piwik URL --%>
+<%-- Piwik --%>
 <c:set var="piwikUrl" value="${contentPropertiesSearch['piwik.url']}" />
+<c:set var="piwikId" value="${contentPropertiesSearch['piwik.id']}" />
+<c:set var="hidePiwik" value="${empty piwikUrl or piwikUrl eq 'none' or empty piwikId or piwikId eq 'none'}" />
 
-<c:if test="${not empty piwikUrl}">
-    <c:set var="piwikId" value="${contentPropertiesSearch['piwik.id']}" />
+<c:if test="${not hidePiwik}">
     <c:set var="piwikAddData" value="${contentPropertiesSearch['piwik.data']}" />
     <c:set var="piwikData">data-piwik='{<%--
         --%><c:if test="${not empty piwikId}">"id":"${piwikId}",</c:if><%--
@@ -45,11 +46,12 @@
 --%></c:set>
 </c:if>
 
-<%-- Matomo URL --%>
+<%-- Matomo --%>
 <c:set var="matomoUrl" value="${contentPropertiesSearch['matomo.url']}" />
+<c:set var="matomoId" value="${contentPropertiesSearch['matomo.id']}" />
+<c:set var="hideMatomo" value="${empty matomoUrl or matomoUrl eq 'none' or empty matomoId or matomoId eq 'none'}" />
 
-<c:if test="${not empty matomoUrl}">
-    <c:set var="matomoId" value="${contentPropertiesSearch['matomo.id']}" />
+<c:if test="${not hideMatomo}">
     <c:set var="matomoJst" value="${contentPropertiesSearch['matomo.jst']}" />
     <c:set var="useMatomoJst" value="${not empty matomoJst ? fn:contains(matomoJst, 'true') : false}" />
     <c:set var="useMatomoDnt" value="${not empty matomoJst ? fn:contains(matomoJst, 'dnt') : false}" />

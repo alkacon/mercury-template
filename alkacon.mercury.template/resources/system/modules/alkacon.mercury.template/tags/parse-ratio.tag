@@ -15,11 +15,11 @@
 
 <%@ variable name-given="ratioWidth" declare="true"
     variable-class="java.lang.Integer"
-    description="The width of the image in pixel." %>
+    description="The width of the ratio multiplied by 100, e.g. 1600 for a '16-9'." %>
 
 <%@ variable name-given="ratioHeight" declare="true"
     variable-class="java.lang.Integer"
-    description="The height of the image in pixel." %>
+    description="The height of the ratio multiplied by 100, e.g. 900 for a '16-9'." %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

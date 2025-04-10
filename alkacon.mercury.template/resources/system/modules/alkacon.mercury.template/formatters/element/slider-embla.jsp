@@ -196,25 +196,52 @@
         <c:choose>
             <c:when test="${fn:contains(imageRatioXL, '|')}">
                 <c:set var="imageRatios" value="${fn:split(imageRatioXL, '|')}" />
-                <c:set var="imageRatioSM" value="${imageRatios[0]}" />
-                <c:set var="imageRatioMD" value="${empty imageRatios[1] ? imageRatioSM : imageRatios[1]}" />
-                <c:set var="imageRatioLG" value="${empty imageRatios[2] ? imageRatioMD : imageRatios[2]}" />
-                <c:set var="imageRatioXL" value="${empty imageRatios[3] ? imageRatioLG : imageRatios[3]}" />
+                <m:parse-ratio value="${imageRatioXS}">
+                    <c:set var="imageRatioXS" value="${empty checkedRatio ? '400-300' : checkedRatio}" />
+                </m:parse-ratio>
+                <m:parse-ratio value="${imageRatios[0]}">
+                    <c:set var="imageRatioSM" value="${empty checkedRatio ? imageRatioXS : checkedRatio}" />
+                </m:parse-ratio>
+                <m:parse-ratio value="${empty imageRatios[1] ? null : imageRatios[1]}">
+                    <c:set var="imageRatioMD" value="${empty checkedRatio ? imageRatioSM : checkedRatio}" />
+                </m:parse-ratio>
+                <m:parse-ratio value="${empty imageRatios[2] ? null : imageRatios[2]}">
+                    <c:set var="imageRatioLG" value="${empty checkedRatio ? imageRatioMD : checkedRatio}" />
+                </m:parse-ratio>
+                <m:parse-ratio value="${empty imageRatios[3] ? null : imageRatios[3]}">
+                    <c:set var="imageRatioXL" value="${empty checkedRatio ? imageRatioLG : checkedRatio}" />
+                </m:parse-ratio>
             </c:when>
             <c:otherwise>
-                <m:image-vars image="${image}" ratio="${imageRatioXL}">
-                    <c:set var="ibLg" value="${imageBean}" />
-                </m:image-vars>
-                <c:set var="ibXs" value="${ibLg.scaleRatio[imageRatioXS]}" />
-                <c:set var="w" value="${ibLg.scaler.width}" />
-                <c:set var="h" value="${ibLg.scaler.height}" />
-                <c:set var="hStep" value="${cms:mathRound((ibLg.scaler.height - ibXs.scaler.height) / 4)}" />
-                <c:set var="wStep" value="${cms:mathRound((ibLg.scaler.width- ibXs.scaler.width) / 4)}" />
-                <c:set var="imageRatioSM" value="${w - (3 * wStep)}-${h - (3 * hStep)}" />
-                <c:set var="imageRatioMD" value="${w - (2 * wStep)}-${h - (2 * hStep)}" />
-                <c:set var="imageRatioLG" value="${w - (1 * wStep)}-${h - (1 * hStep)}" />
+                <m:parse-ratio value="${imageRatioXS}">
+                    <c:set var="wXS" value="${empty checkedRatio ? 400 : ratioWidth}" />
+                    <c:set var="hXS" value="${empty checkedRatio ? 300 : ratioHeight}" />
+                </m:parse-ratio>
+                <m:parse-ratio value="${imageRatioXL}">
+                    <c:set var="wXL" value="${empty checkedRatio ? 1600 : ratioWidth}" />
+                    <c:set var="hXL" value="${empty checkedRatio ? 900 : ratioHeight}" />
+                </m:parse-ratio>
+                <c:set var="wStep" value="${cms:mathRound((wXL - wXS) / 4)}" />
+                <c:set var="hStep" value="${cms:mathRound((hXL - hXS) / 4)}" />
+                <c:set var="imageRatioSM" value="${wXL - (3 * wStep)}-${hXL - (3 * hStep)}" />
+                <c:set var="imageRatioMD" value="${wXL - (2 * wStep)}-${hXL - (2 * hStep)}" />
+                <c:set var="imageRatioLG" value="${wXL - (1 * wStep)}-${hXL - (1 * hStep)}" />
             </c:otherwise>
         </c:choose>
+        <c:set var="DEBUG" value="${false}" />
+        <c:if test="${DEBUG}">
+            <m:print>
+                adoptRatioToScreen: true
+                <c:if test="${not empty imageRatios}">
+                    manual mode!
+                </c:if>
+                imageRatioXS: ${imageRatioXS}
+                imageRatioSM: ${imageRatioSM}
+                imageRatioMD: ${imageRatioMD}
+                imageRatioLG: ${imageRatioLG}
+                imageRatioXL: ${imageRatioXL}
+            </m:print>
+        </c:if>
     </c:if>
 
     <c:forEach var="image" items="${content.valueList.Image}" varStatus="status">

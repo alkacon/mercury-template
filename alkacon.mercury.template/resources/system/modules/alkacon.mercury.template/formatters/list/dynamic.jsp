@@ -86,9 +86,13 @@
 
     <c:if test="${isCompatible}">
 
+        <c:set var="categories">${value.Category}</c:set>
+        <c:if test="${empty categories and value.CategoryFolderFilter.isSet}">
+            <c:set var="categories" value="${value.CategoryFolderFilter.value.Category}" />
+        </c:if>
         <cms:enable-list-add
             types="${content.valueList.TypesToCollect}"
-            postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${content.value.Category}"
+            postCreateHandler="org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${categories}"
             uploadFolder="${cms.getBinaryUploadFolder(content)}" />
 
         <m:heading level="${wrappedSettings.listHsize.toInteger}" text="${value.Title}" css="heading pivot" />

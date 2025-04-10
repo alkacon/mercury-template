@@ -71,8 +71,12 @@
 />
 
 <c:set var="categories">${config.value.Category}</c:set>
+<c:if test="${empty categories and config.value.CategoryFolderFilter.isSet}">
+    <c:set var="categories" value="${config.value.CategoryFolderFilter.value.Category}" />
+</c:if>
 <c:set var="postCreateHandler">org.opencms.file.collectors.CmsAddCategoriesPostCreateHandler|${categories}</c:set>
 <cms:enable-list-add types="${config.valueList.TypesToCollect}" postCreateHandler="${postCreateHandler}" uploadFolder="${cms.getBinaryUploadFolder(config)}" />
+
 
 <c:if test="${search.numFound > 0}">
 

@@ -52,6 +52,8 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  *
  * @typedef {Object.<string, HTMLElement[]>} ResetButtonsPerList Object holding list resource ids as properties and the reset buttons map as value.
  *
+ * @typedef {Object.<string, string>} InitParamsPerList Object holding list resource ids as properties and the reset buttons map as value.
+ *
  * @typedef {Object} ListFilter Wrapper for a list's filter.
  * @property {HTMLElement} element the HTML element of the filter.
  * @property {string} id the id attribute of the filter HTML element.
@@ -64,6 +66,7 @@ import { _OpenCmsReinitEditButtons } from './opencms-callbacks.js';
  * @property {Function} toggle Toggles a filter selection.
  * @property {Function} updateDirectLink Updates the direct link with the actual search state parameters.
  * @property {Function} updateFilterCounts Updates the filter counts for the current filter selection.
+ * @property {Function} updateFilterFromState Updates the filter selection from the search state parameters.
  * @property {boolean} hasResetButtons flag, indicating if the filter has reset buttons shown.
  *
  * @typedef {Object.<string, ListFilter>} ListFilterMap Object holding only list filters as property values.
@@ -116,8 +119,20 @@ var m_flagScrollToAnchor = true;
 /** @type {ResetButtonsPerList} reset buttons to display per list. */
 var m_listResetButtons = {};
 
-/** @type {boolean} whether we are in the initial load state. */
-var m_isInitialLoad = true;
+/** @type {Object.<string,boolean>} whether we are in the initial load state. */
+var m_isInitialLoad = {};
+
+/** @type {InitParamsPerList}  */
+var m_initParams = {};
+
+/** @type {boolean} flag, indicating if the script is initialized. */
+var m_isInitialized = false;
+
+/** @type {Filter[]} filters queued for registration until the list is initialized. */
+var m_filtersToRegister = [];
+
+/** @type {number} number of filters to register at all. */
+var m_numFilters = 0;
 
 /**
  * Splits the request parameters in a key-value map.
@@ -164,7 +179,7 @@ function getFilterParams(filter) {
  */
 function listFilter(id, filter, searchStateParameters, init = false) {
 
-    if (Mercury.debug()) {
+    if (DEBUG) {
         console.info("Lists.listFilter() called elementId=" + id);
     }
     const filterGroup = m_archiveFilterGroups[id];
@@ -176,12 +191,17 @@ function listFilter(id, filter, searchStateParameters, init = false) {
     var listGroup = m_listGroups[id];
     if (listGroup !== undefined) {
         // required list is an element on this page
-        for (let i = 0; i < listGroup.length; i++) {
-            updateInnerList(listGroup[i].id, searchStateParameters, true);
+        // when we do the initial load, the list is already in the correct state
+        if (init !== true) {
+            for (let i = 0; i < listGroup.length; i++) {
+                updateInnerList(listGroup[i].id, searchStateParameters, true);
+            }
         }
         if (adjustCounts || hasResetButtons) {
             updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup);
         }
+        // update the filter state
+        updateUrlFilterStateMarker(listGroup[0], searchStateParameters);
         // update direct link
         filterGroup.forEach((fi) => {
             if (fi.updateDirectLink) {
@@ -193,7 +213,7 @@ function listFilter(id, filter, searchStateParameters, init = false) {
         // list is not on this page, check filter target attribute
         var target = archive.data.target;
         if (target !== undefined && target !== window.location.pathname && target + "index.html" !== window.location.pathname) {
-            if (Mercury.debug()) {
+            if (DEBUG) {
                 console.info("Lists.listFilter() No list group found on page, trying redirect to " + target);
             }
             var params = splitRequestParameters("reloaded=true&" + searchStateParameters);
@@ -416,7 +436,8 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
     // initial list load:
     // entries are already there, if there are no groups in the result we can skip the reload
     // but never skip if all items are displayed
-    var skipInitialLoad = list.initialLoad && !hasGroups && !list.loadAll && page == 1;
+    // neither we can skip if the initparams do not correspond to the ones that the list expected
+    var skipInitialLoad = list.initialLoad && !hasGroups && !list.loadAll && page == 1 && list.initparams === m_initParams[list.elementId];
     list.initialLoad = false;
     if (DEBUG && skipInitialLoad) console.info("Lists.generateListHtml() Skipping initial reload for list=" + list.id);
 
@@ -529,7 +550,7 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
     // We have to wait till Animations finished.
     if(waitHandler) setTimeout(waitHandler.ready, 750);
     // initial load is finished
-    m_isInitialLoad = false;
+    m_isInitialLoad[list.id] = false;
 }
 
 /**
@@ -557,6 +578,38 @@ function updateURLPageMarker(list, page) {
         const state = window.history.state ? window.history.state : {};
         if(page > 1) {
             state[paramName] = page.toString();
+        } else if (state[paramName]) {
+            delete state[paramName];
+        }
+        window.history.replaceState(state, null, window.location.href);
+    }
+}
+
+/**
+ * Replaces the current URL by setting an url parameter keeping the current filter state of the list in edit mode.
+ * Otherwise replacing the parameters value in the history state to allow to directly set the the filter state again when using history back.
+ *
+ * @param {List} list the list to update the page data for.
+ * @param {string} searchStateParameters the current search state parameters.
+ */
+function updateUrlFilterStateMarker(list, searchStateParameters) {
+    if (DEBUG) console.info("Lists.updateUrlFilterStateMarker() called");
+    const paramName = 'f_' + list.elementId;
+    if(Mercury.isEditMode()) {
+        const currentUrl = new URL(window.location.href);
+        const currentParams = currentUrl.searchParams;
+        if(searchStateParameters) {
+            currentParams.set(paramName, searchStateParameters);
+        } else if (currentParams.has(paramName)) {
+            currentParams.delete(paramName);
+        }
+        // We could either use pushState or replaceState.
+        // It depends if each page switch should be kept in the history
+        window.history.replaceState(window.history.state, null, currentUrl.toString());
+    } else {
+        const state = window.history.state ? window.history.state : {};
+        if(searchStateParameters) {
+            state[paramName] = searchStateParameters;
         } else if (state[paramName]) {
             delete state[paramName];
         }
@@ -911,7 +964,7 @@ function updateFilterCountsAndResetButtons(id, filterGroup) {
             );
         }
         if (updateResets) {
-            updateResetButtons(list.elementId, resetButtons);
+            updateResetButtonsInternal(list.elementId, resetButtons);
         }
     }
 }
@@ -921,7 +974,7 @@ function updateFilterCountsAndResetButtons(id, filterGroup) {
  * @param {string} id
  * @param {ResetButtonsMap} resetButtons
  */
-function updateResetButtons(id, resetButtons) {
+function updateResetButtonsInternal(id, resetButtons) {
 
     m_listResetButtons[id] = resetButtons;
     const filters = m_archiveFilterGroups[id];
@@ -975,7 +1028,7 @@ function buildAjaxCountLink(list, searchStateParameters) {
  */
 function replaceFilterCounts(filterGroup, ajaxCountJson) {
 
-    if (Mercury.debug()) {
+    if (DEBUG) {
         console.info("Lists.replaceFilterCounts() called with ajaxCountJson", ajaxCountJson);
     }
     filterGroup.forEach((filter) => {
@@ -1086,6 +1139,50 @@ function onDomChange(m) {
     }
 }
 
+
+/**
+ * Registers list filters.
+ * @param {ListFilter[]} filters the list filter to register
+ */
+function registerFilters(filters) {
+
+    const reloadFiltersFor = new Set();
+    filters.forEach(filter => {
+        if (filter.data === undefined) {
+            console.error("DynamicList.registerFilters() filter found without data, ignoring!");
+            return;
+        }
+        const listId = filter.elementId;
+        // store filter data in global array
+        m_archiveFilters[filter.id] = filter;
+        // store filter in global group array
+        var group = m_archiveFilterGroups[listId];
+        if (group !== undefined) {
+            group.push(filter);
+        } else {
+            m_archiveFilterGroups[listId] = [filter];
+        }
+        if (filter.hasResetButtons && m_listResetButtons[listId] == undefined) {
+        // tell list, that it has to track reset buttons
+        m_listResetButtons[listId] = [];
+        }
+        const listInitParams = m_initParams[listId];
+        if (listInitParams !== undefined) {
+            if (listInitParams !== '' || listInitParams !== filter.data.initparams) {
+                reloadFiltersFor.add(listId);
+                filter.updateFilterFromState(new URLSearchParams(listInitParams));
+            }
+        } else if (m_listGroups[listId] === undefined && filter.data.initparams !== undefined && filter.data.initparams != "") {
+            m_initParams[listId] = filter.data.initparams;
+            reloadFiltersFor.add(listId);
+            if (DEBUG) {
+                console.info("DynamicList.registerFilters() data filter without list on the page init params - " + filter.data.initparams);
+            }
+        }
+    });
+    reloadFiltersFor.forEach(listId => listFilter(listId, null, m_initParams[listId], true));
+}
+
 /****** Exported functions ******/
 
 /**
@@ -1145,34 +1242,33 @@ export function generateInputFieldResetButton(filter, input) {
  */
 export function registerFilter(filter) {
 
+    if(DEBUG) console.info("DynamicList.registerFilter() called for filter " + filter.id);
     if (filter.data === undefined) {
         console.error("DynamicList.registerFilter() filter found without data, ignoring!");
         return;
     }
-    // store filter data in global array
-    m_archiveFilters[filter.id] = filter;
-    // store filter in global group array
-    var group = m_archiveFilterGroups[filter.elementId];
-    if (group !== undefined) {
-        group.push(filter);
-    } else {
-        m_archiveFilterGroups[filter.elementId] = [filter];
-    }
-    if (filter.hasResetButtons && m_listResetButtons[filter.elementId] == undefined) {
-      // tell list, that it has to track reset buttons
-      m_listResetButtons[filter.elementId] = [];
-    }
-    if (filter.data.initparams !== undefined && filter.data.initparams != "") {
-        if (Mercury.debug()) {
-            console.info("DynamicList.registerFilter() data filter init params - " + filter.data.initparams);
-        }
-    }
-    // apply the list filter and update counts on page load if needed
-    const initParams = filter.data.initparams ? filter.data.initparams : "";
-    if (initParams) {
-        listFilter(filter.elementId, filter, initParams, true);
+
+    m_filtersToRegister.push(filter);
+    if (m_isInitialized && m_numFilters <= m_filtersToRegister.length) {
+        registerFilters(m_filtersToRegister);
     }
     return filter;
+}
+
+/**
+ * Updates the reset buttons.
+ * Use the function only if really necessary, e.g., if a lazily loaded filter has to add more
+ * reset buttons when it is completely loaded.
+ * 
+ * @param {string} listId id of the list to update the reset buttons for.
+ */
+export function updateResetButtons(listId) {
+    let resetButtons = [];
+    const filterGroup = m_archiveFilterGroups[listId];
+    for (const fi of filterGroup) {
+        resetButtons = resetButtons.concat(fi.getResetButtons());
+    }
+    updateResetButtonsInternal(listId, resetButtons);
 }
 
 /**
@@ -1298,7 +1394,7 @@ export function appendPage(id, page) {
  */
 export function update(id, searchStateParameters, reloadEntries) {
 
-    updateInnerList(id, searchStateParameters, reloadEntries == "true", m_isInitialLoad);
+    updateInnerList(id, searchStateParameters, reloadEntries == "true", m_isInitialLoad[id]);
 }
 
 /**
@@ -1364,6 +1460,8 @@ export function init(jQuery, debug, verbose) {
         }
     }
 
+    m_numFilters = document.querySelectorAll("[data-filter]").length;
+    if(DEBUG) console.log("Lists.init() [data-filter] elements found:" + m_numFilters);
     var $listElements = jQ('.list-dynamic');
     if (DEBUG) console.info("Lists.init() .list-dynamic elements found: " + $listElements.length);
 
@@ -1451,7 +1549,28 @@ export function init(jQuery, debug, verbose) {
                     initParams = 'page=' + page + (initParams == '' ? '' : ('&' + initParams));
                 }
             }
+
             // load the initial list
+
+            // Check if we used the back button and have an already filtered list
+            let filterState = undefined;
+            const filterParam = 'f_' + list.elementId;
+            let filterStr = undefined;
+            if(Mercury.isEditMode()) {
+                // In edit mode we need to use request parameters, since the form editor does not leave the page
+                // and we want to get the former state when we close it
+                if(urlParams.has(filterParam)) {
+                    filterStr = urlParams.get(filterParam);
+                }
+            } else {
+                // If we are not in edit mode, we use the history state to remember the latest filter selection
+                const state = window.history.state ? window.history.state : {};
+                filterStr = state[filterParam];
+            }
+            if(filterStr != undefined) {
+                    initParams = filterStr;
+            }
+            m_initParams[list.elementId] = initParams;
             updateInnerList(list.id, initParams, true, true, waitHandler);
         });
 
@@ -1462,7 +1581,7 @@ export function init(jQuery, debug, verbose) {
 
         // unfold filterboxes if on desktop and responsive setting is used
         document.querySelectorAll(".filterbox .collapse").forEach((element) => {
-            if (Mercury.debug()) {
+            if (DEBUG) {
                 console.info("Lists.init() collapse elements found for filter id " + element.id);
             }
             if ((element.classList.contains("op-lg") && Mercury.gridInfo().isMinLg())
@@ -1494,7 +1613,11 @@ export function init(jQuery, debug, verbose) {
         _OpenCmsReinitEditButtons(DEBUG);
     }
 
+    m_isInitialized = true;
     if (waitHandler) waitHandler.ready();
+    if(m_filtersToRegister >= m_numFilters) {
+        registerFilters(m_filtersToRegister);
+    }
 }
 
 export function setFlagScrollToAnchor(flagScrollToAnchor) {

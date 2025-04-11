@@ -17,6 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// the global objects that must be passed to this module
+/** @type {jQuery} jQuery object */
+var jQ;
+/** @type {boolean} flag, indicating if in debug mode. */
+var DEBUG;
+/** @type {boolean} flag, indicating if in verbose debug mode. */
+var VERBOSE;
+
 
 /**
  * Text search filter
@@ -80,6 +88,17 @@ class TextSearch {
     resetAll() {
 
         this.element.value = "";
+    }
+
+    /**
+     * Updates the selected items based on the current search state parameters.
+     * @param {URLSearchParams} searchStateParameters 
+     */
+    updateFilterFromState(searchStateParameters) {
+        if (DEBUG) console.info("called TextSearch.updateFilterFromState " + searchStateParameters);
+        const key = this.element.getAttribute("name");
+        const value = searchStateParameters.get(key);
+        this.element.value = value == null ? '' : value;
     }
 }
 
@@ -224,6 +243,26 @@ class ArchiveFilter {
             }
         });
     }
+
+    /**
+     * Updates the selected items based on the current search state parameters.
+     * @param {URLSearchParams} searchStateParameters 
+     */
+    updateFilterFromState(searchStateParameters) {
+        if (DEBUG) console.info("called ArchiveFilter.updateFilterFromState " + searchStateParameters);
+        const key = this.parent.data.archiveparamkey;
+        const values = searchStateParameters.getAll(key);
+        this.element.querySelectorAll("li[data-value]").forEach((li) => {
+            const value = li.dataset.value;
+            if(values.includes(value)) {
+                li.classList.add("active");
+                li.parentElement.classList.add("show");
+                jQ(this.element).show();
+            } else {
+                li.classList.remove("active");
+            }
+        });
+    }
 }
 
 /**
@@ -363,6 +402,24 @@ class CategoryFilter {
                     li.classList.remove("disabled");
                     li.classList.add("enabled");
                 }
+            }
+        });
+    }
+    /**
+     * Updates the selected items based on the current search state parameters.
+     * @param {URLSearchParams} searchStateParameters 
+     */
+    updateFilterFromState(searchStateParameters) {
+        if (DEBUG) console.info("called CategoryFilter.updateFilterFromState " + searchStateParameters);
+        const key = this.parent.data.catparamkey;
+        const values = searchStateParameters.getAll(key);
+        this.element.querySelectorAll("li[data-value]").forEach((li) => {
+            const value = li.dataset.value;
+            if(values.includes(value)) {
+                li.classList.add("active");
+                jQ(this.element).show();
+            } else {
+                li.classList.remove("active");
             }
         });
     }
@@ -522,6 +579,25 @@ class FolderFilter {
                     li.classList.remove("disabled");
                     li.classList.add("enabled");
                 }
+            }
+        });
+    }
+    /**
+     * Updates the selected items based on the current search state parameters.
+     * @param {URLSearchParams} searchStateParameters 
+     */
+    updateFilterFromState(searchStateParameters) {
+        if (DEBUG) console.info("called FolderFilter.updateFilterFromState " + searchStateParameters);
+        const key = this.parent.data.folderparamkey;
+        const values = searchStateParameters.getAll(key);
+        this.element.querySelectorAll("li[data-value]").forEach((li) => {
+            const value = li.dataset.value;
+            if(values.filter(v => v.startsWith(value)).length > 0) {
+                li.classList.add("currentpage");
+                jQ(this.element).show();
+                li.parentElement.classList.add("show");
+            } else {
+                li.classList.remove("currentpage");
             }
         });
     }
@@ -740,23 +816,49 @@ class ListFilter {
             this.folderFilter.updateFilterCounts(elementFacets["f"]);
         }
     }
+    /**
+     * Updates the selected items based on the current search state parameters.
+     * @param {URLSearchParams} searchStateParameters 
+     */
+    updateFilterFromState(searchStateParameters) {
+        if (DEBUG) console.info("called ListFilter.updateFilterFromState " + searchStateParameters);
+        if (this.textSearch) {
+            this.textSearch.updateFilterFromState(searchStateParameters);
+        }
+        if (this.categoryFilter) {
+            this.categoryFilter.updateFilterFromState(searchStateParameters);
+        }
+        if (this.archiveFilter) {
+            this.archiveFilter.updateFilterFromState(searchStateParameters);
+        }
+        if (this.categoryFilter) {
+            this.categoryFilter.updateFilterFromState(searchStateParameters);
+        }
+        if (this.folderFilter) {
+            this.folderFilter.updateFilterFromState(searchStateParameters);
+        }
+    }
 }
 
 /**
  * Initializes the list filters.
  */
-export function init() {
+export function init(jQuery, debug, verbose) {
+
+    jQ = jQuery;
+    DEBUG = debug;
+    VERBOSE = verbose;
 
     const listFilters = document.querySelectorAll(".type-list-filter");
-    if (Mercury.debug()) {
+    if (DEBUG) {
         console.info("Lists.init() .type-list-filter elements found: " + listFilters.length);
     }
     listFilters.forEach((element) => {
         const listFilter = new ListFilter(element);
         const register = DynamicList.registerFilter(listFilter);
-        if (register !== undefined && Mercury.debug()) {
+        if (register !== undefined && DEBUG) {
             console.info("Lists.init() .type-list-filter data found - id=" + listFilter.id + ", elementId=" + listFilter.elementId);
-        } else if (Mercury.debug()) {
+        } else if (DEBUG) {
             console.info("Lists.init() .type-list-filter found without data, ignoring!");
         }
     });

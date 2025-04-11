@@ -16,6 +16,8 @@
 <c:set var="setting"                value="${cms.element.setting}" />
 <c:set var="cssWrapper"             value="${setting.cssWrapper}" />
 <c:set var="showImageLink"          value="${setting.showImageLink.toBoolean}" />
+<c:set var="setCssVisibility"       value="${(setting.cssVisibility.isSetNotNone and (setting.cssVisibility.toString ne 'always')) ? ' '.concat(setting.cssVisibility.toString) : null}" />
+
 
 <%--
     Note: Adding the link in ADE will prevent the 'bullseye' OpenCms menu from working.
@@ -44,7 +46,7 @@
             setTitle="${true}"
             css="imglink" >
 
-            <m:image-simple image="${value.Image}" cssWrapper="${cssWrapper}" />
+            <m:image-simple image="${value.Image}" cssWrapper="${cssWrapper}${setCssVisibility}" />
 
         </m:link>
     </c:otherwise>

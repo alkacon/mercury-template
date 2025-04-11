@@ -489,12 +489,14 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
         $result.find('.list-append-position').appendTo(list.$pagination);
     }
 
-    if (reloadEntries) {
-        var $facetOptions = list.$facets;
+    var $facetOptions = list.$facets;
 
+    if (reloadEntries || isInitialLoad && page === 1) {
         // reset the list option box
         $facetOptions.find(".list-options").remove();
         $result.find(".list-options").appendTo($facetOptions);
+    }
+    if (reloadEntries) {
 
         // check if we have found any results
         if ($newEntries.length == 0) {
@@ -1010,11 +1012,6 @@ function buildAjaxCountLink(list, searchStateParameters) {
         + "&__locale="
         + list.locale;
 
-    if (list.$facets.length != 0) {
-        // The first option is only used by the old lists. NG lists use the settings.
-        //params = params + "&facets=" + list.$facets.data("facets");
-        //params = params + list.$facets.data("settings");
-    }
     return list.ajaxCount + (list.ajaxCount.indexOf('?') >= 0 ? '&' : '?') + params + searchStateParameters;
 }
 
@@ -1533,22 +1530,6 @@ export function init(jQuery, debug, verbose) {
                 initParams = list.initparams;
                 if (DEBUG) console.info("Lists.init() Data init params - " + initParams);
             }
-            const pageParam = 'p_' + list.elementId;
-            let pageStr = undefined;
-            if(Mercury.isEditMode()) {
-                if(urlParams.has(pageParam)) {
-                    pageStr = urlParams.get(pageParam);
-                }
-            } else {
-                const state = window.history.state ? window.history.state : {};
-                pageStr = state[pageParam];
-            }
-            if(pageStr) {
-                const page = parseInt(pageStr);
-                if(!isNaN(page) && page > 1) {
-                    initParams = 'page=' + page + (initParams == '' ? '' : ('&' + initParams));
-                }
-            }
 
             // load the initial list
 
@@ -1570,7 +1551,27 @@ export function init(jQuery, debug, verbose) {
             if(filterStr != undefined) {
                     initParams = filterStr;
             }
+
+            // page parameter is handled separately, so we store the init params before we handle it.
             m_initParams[list.elementId] = initParams;
+
+            const pageParam = 'p_' + list.elementId;
+            let pageStr = undefined;
+            if(Mercury.isEditMode()) {
+                if(urlParams.has(pageParam)) {
+                    pageStr = urlParams.get(pageParam);
+                }
+            } else {
+                const state = window.history.state ? window.history.state : {};
+                pageStr = state[pageParam];
+            }
+            if(pageStr) {
+                const page = parseInt(pageStr);
+                if(!isNaN(page) && page > 1) {
+                    initParams = 'page=' + page + (initParams == '' ? '' : ('&' + initParams));
+                }
+            }
+
             updateInnerList(list.id, initParams, true, true, waitHandler);
         });
 

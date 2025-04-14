@@ -22,6 +22,7 @@ package alkacon.mercury.template;
 import org.opencms.ade.detailpage.CmsDetailPageInfo;
 import org.opencms.file.CmsObject;
 import org.opencms.i18n.CmsLocaleManager;
+import org.opencms.jsp.CmsJspResourceWrapper;
 import org.opencms.jsp.util.CmsJspContentAccessBean;
 import org.opencms.jsp.util.CmsJspObjectValueWrapper;
 import org.opencms.jsp.util.CmsJspStandardContextBean;
@@ -146,7 +147,18 @@ public final class CmsFunctionLinkResolver {
                             }
                         } else {
                             // links between localized regular pages
-                            result = cmsBean.getLocaleResource().get(targetLocale).getLink();
+                            CmsJspResourceWrapper target = cmsBean.getLocaleResource().get(targetLocale);
+                            if (target != null) {
+                                result = target.getLink();
+                            } else {
+                                LOG.warn(
+                                    "No language link found for '"
+                                        + link
+                                        + "' on URI '"
+                                        + cmsBean.getRequestContext().getRootUri()
+                                        + "'");
+                                result = null;
+                            }
                         }
                     }
                     if ((result != null) && (anchor != null)) {

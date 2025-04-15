@@ -1253,19 +1253,17 @@ export function registerFilter(filter) {
 }
 
 /**
- * Updates the reset buttons.
+ * Updates the counts and reset buttons.
  * Use the function only if really necessary, e.g., if a lazily loaded filter has to add more
- * reset buttons when it is completely loaded.
+ * filters when it is completely loaded.
  * 
- * @param {string} listId id of the list to update the reset buttons for.
+ * @param {string} elementId element id of the list to update the reset buttons for.
  */
-export function updateResetButtons(listId) {
-    let resetButtons = [];
-    const filterGroup = m_archiveFilterGroups[listId];
-    for (const fi of filterGroup) {
-        resetButtons = resetButtons.concat(fi.getResetButtons());
-    }
-    updateResetButtonsInternal(listId, resetButtons);
+export function updateFilters(elementId) {
+    const filterGroup = m_archiveFilterGroups[elementId];
+    const listGroup = m_listGroups[elementId];
+    if (listGroup && listGroup.length > 0)
+        updateFilterCountsAndResetButtons(listGroup[0].id, filterGroup);
 }
 
 /**

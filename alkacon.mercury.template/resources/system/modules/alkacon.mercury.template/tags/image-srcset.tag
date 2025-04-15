@@ -101,7 +101,7 @@ SVG placeholder image, background image and image sizing
 
 <c:set var="aboveTheFold" value="${false}" /><%-- Setting this currently leads to loading for more images from srcset than required --%>
 <c:set var="useLazyLoading" value="${(empty lazyLoad or lazyLoad) and not aboveTheFold}" />
-<c:set var="useJsLazyLoading" value="${(lazyLoadAutoSizes or useLazyLoading) and not caseDynamicListNoscript}" /><%-- This will finally be set after the Bootstrap grid config has been read --%>
+<c:set var="useJsLazyLoading" value="${lazyLoadAutoSizes and not caseDynamicListNoscript}" /><%-- This will finally be set after the Bootstrap grid config has been read --%>
 <c:set var="isSvg" value="${empty isSvg ? fn:endsWith(ib.vfsUri, '.svg') : isSvg}" />
 <c:set var="useSrcSet" value="${(empty srcSet or srcSet) and not isSvg and not caseDynamicListNoscript}" />
 <c:set var="useNoScript" value="${(empty noScript or noScript) and not caseDynamicListNoscript and not caseDynamicListAjax}" />
@@ -126,7 +126,8 @@ useNoScript: ${useNoScript}
 
     <m:image-sizes debug="${DEBUG}" lazyLoad="${useLazyLoading}" initBootstrapBean="${not customSizes}">
 
-        <c:set var="useJsLazyLoading" value="${useJsLazyLoading and (lazyLoadAutoSizes or bsLazyLoadJs)}" />
+        <%-- c:set var="useJsLazyLoading" value="${((lazyLoadAutoSizes or useLazyLoading) and not caseDynamicListNoscript) and (lazyLoadAutoSizes or bsLazyLoadJs)}" / --%>
+        <c:set var="useJsLazyLoading" value="${not caseDynamicListNoscript and lazyLoadAutoSizes and (useLazyLoading or bsLazyLoadJs)}" />
         <c:set var="sizeXsMax" value="${bb.getGridSize(0) - bb.gutter}" />
 
         <c:if test="${useSrcSet and bbInitialized}">

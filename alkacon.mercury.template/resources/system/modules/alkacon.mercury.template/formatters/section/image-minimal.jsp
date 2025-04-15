@@ -28,7 +28,7 @@
     <c:when test="${cssWrapper eq 'no-image'}">
         <c:out value='<div class="no-image"></div>' escapeXml="false" />
     </c:when>
-    <c:when test="${not value.Image.isSet and cms.isEditMode}">
+    <c:when test="${cms.isEditMode and (not value.Image.isSet or not value.Image.value.Image.isSet)}">
         <%-- ###### No image: Output warning in offline version ###### --%>
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">

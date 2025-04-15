@@ -29,6 +29,12 @@
     html:not(.opencms-page-editor) #{$parent} {
         display: none !important;
     }
+    html:not(.opencms-group-editor) header,
+    html:not(.opencms-group-editor) footer {
+        #{$parent} {
+            display: none !important;
+        }
+    }
     html.opencms-page-editor #{$parent} {
         opacity: .5;
         background-image: $disabled-bg;

@@ -107,12 +107,14 @@
         --%>sizes="${srcSetSizes}"${' '}<%--
         --%>srcset="${srcSet}"</c:set>
         <c:set var="useNoScript" value="${false}" />
+        <c:set var="useJsLazyLoading" value="${false}" />
     </c:when>
     <c:otherwise>
         <c:set var="attributes"><%--
         --%>src="${srcUrl}"<%--
         --%>${useLazyLoading ? ' loading=\"lazy\"' : ''}</c:set>
         <c:set var="useNoScript" value="${false}" />
+        <c:set var="useJsLazyLoading" value="${false}" />
     </c:otherwise>
 </c:choose>
 

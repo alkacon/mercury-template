@@ -44,6 +44,11 @@
       <Order><![CDATA[9000]]></Order>
     </MetaMapping>
     <MetaMapping>
+      <Key><![CDATA[Revisit]]></Key>
+      <Element><![CDATA[Revisit]]></Element>
+      <Order><![CDATA[9000]]></Order>
+    </MetaMapping>
+    <MetaMapping>
       <Key><![CDATA[ogImage]]></Key>
       <Element><![CDATA[Image]]></Element>
       <Order><![CDATA[9000]]></Order>

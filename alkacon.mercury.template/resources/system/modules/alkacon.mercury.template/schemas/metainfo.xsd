@@ -23,6 +23,7 @@
             <xsd:element name="SearchBoost" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="CanonicalURL" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Robots" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Revisit" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -124,6 +125,21 @@
                         noindex, nofollow:%(key.label.MetaInfo.Robots.none)|
                         index, nofollow:%(key.label.MetaInfo.Robots.nofollow)|
                         noindex, follow:%(key.label.MetaInfo.Robots.noindex)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Revisit</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.Revisit)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.Revisit.help)]]></Description>
+                    <Widget>selectcombo</Widget>
+                    <Default><![CDATA[7 days]]></Default>
+                    <WidgetConfig><![CDATA[
+                        1 day:%(key.label.MetaInfo.Revisit.1day)|
+                        7 days:7 %(key.label.MetaInfo.Revisit.days)|
+                        14 days:14 %(key.label.MetaInfo.Revisit.days)|
+                        30 days:30 %(key.label.MetaInfo.Revisit.days)|
+                        90 days:90 %(key.label.MetaInfo.Revisit.days)
                     ]]></WidgetConfig>
                     <Search>false</Search>
                 </Setting>

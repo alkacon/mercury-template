@@ -307,6 +307,10 @@ label.MetaInfo.Job=Meta-Informationen zur Stelle
 label.MetaInfo.Job.help=<p>Hier angegebene Informationen werden als zusätzliche „strukturierte Daten“ in die Seite eingebettet.</p>\n<p>Damit können Suchmaschinen wie z.B. Google die Inhalte noch genauer indizieren.</p>\n<p>Diese Informationen werden eventuell <em>nicht auf der erzeugten Seite angezeigt</em>.</p>
 label.MetaInfo.Keywords=Keywords für die Seite
 label.MetaInfo.Keywords.help=Schlüsselwörter (Keywords) für die Seite. Erzeugtes Attribut ist „keywords“. Schlüsselwörter werden auch bei der internen Suche der Website durchsucht.
+label.MetaInfo.Revisit=Revisit Einstellung
+label.MetaInfo.Revisit.1day=1 Tag
+label.MetaInfo.Revisit.days=Tage
+label.MetaInfo.Revisit.help=<p>Revisit-after gibt an, wie oft Suchmaschinen Ihre Website besuchen sollen. Das hilft sicherzustellen, dass aktuelle Inhalte in den Suchergebnissen erscheinen – besonders wichtig bei häufigen Updates.</p><p>Konkret gesetzte Meta-Information ist <em>meta name\="revisit-after"</em>.</p>
 label.MetaInfo.Robots=Robots Einstellung
 label.MetaInfo.Robots.all=Zeige die Seite in Suchergebnissen und folge den Links („index, follow“).
 label.MetaInfo.Robots.help=<p>Setzt das Robots Meta-Tag für diese Seite, um das Indexierungsverhalten für Suchmaschinen festzulegen.</p>\n<p>Konkret gesetzte Meta-Information ist <em>meta name\="robots"</em>.</p>
@@ -556,6 +560,7 @@ msg.error.Price=Geben Sie einen gültigen Preis an, z.B. „50“ oder „100,00
 msg.error.tab.itemcount.head=Zu viele „Reiter / Akkordeon“ Einträge\!
 msg.error.tab.itemcount.text=Es sind {0} Einträge vorhanden. Nur die ersten 12 Einträge werden korrekt angezeigt.
 msg.error.ugc.validation=Validierungsfehler
+msg.gui.show.template.marker=Template-Markierung anzeigen
 msg.icon.angle=Winkel
 msg.icon.angle-double=Winkel (doppelt)
 msg.icon.archive=Archiv

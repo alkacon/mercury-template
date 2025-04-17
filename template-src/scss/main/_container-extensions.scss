@@ -1,0 +1,95 @@
+// This program is part of the OpenCms Mercury Template.
+//
+// Copyright (c) Alkacon Software GmbH & Co. KG (http://www.alkacon.com)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+/**********
+ * Source file: _container-extensions.scss
+ */
+
+// Extensions to the container markers.
+// Since this is considered to be part of the "System" rather than the template,
+// most settings here are fixed with "important".
+
+#template-marker {
+    --#{$prefix}tm-h: 26px;
+    --#{$prefix}tm-lh: 18px;
+    --#{$prefix}tm-col: #{$con-col-blue};
+    display: flex;
+    visibility: visible !important;
+    align-items: center !important;
+    position: fixed !important;
+    right: 230px !important;
+    top: 10px !important;
+    z-index: $above-oc-toolbar !important;
+    font-family: $font-family-gui !important;
+    font-weight: 400 !important;
+    padding-left: 6px !important;
+    white-space: nowrap !important;
+    border: 2px solid var(--#{$prefix}tm-col) !important;
+    border-radius: 3px !important;
+    color: $con-text-col-light !important;
+    background-color: var(--#{$prefix}tm-col) !important;
+    line-height: 1 !important;
+    font-size: calc(var(--#{$prefix}tm-lh)) !important;
+    cursor: default;
+
+    .oc-marker-size {
+        display: flex;
+        height: var(--#{$prefix}tm-h) !important;
+        aspect-ratio: 1 / 1 !important;
+        font-size: calc(var(--#{$prefix}tm-lh) - 6px) !important;
+        color: var(--#{$prefix}tm-col) !important;
+        background-color: $white !important;
+        border-radius: 2px !important;
+        margin-left: 10px !important;
+        position: relative;
+
+        &::after {
+            display: flex;
+            position: absolute !important;;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100%  !important;
+            aspect-ratio: 1 / 1 !important;
+            text-transform: uppercase !important;
+            justify-content: center !important;
+            align-items: center !important;
+            content: "xs";
+
+            @each $breakpoint in map-keys($grid-breakpoints) {
+                @include media-breakpoint-up($breakpoint) {
+                    content: "#{$breakpoint}";
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        padding-left: 0px !important;
+        .oc-marker-template {
+            display: none;
+        }
+        .oc-marker-size {
+            margin-left: 0 !important;
+        }
+    }
+}
+
+html.opencms-editor-active {
+    #template-marker {
+        display: none;
+    }
+}

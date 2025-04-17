@@ -100,13 +100,14 @@
 
 <oc-div id="template-grid-info"></oc-div><%----%>
 
-<m:read-user-preference var="userHasMarkerEnabled" value="checkReuseWarning" default="false" />
-<c:set var="showTemplateMarker" value="${cms.isEditMode and userHasMarkerEnabled}" />
-<c:if test="${showTemplateMarker}">
-    <oc-div id="template-marker" style="display: none"><%----%>
-        <oc-div class="oc-marker-template">Mercury</oc-div><%----%>
-        <oc-div class="oc-marker-size"></oc-div><%----%>
-    </oc-div><m:nl />
+<c:if test="${cms.isEditMode}">
+    <m:read-user-preference var="showTemplateMarker" value="showTemplateMarker" default="true" />
+    <c:if test="${showTemplateMarker}">
+        <oc-div id="template-marker" style="display: none"><%----%>
+            <oc-div class="oc-marker-template">Mercury</oc-div><%----%>
+            <oc-div class="oc-marker-size"></oc-div><%----%>
+        </oc-div><m:nl />
+    </c:if>
 </c:if>
 
 </oc-div><%----%>

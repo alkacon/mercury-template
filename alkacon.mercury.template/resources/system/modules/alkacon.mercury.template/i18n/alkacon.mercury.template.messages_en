@@ -307,9 +307,13 @@ label.MetaInfo.Job=Additional job meta information
 label.MetaInfo.Job.help=<p>These meta informations are embedded as "structured data" in the generated page.</p>\n<p>This allows search engines like Google to index the generated content more precise.</p>\n<p>These adjustments may <em>not be shown on the generated page</em>.</p>
 label.MetaInfo.Keywords=Keywords for the page
 label.MetaInfo.Keywords.help=The keywords for the generated page. Generated attribute is "keywords". Keywords are also searched in the internal website search.
+label.MetaInfo.Revisit=Revisit setting
+label.MetaInfo.Revisit.1day=1 day
+label.MetaInfo.Revisit.days=days
+label.MetaInfo.Revisit.help=<p>Revisit-after specifies how often search engines should visit your website. This helps to ensure that up-to-date content appears in the search results - particularly important for frequent updates.</p><p>Specifically set meta information is <em>meta name\="revisit-after"</em>.</p>
 label.MetaInfo.Robots=Robots setting
 label.MetaInfo.Robots.all=Show page in search results and follow links ("index, follow").
-label.MetaInfo.Robots.help=Allows to set the robots meta tag specifying the indexing behaviour of search engines for the generated page.
+label.MetaInfo.Robots.help=<p>Allows to set the robots meta tag specifying the indexing behaviour of search engines for the generated page.</p><p>Specifically set meta information is <em>meta name\="robots"</em>.</p>
 label.MetaInfo.Robots.nofollow=Show page in search results, but do not follow links ("index, nofollow").
 label.MetaInfo.Robots.noindex=Don't show page in search results, but follow links ("noindex, follow").
 label.MetaInfo.Robots.none=Don't show page in search results and do not follow links ("noindex, nofollow").
@@ -556,6 +560,7 @@ msg.error.Price=Please enter a price, e.g., "50" or "100,00".
 msg.error.tab.itemcount.head=Too may "Tab / Accordion" items\!
 msg.error.tab.itemcount.text=There are {0} items. Only the first 12 items are displayed correctly.
 msg.error.ugc.validation=Invalidation failures
+msg.gui.show.template.marker=Show template marker
 msg.icon.angle=Angle
 msg.icon.angle-double=Angle (double)
 msg.icon.archive=Archive

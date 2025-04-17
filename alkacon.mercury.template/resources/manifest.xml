@@ -9708,6 +9708,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/read-user-preference.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/read-user-preference.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>14a3c062-1ad4-11f0-b01e-0242ac11002b</uuidstructure>
+			<uuidresource>14a3c063-1ad4-11f0-b01e-0242ac11002b</uuidresource>
+			<datecreated>Wed, 16 Apr 2025 15:04:23 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Reads a value from the user preference settings]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/section-piece.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/section-piece.tag</destination>
 			<type>jsp</type>

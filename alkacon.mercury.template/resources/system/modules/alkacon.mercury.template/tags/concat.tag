@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="alert"
+    display-name="concat"
     body-content="empty"
     trimDirectiveWhitespaces="true"
     description="Concats a list of string with white spaces." %>

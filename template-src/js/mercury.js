@@ -258,6 +258,14 @@ const Mercury = function (jQ) {
         m_theme = getCssJsonData(element.getAttribute("id"));
         if (DEBUG) console.info("Mercury theme JSON: " + getThemeJSON("main-theme", []));
         initGridInfo();
+
+        const marker = document.querySelector("#template-marker");
+        if (marker) {
+            marker.style.removeProperty('display');
+            marker.addEventListener('click', () => {
+                marker.style.display = 'none';
+            });
+        }
     }
 
 
@@ -577,8 +585,8 @@ const Mercury = function (jQ) {
     }
 
 
-    function revalOnClickTemplate($element, template, isMedia, autoplay) {
-        if (DEBUG) console.info("revalOnClickTemplate(): isMedia=" + isMedia + " autoplay=" + autoplay);
+    function revealOnClickTemplate($element, template, isMedia, autoplay) {
+        if (DEBUG) console.info("revealOnClickTemplate(): isMedia=" + isMedia + " autoplay=" + autoplay);
         $element.removeClass("reveal-registered");
         $element.off("click");
         $element.off("keydown");
@@ -613,8 +621,8 @@ const Mercury = function (jQ) {
         // adds a placeholder that has to be clicked in edit mode in order to reveal the template
         // mostly used for JavaScripts that contact external servers which may not be wanted in edit mode
         const revealFunction = function () {
-            // first we create a finction that revelas the template when clicked
-            revalOnClickTemplate($element, template, isMedia, autoplay);
+            // first we create a function that reveals the template when clicked
+            revealOnClickTemplate($element, template, isMedia, autoplay);
         };
         if (!initPlaceholder($element, revealFunction)) {
             // check if a placeholder is required in edit mode, otherwise directly show the element
@@ -627,11 +635,11 @@ const Mercury = function (jQ) {
         const data = event.data;
         const cookieData = data.$element.data("modal-external-cookies");
         if (!cookieData || PrivacyPolicy.cookiesAcceptedExternal()) {
-            revalOnClickTemplate(data.$element, data.template, data.isMedia);
+            revealOnClickTemplate(data.$element, data.template, data.isMedia);
         } else {
             PrivacyPolicy.createExternalElementModal(cookieData.header, cookieData.message, cookieData.footer,
                 function () {
-                    revalOnClickTemplate(data.$element, cata.template, cata.isMedia);
+                    revealOnClickTemplate(data.$element, cata.template, cata.isMedia);
                 });
         }
     }
@@ -809,7 +817,7 @@ const Mercury = function (jQ) {
         } catch (err) {
             console.warn("List.init() error", err);
         }
-        
+
         try {
             DynamicListFilterElemements.init(jQ, DEBUG, VERBOSE);
         } catch (err) {

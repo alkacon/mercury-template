@@ -79,7 +79,7 @@
 </c:if>
 
 <m:nl/>
-<div id="template-info" data-info='{<%--
+<oc-div id="template-info" data-info='{<%--
     --%><c:if test="${not empty googleApiKey}">"googleApiKey":"${googleApiKey}",</c:if><%--
     --%><c:if test="${not empty googleAnalyticsId}">"googleAnalyticsId":"${googleAnalyticsId}",</c:if><%--
     --%><c:if test="${not empty osmApiKey}">"osmApiKey":"${osmApiKey}",</c:if><%--
@@ -98,9 +98,18 @@
 --%>><%----%>
 <m:nl/>
 
-<div id="template-grid-info"></div><%----%>
+<oc-div id="template-grid-info"></oc-div><%----%>
 
-</div><%----%>
+<m:read-user-preference var="userHasMarkerEnabled" value="checkReuseWarning" default="false" />
+<c:set var="showTemplateMarker" value="${cms.isEditMode and userHasMarkerEnabled}" />
+<c:if test="${showTemplateMarker}">
+    <oc-div id="template-marker" style="display: none"><%----%>
+        <oc-div class="oc-marker-template">Mercury</oc-div><%----%>
+        <oc-div class="oc-marker-size"></oc-div><%----%>
+    </oc-div><m:nl />
+</c:if>
+
+</oc-div><%----%>
 <m:nl/>
 
 <div id="topcontrol" tabindex="0"></div>

@@ -3,6 +3,7 @@
 /build/
 /output/
 /.gradle
+/.idea
 /.sass-cache/
 /.vscode/
 /module-export.sh

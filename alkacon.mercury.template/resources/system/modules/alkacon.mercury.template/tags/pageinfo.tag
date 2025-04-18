@@ -100,15 +100,7 @@
 
 <oc-div id="template-grid-info"></oc-div><%----%>
 
-<c:if test="${cms.isEditMode}">
-    <m:read-user-preference var="showTemplateMarker" value="showTemplateMarker" default="true" />
-    <c:if test="${showTemplateMarker}">
-        <oc-div id="template-marker" style="display: none"><%----%>
-            <oc-div class="oc-marker-template">Mercury</oc-div><%----%>
-            <oc-div class="oc-marker-size"></oc-div><%----%>
-        </oc-div><m:nl />
-    </c:if>
-</c:if>
+<m:template-marker name="Mercury" showGrid="${true}" />
 
 </oc-div><%----%>
 <m:nl/>

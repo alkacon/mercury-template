@@ -1,9 +1,8 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="set-content-disposition"
+    display-name="translate-name"
     body-content="empty"
     trimDirectiveWhitespaces="true"
-    description="Translates a (file) name according to the configured file name translation rules.
-    The result will also be all lower case." %>
+    description="Translates a (file) name according to the configured file name translation rules. The result will also be all lower case." %>
 
 
 <%@ attribute name="name" type="java.lang.String" required="true"

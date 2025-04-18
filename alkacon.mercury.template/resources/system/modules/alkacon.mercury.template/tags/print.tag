@@ -6,7 +6,7 @@
 
 
 <%@ attribute name="comment" type="java.lang.Boolean" required="false"
-    description="If true, treat the body as HTML comment. Add comment markers before / after the text output and use a default delimiter of '\n'. Default is 'false'." %>
+    description="If true, treat the body as HTML comment. Add comment markers before / after the text output and use a default delimiter of '\n'. Default is 'true' in case 'script' is false and no 'delimiter' has been set." %>
 
 <%@ attribute name="script" type="java.lang.Boolean" required="false"
     description="If true, treat the body as JavaScript. Set a default delimiter of ''. Default is 'false'." %>

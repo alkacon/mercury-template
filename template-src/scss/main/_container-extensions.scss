@@ -25,7 +25,7 @@
 
 #template-marker {
     --#{$prefix}tm-h: 26px;
-    --#{$prefix}tm-lh: 18px;
+    --#{$prefix}tm-fs: 18px;
     --#{$prefix}tm-col: #{$con-col-blue};
     display: flex;
     visibility: visible !important;
@@ -34,23 +34,23 @@
     right: 230px !important;
     top: 10px !important;
     z-index: $above-oc-toolbar !important;
-    font-family: $font-family-gui !important;
+    font-family: 'Open Sans', sans-serif !important; // this is the OpenCms workplace font
     font-weight: 400 !important;
     padding-left: 6px !important;
     white-space: nowrap !important;
     border: 2px solid var(--#{$prefix}tm-col) !important;
     border-radius: 3px !important;
-    color: $con-text-col-light !important;
+    color: $white !important;
     background-color: var(--#{$prefix}tm-col) !important;
     line-height: 1 !important;
-    font-size: calc(var(--#{$prefix}tm-lh)) !important;
+    font-size: var(--#{$prefix}tm-fs) !important;
     cursor: default;
 
     .oc-marker-size {
         display: flex;
         height: var(--#{$prefix}tm-h) !important;
         aspect-ratio: 1 / 1 !important;
-        font-size: calc(var(--#{$prefix}tm-lh) - 6px) !important;
+        font-size: calc(var(--#{$prefix}tm-fs) - 6px) !important;
         color: var(--#{$prefix}tm-col) !important;
         background-color: $white !important;
         border-radius: 2px !important;

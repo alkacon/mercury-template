@@ -9877,6 +9877,27 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/tags/template-marker.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/template-marker.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>129c366f-1c3f-11f0-97a4-0242ac11002b</uuidstructure>
+			<uuidresource>129c3670-1c3f-11f0-97a4-0242ac11002b</uuidresource>
+			<datecreated>Fri, 18 Apr 2025 10:22:46 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Template marker for the page editor toolbar]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/tags/template-parts.tag</source>
 			<destination>system/modules/alkacon.mercury.template/tags/template-parts.tag</destination>
 			<type>jsp</type>

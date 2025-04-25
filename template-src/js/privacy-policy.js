@@ -124,6 +124,7 @@ function displayBanner() {
             window.setTimeout(function() {
                 $banner.slideUp();
                 $bannerElement.slideUp();
+                privacyLinkSettingsToggle();
                 enableExternalElements();
             }, 500);
         });
@@ -134,6 +135,7 @@ function displayBanner() {
             setPrivacyCookies(true, useExternal, useStatistical);
             $banner.slideUp();
             $bannerElement.slideUp();
+            privacyLinkSettingsToggle();
             if (useExternal) {
                 enableExternalElements();
             } else {
@@ -188,6 +190,36 @@ function initPrivacyBanner(onTop) {
              });
         } else {
             if (DEBUG) console.info("PrivacyPolicy: Banner confirmed, cookie data=" + getCookie(OPTIONS_CONFIRMED));
+        }
+    }
+}
+
+function initPrivacyLinkSettings() {
+    loadPolicy(function(){
+        if (m_policy.showPLS) {
+            if (DEBUG) console.info("PrivacyPolicy: Init link to settings");
+            var $privacyLinkSettings = jQ("#privacy-policy-link-settings");
+            $privacyLinkSettings.click(function() {
+                location.href = m_policy.lPLS;
+            });
+            $privacyLinkSettings.attr("title", m_policy.lPLSTxt);
+            $privacyLinkSettings.html("<span></span>");
+            privacyLinkSettingsToggle();
+        } else {
+            if (DEBUG) console.info("PrivacyPolicy: Link to settings not initialized.");
+        }
+     });
+}
+
+function privacyLinkSettingsToggle() {
+    if (m_policy.showPLS) {
+        var $privacyLinkSettings = jQ("#privacy-policy-link-settings");
+        if (cookiesAcceptedTechnical()) {
+            if (DEBUG) console.info("PrivacyPolicy: Display link to settings");
+            $privacyLinkSettings.show();
+        } else {
+            if (DEBUG) console.info("PrivacyPolicy: Hide link to settings");
+            $privacyLinkSettings.hide();
         }
     }
 }
@@ -639,5 +671,6 @@ export function init(jQuery, debug) {
     initBannerData();
     initPrivacyBanner();
     initPrivacyToggle();
+    initPrivacyLinkSettings();
     initMatomoJstControl();
 }

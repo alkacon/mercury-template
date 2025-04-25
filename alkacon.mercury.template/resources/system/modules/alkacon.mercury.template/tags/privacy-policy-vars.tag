@@ -39,6 +39,10 @@
 
 <%@ variable name-given="hasPolicyLinks"            declare="true" %>
 
+<%@ variable name-given="showPolicyLinkSettings"    declare="true" %>
+<%@ variable name-given="policyLinkSettings"        declare="true" %>
+<%@ variable name-given="policyLinkSettingsText"    declare="true" %>
+
 <%@ variable name-given="policyTest"                declare="true" %>
 
 
@@ -132,6 +136,26 @@
         <c:set var="policyTextLegal" value="${value.LinkLegal.value.Text.toString}" />
         <c:if test="${empty policyTextLegal}">
             <fmt:message var="policyTextLegal" key="msg.page.privacypolicy.link.legal" />
+        </c:if>
+    </c:if>
+
+    <c:set var="showPolicyLinkSettings" value="${false}" />
+    <c:if test="${value.ShowLinkSettings.useDefault('false').toBoolean and (not empty policyLinkPolicy or not empty value.LinkSettings.value.URI.toLink)}">
+        <c:set var="showPolicyLinkSettings" value="${true}" />
+        <c:choose>
+            <c:when test="${value.LinkSettings.value.URI.isSet}">
+                <c:set var="policyLinkSettings" value="${value.LinkSettings.value.URI.toLink}" />
+            </c:when>
+            <c:otherwise>
+                <c:set var="policyLinkSettings" value="${policyLinkPolicy}" />
+            </c:otherwise>
+        </c:choose>
+        <c:if test="${not fn:contains(policyLinkSettings, '#')}">
+            <c:set var="policyLinkSettings" value="${policyLinkSettings}#privacy-policy-settings" />
+        </c:if>
+        <c:set var="policyLinkSettingsText" value="${value.LinkSettings.value.Text.toString}" />
+        <c:if test="${empty policyLinkSettingsText}">
+            <fmt:message var="policyLinkSettingsText" key="msg.page.privacypolicy.link.policysettings" />
         </c:if>
     </c:if>
 

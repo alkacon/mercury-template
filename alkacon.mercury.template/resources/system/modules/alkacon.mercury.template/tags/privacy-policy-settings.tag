@@ -26,7 +26,7 @@
 <cms:bundle basename="alkacon.mercury.template.messages">
 
 <m:nl />
-<div class="element type-privacy-policy pp-settings pivot ${cssWrapper}"><%----%>
+<div class="element type-privacy-policy pp-settings pivot ${cssWrapper}" id="privacy-policy-settings"><%----%>
 <m:nl />
 
 <div class="pp-toggle pp-toggle-technical animated"><%----%>

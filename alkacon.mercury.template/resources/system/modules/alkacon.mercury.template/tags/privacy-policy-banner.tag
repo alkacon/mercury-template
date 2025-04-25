@@ -50,6 +50,7 @@
 
     <div id="privacy-policy-placeholder"></div><%----%>
     <div id="privacy-policy-banner" class="pp-banner" data-banner='${bannerData.compact}'></div><%----%>
+    <div id="privacy-policy-link-settings"></div><%----%>
     <m:nl />
 
     <noscript><%----%>

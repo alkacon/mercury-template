@@ -104,6 +104,11 @@
         <cms:jsonvalue key="lLeg" value="${policyLinkLegal}" />
         <cms:jsonvalue key="lLegTxt" value="${policyTextLegal}" />
     </c:if>
+    <cms:jsonvalue key="showPLS" value="${showPolicyLinkSettings}" />
+    <c:if test="${showPolicyLinkSettings}">
+        <cms:jsonvalue key="lPLS" value="${policyLinkSettings}" />
+        <cms:jsonvalue key="lPLSTxt" value="${policyLinkSettingsText}" />
+    </c:if>
     <c:if test="${DEBUG}">
         <cms:jsonvalue key="_dbgShowLinks" value="${hasPolicyLinks and value.ShowLinks.useDefault('true').toBoolean}" />
         <cms:jsonvalue key="_dbgPath" value="${param.path}" />

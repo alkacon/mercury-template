@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[Contains the JavaScript, static resources, fonts and default CSS themes for the Mercury template.]]></description>
-		<version>19.0.4</version>
+		<version>19.0.5</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -187,6 +187,30 @@
 			<uuidstructure>93ca1c7c-d6ba-11ec-9927-0242ac11002b</uuidstructure>
 			<uuidresource>93ca1c7d-d6ba-11ec-9927-0242ac11002b</uuidresource>
 			<datecreated>Wed, 18 May 2022 14:55:37 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/theme-abi91.min.css</source>
+			<destination>system/modules/alkacon.mercury.theme/css/theme-abi91.min.css</destination>
+			<type>plain</type>
+			<uuidstructure>7a892986-20ee-11f0-94c2-0242ac11002b</uuidstructure>
+			<uuidresource>7a892987-20ee-11f0-94c2-0242ac11002b</uuidresource>
+			<datecreated>Thu, 24 Apr 2025 09:28:27 GMT</datecreated>
+			<flags>0</flags>
+			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.theme/css/theme-abi91.min.css.map</source>
+			<destination>system/modules/alkacon.mercury.theme/css/theme-abi91.min.css.map</destination>
+			<type>plain</type>
+			<uuidstructure>7a8d212a-20ee-11f0-94c2-0242ac11002b</uuidstructure>
+			<uuidresource>7a8d212b-20ee-11f0-94c2-0242ac11002b</uuidresource>
+			<datecreated>Thu, 24 Apr 2025 09:28:27 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
 			<relations/>

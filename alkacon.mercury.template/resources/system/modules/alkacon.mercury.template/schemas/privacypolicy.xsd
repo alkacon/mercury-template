@@ -24,6 +24,8 @@
             <xsd:element name="LinkImprint" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="LinkPolicy" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="LinkLegal" type="OpenCmsNestedLink" minOccurs="0" />
+            <xsd:element name="ShowLinkSettings" type="OpenCmsBoolean" />
+            <xsd:element name="LinkSettings" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="CookieExpirationDays" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="CookieExpirationDaysNoStats" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MatomoPolicy" type="OpenCmsMatomoPolicy" minOccurs="0" />
@@ -128,6 +130,22 @@
                 </Setting>
                 <Setting>
                     <PropertyName>LinkLegal/NewWindow</PropertyName>
+                    <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>ShowLinkSettings</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.ShowLinkSettings)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.ShowLinkSettings.help)]]></Description>
+                    <Widget>checkbox</Widget>
+                    <Default><![CDATA[false]]></Default>
+                </Setting>
+                <Setting>
+                    <PropertyName>LinkSettings</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.PrivacyPolicy.LinkSettings)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.PrivacyPolicy.LinkSettings.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>LinkSettings/NewWindow</PropertyName>
                     <Visibility>hidden</Visibility>
                 </Setting>
                 <Setting>

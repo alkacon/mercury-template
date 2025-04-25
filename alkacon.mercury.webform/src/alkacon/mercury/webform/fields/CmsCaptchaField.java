@@ -173,7 +173,7 @@ public class CmsCaptchaField extends A_CmsField {
                             + C_PARAM_CAPTCHA_TOKEN_ID
                             + "="
                             + tokenId
-                            + "#"
+                            + "&version="
                             + System.currentTimeMillis())).append("\" width=\"").append(
                                 captchaSettings.getImageWidth()).append("\" height=\"").append(
                                     captchaSettings.getImageHeight()).append("\" alt=\"\"/>").append("\n");

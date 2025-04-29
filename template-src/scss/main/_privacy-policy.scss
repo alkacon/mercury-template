@@ -728,7 +728,8 @@ html.keyboard-nav {
     z-index: #{$above-oc-z-index + 150}; // the back to top icon should be above the edit points and the privacy policy banner
     position: fixed;
     bottom: $grid-gutter-width-half;
-    border-radius: $nav-border-radius !important;
+    border-radius: 50%;
+    box-shadow: $nav-shadow;
 
     @if ($nav-mobile-position == right) {
         left: $nav-mobile-toggle-side;
@@ -753,6 +754,7 @@ html.keyboard-nav {
         display: flex;
         justify-content: center;
         align-items: center;
+        padding-bottom: 1px;
 
         &::after {
             font-family: "mercury-pp-font" !important;
@@ -763,6 +765,7 @@ html.keyboard-nav {
         @include media-breakpoint-down(md) {
             width: round($nav-toggle-size-xs);
             height: round($nav-toggle-size-xs);
+            font-size: round($nav-font-size * 1.25);
         }
     }
 

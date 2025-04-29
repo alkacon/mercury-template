@@ -870,8 +870,8 @@ $cookie-notice-togglebox-height:    2rem !default;
 $placeholder-bg-color:              var(--#{$prefix}highlight-color) !default;
 $placeholder-border-color:          var(--#{$prefix}highlight-border-color) !default;
 
-$pp-link-settings-background:       transparent !default;
-$pp-link-settings-color:            var(--#{$prefix}main-theme) !default;
+$pp-link-settings-background:       var(--#{$prefix}main-theme) !default;
+$pp-link-settings-color:            var(--#{$prefix}text-light) !default;
 $pp-link-settings-icon-char:        "A"; // A is cookie, B is finger print
 
 // POI accessible icons

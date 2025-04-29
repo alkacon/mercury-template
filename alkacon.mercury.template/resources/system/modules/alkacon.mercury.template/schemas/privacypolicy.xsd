@@ -24,7 +24,7 @@
             <xsd:element name="LinkImprint" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="LinkPolicy" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="LinkLegal" type="OpenCmsNestedLink" minOccurs="0" />
-            <xsd:element name="ShowLinkSettings" type="OpenCmsBoolean" />
+            <xsd:element name="ShowLinkSettings" type="OpenCmsBoolean" minOccurs="0" />
             <xsd:element name="LinkSettings" type="OpenCmsNestedLink" minOccurs="0" />
             <xsd:element name="CookieExpirationDays" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="CookieExpirationDaysNoStats" type="OpenCmsString" minOccurs="0" />

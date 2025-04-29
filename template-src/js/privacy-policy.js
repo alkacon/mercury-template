@@ -114,16 +114,14 @@ function displayBanner() {
 
         // add click handlers to buttons on banner
         $banner.find(".btn-close").on('click', function(e) {
-            $banner.slideUp();
-            $bannerElement.slideUp();
+            hideBanner();
         });
         $banner.find(".btn-accept").on('click', function(e) {
             $banner.find("#use-statistical").prop('checked', true);
             $banner.find("#use-external").prop('checked', true);
             setPrivacyCookies(true, true, true);
             window.setTimeout(function() {
-                $banner.slideUp();
-                $bannerElement.slideUp();
+                hideBanner();
                 privacyLinkSettingsToggle();
                 enableExternalElements();
             }, 500);
@@ -133,8 +131,7 @@ function displayBanner() {
             var useExternal = $banner.find("#use-external").prop('checked');
             if (DEBUG) console.info("PrivacyPolicy: User clicked 'btn-save'. Selection external=" + useExternal + " statistical=" + useStatistical);
             setPrivacyCookies(true, useExternal, useStatistical);
-            $banner.slideUp();
-            $bannerElement.slideUp();
+            hideBanner();
             privacyLinkSettingsToggle();
             if (useExternal) {
                 enableExternalElements();
@@ -168,6 +165,12 @@ function displayBanner() {
         if (DEBUG) console.info("PrivacyPolicy: Banner loaded and displayed");
     } else {
         if (DEBUG) console.info("PrivacyPolicy: No banner displayed");
+    }
+
+    function hideBanner() {
+        $banner.slideUp();
+        $bannerElement.slideUp();
+        jQ("#privacy-policy-placeholder").hide();
     }
 }
 

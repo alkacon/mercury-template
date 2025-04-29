@@ -144,7 +144,9 @@
         <c:set var="showPolicyLinkSettings" value="${true}" />
         <c:choose>
             <c:when test="${value.LinkSettings.value.URI.isSet}">
-                <c:set var="policyLinkSettings" value="${value.LinkSettings.value.URI.toLink}" />
+                <c:set var="policyLinkSettings">
+                    <m:link-opencms targetLink="${value.LinkSettings.value.URI.toLink}" />
+                </c:set>
             </c:when>
             <c:otherwise>
                 <c:set var="policyLinkSettings" value="${policyLinkPolicy}" />

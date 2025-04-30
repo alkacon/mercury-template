@@ -917,6 +917,7 @@ msg.page.map.osm.nokey=No OpenStreetMap API key found. Unable to display the map
 msg.page.map.route=Directions to this location
 msg.page.map.route.button=Show directions
 msg.page.map.start=Enter your start address\:
+msg.page.media.progressbar=Progress of the media playback
 msg.page.meta-info.optional=Missing (but optional)
 msg.page.meta-info.options-invalid=Meta information for Google is missing\!
 msg.page.meta-info.options-missing=Optional meta information for Google is missing\!

@@ -50,7 +50,11 @@
             </div><%----%>
         </c:if>
         <div class="audio-progress"><%----%>
-            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div><%----%>
+            <fmt:setLocale value="${cms.locale}" />
+            <cms:bundle basename="alkacon.mercury.template.messages">
+                <c:set var="audioPlayer"><fmt:message key="msg.page.media.progressbar" /></c:set>
+                <div class="progress-bar" title="${audioPlayer}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div><%----%>
+            </cms:bundle>
         </div><%----%>
         <div class="audio-controls"><%----%>
             <div class="audio-pos">${date}</div><%----%>

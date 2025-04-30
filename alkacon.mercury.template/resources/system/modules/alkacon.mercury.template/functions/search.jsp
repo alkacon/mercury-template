@@ -190,7 +190,7 @@
     <%-- search action: link to the current page --%>
     <form<%--
         --%> id="search-form"<%--
-        --%> role="form"<%--
+        --%> role="search"<%--
         --%> class="styled-form no-border"<%--
         --%> action="<cms:link>${cms.uri()}</cms:link>"<%--
         --%>><%----%>
@@ -213,7 +213,7 @@
                     <div class="input button"><%----%>
                         <label for="searchFormQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                         <input id="searchFormQuery" name="${common.config.queryParam}" <%--
-                            --%>value="${escapedQuery}" class="form-control" type="text" autocomplete="off" <%--
+                            --%>value="${escapedQuery}" class="form-control" type="text" role="searchbox" autocomplete="off" <%--
                             --%>placeholder="<c:out value="${slotText}" />" /><%----%>
                         <button class="btn btn-submit-search" type="submit" title="<fmt:message key="msg.page.search" />">${slotButton}</button><%----%>
                     </div><%----%>

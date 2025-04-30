@@ -63,6 +63,7 @@
             --%> id="search-slot-form"<%--
             --%> class="styled-form no-border"<%--
             --%> action="${searchPageUri}"<%--
+            --%> role="search"<%--
             --%>><%----%>
 
             <%--We add this parameter to ensure that it is really searched and search is not starting in initial mode --%>
@@ -74,7 +75,7 @@
                         <div class="input button"><%----%>
                             <label for="searchFormQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                             <input id="searchFormQuery" name="q" <%--
-                                --%>value="" class="form-control" type="text" autocomplete="off" <%--
+                                --%>value="" class="form-control" type="text" role="searchbox" autocomplete="off" <%--
                                 --%>placeholder="<c:out value="${slotText}" />"><%----%>
                             <button class="btn btn-submit-search" type="submit"  title="<fmt:message key="msg.page.search" />">${slotButton}</button><%----%>
                         </div><%----%>

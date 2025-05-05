@@ -11,8 +11,11 @@
 <%@ attribute name="setPolicyLinks" type="java.lang.Boolean" required="false"
     description="If 'true', then the links to the imprint page etc. are read from the policy file and stored in variables." %>
 
+<%@ attribute name="setStatisticalVars" type="java.lang.Boolean" required="false"
+    description="If 'true', then the properties for statistics are read and the results are stored in variables." %>
+
 <%@ attribute name="contentPropertiesSearch" type="java.util.Map" required="false"
-    description="The properties read from the content page URI resource with search. If not set  and 'locatePolicyFile' ist 'true', this will be read based on the value of 'cms.requestContext.uri'." %>
+    description="The properties read from the content page URI resource with search. If not set  and 'locatePolicyFile' is 'true', this will be read based on the value of 'cms.requestContext.uri'." %>
 
 <%@ attribute name="content" type="org.opencms.jsp.util.CmsJspContentAccessBean" required="false"
     description="The privacy policy configuration content access bean. If not set and 'setPolicyLinks' is 'true', then 'cms.requestContext.uri' will be used to locate the policy content file first." %>
@@ -42,6 +45,13 @@
 <%@ variable name-given="showPolicyLinkSettings"    declare="true" %>
 <%@ variable name-given="policyLinkSettings"        declare="true" %>
 <%@ variable name-given="policyLinkSettingsText"    declare="true" %>
+
+<%@ variable name-given="showGoogle"            declare="true" %>
+<%@ variable name-given="showMatomo"            declare="true" %>
+<%@ variable name-given="showPiwik"             declare="true" %>
+<%@ variable name-given="showUseStatistical"    declare="true" %>
+<%@ variable name-given="useMatomoDnt"          declare="true" %>
+<%@ variable name-given="useMatomoJst"          declare="true" %>
 
 <%@ variable name-given="policyTest"                declare="true" %>
 
@@ -162,6 +172,31 @@
     </c:if>
 
     </cms:bundle>
+
+</c:if>
+
+<c:if test="${setStatisticalVars}">
+
+    <c:if test="${empty contentPropertiesSearch}">
+        <%-- Do not use contentUri for properties, always read from the request context URI. This is identical to the m:content-properties.tag --%>
+        <c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[policyBaseUri]}" />
+    </c:if>
+    
+    <c:set var="matomoUrl" value="${contentPropertiesSearch['matomo.url']}" />
+    <c:set var="matomoId" value="${contentPropertiesSearch['matomo.id']}" />
+    <c:set var="matomoJst" value="${contentPropertiesSearch['matomo.jst']}" />
+    <c:set var="useMatomoJst" value="${not empty matomoJst ? fn:contains(matomoJst, 'true') : false}" />
+    <c:set var="useMatomoDnt" value="${not empty matomoJst ? fn:contains(matomoJst, 'dnt') : false}" />
+    <c:set var="showMatomo" value="${(not empty matomoUrl and matomoUrl ne 'none') and (not empty matomoId and matomoId ne 'none')}" />
+
+    <c:set var="piwikUrl" value="${contentPropertiesSearch['piwik.url']}" />
+    <c:set var="piwikId" value="${contentPropertiesSearch['piwik.id']}" />
+    <c:set var="showPiwik" value="${(not empty piwikUrl and piwikUrl ne 'none') and (not empty piwikId and piwikId ne 'none')}" />
+
+    <c:set var="googleAnalyticsId" value="${contentPropertiesSearch['google.analytics']}" />
+    <c:set var="showGoogle" value="${not empty googleAnalyticsId and googleAnalyticsId ne 'none'}" />
+
+    <c:set var="showUseStatistical" value="${showMatomo or showPiwik or showGoogle}" />
 
 </c:if>
 

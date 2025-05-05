@@ -25,6 +25,8 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
+<m:privacy-policy-vars locatePolicyFile="${true}" setStatisticalVars="${true}" contentPropertiesSearch="${contentPropertiesSearch}">
+
 <m:nl />
 <div class="element type-privacy-policy pp-settings pivot ${cssWrapper}" id="privacy-policy-settings"><%----%>
 <m:nl />
@@ -59,31 +61,26 @@
 </div><%----%>
 <m:nl />
 
-<div class="pp-toggle pp-toggle-statistical animated"><%----%>
-    <input id="cookies-accepted-statistical" type="checkbox" class="toggle-check optional"><%----%>
-    <label for="cookies-accepted-statistical" class="toggle-label" title="<fmt:message key='msg.page.privacypolicy.toggle.label.statistical' />"><%----%>
-        <span class="toggle-box"><%----%>
-            <span class="toggle-inner" <%--
-            --%>data-checked="<fmt:message key="msg.page.privacypolicy.toggle.active" />" <%--
-            --%>data-unchecked="<fmt:message key="msg.page.privacypolicy.toggle.inactive" />"><%----%>
+<c:if test="${showUseStatistical}">
+    <div class="pp-toggle pp-toggle-statistical animated"><%----%>
+        <input id="cookies-accepted-statistical" type="checkbox" class="toggle-check optional"><%----%>
+        <label for="cookies-accepted-statistical" class="toggle-label" title="<fmt:message key='msg.page.privacypolicy.toggle.label.statistical' />"><%----%>
+            <span class="toggle-box"><%----%>
+                <span class="toggle-inner" <%--
+                --%>data-checked="<fmt:message key="msg.page.privacypolicy.toggle.active" />" <%--
+                --%>data-unchecked="<fmt:message key="msg.page.privacypolicy.toggle.inactive" />"><%----%>
+                </span><%----%>
+                <span class="toggle-slider"></span><%----%>
             </span><%----%>
-            <span class="toggle-slider"></span><%----%>
-        </span><%----%>
-    </label><%----%>
-    <div class="toggle-text" aria-hidden="true"><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></div><%----%>
-</div><%----%>
-<m:nl />
+        </label><%----%>
+       <div class="toggle-text" aria-hidden="true"><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></div><%----%>
+    </div><%----%>
+    <m:nl />
+</c:if>
 
 <c:if test="${not empty contentPropertiesSearch and not empty policyFile and policyFile ne 'none'}">
-    <c:set var="matomoJst" value="${contentPropertiesSearch['matomo.jst']}" />
-    <c:set var="useMatomoJst" value="${not empty matomoJst ? fn:contains(matomoJst, 'true') : false}" />
-    <c:set var="useMatomoDnt" value="${not empty matomoJst ? fn:contains(matomoJst, 'dnt') : false}" />
-    <c:set var="matomoUrl"  value="${contentPropertiesSearch['matomo.url']}" />
-    <c:set var="hasMatomoUrl" value="${not empty matomoUrl ? matomoUrl ne 'none' : false}" />
-    <c:set var="matomoId"  value="${contentPropertiesSearch['matomo.id']}" />
-    <c:set var="hasMatomoId" value="${not empty matomoId ? matomoId ne 'none' : false}" />
 
-    <c:if test="${useMatomoJst and hasMatomoUrl and hasMatomoId}">
+    <c:if test="${showMatomo and useMatomoJst}">
 
         <c:if test="${not fn:startsWith(policyFile, '/')}">
             <c:set var="subSitePolicy" value="${cms.subSitePath.concat('.content/').concat(policyFile)}" />
@@ -130,5 +127,7 @@
 
 </div><%----%>
 <m:nl />
+
+</m:privacy-policy-vars>
 
 </cms:bundle>

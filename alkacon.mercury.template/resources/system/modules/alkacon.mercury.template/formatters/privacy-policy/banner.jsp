@@ -26,7 +26,7 @@
 <fmt:message var="extTitleDef" key="msg.page.privacypolicy.external.title" />
 <fmt:message var="extFootDef" key="msg.page.privacypolicy.external.footer" />
 
-<m:privacy-policy-vars setPolicyLinks="${true}" content="${content}">
+<m:privacy-policy-vars setPolicyLinks="${true}" setStatisticalVars="${true}" content="${content}">
 
 <c:if test="${showBanner}">
     <c:set var="bannerHtml">
@@ -46,10 +46,12 @@
                             <input id="use-external" type="checkbox" tabindex="0"><i></i><%----%>
                             <span><fmt:message key="msg.page.privacypolicy.toggle.label.external" /></span><%----%>
                         </label><%----%>
-                        <label for="use-statistical"><%----%>
-                            <input id="use-statistical" type="checkbox" tabindex="0"><i></i><%----%>
-                            <span><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></span><%----%>
-                        </label><%----%>
+                        <c:if test="${showUseStatistical}">
+                            <label for="use-statistical"><%----%>
+                                <input id="use-statistical" type="checkbox" tabindex="0"><i></i><%----%>
+                                <span><fmt:message key="msg.page.privacypolicy.toggle.label.statistical" /></span><%----%>
+                            </label><%----%>
+                        </c:if>
                     </div><%----%>
                     <div class="buttons"><%----%>
                         <button class="btn btn-save" type="button" tabindex="0">${value.SaveButtonText.isSet ? value.SaveButtonText : btnSaveDef}</button><%----%>

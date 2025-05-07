@@ -1327,7 +1327,7 @@ export function archiveSearch(filter) {
         fi.resetAll(false);
     }
     const additionalStateParameter = filter.getFilterParams();
-    listFilter(filter.elementId, filter.id, additionalStateParameter);
+    listFilter(filter.elementId, filter, additionalStateParameter);
 }
 
 /**

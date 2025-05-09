@@ -70,24 +70,6 @@
 
         <m:link link="${link}" test="${linkFullTile}">
 
-            <c:choose>
-                <c:when test="${not empty image}">
-                    <cms:addparams>
-                        <cms:param name="cssgrid" value="${tileClass}" />
-                        <m:image-animated
-                            image="${image}"
-                            ratio="${imageRatio}"
-                            addEffectBox="${true}"
-                            ade="${ade and not linkFullTile}">
-                            <c:set var="imageCopyright" value="${imageCopyrightHtml}" scope="request" />
-                        </m:image-animated>
-                    </cms:addparams>
-                </c:when>
-                <c:otherwise>
-                    <m:padding-box ratio="${imageRatio}" defaultRatio="4-3" />
-                </c:otherwise>
-            </c:choose>
-
             <c:set var="tileText">
                 <m:section-piece
                     cssWrapper="${textAlignment}"
@@ -102,6 +84,25 @@
                     emptyWarning="${false}"
                 />
             </c:set>
+
+            <c:choose>
+                <c:when test="${not empty image}">
+                    <cms:addparams>
+                        <cms:param name="cssgrid" value="${tileClass}" />
+                        <m:image-animated
+                            image="${image}"
+                            ratio="${imageRatio}"
+                            addEffectBox="${true}"
+                            decorative="${empty tileText ? false : null}"
+                            ade="${ade and not linkFullTile}">
+                            <c:set var="imageCopyright" value="${imageCopyrightHtml}" scope="request" />
+                        </m:image-animated>
+                    </cms:addparams>
+                </c:when>
+                <c:otherwise>
+                    <m:padding-box ratio="${imageRatio}" defaultRatio="4-3" />
+                </c:otherwise>
+            </c:choose>
 
             <c:if test="${not empty tileText}">
                 <div class="${overlayWrapper}"><%----%>

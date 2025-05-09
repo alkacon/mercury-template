@@ -15,6 +15,7 @@
             <xsd:element name="Image" type="OpenCmsVfsFile" />
             <xsd:element name="Title" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Copyright" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="Decorative" type="OpenCmsBoolean" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -50,6 +51,13 @@
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <Search>false</Search>
                     <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>Decorative</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.Image.Decorative)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Image.Decorative.help)]]></Description>
+                    <Widget>checkbox</Widget>
+                    <Default><![CDATA[%(attribute:mercuryDecorativeDefault:%(param:mercuryDecorativeDefault))]]></Default>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

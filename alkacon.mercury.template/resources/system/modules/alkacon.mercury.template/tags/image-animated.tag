@@ -76,6 +76,9 @@
     If not set or 'true', the markup from this tag is generated around the body of the tag.
     Otherwise everything is ignored and just the body of the tag is returned. "%>
 
+<%@ attribute name="decorative" type="java.lang.Boolean" required="false"
+    description="Controls if the image should be marked as decorative."%>
+
 
 <%-- These variables are actually set in the m:image-vars tag included --%>
 <%@ variable name-given="imageBean" declare="true" variable-class="org.opencms.jsp.util.CmsJspImageBean" %>
@@ -92,6 +95,7 @@
 <%@ variable name-given="imageHeight" declare="true" %>
 <%@ variable name-given="imageOrientation" declare="true" %>
 <%@ variable name-given="imageIsSvg" declare="true" %>
+<%@ variable name-given="imageIsDecorative" declare="true" %>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -117,6 +121,7 @@
     <c:choose>
         <c:when test="${not empty imageBean and test}">
 
+            <c:set var="setDecorative" value="${not empty decorative ? decorative : imageIsDecorative}" />
             <c:set var="setTitle" value="${empty setTitle ? true : setTitle}" />
             <c:set var="noTitleCopyright" value="${alt eq 'nocopy'}" />
             <c:set var="alt" value="${noTitleCopyright ? null : alt}" />
@@ -164,7 +169,9 @@
                 <c:set var="attrWrapper" value="${empty attrWrapper ? zoomDataWrapper : attrWrapper.concat(' ').concat(zoomDataWrapper)}" />
             </c:if>
 
-            <div class="${cssWrapper}${empty cssWrapper ? '':' '}${imageWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}><%----%>
+            <c:set var="decorativeAttr" value="${setDecorative ? 'aria-hidden=\"true\"': ''}" />
+
+            <div class="${cssWrapper}${empty cssWrapper ? '':' '}${imageWrapper}"${empty attrWrapper ? '':' '}${attrWrapper}${empty imageDndAttr ? '':' '}${imageDndAttr}${empty decorativeAttr ? '':' '}${decorativeAttr}><%----%>
                 <c:if test="${not hideMobile}">
                     <cms:addparams>
                         <c:if test="${adaptRatioToScreen}">

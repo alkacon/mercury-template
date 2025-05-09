@@ -52,6 +52,7 @@
                 test="${not empty image}"
                 setTitle="${false}"
                 showCopyright="${setShowCopyright}"
+                decorative="${false}"
             />
         </c:if>
     </jsp:attribute>

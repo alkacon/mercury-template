@@ -31,7 +31,11 @@
 <%@ attribute name="createRatioIndicator" type="java.lang.Boolean" required="false"
     description="Controls if the variable 'imageRatioIndicator' that indicates the image ratio is set.
     The value can be 'ir-0', 'ir-50', 'ir-75' or 'ir-125'.
-    The number indicates the next lowest (height / width) image ratio - which is also used as padding-bottom."%>
+    The number indicates the next lowest (height / width) image ratio - which is also used as padding-bottom." %>
+
+<%@ attribute name="decorative" type="java.lang.Boolean" required="false"
+    description="Controls if the image should be marked as decorative.
+    If not set, the decorative setting will be read from the XML content."%>
 
 
 <%@ variable name-given="imageBean" declare="true"
@@ -92,6 +96,9 @@
     description="Will be set to 'true' in case the image type is SVG.
     The type is determined from the image name." %>
 
+<%@ variable name-given="imageIsDecorative" declare="true"
+    description="Will be set to 'true' in case the image is decorative." %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -111,6 +118,7 @@
 <c:set var="imageOrientation" value="" />
 <c:set var="imageDndAttr" value="" />
 <c:set var="imageIsSvg" value="${false}" />
+<c:set var="imageIsDecorative" value="${false}" />
 
 <c:choose>
     <c:when test="${cms:isWrapper(image)}">
@@ -191,6 +199,22 @@
             <c:set var="imageOrientation" value="ori-sq" />
         </c:otherwise>
     </c:choose>
+
+    <%--
+        Set the decorative setting from the dedicated field.
+    --%>
+    <c:choose>
+        <c:when test="${not empty decorative}">
+            <c:set var="imageIsDecorative">${decorative}</c:set>
+        </c:when>
+        <c:when test="${isXmlContent and image.value.Decorative.isSet}">
+            <c:set var="imageIsDecorative">${image.value.Decorative}</c:set>
+        </c:when>
+        <c:otherwise>
+            <c:set var="imageIsDecorative" value="${cms.sitemapConfig.attribute['mercuryDecorativeDefault'] eq 'true'}" />
+        </c:otherwise>
+    </c:choose>
+
     <%--
         For the copyright, we check if this is set in the content first,
         if not we try to read it from the property.

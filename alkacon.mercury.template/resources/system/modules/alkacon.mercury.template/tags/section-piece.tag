@@ -178,6 +178,7 @@
                 <c:set var="showVisual" value="${not empty imageBean}" />
                 <c:set var="isIconImage" value="${imageIsSvg and fn:startsWith(imageBean.resource.rootPath, '/system/modules/alkacon.mercury.theme/icons/')}" />
                 <c:set var="visualOrientation" value="${' '.concat(imageOrientation)}" />
+                <c:set var="isDecorative" value="${imageIsDecorative}" />
         </m:image-vars>
     </c:if>
 
@@ -250,10 +251,17 @@
                 <c:when test="${showVisual and empty markupVisual}">
                     <c:set var="showImageLink"  value="${empty showImageLink or suppressLinks ? false : showImageLink}" />
                     <c:set var="showImageZoom" value="${suppressLinks ? false : (empty showImageZoom ? true : showImageZoom)}" />
+                    <c:set var="markLinkAsDecorative" value="${showImageLink and isDecorative and (showLink or linkHeading)}" />
+                    <c:set var="linkAttr" value="${showLink or linkHeading ? 'tabindex=\"-1\"' : ''}" />
+                    <c:if test="${markLinkAsDecorative}">
+                        <m:concat var="linkAttr" strings="${[linkAttr, 'aria-hidden=\"true\"']}" leadSpace="${true}" />
+                    </c:if>
+                    <c:set var="markImageAsDecorative" value="${markLinkAsDecorative ? false : (isDecorative and not showImageLink)}" />
+
                     <m:link
                         link="${link}"
                         test="${showImageLink}"
-                        attr="${showLink or linkHeading ? 'tabindex=\"-1\"' : ''}"
+                        attr="${linkAttr}"
                         setTitle="${true}" >
                         <m:image-animated
                             image="${image}"
@@ -262,6 +270,7 @@
                             setTitle="${not showImageLink}"
                             showCopyright="${showImageCopyright}"
                             showImageZoom="${showImageZoom and not showImageLink}"
+                            decorative="${markImageAsDecorative}"
                             ade="${ade}">
                             <c:set var="imageSubtext">
                                 <c:if test="${showImageSubtitle and not empty imageTitle}">

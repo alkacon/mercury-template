@@ -44,11 +44,16 @@
 
 <c:set var="imageSide">
     <div class="image-section ${showTextFirst ? ' back' : ' front'}${doNotFlip and (not showTextFirst) ? ' noflip' : ''}"><%----%>
+        <c:set var="attrWrapper" value="" />
+        <c:if test="${imageIsDecorative and (not empty flipTitle and (flipTitle ne 'on-text'))}">
+            <c:set var="attrWrapper" value="${'aria-hidden=\"true\"'}" />
+        </c:if>
         <m:image-srcset
             imagebean="${imageBean}"
             cssWrapper="img-responsive"
             copyright="${showImageCopyright ? imageCopyrightHtml : null}"
             alt="${empty imageDescription ? imageTitle : imageDescription}"
+            attrWrapper="${attrWrapper}"
         />
         <c:if test="${not empty flipTitle and (flipTitle ne 'on-text')}">
             <div class="heading"><%----%>

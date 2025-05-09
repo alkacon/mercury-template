@@ -145,6 +145,7 @@
                         test="${not empty image}"
                         setTitle="${false}"
                         showCopyright="${setShowCopyright}"
+                        decorative="${setShowCalendar}"
                     />
                 </c:otherwise>
             </c:choose>

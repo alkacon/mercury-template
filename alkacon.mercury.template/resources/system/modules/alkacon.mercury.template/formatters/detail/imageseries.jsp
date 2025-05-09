@@ -76,7 +76,7 @@
         <c:set var="overlayAttrs">class="zoom-overlay"</c:set>
     </c:when>
     <c:when test="${imageSeriesDisplay eq 'masonry'}">
-        <c:set var="showMasonryList"        value="${false}" /><%-- Experimental feature to display landscape images larger, works as exected, however results are poor --%>
+        <c:set var="showMasonryList"        value="${false}" /><%-- Experimental feature to display landscape images larger, works as expected, however results are poor --%>
         <c:set var="elementCss"             value=" masonry-list" />
         <c:set var="rowCss"                 value=" row tile-margin-2" />
         <c:set var="imageSeriesCss"         value="${fn:replace(imageSeriesCss, 'square-xs-', 'col-')}" />
@@ -109,7 +109,7 @@
     <c:choose>
         <c:when test="${not bsLazyLoadJs}">
             <c:set var="template"><%--
-            --%><div ${showMasonryList ? '%(tileAttrs)' : tileAttrs}><%--
+            --%><div ${showMasonryList ? '%(tileAttrs)' : tileAttrs}%(decorativeAttr)><%--
                 --%><a class="zoom imageseries" href="%(src)" title="%(titleAttr)"><%--
                     --%><span class="content"><%--
                         --%><c:if test="${addBorderWrapper}"><span class="wrapper"></c:if><%--
@@ -134,7 +134,7 @@
         </c:when>
         <c:otherwise>
             <c:set var="template"><%--
-            --%><div ${showMasonryList ? '%(tileAttrs)' : tileAttrs}><%--
+            --%><div ${showMasonryList ? '%(tileAttrs)' : tileAttrs}%(decorativeAttr)><%--
                 --%><a class="zoom imageseries" href="%(src)" title="%(titleAttr)"><%--
                     --%><span class="content"><%--
                         --%><c:if test="${addBorderWrapper}"><span class="wrapper"></c:if><%--
@@ -306,8 +306,11 @@
 
                                 <c:set var="maxWidth" value="${1200}" />
 
+                                <%-- Decorative attribute (i.e. 'aria-hidden') for tile --%>
+                                <c:set var="decorativeAttr" value="${imageIsDecorative ? ' aria-hidden=\"true\"' : ''}" />
+
                                 ${imageBean.setQuality(80)}
-                                <%-- Make sure the full image is not to large --%>
+                                <%-- Make sure the full image is not too large --%>
                                 <c:if test="${imageBean.scaler.width > maxWidth}">
                                     <c:set var="imageBean" value="${imageBean.scaleWidth[maxWidth]}" />
                                 </c:if>
@@ -344,6 +347,7 @@
                                     <cms:jsonvalue key="copyright" value="${listCopyright}" />
                                     <cms:jsonvalue key="titleAttr" value="${titleAttr}" />
                                     <cms:jsonvalue key="alt" value="${altAttr}" />
+                                    <cms:jsonvalue key="decorativeAttr" value="${decorativeAttr}" />
                                     <cms:jsonvalue key="heightPercentage" value="${fn:replace(heightPercentage, '%', '')}" />
                                     <c:if test="${showMasonryList}">
                                         <c:choose>

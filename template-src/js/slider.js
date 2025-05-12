@@ -29,6 +29,16 @@ const getMass = (speed) => {
     return massTable[speed];
 }
 
+const checkInert = (embla, slides) => {
+    slides.forEach((slide) => {
+        if (slide.className.includes('slide-active')) {
+            slide.removeAttribute('inert');
+        } else {
+            slide.setAttribute('inert', '');
+        }
+    });
+}
+
 const scrollTo = (engine, index, autoplay, direction, speed) => {
     if (autoplay) autoplay.stop();
     let sp = (engine.options.speed > 90) ? engine.options.speed : speed || 8;
@@ -79,7 +89,7 @@ const selectDotBtn = (dotsArray, embla) => () => {
     dotsArray[selected].setAttribute('aria-selected', true);
 };
 
-// In order to use my custom mass functions I had to modfy the autoplay plugin from the distribution
+// In order to use my custom mass functions I had to modify the autoplay plugin from the distribution
 function AutoplayMod(userOptions) {
 
     const defaultOptions = {
@@ -261,7 +271,7 @@ function initEmblaSliders(sliders) {
                     slide.parentNode.removeChild(slide);
                     slideCount--;
                 } else {
-                    if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slide enabeld - release=" + dateRelease + " expiration=" + dateExpiration + " time=" + clientTime);
+                    if (Mercury.debug()) console.info("Slider.initEmblaSliders() Slide enabled - release=" + dateRelease + " expiration=" + dateExpiration + " time=" + clientTime);
                     slide.removeAttribute('style');
                 }
             }
@@ -367,6 +377,14 @@ function initEmblaSliders(sliders) {
                     embla.scrollNext();
                     break;
             }
+        });
+
+        checkInert(embla, slides);
+        embla.on('select', function () {
+            // timeout is necessary for correct handling of the logo carousel slides
+            setTimeout(() => {
+                checkInert(embla, slides);
+            }, 50);
         });
 
         Mercury.initTabAccordion( sliderBox, embla.reInit );

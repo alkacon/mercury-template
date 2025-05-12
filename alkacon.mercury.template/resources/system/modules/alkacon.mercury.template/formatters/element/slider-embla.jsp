@@ -292,7 +292,7 @@
 
         <m:nl />
 
-        <div class="slide-wrapper${isHeroSlider ? '' : ' col'}${isHiddenSlide ? ' hide-noscript rs_skip' : ' slide-active'}${' '}${animationTrigger}"${not empty validRange ? ' '.concat(validRange) : '' }${empty slideLink ? ' aria-hidden="true"' : ''}><%----%>
+        <div class="slide-wrapper${isHeroSlider ? '' : ' col'}${isHiddenSlide ? ' hide-noscript rs_skip' : ' slide-active'}${' '}${animationTrigger}"${not empty validRange ? ' '.concat(validRange) : '' }><%----%>
             <div class="slide-container"><%----%>
                 <div class="visual${animationTarget}"><m:nl/>
 

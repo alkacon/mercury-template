@@ -11,9 +11,6 @@
 <%@ attribute name="addBreakpoints" type="java.lang.Boolean" required="false"
     description="If 'true' the configured bootstrap grid breakpoints will be added to the macro resolver. Default is 'false'." %>
 
-<%@ attribute name="macros" type="java.util.HashMap" required="false"
-    description="Optional macros to add to the resolver as map." %>
-
 <%@ attribute name="var" type="java.lang.String" required="true" rtexprvalue="false"
     description="The name of the variable to store the generated macro resolver in." %>
 
@@ -25,17 +22,9 @@
 
 <%
     org.opencms.file.CmsObject cms = (org.opencms.file.CmsObject)getJspContext().getAttribute("cms");
-    java.util.HashMap macros = (java.util.HashMap)getJspContext().getAttribute("macros");
     org.opencms.util.CmsMacroResolver resolver = org.opencms.util.CmsMacroResolver.newInstance();
     if (cms != null) {
         resolver.setCmsObject(cms);
-    }
-    if (macros != null) {
-        for (Object item : macros.keySet()) {
-            String key = (String)item;
-            String value = (String)macros.get(key);
-            resolver.addMacro(key,value);
-        }
     }
     resolver.setKeepEmptyMacros(true);
     getJspContext().setAttribute("resolver", resolver);
@@ -56,3 +45,5 @@
         <c:set var="ignore"  value="${resolver.addMacro('xxl-down', ''.concat(bsBpXxl - 1).concat('.8'))}" />
     </m:image-sizes>
 </c:if>
+
+

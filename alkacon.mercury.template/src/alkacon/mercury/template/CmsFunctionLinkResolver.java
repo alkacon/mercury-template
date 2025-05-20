@@ -40,6 +40,9 @@ public final class CmsFunctionLinkResolver {
     /** The 'opencms://' prefix. */
     private static final String OPENCMS_PREFIX = "opencms://";
 
+    /** Prefix 'attribute@' for links from sitemap attributes. */
+    private static final String LINK_ATTRIBUTE = "attribute@";
+
     /** Prefix 'function@' for links to function detail pages. */
     private static final String LINK_FUNCTION = CmsDetailPageInfo.FUNCTION_PREFIX;
 
@@ -99,7 +102,20 @@ public final class CmsFunctionLinkResolver {
                         iLink = iLink.substring(0, apos - 1);
                     }
 
-                    if (iLink.startsWith(LINK_FUNCTION)) {
+                    if (iLink.startsWith(LINK_ATTRIBUTE)) {
+
+                        // link from a sitemap attribute
+                        String attributeName = iLink.substring(LINK_ATTRIBUTE.length());
+                        CmsJspObjectValueWrapper sitemapLink = cmsBean.getSitemapConfig().getAttribute().get(
+                            attributeName);
+                        if (sitemapLink.getIsSet()) {
+                            result = OpenCms.getLinkManager().substituteLinkForUnknownTarget(
+                                cms,
+                                sitemapLink.getToString(),
+                                null,
+                                false);
+                        }
+                    } else if (iLink.startsWith(LINK_FUNCTION)) {
 
                         // link to a function detail page
                         String targetFunction = iLink.substring(LINK_FUNCTION.length());

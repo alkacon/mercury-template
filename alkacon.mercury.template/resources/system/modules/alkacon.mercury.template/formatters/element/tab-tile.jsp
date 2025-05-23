@@ -103,7 +103,7 @@
         </jsp:attribute>
     </m:alert>
 
-    <div class="tile-accordion collapse-parent row ${rowWrapper}" id="${parentId}"><%----%>
+    <div class="tile-accordion collapse-parent pivot row ${rowWrapper}" id="${parentId}"><%----%>
 
         <c:forEach var="tabEntry" items="${content.valueList.TabEntry}" varStatus="status">
 

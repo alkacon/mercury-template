@@ -65,7 +65,7 @@ public final class CmsFormContentUtil {
         try {
             return content.getStringValue(cms, getNestedPathPrefix(content, NODE_NESTED_FORM, locale) + path, locale);
         } catch (CmsXmlException e) {
-            LOG.error("Failed to read content value with xpath " + path + " for content " + content.getFile());
+            LOG.info("Failed to read content value with xpath " + path + " for content " + content.getFile());
             return null;
         }
     }

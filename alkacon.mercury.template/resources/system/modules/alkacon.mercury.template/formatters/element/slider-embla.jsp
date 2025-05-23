@@ -37,6 +37,7 @@
 <c:set var="isDraggable"            value="${setting.isDraggable.useDefault('true').toBoolean}" />
 <c:set var="visibleSlideSetting"    value="${setting.visibleSlides.toString}" />
 <c:set var="textDisplay"            value="${setting.textDisplay.isSetNotNone ? setting.textDisplay.toString : null}" />
+<c:set var="hsizeTitle"             value="${setting.hsizeTitle.isSet ? setting.hsizeTitle.toInteger : 0}" />
 
 <c:set var="bgColorHead"            value="${setting.textColorHead.isSet and not (setting.textColorHead eq 'css') ? setting.textColorHead.toString : null}" />
 <c:set var="bgColorSub"             value="${setting.textColorSub.isSet and not (setting.textColorSub eq 'css') ? setting.textColorSub.toString : null}" />
@@ -400,7 +401,18 @@
 
                     <div class="caption ${posTop}${' '}${posLeft}"><%----%>
                         <c:if test="${image.value.SuperTitle.isSet}">
-                            <strong><m:out value="${image.value.SuperTitle}" lenientEscaping="${true}" /></strong><%----%>
+                            <c:choose>
+                                <c:when test="${hsizeTitle eq 0 or (hsizeTitle eq 1 and not status.first)}">
+                                    <strong class="titlecaption"><m:out value="${image.value.SuperTitle}" lenientEscaping="${true}" /></strong><%----%>
+                                </c:when>
+                                <c:otherwise>
+                                    <m:heading level="${hsizeTitle}" css="titlecaption" escapeXml="false">
+                                        <jsp:attribute name="markupText">
+                                            <m:out value="${image.value.SuperTitle}" lenientEscaping="${true}" />
+                                        </jsp:attribute>
+                                    </m:heading>
+                                </c:otherwise>
+                            </c:choose>
                         </c:if>
                         <c:if test="${isHeroSlider and (image.value.TitleLine1.isSet or image.value.TitleLine2.isSet)}">
                             <div class="subcaption"><%----%>

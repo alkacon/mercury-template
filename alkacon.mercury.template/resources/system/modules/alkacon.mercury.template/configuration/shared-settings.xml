@@ -3572,6 +3572,22 @@
       ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[hsize.slider.title]]></IncludeName>
+      <PropertyName><![CDATA[hsizeTitle]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.hsize.slider.title)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.hsize.slider.title.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[selectcombo]]></Widget>
+      <Default><![CDATA[0]]></Default>
+      <WidgetConfig><![CDATA[
+            0:  %(key.msg.setting.hsize.slider.title.none)|
+            1:  %(key.msg.setting.hsize.slider.title.1)|
+            2:  %(key.msg.setting.hsize.2)|
+            3:  %(key.msg.setting.hsize.3)|
+            4:  %(key.msg.setting.hsize.4)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textColorHead.slider]]></IncludeName>
       <PropertyName><![CDATA[textColorHead]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.slider.textColorHead)]]></DisplayName>

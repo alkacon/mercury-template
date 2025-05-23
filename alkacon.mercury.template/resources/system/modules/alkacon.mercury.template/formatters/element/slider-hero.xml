@@ -68,6 +68,9 @@
       <IncludeName><![CDATA[textDisplay.slider]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[hsize.slider.title]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[textColorHead.slider]]></IncludeName>
     </Setting>
     <Setting>

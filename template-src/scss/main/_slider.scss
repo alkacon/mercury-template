@@ -65,25 +65,25 @@ $slider-text-below-breakpoint: md !default;
             padding: 0;
             border-radius: 0;
 
-            strong,
+            .titlecaption,
             small {
                 display: inline-block; // important - do not remove even if next lines shows a warning
                 float: left;
                 clear: both;
             }
             &.right {
-                strong,
+                .titlecaption,
                 small {
                     float: right;
                 }
             }
             &.center {
-                strong,
+                .titlecaption,
                 small {
                     float: none;
                 }
             }
-            strong {
+            .titlecaption {
                 background-color: rgb(var(--#{$prefix}slider-caption-top), var(--#{$prefix}slider-bg-opacity));
                 padding-top: var(--#{$prefix}default-margin-verysmall);
                 padding-bottom: var(--#{$prefix}default-margin-verysmall);
@@ -102,7 +102,7 @@ $slider-text-below-breakpoint: md !default;
                 &.center .subcaption br {
                     display: block;
                 }
-                strong,
+                .titlecaption,
                 small {
                     border-radius: var(--#{$prefix}slider-caption-border-radius);
                 }
@@ -171,7 +171,7 @@ $slider-text-below-breakpoint: md !default;
                 display: none;
             }
 
-            strong,
+            .titlecaption,
             small {
                 display: block;
                 margin: 0;
@@ -184,12 +184,12 @@ $slider-text-below-breakpoint: md !default;
                 -moz-osx-font-smoothing: grayscale;
             }
 
-            strong {
+            .titlecaption {
                 font-size: $h4-font-size;
                 line-height: $headings-line-height;
             }
 
-            strong + .subcaption small:first-of-type {
+            .titlecaption + .subcaption small:first-of-type {
                 margin-top: var(--#{$prefix}default-margin-verysmall);
             }
 
@@ -203,13 +203,13 @@ $slider-text-below-breakpoint: md !default;
             }
 
             @include media-breakpoint-up(sm) {
-                strong {
+                .titlecaption {
                     font-size: $h2-font-size;
                 }
             }
 
             @include media-breakpoint-up(md) {
-                strong {
+                .titlecaption {
                     font-size: $h1-font-size;
                 }
                 small {
@@ -282,7 +282,7 @@ $slider-text-below-breakpoint: md !default;
                 white-space: initial !important;
                 transform: initial !important;
             }
-            strong {
+            .titlecaption {
                 font-size: $h2-font-size;
                 line-height: $headings-line-height;
                 font-weight: var(--#{$prefix}font-weight-headings);
@@ -330,7 +330,7 @@ $slider-text-below-breakpoint: md !default;
 
                     .caption {
                         min-height: initial;
-                        strong {
+                        .titlecaption {
                             // nested in caption to make it used in all screen sizes
                             font-size: var(--#{$prefix}body-font-size);
                         }
@@ -370,13 +370,13 @@ $slider-text-below-breakpoint: md !default;
                     }
                     .caption {
                         width: 100%;
-                        strong {
+                        .titlecaption {
                             display: block;
                             width: 100%;
                             padding: var(--#{$prefix}default-margin-verysmall) var(--#{$prefix}default-margin-small);
                             background-color: rgb(var(--#{$prefix}slider-caption-top));
                         }
-                        strong, small {
+                        .titlecaption, small {
                             float: none;
                             clear: none;
                         }

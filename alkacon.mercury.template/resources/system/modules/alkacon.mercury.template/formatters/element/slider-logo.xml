@@ -58,6 +58,9 @@
       <IncludeName><![CDATA[textDisplay.slider.logo]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[hsize.slider.title]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[effect.slider.logo]]></IncludeName>
     </Setting>
     <Setting>

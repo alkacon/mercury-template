@@ -15,6 +15,7 @@
             <xsd:element name="ConfigEventInformation" type="OpenCmsBoolean" />
             <xsd:element name="ConfigOverviewInformation" type="OpenCmsBoolean" />
             <xsd:element name="ConfigCancelled" type="OpenCmsBoolean" />
+            <xsd:element name="ConfigOneLinePerGroup" type="OpenCmsBoolean" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional" />
     </xsd:complexType>
@@ -38,6 +39,13 @@
                 <Setting>
                     <PropertyName>ConfigCancelled</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.ConfigCancelled)]]></DisplayName>
+                    <Default><![CDATA[false]]></Default>
+                    <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>ConfigOneLinePerGroup</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.ConfigOneLinePerGroup)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseExport.ConfigOneLinePerGroup.help)]]></Description>
                     <Default><![CDATA[false]]></Default>
                     <Visibility><![CDATA[ROLE.ADMINISTRATOR]]></Visibility>
                 </Setting>

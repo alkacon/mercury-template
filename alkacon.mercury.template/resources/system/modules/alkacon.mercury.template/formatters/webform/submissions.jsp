@@ -12,10 +12,14 @@
 
 
 <cms:formatter var="content">
+    <fmt:setLocale value="${cms.locale}"/>
+    <c:set var="hasGroupBooking" value="${cms.element.setting.hasGroupBooking.toBoolean}" />
     <c:set var="rawContent" value="${content.rawContent}" />
     <c:set var="bean" value='<%=new alkacon.mercury.webform.CmsFormDataBean((org.opencms.xml.I_CmsXmlDocument) pageContext.getAttribute("rawContent")) %>' />
-
-    <fmt:setLocale value="${cms.locale}"/>
+    <c:set var="freePlaces" value="${0}" />
+    <c:if test="${not empty param.numFreeParticipantPlaces}">
+        <fmt:parseNumber integerOnly="true" value="${param.numFreeParticipantPlaces}" var="freePlaces" />
+    </c:if>
     <cms:bundle basename="alkacon.mercury.template.messages">
 
     <div class="accordion acco-items-check"><%----%>
@@ -23,21 +27,39 @@
             <c:set var="parentId" value="${cms.element.settings.id}" />
             <c:set var="itemId" value="${parentId}_${cms.element.settings.index}" />
             <a class="acco-toggle collapsed" data-bs-toggle="collapse" data-bs-parent="#${parentId}" href="#${itemId}"><%----%>
-                <div><%----%>
-                    <c:choose>
-                        <c:when test="${empty bean.titleProperty}">
-                            <fmt:message key="msg.page.form.submission.title.default.1">
-                                <fmt:param>
-                                    <fmt:formatDate value="${cms:convertDate(content.file.dateCreated)}" type="both" dateStyle="short" timeStyle="short" />
-                                </fmt:param>
-                            </fmt:message>
-                        </c:when>
-                        <c:otherwise>${bean.titleProperty}</c:otherwise>
-                    </c:choose>
+                <div class="submission-headline"><%----%>
+                    <span>
+                        <c:choose>
+                            <c:when test="${empty bean.titleProperty}">
+                                <fmt:message key="msg.page.form.submission.title.default.1">
+                                    <fmt:param>
+                                        <fmt:formatDate value="${cms:convertDate(content.file.dateCreated)}" type="both" dateStyle="short" timeStyle="short" />
+                                    </fmt:param>
+                                </fmt:message>
+                            </c:when>
+                            <c:otherwise>${bean.titleProperty}</c:otherwise>
+                        </c:choose>
+                    </span>
+                    <c:if test="${hasGroupBooking}">
+                        <c:choose>
+                            <c:when test="${bean.groupSize ne 1 || bean.invalidGroupSize}">
+                                <span class="group-size oct-meta-info btn btn-sm">${bean.invalidGroupSize ? '?' : bean.groupSize}</span>
+                            </c:when>
+                            <c:otherwise>
+                                <%-- Just to break lines correctly --%>
+                                <span class="group-size"></span>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:if>
                 </div><%----%>
                 <c:if test="${bean.changed}">
                     <div class="book-info"><%----%>
                         <span class="oct-meta-info severe"><fmt:message key="msg.page.form.status.submission.changed" /></span><%----%>
+                    </div><%----%>
+                </c:if>
+                <c:if test="${bean.invalidGroupSize}">
+                    <div class="book-info"><%----%>
+                        <span class="oct-meta-info severe"><fmt:message key="msg.page.form.status.submission.groupsize.invalid" /></span><%----%>
                     </div><%----%>
                 </c:if>
             </a><%----%>
@@ -51,7 +73,7 @@
         <m:nl />
 
         <div id="${itemId}" class="acco-body collapse" data-bs-parent="#${parentId}"><%----%>
-            <div class="submission-actions subelement"><%----%>
+            <div class="submission-actions"><%----%>
                 <c:set var="messageConfirmationMailEnabled">
                     <div class="subelement oct-meta-info box"><%----%>
                         <c:choose>
@@ -64,7 +86,35 @@
                         </c:choose>
                     </div><%----%>
                 </c:set>
-                <c:if test="${not bean.cancelled and param.hasBooking}">
+                <c:if test="${not bean.cancelled and not bean.waitlist and param.hasBooking}">
+                    <c:if test="${hasGroupBooking}">
+                        <button id="size_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
+                            <fmt:message key="msg.page.form.submission.action.groupsize.change" />
+                        </button><%----%>
+                    </c:if>
+                    <dialog id="size_dialog_${itemId}"
+                            class="submissions-dialog"
+                            data-action="size"
+                            data-item-id="${itemId}"
+                            data-content-id="${content.id}"><%----%>
+                        <form method="dialog"><%----%>
+                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
+                            <div><fmt:message key="msg.page.form.submission.ask.size"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                            ${messageConfirmationMailEnabled}
+                            <div class="group-size subelement">
+                                <label for="size"><fmt:message key="msg.page.form.submission.input.size"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></label>
+                                <input type="number" name="size" min="1" max="${freePlaces > 0 ? (bean.groupSize + freePlaces) : 99}" value="${bean.groupSize}"/>
+                            </div>
+                            <div class="buttons"><%----%>
+                                <button value="cancel" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                </button><%----%>
+                                <button value="confirm" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.confirm.size" />
+                                </button><%----%>
+                            </div><%----%>
+                        </form><%----%>
+                    </dialog><%----%>
                     <button id="cancel_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
                         <fmt:message key="msg.page.form.submission.action.cancel" />
                     </button><%----%>
@@ -88,7 +138,7 @@
                         </form><%----%>
                     </dialog><%----%>
                 </c:if>
-                <c:if test="${not bean.cancelled and bean.waitlist and param.hasFreeParticipantPlaces eq 'true' and param.hasBooking}">
+                <c:if test="${not bean.cancelled and bean.waitlist and (freePlaces ge bean.groupSize) and param.hasBooking}">
                     <button id="add_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
                         <fmt:message key="msg.page.form.submission.action.add" />
                     </button><%----%>

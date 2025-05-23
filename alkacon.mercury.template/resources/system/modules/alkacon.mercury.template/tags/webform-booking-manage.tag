@@ -32,6 +32,7 @@
 
     <c:set var="status" value="${form.submissionStatus}" />
     <c:set var="hasBooking" value="${not empty formBookingXml}" />
+    <c:set var="hasGroupBooking" value="${form.groupBookingEnabled}" />
     <fmt:setLocale value="${cms.locale}"/>
     <cms:bundle basename="alkacon.mercury.template.messages">
 
@@ -130,6 +131,9 @@
                     <c:when test="${param.action eq 'deleteAll'}">
                         <c:set var="result" value="${formDataHandler.deleteAllSubmissions(param.uuid)}" />
                     </c:when>
+                    <c:when test="${param.action eq 'size'}">
+                        <c:set var="result" value="${formDataHandler.changeGroupSize(param.uuid, param.size)}" />
+                    </c:when>
                 </c:choose>
                 <c:choose>
                     <c:when test="${not empty formDataHandler.error}">
@@ -177,6 +181,9 @@
                         </a><%----%>
                     </div><%----%>
                 </div>
+                <c:if test="${status.someCurrentRegistrationGroupSizeInvalid}">
+                    <div class="subelement oct-meta-info"><fmt:message key="msg.page.bookingmanage.info.invalidgroupsizes"/></div>
+                </c:if>
                 <div class=list-box><%----%>
                     <div class="list-entries accordion-items" id="${id1}"><%----%>
                         <c:forEach var="dataBean" items="${status.participants}" varStatus="stat">
@@ -184,23 +191,35 @@
                                <cms:param name="index" value="${stat.index}"/>
                                <cms:param name="id" value="${id1}" />
                                <cms:param name="fullyBooked" value="${status.fullyBooked}" />
-                               <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                               <cms:param name="numFreeParticipantPlaces" value="${status.numRemainingRegularSubmissionsIgnoringWaitlist}" />
                                <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
                                <cms:param name="hasBooking" value="${hasBooking}" />
+                               <cms:param name="hasGroupBooking" value="${hasGroupBooking}" />
                             </cms:display>
                         </c:forEach>
-                        <c:forEach var="otherParticipant" begin="1" end="${status.numOtherSubmissions}">
+                        <c:if test="${status.numOtherSubmissions > 0}">
                             <div class="accordion"><%----%>
                                 <div class="acco-header"><%----%>
-                                    <a class="acco-toggle collapsed" data-bs-toggle="collapse" data-bs-parent="#${id1}" href="#other${id1}${otherParticipant}"><%----%>
-                                        <div><fmt:message key="msg.page.form.bookingstatus.reservedplace.label" /></div><%----%>
+                                    <a class="acco-toggle collapsed" data-bs-toggle="collapse" data-bs-parent="#${id1}" href="#other${id1}"><%----%>
+                                        <div class="submission-headline">
+                                            <span><fmt:message key="msg.page.form.bookingstatus.reservedplace.label" /></span>
+                                            <c:choose>
+                                                <c:when test="${status.numOtherSubmissions gt 1}">
+                                                    <span class="group-size oct-meta-info btn btn-sm">${status.numOtherSubmissions}</span>
+                                                </c:when>
+                                                <c:when test="${hasGroupBooking}">
+                                                    <%-- Just to break lines correctly --%>
+                                                    <span class="group-size"></span>
+                                                </c:when>
+                                            </c:choose>
+                                        </div><%----%>
                                     </a><%----%>
                                 </div><%----%>
-                                <div id="other${id1}${otherParticipant}" class="acco-body collapse" data-bs-parent="#${id1}"><%----%>
+                                <div id="other${id1}" class="acco-body collapse" data-bs-parent="#${id1}"><%----%>
                                     <fmt:message key="msg.page.bookingmanage.info.reservedplace" /><%----%>
                                 </div><%----%>
                             </div><%----%>
-                        </c:forEach>
+                        </c:if>
                     </div><%----%>
                 </div><%----%>
             </div><%----%>
@@ -209,6 +228,9 @@
                 <c:set var="id2"><m:idgen prefix="wf2" uuid="${cms.element.id}" /></c:set>
                 <div class="subelement"><%----%>
                     <h3><fmt:message key="msg.page.form.bookingstatus.waitlist.label" /> (${status.numWaitlistCandidates}/${status.maxWaitlistPlaces})</h3><%----%>
+                    <c:if test="${status.someWaitlistRegistrationGroupSizeInvalid}">
+                        <div class="subelement oct-meta-info"><fmt:message key="msg.page.bookingmanage.info.invalidgroupsizes"/></div>
+                    </c:if>
                     <div class=list-box><%----%>
                         <div class="list-entries accordion-items" id="${id2}"><%----%>
                             <c:forEach var="dataBean" items="${status.waitlistCandidates}" varStatus="stat">
@@ -216,9 +238,10 @@
                                    <cms:param name="index" value="${stat.index}"/>
                                    <cms:param name="id" value="${id2}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
-                                   <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                                   <cms:param name="numFreeParticipantPlaces" value="${status.numRemainingRegularSubmissionsIgnoringWaitlist}" />
                                    <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
                                    <cms:param name="hasBooking" value="${hasBooking}" />
+                                   <cms:param name="hasGroupBooking" value="${hasGroupBooking}" />
                                 </cms:display>
                             </c:forEach>
                         </div><%----%>
@@ -229,6 +252,9 @@
                 <c:set var="id3"><m:idgen prefix="wf3" uuid="${cms.element.id}" /></c:set>
                 <div class="subelement"><%----%>
                     <h3><fmt:message key="msg.page.form.bookingstatus.cancelledSubmissions.label" /> (${status.numCancelledSubmissions})</h3><%----%>
+                    <c:if test="${status.someCancelledRegistrationGroupSizeInvalid}">
+                        <div class="subelement oct-meta-info"><fmt:message key="msg.page.bookingmanage.info.invalidgroupsizes"/></div>
+                    </c:if>
                     <div class=list-box><%----%>
                         <div class="list-entries accordion-items" id="${id3}"><%----%>
                             <c:forEach var="dataBean" items="${status.cancelledSubmissions}" varStatus="stat">
@@ -236,9 +262,10 @@
                                    <cms:param name="index" value="${stat.index}"/>
                                    <cms:param name="id" value="${id3}" />
                                    <cms:param name="fullyBooked" value="${status.fullyBooked}" />
-                                   <cms:param name="hasFreeParticipantPlaces" value="${status.hasFreeParticipantPlaces}" />
+                                   <cms:param name="numFreeParticipantPlaces" value="${status.numRemainingRegularSubmissionsIgnoringWaitlist}" />
                                    <cms:param name="confirmationMailEnabled" value="${formHandler.formConfiguration.confirmationMailEnabled}" />
                                    <cms:param name="hasBooking" value="${hasBooking}" />
+                                   <cms:param name="hasGroupBooking" value="${hasGroupBooking}" />
                                 </cms:display>
                             </c:forEach>
                         </div><%----%>
@@ -284,7 +311,7 @@
             </div><%----%>
             <m:nl />
             <c:if test="${hasBooking and not empty form.submissions}">
-                <div class="submission-actions subelement"><%----%>
+                <div class="subelement"><%----%>
                     <h3><fmt:message key="msg.page.form.bookingstatus.delete.label" /></h3><%----%>
                     <p><%----%>
                         <fmt:message key="msg.page.form.label.submissions.delete" />

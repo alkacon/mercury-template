@@ -65,6 +65,15 @@ public class CmsFormUgcConfigurationReader {
     /** XML content value name. */
     public static final String N_USER_FOR_GUEST = "UserForGuest";
 
+    /** XML content value name. */
+    public static final String N_FIELD = "Field";
+
+    /** XML content value name. */
+    public static final String N_GROUPBOOKING = "GroupBooking";
+
+    /** Configuration node name for the max group size node. */
+    public static final String N_MAXPGROUPSIZE = "MaxGroupSize";
+
     /** Prefix for the data folder. */
     private static final String DATA_FOLDER_PREFIX = "data_";
 
@@ -174,6 +183,12 @@ public class CmsFormUgcConfigurationReader {
                 }
             }
 
+            // Read the group booking options.
+            pathPrefix = pathPrefix + N_GROUPBOOKING + "/";
+            String groupSizeInputFieldDBLabel = m_formConfigParser.getConfigurationValue(pathPrefix + N_FIELD, null);
+            String maxGroupSizeString = m_formConfigParser.getConfigurationValue(pathPrefix + N_MAXPGROUPSIZE, "");
+            int maxGroupSize = maxGroupSizeString.isBlank() ? 1 : Integer.parseInt(maxGroupSizeString);
+
             CmsFormUgcConfiguration result = new CmsFormUgcConfiguration(
                 id,
                 userForGuest,
@@ -187,7 +202,9 @@ public class CmsFormUgcConfigurationReader {
                 maxWaitlistDataSets,
                 datasetTitle,
                 keepDays,
-                null != projectGroup);
+                null != projectGroup,
+                groupSizeInputFieldDBLabel,
+                maxGroupSize);
             result.setPath(m_content.getFile().getRootPath());
             return result;
         } else {

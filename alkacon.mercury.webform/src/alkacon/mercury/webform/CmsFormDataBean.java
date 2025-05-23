@@ -22,17 +22,24 @@ package alkacon.mercury.webform;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsLocaleManager;
+import org.opencms.main.CmsLog;
 import org.opencms.util.CmsMacroResolver;
 import org.opencms.xml.I_CmsXmlDocument;
 import org.opencms.xml.types.I_CmsXmlContentValue;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+
 /** Bean to provide easy access to XML contents storing submitted form data. */
 public class CmsFormDataBean {
+
+    /** The log object for this class. */
+    private static final Log LOG = CmsLog.getLog(CmsFormDataBean.class);
 
     /** xpath for the form data content value containing the deletion date. */
     public static final String PATH_DELETION_DATE = "DeletionDate";
@@ -64,6 +71,9 @@ public class CmsFormDataBean {
     /** The XPATH to store the cancel mail sent information. */
     public static final String PATH_CANCEL_MAIL_SENT = "CancelMailSent[1]";
 
+    /** The XPATH to store the latest group size changed mail sent information. */
+    public static final String PATH_GROUP_SIZE_CHANGE_MAIL_SENT = "GroupSizeChangeSent[1]";
+
     /** The XPATH to store the date when the user was moved up from the waiting list. */
     public static final String PATH_WAITLIST_MOVE_UP_DATE = "WaitlistMoveUpDate[1]";
 
@@ -72,6 +82,9 @@ public class CmsFormDataBean {
 
     /** The path to the "Cancelled" flag. */
     public static final String PATH_CANCELLED = "Cancelled[1]";
+
+    /** The path to the "GroupSizeField" field. */
+    public static final String PATH_GROUP_SIZE_FIELD = "GroupSizeField[1]";
 
     /** The path to all data key-value pairs. */
     private static final String PATH_DATA = "Data";
@@ -112,6 +125,9 @@ public class CmsFormDataBean {
     /** Whether a reminder mail was sent. */
     private Boolean m_isReminderMailSent;
 
+    /** Whether a reminder on a group size change has been sent by mail. */
+    private Boolean m_isGroupSizeChangeMailSent;
+
     /** Whether a waitlist notification mail was sent. */
     private Boolean m_isWaitlistNotification;
 
@@ -120,6 +136,15 @@ public class CmsFormDataBean {
 
     /** Whether a cancel mail was sent. */
     private Boolean m_isCancelMailSent;
+
+    /** The group size */
+    private Integer m_groupSize;
+
+    /** The group size data field XPath */
+    private String m_groupSizeValueXPath;
+
+    /** Flag, indicating if the group size could not be read and is assumed to be 1. */
+    private Boolean m_invalidGroupSize;
 
     /**
      * Constructor for wrapping the plain CmsXmlContent of a form data content.
@@ -223,6 +248,70 @@ public class CmsFormDataBean {
     }
 
     /**
+     * Returns the booking group size, 0 if the size is provided in improper format.
+     * @return the booking group size, 0 if the size is provided in improper format.
+     */
+    public int getGroupSize() {
+
+        if (null == m_groupSize) {
+            String xPath = getGroupSizeValueXPath();
+            if (xPath.isEmpty()) {
+                m_groupSize = Integer.valueOf(1);
+                m_invalidGroupSize = m_content.hasValue(PATH_GROUP_SIZE_FIELD, CmsLocaleManager.MASTER_LOCALE)
+                ? Boolean.TRUE
+                : Boolean.FALSE;
+            } else {
+                String groupSizeString = m_content.getValue(xPath, CmsLocaleManager.MASTER_LOCALE).getStringValue(null);
+                if (groupSizeString.isBlank()) {
+                    m_groupSize = Integer.valueOf(1);
+                } else {
+                    try {
+                        m_groupSize = Integer.valueOf(groupSizeString);
+                    } catch (NumberFormatException e) {
+                        m_groupSize = Integer.valueOf(0);
+                    }
+                }
+                if (m_groupSize.intValue() <= 0) {
+                    m_groupSize = Integer.valueOf(1);
+                    m_invalidGroupSize = Boolean.TRUE;
+                    LOG.error(
+                        "Group size in webform data "
+                            + m_content.getFile().getRootPath()
+                            + ": Only positive integers are allowed.");
+                }
+                if (m_invalidGroupSize == null) {
+                    m_invalidGroupSize = Boolean.FALSE;
+                }
+            }
+        }
+        return m_groupSize.intValue();
+    }
+
+    /**
+     * Returns the booking group size field XPath, empty string if the size is provided in improper format.
+     * @return the booking group size field XPath, empty string if the size is provided in improper format.
+     */
+    public String getGroupSizeValueXPath() {
+
+        if (null == m_groupSizeValueXPath) {
+            if (m_content.hasValue(PATH_GROUP_SIZE_FIELD, CmsLocaleManager.MASTER_LOCALE)) {
+                String groupSizeFieldLabel = m_content.getValue(
+                    PATH_GROUP_SIZE_FIELD,
+                    CmsLocaleManager.MASTER_LOCALE).getStringValue(null);
+                if (groupSizeFieldLabel.isBlank()) {
+                    m_groupSizeValueXPath = "";
+                } else {
+                    int pos = new ArrayList<String>(getData().keySet()).indexOf(groupSizeFieldLabel);
+                    m_groupSizeValueXPath = pos < 0 ? "" : getValuePath(pos + 1);
+                }
+            } else {
+                m_groupSizeValueXPath = "";
+            }
+        }
+        return m_groupSizeValueXPath;
+    }
+
+    /**
      * Returns the title property the content should get (with all field macros resolved).
      * @return the title property the content should get (with all field macros resolved).
      */
@@ -289,6 +378,38 @@ public class CmsFormDataBean {
             m_isConfirmationMailSent = Boolean.valueOf(value.getStringValue(null));
         }
         return m_isConfirmationMailSent.booleanValue();
+    }
+
+    /**
+     * Whether a group size change mail was sent.
+     * @return whether a group size change mail was sent
+     */
+    public boolean isGroupSizeChangeMailSent() {
+
+        if (null == m_isGroupSizeChangeMailSent) {
+            I_CmsXmlContentValue value = m_content.getValue(
+                PATH_GROUP_SIZE_CHANGE_MAIL_SENT,
+                CmsLocaleManager.MASTER_LOCALE);
+            if (value == null) {
+                m_isGroupSizeChangeMailSent = Boolean.FALSE;
+            } else {
+                m_isGroupSizeChangeMailSent = Boolean.valueOf(value.getStringValue(null));
+            }
+        }
+        return m_isGroupSizeChangeMailSent.booleanValue();
+    }
+
+    /**
+     * Returns a flag, if the group size stored in the data is invalid. If so, the size itself is assumed to be 1.
+     * @return a flag, if the group size stored in the data is invalid. If so, the size itself is assumed to be 1.
+     */
+    public boolean isInvalidGroupSize() {
+
+        if (m_invalidGroupSize == null) {
+            // This initializes the flag.
+            getGroupSize();
+        }
+        return m_invalidGroupSize.booleanValue();
     }
 
     /**

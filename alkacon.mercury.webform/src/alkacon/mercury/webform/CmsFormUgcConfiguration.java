@@ -79,6 +79,12 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     /** Flag, indicating if only for guest users, the configured user shall be used to write form data contents. */
     private boolean m_guestsOnly;
 
+    /** The maximal group size for a single booking. */
+    private int m_maxGroupSize;
+
+    /** DB label of the field the group size is provided */
+    private String m_groupSizeInputFieldDBLabel;
+
     /**
      * Creates a new form configuration.
      *
@@ -93,6 +99,8 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
      * @param datasetTitle the title for XML contents that store form data (possibly with macros for values of form fields).
      * @param keepDays the number of days to keep the form data after the event (if null, keep indefinitely)
      * @param setFolderPermissions if <code>true</code> it is ensured that permissions for the data folder will be set iff it is created.
+     * @param groupSizeInputFieldDBLabel DB label of the form input field that holds the group size.
+     * @param maxGroupSize maximal group size per booking.
      */
     public CmsFormUgcConfiguration(
         CmsUUID id,
@@ -105,7 +113,9 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         Optional<Integer> maxWaitlistDataSets,
         String datasetTitle,
         Integer keepDays,
-        boolean setFolderPermissions) {
+        boolean setFolderPermissions,
+        String groupSizeInputFieldDBLabel,
+        int maxGroupSize) {
 
         super(
             id,
@@ -131,6 +141,8 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
         m_contentFolderRootPath = contentFolderRootPath;
         m_setFolderPermissions = setFolderPermissions;
         m_guestsOnly = guestsOnly.isPresent() ? guestsOnly.get().booleanValue() : false;
+        m_maxGroupSize = maxGroupSize;
+        m_groupSizeInputFieldDBLabel = groupSizeInputFieldDBLabel;
         initContentFolderIfPresent();
     }
 
@@ -195,6 +207,16 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     }
 
     /**
+     * Returns the DB label of the input field that holds the group size.
+     * 
+     * @return the DB label of the input field that holds the group size.
+     */
+    public String getGroupSizeInputFieldDBLabel() {
+
+        return m_groupSizeInputFieldDBLabel;
+    }
+
+    /**
      * Gets the number of days to keep the form data after the event (if null, keep indefinitely).
      *
      * @return the number of days to keep the data
@@ -202,6 +224,16 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
     public Integer getKeepDays() {
 
         return m_keepDays;
+    }
+
+    /**
+     * Returns the maximally allowed group size for one booking.
+     * 
+     * @return the maximally allowed group size for one booking.
+     */
+    public int getMaxGroupSize() {
+
+        return m_maxGroupSize;
     }
 
     /**

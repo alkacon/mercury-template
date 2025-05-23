@@ -141,6 +141,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     protected static final String KEY_STATUS_CHANGED = "msg.page.form.status.submission.changed";
 
     /** Constant for message key. */
+    protected static final String KEY_STATUS_GROUP_SIZE = "msg.page.form.status.submission.groupsize";
+
+    /** Constant for message key. */
     protected static final String KEY_DATE_REGISTERED = "msg.page.form.date.submission.registered";
 
     /** Constant for message key. */
@@ -216,6 +219,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     public static final String NODE_EXPORT_CONFIG_CANCELLED = "ConfigCancelled";
 
     /** Configuration node name for the value. */
+    public static final String NODE_EXPORT_CONFIG_ONE_LINE_PER_GROUP = "ConfigOneLinePerGroup";
+
+    /** Configuration node name for the value. */
     public static final String NODE_EXPORT_IGNORE_FIELD = "IgnoreField";
 
     /** Configuration node name for the value. */
@@ -248,6 +254,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
     /** Constant for configuration option. */
     public static final String OPTION_WAITLIST_SELECTED = "waitlist";
 
+    /** Constant for configuration option. */
+    public static final String OPTION_GROUPSIZE_SELECTED = "groupsize";
+
     /** Export a field with information about whether a registration was cancelled in the meantime. */
     private boolean m_exportConfigAddCancelled = false;
 
@@ -259,6 +268,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
 
     /** Export a field with information about whether a waitlist notification was sent. */
     private boolean m_exportConfigAddWaitlist = false;
+
+    /** Export a field with information about the group size. */
+    private boolean m_exportConfigAddGroupSize = false;
 
     /** List of fields to ignore during export. */
     private List<String> m_exportConfigFieldIgnore = new ArrayList<String>();
@@ -274,6 +286,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
 
     /** Flag indicating whether to export the cancelled submissions. */
     private boolean m_exportConfigCancelled = false;
+
+    /** Flag indicating whether to export the cancelled submissions. */
+    private boolean m_exportConfigOneLinePerGroup = false;
 
     /** The form to export submissions for. */
     protected CmsFormBean m_form;
@@ -420,6 +435,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         if (m_exportConfigAddChanged) {
             columnNames.put(m_messages.key(KEY_STATUS_CHANGED), Integer.valueOf(columnNames.size()));
         }
+        if (m_exportConfigAddGroupSize) {
+            columnNames.put(m_messages.key(KEY_STATUS_GROUP_SIZE), Integer.valueOf(columnNames.size()));
+        }
         return columnNames;
     }
 
@@ -504,6 +522,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         if (m_exportConfigAddChanged) {
             merged.put(m_messages.key(KEY_STATUS_CHANGED), asString(formData.isChanged()));
         }
+        if (m_exportConfigAddGroupSize) {
+            merged.put(m_messages.key(KEY_STATUS_GROUP_SIZE), String.valueOf(formData.getGroupSize()));
+        }
         return merged;
     }
 
@@ -532,9 +553,21 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                 formDataXml = CmsXmlContentFactory.unmarshal(cms, cms.readFile(submission));
                 CmsFormDataBean formDataBean = new CmsFormDataBean(formDataXml);
                 if (!m_exportConfigCancelled) {
-                    formDataBeans.add(formDataBean);
+                    if (m_exportConfigOneLinePerGroup) {
+                        formDataBeans.add(formDataBean);
+                    } else {
+                        for (int i = 0; i < formDataBean.getGroupSize(); i++) {
+                            formDataBeans.add(formDataBean);
+                        }
+                    }
                 } else if (!formDataBean.isCancelled()) {
-                    formDataBeans.add(formDataBean);
+                    if (m_exportConfigOneLinePerGroup) {
+                        formDataBeans.add(formDataBean);
+                    } else {
+                        for (int i = 0; i < formDataBean.getGroupSize(); i++) {
+                            formDataBeans.add(formDataBean);
+                        }
+                    }
                 }
             } catch (CmsException e) {
                 LOG.warn(
@@ -582,6 +615,8 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                     m_exportConfigAddConfirmed = true;
                 } else if (addSystemField.equals(OPTION_WAITLIST_SELECTED)) {
                     m_exportConfigAddWaitlist = true;
+                } else if (addSystemField.equals(OPTION_GROUPSIZE_SELECTED)) {
+                    m_exportConfigAddGroupSize = true;
                 }
             }
         }
@@ -611,6 +646,14 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             String prefixCancelled = pathPrefix + "/" + NODE_EXPORT_CONFIG_CANCELLED;
             String configCancelled = m_form.getFormConfig().getValue(prefixCancelled, locale).getStringValue(cms);
             m_exportConfigCancelled = Boolean.valueOf(configCancelled).booleanValue();
+            String prefixOneLinePerGroup = pathPrefix + "/" + NODE_EXPORT_CONFIG_ONE_LINE_PER_GROUP;
+            String configOneLinePerGroup = m_form.getFormConfig().getValue(
+                prefixOneLinePerGroup,
+                locale).getStringValue(cms);
+            m_exportConfigOneLinePerGroup = Boolean.valueOf(configOneLinePerGroup).booleanValue();
+            if (m_exportConfigOneLinePerGroup) {
+                m_exportConfigAddGroupSize = true;
+            }
         }
     }
 

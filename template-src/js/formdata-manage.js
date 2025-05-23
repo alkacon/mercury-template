@@ -68,7 +68,12 @@ class SubmissionsDialog {
      */
     onConfirm() {
         if (this.m_dialog.returnValue == "confirm") {
-            location.href = "?formmanage=" + this.formmanage + "&action=" + this.action + "&uuid=" + this.contentId;
+            let additionalParams = "";
+            if (this.action === "size") {
+                const size = this.m_dialog.querySelector("input[name=size]").value;
+                additionalParams += "&size=" + size;
+            }
+            location.href = "?formmanage=" + this.formmanage + "&action=" + this.action + "&uuid=" + this.contentId + additionalParams;
         }
     }
 }

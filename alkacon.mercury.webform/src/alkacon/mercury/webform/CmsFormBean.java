@@ -236,6 +236,20 @@ public class CmsFormBean extends A_CmsJspCustomContextBean {
     }
 
     /**
+     * Checks if group booking is enabled.
+     * @return true, iff group booking is enabled. Otherwise false.
+     */
+    public boolean isGroupBookingEnabled() {
+
+        CmsFormUgcConfiguration ugcConfig = getUgcConfig();
+        if (null == ugcConfig) {
+            return false;
+        } else {
+            return ugcConfig.getMaxGroupSize() > 1;
+        }
+    }
+
+    /**
      * Set the additional configuration values accessible in the the string template, e.g., to forward element settings to the template.
      * @param valueMap the additional configuration values.
      */

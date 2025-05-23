@@ -190,17 +190,52 @@ table.submissions {
     }
 }
 
-.submission-actions .buttons {
-    text-align: right;
+.submission-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: var(--#{$prefix}default-margin-verysmall);
+    flex-wrap: wrap;
+    margin-bottom: var(--#{$prefix}element-margin);
 }
 
-.submission-actions .buttons button {
-    margin-left: var(--#{$prefix}default-margin-verysmall);
+.submission-headline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .group-size {
+        width: 2em;
+        text-align: center;
+    }
 }
 
-.submission-actions > button {
-    float: right;
-    margin-left: var(--#{$prefix}default-margin-verysmall);
+.submissions-dialog {
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: var(--#{$prefix}default-margin-verysmall);
+    }
+    .group-size {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        gap: var(--#{$prefix}default-margin);
+        label {
+            font-weight: 700;
+        }
+        input {
+            text-align: center;
+            min-width: 5em;
+            border: 1px solid grey;
+            padding: 7px 10px;
+            color: grey;
+        }
+
+    }
 }
 
 // Event booking status information

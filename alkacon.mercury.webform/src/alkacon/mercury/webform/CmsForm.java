@@ -34,6 +34,8 @@ import alkacon.mercury.webform.fields.CmsFieldText;
 import alkacon.mercury.webform.fields.CmsFileUploadField;
 import alkacon.mercury.webform.fields.CmsHiddenField;
 import alkacon.mercury.webform.fields.CmsPrivacyField;
+import alkacon.mercury.webform.fields.CmsSelectionField;
+import alkacon.mercury.webform.fields.CmsTextField;
 import alkacon.mercury.webform.fields.I_CmsField;
 
 import org.opencms.ade.detailpage.CmsDetailPageInfo;
@@ -62,7 +64,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.StringTokenizer;
+import java.util.stream.IntStream;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.logging.Log;
@@ -410,6 +414,9 @@ public class CmsForm {
 
     /** configuration value. */
     protected String m_formText;
+
+    /** Group size for bookings */
+    protected int m_groupSize;
 
     /** If there is at least one mandatory field. */
     protected boolean m_hasMandatoryFields;
@@ -972,6 +979,34 @@ public class CmsForm {
     public String getFormText() {
 
         return m_formText;
+    }
+
+    /**
+     * Returns the group size if entered in the form. Defaults to 1. For errors -1 is returned.
+     * @return the group size if entered in the form. Defaults to 1. For errors -1 is returned.
+     */
+    public int getGroupSize() {
+
+        if (m_groupSize == 0) {
+            CmsFormUgcConfiguration ugcConfig = getUgcConfiguration();
+            if ((null != ugcConfig) && (null != ugcConfig.getGroupSizeInputFieldDBLabel())) {
+                String groupSizeStr = getFieldByDbLabel(ugcConfig.getGroupSizeInputFieldDBLabel()).getValue();
+                if ((groupSizeStr == null) || groupSizeStr.isEmpty()) {
+                    m_groupSize = 1;
+                } else {
+                    try {
+                        int groupSize = Integer.parseInt(groupSizeStr);
+                        m_groupSize = ((groupSize <= 0) || (groupSize > ugcConfig.getMaxGroupSize())) ? -1 : groupSize;
+                    } catch (NumberFormatException e) {
+                        m_groupSize = -1;
+                    }
+                }
+            } else {
+                m_groupSize = 1;
+            }
+        }
+        return m_groupSize;
+
     }
 
     /**
@@ -2333,7 +2368,7 @@ public class CmsForm {
     /**
      * Sets the optional forward mode.<p>
      *
-     * @param isForward
+     * @param isForward flag, indicating if forward mode should be set.
      */
     protected void setForwardMode(boolean isForward) {
 
@@ -2605,7 +2640,6 @@ public class CmsForm {
      * @param messages the localized messages
      * @param fieldTexts the optional field texts
      * @param subFieldPaths the optional sub field xPaths
-     * @param fileUploads the uploaded files
      * @param subFieldNameSuffix the suffix for the sub field name used to create the HTML code and request parameter names
      * @param initial if true, field values are filled with values specified in the XML configuration, otherwise values are read from the request
      * @param subField indicates if a sub field should be created
@@ -2632,13 +2666,8 @@ public class CmsForm {
         // create the xPath prefix
         String inputFieldPath = xPath + "/";
 
-        // get the field from the factory for the specified type
-        // important: we don't use getContentStringValue, since the path comes directly from the input field
-        String stringValue = content.getStringValue(cms, inputFieldPath + NODE_FIELDTYPE, locale);
-        I_CmsField field = getField(stringValue);
-
         // get the field labels
-        stringValue = content.getStringValue(cms, inputFieldPath + NODE_FIELDLABEL, locale);
+        String stringValue = content.getStringValue(cms, inputFieldPath + NODE_FIELDLABEL, locale);
 
         String locLabel = null != stringValue ? stringValue : "";
         String dbLabel = locLabel;
@@ -2651,6 +2680,19 @@ public class CmsForm {
                 useDbLabel = true;
             }
         }
+
+        CmsFormUgcConfiguration ugcConfig = getUgcConfiguration();
+        // The group size field is handled special. It's configuration is overwritten.
+        boolean isGroupSizeField = (null != ugcConfig) && dbLabel.equals(ugcConfig.getGroupSizeInputFieldDBLabel());
+
+        // get the field from the factory for the specified type
+        // important: we don't use getContentStringValue, since the path comes directly from the input field
+        stringValue = content.getStringValue(cms, inputFieldPath + NODE_FIELDTYPE, locale);
+        if (isGroupSizeField && !CmsSelectionField.getStaticType().equals(stringValue)) {
+            stringValue = CmsTextField.getStaticType();
+        }
+        I_CmsField field = getField(stringValue);
+
         field.setLabel(locLabel);
         field.setDbLabel(dbLabel);
 
@@ -2722,8 +2764,36 @@ public class CmsForm {
         field.setParameters(stringValue);
 
         // validation error message
-        stringValue = content.getStringValue(cms, inputFieldPath + NODE_FIELDERRORMESSAGE, locale);
-        field.setErrorMessage(stringValue);
+        int maxSubmissions = 1;
+        if (isGroupSizeField) {
+            // We know ugcConfig is not null, since isGroupSizeField would be false otherwise.
+            maxSubmissions = ugcConfig.getMaxGroupSize();
+            String errorMessageKey = I_CmsFormMessages.FORM_ERROR_BOOKING_GROUPSIZE_1;
+            try {
+                CmsSubmissionStatus submissionStatus = new CmsSubmissionStatus(cms, ugcConfig);
+                Integer remainingSubmissions = submissionStatus.getNumRemainingRegularSubmissions();
+                if ((null != remainingSubmissions) && (remainingSubmissions.intValue() < maxSubmissions)) {
+                    if (remainingSubmissions.intValue() == 0) {
+                        errorMessageKey = I_CmsFormMessages.FORM_ERROR_BOOKING_GROUPSIZE_WAITLIST;
+                        maxSubmissions = 1;
+                    } else {
+                        maxSubmissions = remainingSubmissions.intValue();
+                        if (maxSubmissions == 1) {
+                            errorMessageKey = I_CmsFormMessages.FORM_ERROR_BOOKING_GROUPSIZE_LASTFREE;
+                        } else {
+                            errorMessageKey = I_CmsFormMessages.FORM_ERROR_BOOKING_GROUPSIZE_FREE_1;
+                        }
+                    }
+                    maxSubmissions = remainingSubmissions.intValue() == 0 ? 1 : remainingSubmissions.intValue();
+                }
+            } catch (CmsException e) {
+                LOG.error("Failed to get the submission status for form " + getConfigUri(), e);
+            }
+            field.setErrorMessage(messages.key(errorMessageKey, Integer.valueOf(maxSubmissions)));
+        } else {
+            stringValue = content.getStringValue(cms, inputFieldPath + NODE_FIELDERRORMESSAGE, locale);
+            field.setErrorMessage(stringValue);
+        }
 
         // fill object members in case this is no hidden field
         if (!CmsHiddenField.class.isAssignableFrom(field.getClass())) {
@@ -2732,6 +2802,8 @@ public class CmsForm {
             if (CmsEmailField.class.isAssignableFrom(field.getClass()) && CmsStringUtil.isEmpty(stringValue)) {
                 // set default email validation expression for confirmation email address input field
                 field.setValidationExpression(CmsEmailField.VALIDATION_REGEX);
+            } else if (isGroupSizeField) {
+                field.setValidationExpression(getRegexForMaxSubmissions(maxSubmissions));
             } else {
                 field.setValidationExpression(null != stringValue ? stringValue : "");
             }
@@ -2764,7 +2836,26 @@ public class CmsForm {
                     cms,
                     inputFieldPath + NODE_FIELDDEFAULTVALUE,
                     locale);
-                if (CmsStringUtil.isNotEmpty(fieldValue)) {
+                if (CmsStringUtil.isNotEmpty(fieldValue) || isGroupSizeField) {
+                    if (isGroupSizeField && CmsStringUtil.isEmpty(fieldValue)) {
+                        Optional<String> optFieldValue = IntStream.range(1, maxSubmissions + 1).mapToObj(
+                            String::valueOf).reduce((a, b) -> a + "|" + b);
+                        fieldValue = optFieldValue.isPresent() ? optFieldValue.get() : "1";
+                        String currentValue = getParameter(field.getName());
+                        // If the current value is not selectable anymore, we have to add it
+                        // Otherwise the validation says that no value is selected
+                        // We use this way to prevent modifying the select fields validation as well.
+                        if ((currentValue != null) && !currentValue.isBlank()) {
+                            try {
+                                int current = Integer.parseInt(currentValue);
+                                if (current > maxSubmissions) {
+                                    fieldValue += "|" + current;
+                                }
+                            } catch (Throwable t) {
+                                // Do nothing, we had an invalid value and do not need specific treatment.
+                            }
+                        }
+                    }
                     // substitute eventual macros
                     CmsMacroResolver resolver = CmsMacroResolver.newInstance().setCmsObject(cms).setJspPageContext(
                         jsp.getJspContext());
@@ -2888,6 +2979,30 @@ public class CmsForm {
             field.setValue(field.decodeValue(value.toString()));
         }
         return field;
+    }
+
+    /**
+     * Generates a regular expression to match only numbers from 1 to maxSubmissions.
+     * It is limited to maxSubmissions between 1 and 99. Otherwise the regular expression will be wrong.
+     *
+     * @param maxSubmissions the maximal number of submissions. Must be between 1 and 99.
+     * @return the regular expression to match exactly the allowed number of submissions.
+     */
+    private String getRegexForMaxSubmissions(int maxSubmissions) {
+
+        String maxSubmissionsStr = String.valueOf(maxSubmissions);
+        String regex = "";
+        if (maxSubmissionsStr.length() == 1) {
+            regex = "[1-" + maxSubmissionsStr + "]";
+        } else {
+            int tens = maxSubmissions / 10;
+            int ones = maxSubmissions % 10;
+            regex = "[1-9]|" + tens + (ones > 0 ? "[0-" + ones + "]" : "0");
+            if (tens > 1) {
+                regex += "|" + (tens > 2 ? "[1-" + (tens - 1) + "]" : "1") + "\\d";
+            }
+        }
+        return regex;
     }
 
     /**

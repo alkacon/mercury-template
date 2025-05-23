@@ -65,6 +65,15 @@ public final class CmsFormMailMessages extends A_CmsMessageBundle {
     /** Message constant for key in the resource bundle. */
     public static final String INFO_MOVEDUP_USER = "INFO_MOVEDUP_USER";
 
+    /** Message constant for key in the resource bundle. */
+    public static final String MAIL_PREFIX_GROUPSIZE = "MAIL_PREFIX_GROUPSIZE";
+
+    /** Message constant for key in the resource bundle. */
+    public static final String INFO_GROUPSIZE_ADMIN = "INFO_GROUPSIZE_ADMIN";
+
+    /** Message constant for key in the resource bundle. */
+    public static final String INFO_GROUPSIZE_USER = "INFO_GROUPSIZE_USER";
+
     /**
      * Hidden constructor.
      */

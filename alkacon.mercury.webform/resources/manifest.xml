@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
-		<version>19.0.2</version>
+		<version>19.0.8</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -1002,6 +1002,23 @@
 			<datecreated>Tue, 19 Oct 2021 11:10:11 GMT</datecreated>
 			<flags>0</flags>
 			<properties/>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.webform/schemas/nested/groupbookingconfig.xsd</source>
+			<destination>system/modules/alkacon.mercury.webform/schemas/nested/groupbookingconfig.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>fc05d350-3710-11f0-9772-0242ac11002b</uuidstructure>
+			<uuidresource>fc05d351-3710-11f0-9772-0242ac11002b</uuidresource>
+			<datecreated>Thu, 22 May 2025 13:30:53 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for optional sub field]]></value>
+				</property>
+			</properties>
 			<relations/>
 			<accesscontrol/>
 		</file>

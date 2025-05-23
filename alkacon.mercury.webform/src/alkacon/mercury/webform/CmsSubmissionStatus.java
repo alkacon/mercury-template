@@ -36,6 +36,22 @@ import java.util.List;
 /** Class that encapsulates the submission status of a form. */
 public class CmsSubmissionStatus {
 
+    /** The submission check result for a single submission request. */
+    public enum SubmissionCheckResult {
+        /** Submission is possible. */
+        POSSIBLE,
+        /** Submission is impossible due to an invalid group size. */
+        IMPOSSIBLE_INVALID_GROUP_SIZE,
+        /** Submission is impossible due to too few left places. */
+        IMPOSSIBLE_TOO_FEW_PLACES,
+        /** Submission is possible for the waitlist. */
+        POSSIBLE_WAITLIST,
+        /** Submission is impossible due because groups are not allowed on the waitlist. */
+        IMPOSSIBLE_WAITLIST_NO_GROUPS,
+        /** Submission is impossible since the event is fully booked. */
+        IMPOSSIBLE_FULLY_BOOKED
+    }
+
     /** The maximum number of regular places, <code>null</code> if not limited. */
     private Integer m_maxRegularPlaces;
 
@@ -51,8 +67,26 @@ public class CmsSubmissionStatus {
     /** The list of participants, either registered via a regular submission or moved up from the waitlist. */
     private List<CmsFormDataBean> m_participants = new ArrayList<>();
 
+    /** The number of participants, either registered via a regular submission or moved up from the waitlist. */
+    private int m_numParticipants;
+
     /** The list of candidates currently waiting for a regular participant place. */
     private List<CmsFormDataBean> m_waitlistCandidates = new ArrayList<>();
+
+    /** The number of participants, either registered via a regular submission or moved up from the waitlist. */
+    private int m_numWaitlistCandidates;
+
+    /** The number of participants, where the submissions have been cancelled. */
+    private int m_numCancelledSubmissions;
+
+    /** Flag, indicating if for some form data entries for the current registrations the group size is invalid. */
+    private boolean m_hasInvalidGroupSizesInRegistrations;
+
+    /** Flag, indicating if for some form data entries for the waitlist the group size is invalid. */
+    private boolean m_hasInvalidGroupSizesInWaitlist;
+
+    /** Flag, indicating if for some form data entries the group size is invalid. */
+    private boolean m_hasInvalidGroupSizesInCanceled;
 
     /** The list of submissions marked as cancelled by the event administrator. */
     private List<CmsFormDataBean> m_cancelledSubmissions = new ArrayList<>();
@@ -83,6 +117,34 @@ public class CmsSubmissionStatus {
             readSubmissionResources(ugcConfig);
             readExpiredSubmissionResources(ugcConfig);
         } // else keep default values.
+    }
+
+    /**
+     * Checks if a submission for a group of the given size is possible.
+     * @param groupSize the group size
+     * @return the submission options.
+     */
+    public SubmissionCheckResult canSubmit(int groupSize) {
+
+        if (groupSize < 1) {
+            // invalid group size
+            return SubmissionCheckResult.IMPOSSIBLE_INVALID_GROUP_SIZE;
+        }
+        if ((getNumRemainingRegularSubmissions() == null)
+            || (getNumRemainingRegularSubmissions().intValue() >= groupSize)) {
+            return SubmissionCheckResult.POSSIBLE;
+        }
+        if ((getNumRemainingRegularSubmissions().intValue() > 0)
+            && (getNumRemainingRegularSubmissions().intValue() < groupSize)) {
+            return SubmissionCheckResult.IMPOSSIBLE_TOO_FEW_PLACES;
+        }
+        // For the waitlist, we do not allow group submissions.
+        if (getNumRemainingWaitlistSubmissions() > 0) {
+            return groupSize == 1
+            ? SubmissionCheckResult.POSSIBLE_WAITLIST
+            : SubmissionCheckResult.IMPOSSIBLE_WAITLIST_NO_GROUPS;
+        }
+        return SubmissionCheckResult.IMPOSSIBLE_FULLY_BOOKED;
     }
 
     /**
@@ -145,12 +207,12 @@ public class CmsSubmissionStatus {
     }
 
     /**
-     * Returns the number of cancelled submissions.
-     * @return the number of cancelled submissions
+     * Returns the number of cancelled submissions (participants counted).
+     * @return the number of cancelled submissions (participants counted)
      */
     public int getNumCancelledSubmissions() {
 
-        return m_cancelledSubmissions.size();
+        return m_numCancelledSubmissions;
     }
 
     /**
@@ -191,7 +253,7 @@ public class CmsSubmissionStatus {
      */
     public int getNumParticipants() {
 
-        return m_participants.size() + m_numOtherSubmissions;
+        return m_numParticipants + m_numOtherSubmissions;
     }
 
     /**
@@ -204,6 +266,19 @@ public class CmsSubmissionStatus {
 
         return m_maxRegularPlaces != null
         ? Integer.valueOf(Math.max(m_maxRegularPlaces.intValue() - getNumTotalSubmissions(), 0))
+        : null;
+    }
+
+    /**
+     * Returns the number of submissions that are still possible. Not including the submissions for the waitlist.
+     * <code>null</code> means unlimited.
+     * @return the number of submissions that are still possible. Not including the submissions for the waitlist.
+     * <code>null</code> means unlimited.
+     */
+    public Integer getNumRemainingRegularSubmissionsIgnoringWaitlist() {
+
+        return m_maxRegularPlaces != null
+        ? Integer.valueOf(Math.max(m_maxRegularPlaces.intValue() - getNumParticipants(), 0))
         : null;
     }
 
@@ -235,7 +310,7 @@ public class CmsSubmissionStatus {
      */
     public int getNumWaitlistCandidates() {
 
-        return m_waitlistCandidates.size();
+        return m_numWaitlistCandidates;
     }
 
     /**
@@ -287,6 +362,33 @@ public class CmsSubmissionStatus {
     }
 
     /**
+     * Returns a flag, that tells that for at least one cancelled registration the group size is invalid.
+     * @return a flag, that tells that for at least one cancelled registration the group size is invalid.
+     */
+    public boolean isSomeCancelledRegistrationGroupSizeInvalid() {
+
+        return m_hasInvalidGroupSizesInCanceled;
+    }
+
+    /**
+     * Returns a flag, that tells that for at least one current registration the group size is invalid.
+     * @return a flag, that tells that for at least one current registration the group size is invalid.
+     */
+    public boolean isSomeCurrentRegistrationGroupSizeInvalid() {
+
+        return m_hasInvalidGroupSizesInRegistrations;
+    }
+
+    /**
+     * Returns a flag, that tells that for at least one waitlist registration the group size is invalid.
+     * @return a flag, that tells that for at least one waitlist registration the group size is invalid.
+     */
+    public boolean isSomeWaitlistRegistrationGroupSizeInvalid() {
+
+        return m_hasInvalidGroupSizesInWaitlist;
+    }
+
+    /**
      * Reads the resources with the submitted data that are cancelled (i.e. expired)
      * @param ugcConfig ugcConfig the ugc configuration, containing information on  which data has to be read
      * @throws CmsException thrown if reading the resources fails
@@ -307,6 +409,10 @@ public class CmsSubmissionStatus {
                     if (!resource.getState().equals(CmsResourceState.STATE_DELETED)
                         && resource.isExpired(System.currentTimeMillis())) {
                         m_cancelledSubmissions.add(bean);
+                        m_numCancelledSubmissions += bean.getGroupSize();
+                        if (bean.isInvalidGroupSize()) {
+                            m_hasInvalidGroupSizesInCanceled = true;
+                        }
                     }
                 }
             }
@@ -326,16 +432,28 @@ public class CmsSubmissionStatus {
                 CmsResourceFilter.DEFAULT.addRequireType(
                     OpenCms.getResourceManager().getResourceType(ugcConfig.getResourceType())),
                 false);
+            m_numFormSubmissions = 0;
+            m_numParticipants = 0;
+            m_numWaitlistCandidates = 0;
             if (resources != null) {
-                m_numFormSubmissions = resources.size();
                 for (CmsResource resource : resources) {
                     CmsFile file = m_cms.readFile(resource);
                     CmsXmlContent content = CmsXmlContentFactory.unmarshal(m_cms, file);
                     CmsFormDataBean bean = new CmsFormDataBean(content);
+                    m_numFormSubmissions += bean.getGroupSize();
+                    if (bean.isInvalidGroupSize()) {
+                        if (bean.isWaitlist()) {
+                            m_hasInvalidGroupSizesInWaitlist = true;
+                        } else {
+                            m_hasInvalidGroupSizesInRegistrations = true;
+                        }
+                    }
                     if (bean.isWaitlist()) {
                         m_waitlistCandidates.add(bean);
+                        m_numWaitlistCandidates += bean.getGroupSize();
                     } else {
                         m_participants.add(bean);
+                        m_numParticipants += bean.getGroupSize();
                     }
                 }
             }

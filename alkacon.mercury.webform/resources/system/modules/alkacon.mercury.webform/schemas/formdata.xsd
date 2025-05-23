@@ -21,7 +21,9 @@
             <xsd:element name="MoveUpMailSent" type="OpenCmsBoolean" minOccurs="0" />
             <xsd:element name="CancelMailSent" type="OpenCmsBoolean" minOccurs="0" />
             <xsd:element name="ReminderMailSent" type="OpenCmsBoolean" minOccurs="0" />
+            <xsd:element name="GroupSizeChangeSent" type="OpenCmsBoolean" minOccurs="0" />
             <xsd:element name="WaitlistMoveUpDate" type="OpenCmsDateTime" minOccurs="0" />
+            <xsd:element name="GroupSizeField" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Cancelled" type="OpenCmsBoolean" />
             <xsd:element name="TitleMapping" type="OpenCmsString" />
             <xsd:element name="DeletionDate" type="OpenCmsDateTime" minOccurs="0" />
@@ -32,6 +34,9 @@
 
     <xsd:annotation>
         <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.webform.messages" />
+            </resourcebundles>
             <searchsettings containerPageOnly="false">
                 <searchsetting element="ConfirmationMailSent" searchcontent="false">
                     <solrfield targetfield="confirmationmailsent" sourcefield="*_b" />
@@ -87,9 +92,20 @@
                     <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.ReminderMailSent.help)]]></Description>
                 </Setting>
                 <Setting>
+                    <PropertyName>GroupSizeChangeSent</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.GroupSizeChangeSent)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.GroupSizeChangeSent.help)]]></Description>
+                </Setting>
+                <Setting>
                     <PropertyName>WaitlistMoveUpDate</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.WaitlistMoveUpDate)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.WaitlistMoveUpDate.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>GroupSizeField</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDataSet.GroupSizeField)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDataSet.GroupSizeField.help)]]></Description>
+                    <Widget>DisplayWidget</Widget>
                 </Setting>
                 <Setting>
                     <PropertyName>Cancelled</PropertyName>

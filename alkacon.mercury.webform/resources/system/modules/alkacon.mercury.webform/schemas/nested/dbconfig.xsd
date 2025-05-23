@@ -1,6 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.webform/schemas/nested/groupbookingconfig.xsd"/>
 
     <xsd:element name="WebFormDatabaseConfigurations" type="OpenCmsWebFormDatabaseConfigurations"/>
 
@@ -27,6 +28,7 @@
            <!-- xsd:element name="QueueMaxLength" type="OpenCmsString" minOccurs="0" maxOccurs="1" / -->
            <xsd:element name="DatasetTitle" type="OpenCmsString" />
            <xsd:element name="KeepDays" type="OpenCmsString" minOccurs="0" />
+           <xsd:element name="GroupBooking" type="OpenCmsWebFormGroupBookingConfiguration" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -90,6 +92,11 @@
                     <PropertyName>KeepDays</PropertyName>
                     <DisplayName><![CDATA[%(key.label.form.WebFormDatabaseConfiguration.KeepDays)]]></DisplayName>
                     <Description><![CDATA[%(key.label.form.WebFormDatabaseConfiguration.KeepDays.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>GroupBooking</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.GroupBooking)]]></DisplayName>
+                    <Description><![CDATA[%(key.msg.label.form.WebFormDatabaseConfiguration.GroupBooking.help)]]></Description>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

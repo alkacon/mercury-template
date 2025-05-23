@@ -29,6 +29,8 @@ package alkacon.mercury.webform;
 
 import alkacon.mercury.webform.mail.CmsFormMailCancelAdmin;
 import alkacon.mercury.webform.mail.CmsFormMailCancelUser;
+import alkacon.mercury.webform.mail.CmsFormMailGroupSizeAdmin;
+import alkacon.mercury.webform.mail.CmsFormMailGroupSizeUser;
 import alkacon.mercury.webform.mail.CmsFormMailMoveUpAdmin;
 import alkacon.mercury.webform.mail.CmsFormMailMoveUpUser;
 
@@ -68,8 +70,20 @@ public class CmsFormDataHandler extends A_CmsFormDataHandler {
     /** Action name. */
     private final static String ACTION_MOVEUP = "moveup";
 
+    /** Action name. */
+    private final static String ACTION_GROUPSIZE = "groupsize";
+
     /** A message key. */
     private final static String ERROR_ALREADY_CANCELLED = "msg.page.bookingmanage.error.alreadycancelled";
+
+    /** A message key. */
+    private final static String ERROR_INVALID_GROUP_SIZE = "msg.page.bookingmanage.error.size.invalid";
+
+    /** A message key. */
+    private final static String ERROR_TOO_FEW_PLACES = "msg.page.bookingmanage.error.size.toofewplaces";
+
+    /** A message key. */
+    private final static String ERROR_GROUPSIZE_CHANGE_ONLY_FOR_PARTICIPANTS = "msg.page.bookingmanage.error.size.onlyparticipants";
 
     /** A message key. */
     private final static String ERROR_ALREADY_FULLY_BOOKED = "msg.page.bookingmanage.error.alreadyfullybooked";
@@ -81,10 +95,16 @@ public class CmsFormDataHandler extends A_CmsFormDataHandler {
     private final static String ERROR_SENDING_MAIL_FAILED = "msg.page.bookingmanage.error.sendingmailfailed";
 
     /** A message key. */
+    private final static String ERROR_SENDING_MAIL_FAILED_CONTENT_NOT_ADJUSTED = "msg.page.bookingmanage.error.sendingmailfailed.contentnotadjusted";
+
+    /** A message key. */
     private final static String INFO_SUCCESS_CANCELLED_REGISTRATION = "msg.page.bookingmanage.info.successcancelregistration";
 
     /** A message key. */
     private final static String INFO_SUCCESS_WAITLIST_MOVED_UP = "msg.page.bookingmanage.info.successwaitlistmoveup";
+
+    /** A message key. */
+    private final static String INFO_SUCCESS_SIZE_CHANGE = "msg.page.bookingmanage.info.success.sizechange";
 
     /** The form handler. */
     private CmsFormHandler m_formHandler;
@@ -173,6 +193,114 @@ public class CmsFormDataHandler extends A_CmsFormDataHandler {
                 return false;
             }
             setInfo(INFO_SUCCESS_CANCELLED_REGISTRATION);
+        } catch (CmsException e) {
+            setError(ERROR_INTERNAL);
+            LOG.error(e.getLocalizedMessage(), e);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * On request, changes the group size for a registration.
+     * @param paramUuid the UUID of the form data content
+     * @param paramSize the new size to set
+     * @return whether changing the group size was successful
+     */
+    public boolean changeGroupSize(String paramUuid, String paramSize) {
+
+        if (getCmsObject().getRequestContext().getCurrentProject().isOnlineProject()) {
+            return false;
+        }
+        CmsObject clone = null;
+        int newSize = 0;
+        try {
+            newSize = Integer.parseInt(paramSize);
+        } catch (Throwable t) {
+            setError(ERROR_INVALID_GROUP_SIZE);
+            return false;
+        }
+        if ((newSize < 1) || (newSize > m_formHandler.getFormConfiguration().getUgcConfiguration().getMaxGroupSize())) {
+            setError(ERROR_INVALID_GROUP_SIZE);
+            return false;
+        }
+        try {
+            clone = OpenCms.initCmsObject(getCmsObject());
+            CmsResource resource = readResource(clone, paramUuid);
+            if (resource == null) {
+                setError(ERROR_RESOURCE_NOT_FOUND);
+                return false;
+            }
+            I_CmsResourceType resourceType = OpenCms.getResourceManager().getResourceType(resource);
+            I_CmsResourceType formDataType = OpenCms.getResourceManager().getResourceType(
+                CmsFormUgcConfiguration.CONTENT_TYPE_FORM_DATA);
+            if (!resourceType.equals(formDataType)) {
+                setError(ERROR_FORBIDDEN);
+                return false;
+            }
+            boolean locked = lockResource(clone, resource);
+            if (!locked) {
+                setError(ERROR_LOCKING_FAILED);
+                return false;
+            }
+            CmsXmlContent content = readContent(clone, resource);
+            if (content == null) {
+                setError(ERROR_INTERNAL);
+                return false;
+            }
+            CmsFormDataBean bean = new CmsFormDataBean(content);
+            if (bean.isCancelled() || bean.isWaitlist()) {
+                setError(ERROR_GROUPSIZE_CHANGE_ONLY_FOR_PARTICIPANTS);
+                return false;
+            }
+            if ((m_submissionStatus.getNumRemainingRegularSubmissionsIgnoringWaitlist() != null)
+                && ((m_submissionStatus.getNumRemainingRegularSubmissionsIgnoringWaitlist().intValue()
+                    + bean.getGroupSize()) < newSize)) {
+                setError(ERROR_TOO_FEW_PLACES);
+                return false;
+            }
+            String groupSizeValueXPath = bean.getGroupSizeValueXPath();
+            if (groupSizeValueXPath.isEmpty()) {
+                setError(ERROR_INTERNAL);
+                return false;
+            }
+            boolean updated1 = updateContent(clone, content, groupSizeValueXPath, String.valueOf(newSize));
+            if (!updated1) {
+                setError(ERROR_INTERNAL);
+                return false;
+            }
+            bean = new CmsFormDataBean(content);
+            boolean mailSent = sendMail(bean, ACTION_GROUPSIZE);
+            if (mailSent) {
+                String sent = String.valueOf(m_formHandler.getFormConfiguration().isConfirmationMailEnabled());
+                boolean updated2 = updateContent(
+                    clone,
+                    content,
+                    CmsFormDataBean.PATH_GROUP_SIZE_CHANGE_MAIL_SENT,
+                    sent);
+                if (!updated2) {
+                    setError(ERROR_INTERNAL);
+                    return false;
+                }
+            } else if (bean.isGroupSizeChangeMailSent()) {
+                boolean updated2 = updateContent(
+                    clone,
+                    content,
+                    CmsFormDataBean.PATH_GROUP_SIZE_CHANGE_MAIL_SENT,
+                    "false");
+                if (!updated2) {
+                    setError(ERROR_SENDING_MAIL_FAILED_CONTENT_NOT_ADJUSTED);
+                    return false;
+                }
+                setError(ERROR_SENDING_MAIL_FAILED);
+                return false;
+            }
+            boolean published = publishResource(clone, clone.getSitePath(resource));
+            if (!published) {
+                setError(ERROR_PUBLISHING_FAILED);
+                return false;
+            }
+            setInfo(INFO_SUCCESS_SIZE_CHANGE);
         } catch (CmsException e) {
             setError(ERROR_INTERNAL);
             LOG.error(e.getLocalizedMessage(), e);
@@ -321,6 +449,21 @@ public class CmsFormDataHandler extends A_CmsFormDataHandler {
                         m_formHandler,
                         formDataFields,
                         formDataString);
+                    mailMoveUpUser.sendMail();
+                }
+            } else if (action.equals(ACTION_GROUPSIZE)) {
+                CmsFormMailGroupSizeAdmin mailMoveUpAdmin = new CmsFormMailGroupSizeAdmin(
+                    m_formHandler,
+                    formDataFields,
+                    formDataString,
+                    bean.getGroupSize());
+                mailMoveUpAdmin.sendMail(null);
+                if (m_formHandler.getFormConfiguration().isConfirmationMailEnabled()) {
+                    CmsFormMailGroupSizeUser mailMoveUpUser = new CmsFormMailGroupSizeUser(
+                        m_formHandler,
+                        formDataFields,
+                        formDataString,
+                        bean.getGroupSize());
                     mailMoveUpUser.sendMail();
                 }
             }

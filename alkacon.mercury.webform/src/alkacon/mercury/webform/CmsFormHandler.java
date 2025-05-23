@@ -21,6 +21,7 @@ package alkacon.mercury.webform;
 
 import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
 import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
+import alkacon.mercury.webform.CmsSubmissionStatus.SubmissionCheckResult;
 import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
 import alkacon.mercury.webform.fields.CmsCaptchaField;
 import alkacon.mercury.webform.fields.CmsCheckboxField;
@@ -82,6 +83,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.mail.internet.AddressException;
 import javax.servlet.ServletException;
@@ -109,6 +112,10 @@ import com.octo.captcha.service.text.TextCaptchaService;
  */
 public class CmsFormHandler extends CmsJspActionElement {
 
+    /** Lock to synchronize saving data. We use it to prevent overbooking. */
+    // TODO: Improve for locks per form/bookable content using com.google.common.util.concurrent.Striped if performance issues should arise
+    private static volatile Lock LOCK = new ReentrantLock();
+
     /** Request parameter value for the form action parameter: correct the input. */
     public static final String ACTION_CONFIRMED = "confirmed";
 
@@ -123,6 +130,18 @@ public class CmsFormHandler extends CmsJspActionElement {
 
     /** Configuration key name for the 'end time' of an event. */
     public static final String CONFIG_END_TIME = "EndTime";
+
+    /** Error: failed to save form data since fully booked. */
+    public static final String ERROR_FULLY_BOOKED = "fully.booked";
+
+    /** Error: failed to save form data because of an invalid group size */
+    public static final String ERROR_INVALID_GROUP_SIZE = "groupsize.invalid";
+
+    /** Error: failed to save form data since too few places are left. */
+    public static final String ERROR_TOO_FEW_PLACES = "too.few.places";
+
+    /** Error: failed to save form data since a groups are not supported for the waitlist. */
+    public static final String ERROR_WAITLIST_NO_GROUPS = "waitlist.nogroups";
 
     /** Form error: mandatory field not filled out. */
     public static final String ERROR_MANDATORY = "mandatory";
@@ -828,7 +847,19 @@ public class CmsFormHandler extends CmsJspActionElement {
      */
     public CmsSubmissionStatus getSubmissionStatus() {
 
-        if (null == m_submissionStatus) {
+        return getSubmissionStatus(false);
+    }
+
+    /**
+     * Returns the submission status.
+     *
+     * @param forceReinit iff true, the status is reinitialized.
+     *
+     * @return the submission status.
+     */
+    public CmsSubmissionStatus getSubmissionStatus(boolean forceReinit) {
+
+        if ((null == m_submissionStatus) || forceReinit) {
             try {
                 m_submissionStatus = new CmsSubmissionStatus(
                     CmsWebformModuleAction.getAdminCms(getCmsObject()),
@@ -964,7 +995,7 @@ public class CmsFormHandler extends CmsJspActionElement {
             configureForm(req, formConfigUri, dynamicConfig, extraConfig);
             m_initSuccess = true;
         } catch (Exception e) {
-            LOG.error(e);
+            LOG.error(e, e);
             // error in form initialization, initialize at least the localized messages
             initMessages(formConfigUri);
         }
@@ -1050,15 +1081,49 @@ public class CmsFormHandler extends CmsJspActionElement {
         boolean isConfirmationMailSent = false;
         boolean isRegistrationMailSent = false;
         if (data.isUgcConfigured()) {
+            int groupSize = data.getGroupSize();
+            LOCK.lock();
             try {
-                Map<String, String> contentValues = createUgcContentValues();
-                ugcHandler = new CmsUgcHandler(
-                    getCmsObject(),
-                    getRequest(),
-                    data.getUgcConfiguration(),
-                    contentValues,
-                    getSubmissionStatus().isOnlyWaitlist());
-                ugcHandler.saveWithStatus(false, false);
+                CmsSubmissionStatus submissionStatus = getSubmissionStatus(true);
+                SubmissionCheckResult submissionOption = submissionStatus.canSubmit(groupSize);
+                if (submissionOption.equals(SubmissionCheckResult.POSSIBLE)
+                    || submissionOption.equals(SubmissionCheckResult.POSSIBLE_WAITLIST)) {
+                    Map<String, String> contentValues = createUgcContentValues();
+                    ugcHandler = new CmsUgcHandler(
+                        getCmsObject(),
+                        getRequest(),
+                        data.getUgcConfiguration(),
+                        contentValues,
+                        submissionOption.equals(SubmissionCheckResult.POSSIBLE_WAITLIST));
+                    ugcHandler.saveWithStatus(false, false);
+                    ugcHandler.finish();
+                } else {
+                    getErrors().put(
+                        ERROR_STORE_FORMDATA,
+                        "The booking is not possible due to previous errors, so it is not stored.");
+                    switch (submissionOption) {
+                        case IMPOSSIBLE_FULLY_BOOKED:
+                            getErrors().put(
+                                ERROR_FULLY_BOOKED,
+                                "There are no places left. It can't be submitted anymore.");
+                            break;
+                        case IMPOSSIBLE_INVALID_GROUP_SIZE:
+                            getErrors().put(ERROR_INVALID_GROUP_SIZE, "The group size is invalid.");
+                            break;
+                        case IMPOSSIBLE_TOO_FEW_PLACES:
+                            getErrors().put(
+                                ERROR_TOO_FEW_PLACES,
+                                "There are too few places for the submitted group size.");
+                            break;
+                        case IMPOSSIBLE_WAITLIST_NO_GROUPS:
+                            getErrors().put(
+                                ERROR_WAITLIST_NO_GROUPS,
+                                "You can only submit to the waitlist. And there groups are not allowed.");
+                            break;
+                        default:
+                            break;
+                    }
+                }
             } catch (Exception e) {
                 getErrors().put(ERROR_STORE_FORMDATA, e.getMessage());
                 if (null != ugcHandler) {
@@ -1069,79 +1134,87 @@ public class CmsFormHandler extends CmsJspActionElement {
                     }
                 }
                 return false;
+            } finally {
+                LOCK.unlock();
             }
         }
-        // add waitlist macros if necessary
-        String eventWatilistInfo;
-        if (getSubmissionStatus().isOnlyWaitlist()) {
-            eventWatilistInfo = getMessages().key(I_CmsFormMessages.EVENT_WAITLIST_INFO);
-        } else {
-            eventWatilistInfo = "";
-        }
-        m_macroResolver.addMacro(MACRO_EVENT_WAITLIST_INFO, eventWatilistInfo);
-        // for backward compatibility with existing old webform configurations
-        m_macroResolver.addMacro("confirm.waitlist.info", eventWatilistInfo);
-        m_macroResolver.addMacro("mail.waitlist.info", eventWatilistInfo);
 
-        // send optional confirmation mail
-        if (data.isConfirmationMailEnabled()) {
-            if (!data.isConfirmationMailOptional()
-                || Boolean.valueOf(getParameter(CmsForm.PARAM_SENDCONFIRMATION)).booleanValue()) {
-                try {
-                    sendConfirmationMail();
-                    isConfirmationMailSent = true;
-                } catch (Exception e) {
-                    // an error occured during mail creation
-                    if (LOG.isErrorEnabled()) {
-                        LOG.error(e.getLocalizedMessage(), e);
+        // We only do the following steps if storing the data did not fail.
+        if (!getErrors().containsKey(ERROR_STORE_FORMDATA)) {
+            // add waitlist macros if necessary
+            String eventWatilistInfo;
+            if (getSubmissionStatus().isOnlyWaitlist()) {
+                eventWatilistInfo = getMessages().key(I_CmsFormMessages.EVENT_WAITLIST_INFO);
+            } else {
+                eventWatilistInfo = "";
+            }
+            m_macroResolver.addMacro(MACRO_EVENT_WAITLIST_INFO, eventWatilistInfo);
+            // for backward compatibility with existing old webform configurations
+            m_macroResolver.addMacro("confirm.waitlist.info", eventWatilistInfo);
+            m_macroResolver.addMacro("mail.waitlist.info", eventWatilistInfo);
+
+            // send optional confirmation mail
+            if (data.isConfirmationMailEnabled()) {
+                if (!data.isConfirmationMailOptional()
+                    || Boolean.valueOf(getParameter(CmsForm.PARAM_SENDCONFIRMATION)).booleanValue()) {
+                    try {
+                        sendConfirmationMail();
+                        isConfirmationMailSent = true;
+                    } catch (Exception e) {
+                        // an error occured during mail creation
+                        if (LOG.isErrorEnabled()) {
+                            LOG.error(e.getLocalizedMessage(), e);
+                        }
+                        getErrors().put(ERROR_CONFIRMATION_SENT, e.getMessage());
                     }
-                    getErrors().put(ERROR_CONFIRMATION_SENT, e.getMessage());
+                }
+            }
+
+            // send registration information mail
+            try {
+                sendMail();
+                isRegistrationMailSent = true;
+            } catch (Exception e) {
+                // an error occured during mail creation
+                if (LOG.isErrorEnabled()) {
+                    LOG.error(e.getLocalizedMessage(), e);
+                }
+                getErrors().put(ERROR_REGISTRATION_SENT, e.getMessage());
+            }
+
+            if (ugcHandler != null) {
+                try {
+                    if (isConfirmationMailSent || isRegistrationMailSent) {
+                        ugcHandler.saveWithStatus(isConfirmationMailSent, isRegistrationMailSent);
+                    }
+                } catch (Exception e) {
+                    LOG.warn(
+                        "Could not update information status for content "
+                            + ugcHandler.getContentRootPath()
+                            + ", telling that registration mail was "
+                            + (isRegistrationMailSent ? "" : "not ")
+                            + "sent and confirmation mail was "
+                            + (isConfirmationMailSent ? "" : "not ")
+                            + "sent.",
+                        e);
+                }
+                try {
+                    ugcHandler.finish();
+                } catch (Exception e) {
+                    LOG.warn(
+                        "Could not finish UGC session with project \""
+                            + ugcHandler.getUgcProject()
+                            + "\" for content "
+                            + ugcHandler.getContentRootPath()
+                            + ".",
+                        e);
                 }
             }
         }
 
-        // send registration information mail
-        try {
-            sendMail();
-            isRegistrationMailSent = true;
-        } catch (Exception e) {
-            // an error occured during mail creation
-            if (LOG.isErrorEnabled()) {
-                LOG.error(e.getLocalizedMessage(), e);
-            }
-            getErrors().put(ERROR_REGISTRATION_SENT, e.getMessage());
-        }
-
-        if (ugcHandler != null) {
-            try {
-                if (isConfirmationMailSent || isRegistrationMailSent) {
-                    ugcHandler.saveWithStatus(isConfirmationMailSent, isRegistrationMailSent);
-                }
-            } catch (Exception e) {
-                LOG.warn(
-                    "Could not update information status for content "
-                        + ugcHandler.getContentRootPath()
-                        + ", telling that registration mail was "
-                        + (isRegistrationMailSent ? "" : "not ")
-                        + "sent and confirmation mail was "
-                        + (isConfirmationMailSent ? "" : "not ")
-                        + "sent.",
-                    e);
-            }
-            try {
-                ugcHandler.finish();
-            } catch (Exception e) {
-                LOG.warn(
-                    "Could not finish UGC session with project \""
-                        + ugcHandler.getUgcProject()
-                        + "\" for content "
-                        + ugcHandler.getContentRootPath()
-                        + ".",
-                    e);
-            }
-        }
-
-        return data.isUgcConfigured() || !getErrors().containsKey(ERROR_REGISTRATION_SENT);
+        return data.isUgcConfigured()
+        ? !getErrors().containsKey(ERROR_STORE_FORMDATA)
+        : !getErrors().containsKey(ERROR_REGISTRATION_SENT);
     }
 
     /**
@@ -1275,7 +1348,7 @@ public class CmsFormHandler extends CmsJspActionElement {
 
         int pagingPos = fields.size();
         if (CmsStringUtil.isNotEmpty(getParameter(PARAM_PAGE + getFormConfiguration().getConfigId()))) {
-            int value = new Integer(getParameter(PARAM_PAGE + getFormConfiguration().getConfigId())).intValue();
+            int value = Integer.parseInt(getParameter(PARAM_PAGE + getFormConfiguration().getConfigId()));
             pagingPos = CmsPagingField.getLastFieldPosFromPage(this, value) + 1;
         }
 
@@ -1527,7 +1600,39 @@ public class CmsFormHandler extends CmsJspActionElement {
     protected String buildFailureHtml() {
 
         StringTemplate sTemplate = getOutputTemplate(I_CmsTemplateSubmissionError.TEMPLATE_NAME);
-        if (getErrors().containsKey(ERROR_STORE_FORMDATA)) {
+        if (getErrors().containsKey(ERROR_FULLY_BOOKED)) {
+            sTemplate.setAttribute(
+                I_CmsTemplateSubmissionError.ATTR_HEADLINE,
+                getMessages().key(I_CmsFormMessages.FORM_ERROR_FULLY_BOOKED_HEADLINE));
+            sTemplate.setAttribute(
+                I_CmsTemplateSubmissionError.ATTR_TEXT,
+                getMessages().key(I_CmsFormMessages.FORM_ERROR_FULLY_BOOKED_TEXT));
+            sTemplate.setAttribute(I_CmsTemplateSubmissionError.ATTR_ERROR, getErrors().get(ERROR_FULLY_BOOKED));
+        } else if (getErrors().containsKey(ERROR_INVALID_GROUP_SIZE)) {
+            sTemplate.setAttribute(
+                I_CmsTemplateSubmissionError.ATTR_HEADLINE,
+                getMessages().key(I_CmsFormMessages.FORM_ERROR_INVALID_GROUP_SIZE_HEADLINE));
+            sTemplate.setAttribute(
+                I_CmsTemplateSubmissionError.ATTR_TEXT,
+                getMessages().key(I_CmsFormMessages.FORM_ERROR_INVALID_GROUP_SIZE_TEXT));
+            sTemplate.setAttribute(I_CmsTemplateSubmissionError.ATTR_ERROR, getErrors().get(ERROR_INVALID_GROUP_SIZE));
+        } else if (getErrors().containsKey(ERROR_TOO_FEW_PLACES)) {
+            sTemplate.setAttribute(
+                I_CmsTemplateSubmissionError.ATTR_HEADLINE,
+                getMessages().key(I_CmsFormMessages.FORM_ERROR_TOO_FEW_PLACES_HEADLINE));
+            sTemplate.setAttribute(
+                I_CmsTemplateSubmissionError.ATTR_TEXT,
+                getMessages().key(I_CmsFormMessages.FORM_ERROR_TOO_FEW_PLACES_TEXT));
+            sTemplate.setAttribute(I_CmsTemplateSubmissionError.ATTR_ERROR, getErrors().get(ERROR_TOO_FEW_PLACES));
+        } else if (getErrors().containsKey(ERROR_WAITLIST_NO_GROUPS)) {
+            sTemplate.setAttribute(
+                I_CmsTemplateSubmissionError.ATTR_HEADLINE,
+                getMessages().key(I_CmsFormMessages.FORM_ERROR_WAITLIST_NO_GROUPS_HEADLINE));
+            sTemplate.setAttribute(
+                I_CmsTemplateSubmissionError.ATTR_TEXT,
+                getMessages().key(I_CmsFormMessages.FORM_ERROR_WAITLIST_NO_GROUPS_TEXT));
+            sTemplate.setAttribute(I_CmsTemplateSubmissionError.ATTR_ERROR, getErrors().get(ERROR_WAITLIST_NO_GROUPS));
+        } else if (getErrors().containsKey(ERROR_STORE_FORMDATA)) {
             sTemplate.setAttribute(
                 I_CmsTemplateSubmissionError.ATTR_HEADLINE,
                 getMessages().key(I_CmsFormMessages.FORM_ERROR_DB_HEADLINE));
@@ -1599,15 +1704,15 @@ public class CmsFormHandler extends CmsJspActionElement {
         if (getParameterMap().containsKey(PARAM_BACK + getFormConfiguration().getConfigId())
             && getParameterMap().containsKey(pagingParam)) {
             String[] pagingString = getParameterMap().get(pagingParam);
-            currPage = new Integer(pagingString[0]).intValue();
+            currPage = Integer.parseInt(pagingString[0]);
             currPage = CmsPagingField.getPreviousPage(currPage);
         } else if (getParameterMap().containsKey(pagingParam) && !hasValidationErrors()) {
             String[] pagingString = getParameterMap().get(pagingParam);
-            currPage = new Integer(pagingString[0]).intValue();
+            currPage = Integer.parseInt(pagingString[0]);
             currPage = CmsPagingField.getNextPage(currPage);
         } else if (getParameterMap().containsKey(pagingParam) && hasValidationErrors()) {
             String[] pagingString = getParameterMap().get(pagingParam);
-            currPage = new Integer(pagingString[0]).intValue();
+            currPage = Integer.parseInt(pagingString[0]);
         }
         pagingPos = CmsPagingField.getFirstFieldPosFromPage(this, currPage);
         fieldNr = pagingPos;
@@ -2071,9 +2176,14 @@ public class CmsFormHandler extends CmsJspActionElement {
 
         Map<String, String> result = new HashMap<>();
         CmsForm form = getFormConfiguration();
+        CmsFormUgcConfiguration ugc = form.getUgcConfiguration();
         result.put(CmsFormDataBean.PATH_FORM, form.getConfigUri());
         if (m_eventConfiguration != null) {
             result.put(CmsFormDataBean.PATH_EVENT, m_eventConfiguration);
+        }
+        String groupSizeFieldDBLabel = ugc.getGroupSizeInputFieldDBLabel();
+        if (groupSizeFieldDBLabel != null) {
+            result.put(CmsFormDataBean.PATH_GROUP_SIZE_FIELD, groupSizeFieldDBLabel);
         }
         List<I_CmsField> formFields = getFormConfiguration().getAllFields(false, true, true);
         int entryNum = 1;
@@ -2087,8 +2197,7 @@ public class CmsFormHandler extends CmsJspActionElement {
             result.put(CmsFormDataBean.getValuePath(entryNum), field.getValue());
             entryNum++;
         }
-        CmsFormUgcConfiguration ugc = getFormConfiguration().getUgcConfiguration();
-        if ((ugc != null) && (ugc.getKeepDays() != null)) {
+        if (ugc.getKeepDays() != null) {
             long keepMillis = TimeUnit.MILLISECONDS.convert(ugc.getKeepDays().intValue(), TimeUnit.DAYS);
             if (m_endTime != null) {
                 long deletionDate = m_endTime.longValue() + keepMillis;
@@ -2150,7 +2259,7 @@ public class CmsFormHandler extends CmsJspActionElement {
         I_CmsWebformActionHandler object = null;
         @SuppressWarnings("unchecked")
         Class<I_CmsWebformActionHandler> c = (Class<I_CmsWebformActionHandler>)Class.forName(className);
-        object = c.newInstance();
+        object = c.getDeclaredConstructor().newInstance();
 
         return object;
     }

@@ -24,6 +24,7 @@
             <xsd:element name="FinalRegistrationDate" type="OpenCmsDateTime" minOccurs="0" maxOccurs="1" />
             <xsd:element name="KeepDays" type="OpenCmsString" minOccurs="0"  />
             <xsd:element name="ReminderMail" type="OpenCmsBookingReminder" minOccurs="0" />
+            <xsd:element name="MaxGroupSize" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -32,6 +33,7 @@
         <xsd:appinfo>
             <resourcebundles>
                 <propertybundle name="alkacon.mercury.template.messages" />
+                <propertybundle name="alkacon.mercury.webform.messages" />
             </resourcebundles>
             <FieldSettings>
                 <Setting>
@@ -109,6 +111,14 @@
                     <PropertyName>ReminderMail</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Booking.ReminderMail)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Booking.ReminderMail.help)]]></Description>
+                </Setting>
+                <Setting>
+                    <PropertyName>MaxGroupSize</PropertyName>
+                    <DisplayName><![CDATA[%(key.msg.label.form.WebFormGroupBookingConfiguration.MaxGroupSize)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.Booking.MaxGroupSize.help)]]></Description>
+                    <RuleRegex><![CDATA[[1-9]\d?]]></RuleRegex>
+                    <RuleType>error</RuleType>
+                    <Error><![CDATA[%(key.msg.error.form.groupsize.1.99)]]></Error>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

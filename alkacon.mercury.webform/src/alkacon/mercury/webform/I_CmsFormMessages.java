@@ -50,6 +50,22 @@ public interface I_CmsFormMessages {
     final String FORM_ERROR_DB_HEADLINE = "form.error.db.headline";
     /** Message used as text in the submission failure feedback if the data could not be stored. */
     final String FORM_ERROR_DB_TEXT = "form.error.db.text";
+    /** Message used as headline in the submission failure feedback if no booking is possible anymore. */
+    final String FORM_ERROR_FULLY_BOOKED_HEADLINE = "form.error.fully.booked.headline";
+    /** Message used as text in the submission failure feedback if no booking is possible anymore. */
+    final String FORM_ERROR_FULLY_BOOKED_TEXT = "form.error.fully.booked.text";
+    /** Message used as headline in the submission failure feedback if the group size was invalid. */
+    final String FORM_ERROR_INVALID_GROUP_SIZE_HEADLINE = "form.error.invalid.group.size.headline";
+    /** Message used as text in the submission failure feedback if the group size was invalid. */
+    final String FORM_ERROR_INVALID_GROUP_SIZE_TEXT = "form.error.invalid.group.size.text";
+    /** Message used as headline in the submission failure feedback if the group size is bigger than the places left. */
+    final String FORM_ERROR_TOO_FEW_PLACES_HEADLINE = "form.error.too.few.places.headline";
+    /** Message used as text in the submission failure feedback if the group size is bigger than the places left. */
+    final String FORM_ERROR_TOO_FEW_PLACES_TEXT = "form.error.too.few.places.text";
+    /** Message used as headline in the submission failure feedback if the group size is greater than 1 and the booking would be for the waitlist. */
+    final String FORM_ERROR_WAITLIST_NO_GROUPS_HEADLINE = "form.error.waitlist.no.groups.headline";
+    /** Message used as text in the submission failure feedback if the group size is greater than 1 and the booking would be for the waitlist. */
+    final String FORM_ERROR_WAITLIST_NO_GROUPS_TEXT = "form.error.waitlist.no.groups.text";
     /** Message used as headline in the submission failure feedback if the registration mail could not be sent. */
     final String FORM_ERROR_MAIL_HEADLINE = "form.error.mail.headline";
     /** Message used as text in the submission failure feedback if the registration mail could not be sent. */
@@ -84,5 +100,13 @@ public interface I_CmsFormMessages {
     final String EVENT_WAITLIST_INFO = "event.waitlist.info";
     /** Message shown in paramter selection field select box if nothing is selected, e.g, something like "Please select" */
     final String PARAMETER_FIELD_SELECTBOX = "parameterfield.selectbox";
+    /** Message shown as error on the groupsize field. */
+    final String FORM_ERROR_BOOKING_GROUPSIZE_1 = "form.error.booking.groupsize.1";
+    /** Message shown as error on the groupsize field. */
+    final String FORM_ERROR_BOOKING_GROUPSIZE_WAITLIST = "form.error.booking.groupsize.waitlist";
+    /** Message shown as error on the groupsize field. */
+    final String FORM_ERROR_BOOKING_GROUPSIZE_LASTFREE = "form.error.booking.groupsize.lastfree";
+    /** Message shown as error on the groupsize field. */
+    final String FORM_ERROR_BOOKING_GROUPSIZE_FREE_1 = "form.error.booking.groupsize.free.1";
 
 }

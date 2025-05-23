@@ -151,6 +151,9 @@
             </c:if>
         </c:otherwise>
     </c:choose>
+    <c:if test="${booking.value.MaxGroupSize.isSet}">
+        ${form.adjustConfigValue("DBConfig/GroupBooking/MaxGroupSize", booking.value.MaxGroupSize.toString)}
+    </c:if>
     <c:if test="${formBookingXml.value.Dates.isSet}">
         <c:set var="dateSeries" value="${formBookingXml.value.Dates.toDateSeries}" />
         ${form.adjustConfigValue("macro:event.time", dateSeries.last.formatShort)}

@@ -284,8 +284,8 @@ pre {
   margin-top: 0; // 1
   margin-bottom: 1rem; // 2
   overflow: auto; // 3
-  color: $pre-color;
   @include font-size($code-font-size);
+  color: $pre-color;
 
   // Account for some code outputs that place code tags in pre tags
   code {
@@ -296,9 +296,9 @@ pre {
 }
 
 code {
+  @include font-size($code-font-size);
   color: var(--#{$prefix}code-color);
   word-wrap: break-word;
-  @include font-size($code-font-size);
 
   // Streamline the style when inside anchors to avoid broken underline and more
   a > & {
@@ -308,17 +308,15 @@ code {
 
 kbd {
   padding: $kbd-padding-y $kbd-padding-x;
+  @include font-size($kbd-font-size);
   color: $kbd-color;
   background-color: $kbd-bg;
-  @include font-size($kbd-font-size);
-  & {
-    @include border-radius($border-radius-sm);
-  }
+  @include border-radius($border-radius-sm);
 
   kbd {
     padding: 0;
-    font-weight: $nested-kbd-font-weight;
     @include font-size(1em);
+    font-weight: $nested-kbd-font-weight;
   }
 }
 

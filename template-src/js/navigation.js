@@ -93,8 +93,8 @@ function insertMegaMenu(path, $megaMenuParent) {
 
         var $menuListEntry = $megaMenuParent.find("ul");
         var idAttr = $menuListEntry.attr("id");
-        var $dropdown = jQuery("<div></div>").addClass("nav-menu").addClass("nav-mega-menu").attr("id", idAttr);
-        var $row = jQuery(content).find(".row").first();
+        var $dropdown = jQ("<div></div>").addClass("nav-menu").addClass("nav-mega-menu").attr("id", idAttr);
+        var $row = jQ(content).find(".row").first();
         $dropdown.append($row);
 
         $menuListEntry.remove();

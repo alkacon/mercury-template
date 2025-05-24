@@ -17,6 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+import jQuery from 'jquery';
+
 // this is taken straight from the jQuery docs:
 // http://api.jquery.com/jQuery.getScript/
 jQuery.loadScript = function( url, options, DEBUG ) {

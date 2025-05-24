@@ -34,8 +34,9 @@ import 'bootstrap/js/dist/tooltip';
 
 import jsDevice from 'current-device';
 import fitVids from 'fitvids';
-Object.assign(lazySizes.cfg, { init: false }); // otherwise device based configuration will not work
+
 import lazySizes from 'lazysizes';
+Object.assign(lazySizes.cfg, { init: false }); // otherwise device based configuration will not work
 
 import * as AnalyticElements from './analytics.js';
 import * as CommentElements from './comments.js';
@@ -1054,10 +1055,11 @@ const Mercury = function (jQ) {
 
 //webpack: setting the public path for the exported modules that are dynamically loaded
 //see https://webpack.js.org/guides/public-path/
-__webpack_public_path__ = function () {
-    return __scriptPath.replace("/mercury.js", "/");
-}();
-
+if (typeof __webpack_public_path__ !== "undefined") {
+    __webpack_public_path__ = (function () {
+        return __scriptPath.replace("/mercury.js", "/");
+    })();
+}
 
 jQuery(function() {
     Mercury.init();

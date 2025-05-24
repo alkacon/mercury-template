@@ -6220,6 +6220,88 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<destination>system/modules/alkacon.mercury.template/plugins</destination>
+			<type>folder</type>
+			<uuidstructure>73961870-389e-11f0-88d0-0242ac11002b</uuidstructure>
+			<datecreated>Sat, 24 May 2025 12:56:04 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Mercury plugins]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/plugins/vite-css.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/plugins/vite-css.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>5f9a54e8-3864-11f0-88d0-0242ac11002b</uuidstructure>
+			<uuidresource>5f9a54e9-3864-11f0-88d0-0242ac11002b</uuidresource>
+			<datecreated>Sat, 24 May 2025 06:00:20 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Vite integration CSS]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/plugins/vite-js.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/plugins/vite-js.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>12785436-37b1-11f0-a7eb-0242ac11002b</uuidstructure>
+			<uuidresource>12785437-37b1-11f0-a7eb-0242ac11002b</uuidresource>
+			<datecreated>Fri, 23 May 2025 08:36:50 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Vite integration JS]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/plugins/vite.xml</source>
+			<destination>system/modules/alkacon.mercury.template/plugins/vite.xml</destination>
+			<type>site_plugin</type>
+			<uuidstructure>8c76cf13-389e-11f0-88d0-0242ac11002b</uuidstructure>
+			<uuidresource>8c76cf14-389e-11f0-88d0-0242ac11002b</uuidresource>
+			<datecreated>Sat, 24 May 2025 12:56:46 GMT</datecreated>
+			<flags>512</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Vite integration]]></value>
+				</property>
+				<property>
+					<name>locale</name>
+					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>locale-available</name>
+					<value><![CDATA[en]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<destination>system/modules/alkacon.mercury.template/resources</destination>
 			<type>folder</type>
 			<uuidstructure>521c4ac6-7752-4162-bba2-968218c20e16</uuidstructure>
@@ -9947,6 +10029,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Translates a (file) name according to the configured rules]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/vite-integration.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/vite-integration.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>b7ae16b2-3864-11f0-88d0-0242ac11002b</uuidstructure>
+			<uuidresource>b7ae16b3-3864-11f0-88d0-0242ac11002b</uuidresource>
+			<datecreated>Sat, 24 May 2025 06:02:47 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Vite integration]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

@@ -67,8 +67,16 @@ var __isOnline=${cms.isOnlineProject},
 </script>
 </m:print>
 
-<%-- Load the main JavaScript in async mode --%>
-<script async src="<m:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
+<c:choose>
+    <c:when test="${empty cms.plugins['custom-js']}">
+        <%-- Load the main JavaScript in async mode --%>
+        <script async src="<m:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
+    </c:when>
+    <c:otherwise>
+        <%-- Use custom JS plugin --%>
+        <m:load-plugins group="custom-js" type="jsp" />
+    </c:otherwise>
+</c:choose>
 
 ${canonicalLinks}
 

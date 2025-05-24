@@ -22,7 +22,8 @@
     "postcss-urlrewrite": "^0.3.0",
     "sass": "1.77.8",
     "webpack": "^5.99.9",
-    "webpack-cli": "^6.0.1"
+    "webpack-cli": "^6.0.1",
+    "vite": "^6.3.5"
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "2.5.3",
@@ -56,13 +57,14 @@
     "delay": "1000"
   },
   "scripts": {
+    "vite-proxy": "vite",
     "dist": "npm-run-all css js",
     "css": "npm run --silent cssg:all --xsrcdir=template-src/scss/themes --xbuilddir=build/npm --xdeploydir=$npm_package_config_templateThemeVfsDir/css",
     "cssi:icons": "sass --source-map --embed-sources --stop-on-error template-src/fork-awesome/scss:$npm_config_xbuilddir/1_processed",
     "cssg:all": "npm-run-all cssg:clean cssg:sass cssi:* cssg:postcss cssg:minify cssg:deploy",
     "cssg:plugins": "cleancss --source-map --source-map-inline-sources --output $npm_config_xbuilddir/1_processed/base.css template-src/fork-awesome/css/fork-awesome.css",
     "cssg:clean": "del-cli $npm_config_xbuilddir/1_processed/* $npm_config_xbuilddir/2_postcssed/* $npm_config_xbuilddir/3_minified/*",
-    "cssg:sass": "sass --source-map --embed-sources --stop-on-error $npm_config_xsrcdir:$npm_config_xbuilddir/1_processed",
+    "cssg:sass": "sass --source-map --embed-sources --stop-on-error --load-path='../' $npm_config_xsrcdir:$npm_config_xbuilddir/1_processed",
     "cssg:postcss": "postcss --config ./npm_scripts/postcss.config.js $npm_config_xbuilddir/1_processed/*.css --dir $npm_config_xbuilddir//2_postcssed",
     "cssg:minify": "node ./npm_scripts/cleancss.js --cleancss --inputDir $npm_config_xbuilddir/2_postcssed/ --outputDir $npm_config_xbuilddir//3_minified",
     "cssg:deploy": "copyfiles -f -V $npm_config_xbuilddir/3_minified/* ${OCMOUNT}/$npm_config_xdeploydir",

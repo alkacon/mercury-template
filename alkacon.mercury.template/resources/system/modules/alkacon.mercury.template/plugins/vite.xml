@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SitePlugins xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/org.opencms.ade.config/schemas/site_plugin.xsd">
+  <SitePlugin language="en">
+    <NiceName><![CDATA[Vite integration plugin]]></NiceName>
+    <Description/>
+    <Plugin>
+      <Group><![CDATA[custom-css]]></Group>
+      <Target>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/plugins/vite-css.jsp]]></target>
+          <uuid>5f9a54e8-3864-11f0-88d0-0242ac11002b</uuid>
+        </link>
+      </Target>
+      <Order><![CDATA[100000]]></Order>
+    </Plugin>
+    <Plugin>
+      <Group><![CDATA[custom-js]]></Group>
+      <Target>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/plugins/vite-js.jsp]]></target>
+          <uuid>12785436-37b1-11f0-a7eb-0242ac11002b</uuid>
+        </link>
+      </Target>
+      <Order><![CDATA[100000]]></Order>
+    </Plugin>
+  </SitePlugin>
+</SitePlugins>

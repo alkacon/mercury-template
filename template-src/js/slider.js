@@ -36,6 +36,22 @@ const checkInert = (embla, slides) => {
         } else {
             slide.setAttribute('inert', '');
         }
+
+        const caption = slide.querySelector('.titlecaption');
+        if (caption) {
+            const isActive = slide.className.includes('slide-active');
+            const targetTag = isActive ? 'h1' : 'h2';
+            if (caption.tagName !== targetTag) {
+                const newCaption = document.createElement(targetTag);
+                for (let {name, value} of Array.from(caption.attributes)) {
+                    newCaption.setAttribute(name, value);
+                }
+                while (caption.firstChild) {
+                    newCaption.appendChild(caption.firstChild);
+                }
+                caption.parentNode.replaceChild(newCaption, caption);
+            }
+        }
     });
 }
 

@@ -774,7 +774,7 @@ function doScrollToAnchor($anchor, offset) {
             targetTop = targetTop - m_fixedHeader.getHeight();
             if (DEBUG) console.info("Navigation.debScrollToAnchor(#" + $anchor.attr('id') + ") adjusting position to:" + targetTop);
         }
-        var page = $("html, body");
+        var page = jQ("html, body");
         // see: https://stackoverflow.com/questions/18445590/jquery-animate-stop-scrolling-when-user-scrolls-manually
         page.on("scroll mousedown wheel DOMMouseScroll mousewheel keyup touchmove", function () {
             page.stop();

@@ -185,7 +185,8 @@
             --%>"draggable": ${isDraggable}, <%--
             --%>"arrows": ${showArrows}, <%--
             --%>"dots": ${showDots}, <%--
-            --%>"pause": ${pauseOnHover}<%--
+            --%>"pause": ${pauseOnHover},<%--
+            --%>"hsize": ${hsizeTitle} <%--
         --%>}'<%--
     --%></c:set>
     </c:if>

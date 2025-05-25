@@ -29,7 +29,8 @@ const getMass = (speed) => {
     return massTable[speed];
 }
 
-const checkInert = (embla, slides) => {
+const checkInert = (embla, slides, hsize) => {
+    hsize = hsize || 0;
     slides.forEach((slide) => {
         if (slide.className.includes('slide-active')) {
             slide.removeAttribute('inert');
@@ -38,9 +39,9 @@ const checkInert = (embla, slides) => {
         }
 
         const caption = slide.querySelector('.titlecaption');
-        if (caption) {
+        if (caption && (hsize == 1)) {
             const isActive = slide.className.includes('slide-active');
-            const targetTag = isActive ? 'h1' : 'h2';
+            const targetTag = isActive ? 'h' + hsize : 'h' + (hsize + 1);
             if (caption.tagName !== targetTag) {
                 const newCaption = document.createElement(targetTag);
                 for (let {name, value} of Array.from(caption.attributes)) {
@@ -318,6 +319,7 @@ function initEmblaSliders(sliders) {
         options.loop = true;
         options.align = 'start';
         options.speed = options.speed || 4;
+        options.hsize = options.hsize || 0;
         options.inViewThreshold = (options.transition == 'logo' ? 0.75 : 0);
         options.startIndex = startIndex;
 
@@ -395,11 +397,11 @@ function initEmblaSliders(sliders) {
             }
         });
 
-        checkInert(embla, slides);
+        checkInert(embla, slides, options.hsize);
         embla.on('select', function () {
             // timeout is necessary for correct handling of the logo carousel slides
             setTimeout(() => {
-                checkInert(embla, slides);
+                checkInert(embla, slides, options.hsize);
             }, 50);
         });
 

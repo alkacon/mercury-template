@@ -306,7 +306,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 span.badge {
-    color: $text-light;
+    color: get-text-color($grey);
     background-color: $grey;
     font-weight: $font-weight-base;
     padding: 4px 7px;

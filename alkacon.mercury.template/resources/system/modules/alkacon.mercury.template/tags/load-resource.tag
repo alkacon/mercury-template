@@ -16,7 +16,7 @@
     description="Default for the path in case 'path' is empty." %>
 
 <%@ attribute name="name" type="java.lang.String" required="false"
-description="Resource name that is appended to the path." %>
+    description="Resource name that is appended to the path." %>
 
 
 <%@ variable name-given="resourcePath" declare="true"

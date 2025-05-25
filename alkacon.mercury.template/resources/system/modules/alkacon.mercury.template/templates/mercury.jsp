@@ -107,12 +107,20 @@ ${canonicalLinks}
 
 <%-- Include additional CSS / JS from Mercury template modifications (if allowed) --%>
 <c:if test="${allowTemplateMods}">
-    <m:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
-        <link rel="stylesheet" href="<m:link-resource resource='${resourcePath}'/>"><m:nl />
-    </m:load-resource>
-    <m:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
-        <script src="<m:link-resource resource='${resourcePath}'/>" defer></script><m:nl />
-    </m:load-resource>
+    <c:choose>
+        <c:when test="${empty cms.plugins['custom-mods']}">
+            <m:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
+                <link rel="stylesheet" href="<m:link-resource resource='${resourcePath}'/>"><m:nl />
+            </m:load-resource>
+            <m:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
+                <script src="<m:link-resource resource='${resourcePath}'/>" defer></script><m:nl />
+            </m:load-resource>
+        </c:when>
+        <c:otherwise>
+            <%-- Use custom CSS plugin --%>
+            <m:load-plugins group="custom-mods" type="jsp" />
+        </c:otherwise>
+    </c:choose>
 </c:if>
 
 <c:choose>

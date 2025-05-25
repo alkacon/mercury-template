@@ -824,7 +824,7 @@ function combineGroups($groups, isStatic) {
     var lastGroupId, $lastGroup;
     var hasGroups = false;
     $groups.each(function(index) {
-        var $this = $(this);
+        var $this = jQ(this);
         var thisGroupId = $this.attr("data-listgroup");
         $this.removeAttr("data-listgroup");
         var $thisListEntry = $this.parents(".list-entry");
@@ -1256,7 +1256,7 @@ export function registerFilter(filter) {
  * Updates the counts and reset buttons.
  * Use the function only if really necessary, e.g., if a lazily loaded filter has to add more
  * filters when it is completely loaded.
- * 
+ *
  * @param {string} elementId element id of the list to update the reset buttons for.
  */
 export function updateFilters(elementId) {
@@ -1586,7 +1586,9 @@ export function init(jQuery, debug, verbose) {
             if ((element.classList.contains("op-lg") && Mercury.gridInfo().isMinLg())
                 || (element.classList.contains("op-md") && Mercury.gridInfo().isMinMd())
                 || (element.classList.contains("op-sm") && Mercury.gridInfo().isMinSm())) {
-                jQ(element).collapse("show");
+                if (typeof jQ === "function" && typeof jQ(element).collapse === "function") {
+                    jQ(element).collapse("show");
+                }
             }
         });
     }

@@ -24,5 +24,15 @@
       </Target>
       <Order><![CDATA[100000]]></Order>
     </Plugin>
+    <Plugin>
+      <Group><![CDATA[custom-mods]]></Group>
+      <Target>
+        <link internal="true" type="WEAK">
+          <target><![CDATA[/system/modules/alkacon.mercury.template/plugins/vite-mods.jsp]]></target>
+          <uuid>4284a481-38f4-11f0-88d0-0242ac11002b</uuid>
+        </link>
+      </Target>
+      <Order><![CDATA[100000]]></Order>
+    </Plugin>
   </SitePlugin>
 </SitePlugins>

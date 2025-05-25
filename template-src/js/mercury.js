@@ -928,7 +928,7 @@ const Mercury = function (jQ) {
             }
         }
 
-        if (requiresModule(".type-shariff")) {
+        if (requiresModule(".type-shariff") && !import.meta.hot) {
             try {
                 import(
                     /* webpackChunkName: "mercury-shariff" */

@@ -42,7 +42,7 @@
     currentPageFolder="${currentPageFolder}"
     currentPageUri="${currentPageUri}">
 
-    <nav class="nav-main-group ${logoImage.value.Image.isSet ? 'has-sidelogo ' : ''}${cssWrapper}"><%----%>
+    <nav class="nav-main-group ${(not empty logoImage) and logoImage.value.Image.isSet ? 'has-sidelogo ' : ''}${cssWrapper}"><%----%>
         <m:nl />
 
         <c:set var="mobileHeaderPlugins" value="${cms.plugins['nav-mobile-header']}" />

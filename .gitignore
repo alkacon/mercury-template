@@ -9,4 +9,4 @@
 /module-export.sh
 *.ignore.txt
 .DS_Store
-template-src/scss/themes-local
+vite.env.local.js

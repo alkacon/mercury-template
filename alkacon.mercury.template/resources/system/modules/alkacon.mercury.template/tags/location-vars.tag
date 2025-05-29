@@ -193,15 +193,15 @@
                     <cms:jsonvalue value="${locJsonLdPlace}" />
                     <cms:jsonvalue value="${locJsonLdUrl}" />
                 </cms:jsonarray>
-                <c:set var="locAttendanceMode"  value="https://schema.org/MixedEventAttendanceMode" />
+                <c:set var="locAttendanceMode" value="https://schema.org/MixedEventAttendanceMode" />
             </c:when>
             <c:when test="${not empty locJsonLdPlace}">
                 <c:set var="locJsonLd" value="${locJsonLdPlace}" />
-                <c:set var="locAttendanceMode"  value="https://schema.org/OfflineEventAttendanceMode" />
+                <c:set var="locAttendanceMode" value="https://schema.org/OfflineEventAttendanceMode" />
             </c:when>
             <c:when test="${not empty locJsonLdUrl}">
                 <c:set var="locJsonLd" value="${locJsonLdUrl}" />
-                <c:set var="locAttendanceMode"  value="https://schema.org/OnlineEventAttendanceMode" />
+                <c:set var="locAttendanceMode" value="https://schema.org/OnlineEventAttendanceMode" />
             </c:when>
         </c:choose>
     </c:if>

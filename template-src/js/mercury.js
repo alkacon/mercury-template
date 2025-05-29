@@ -30,7 +30,7 @@ import 'bootstrap/js/dist/modal';
 // import 'bootstrap/js/dist/scrollspy';
 import 'bootstrap/js/dist/tab';
 // import 'bootstrap/js/dist/toast';
-import 'bootstrap/js/dist/tooltip';
+import bsTooltip from 'bootstrap/js/dist/tooltip';
 
 import jsDevice from 'current-device';
 import fitVids from 'fitvids';
@@ -541,30 +541,30 @@ const Mercury = function (jQ) {
         lazySizes.init();
     }
 
-
     function initTooltips(parent) {
         // initialize bootstrap tooltips
-        parent = parent || '';
-        const selector = parent + ' [data-bs-toggle="tooltip"]';
-        const $tooltips = jQ(selector);
-        if (DEBUG) console.info("Mercury.initTooltips() " + selector + " elements found: " + $tooltips.length);
-        if ($tooltips.length > 0) {
-            $tooltips.tooltip({
+        let parentSelector = parent ? document.querySelector(parent) : document;
+        if (!parentSelector) parentSelector = document;
+        const tooltips = parentSelector.querySelectorAll('[data-bs-toggle="tooltip"]');
+        if (DEBUG) console.info("Mercury.initTooltips() " + tooltips.length + " Elemente gefunden.");
+
+        tooltips.forEach(function (el) {
+            const tooltip = bsTooltip.getOrCreateInstance(el, {
                 container: 'body',
                 placement: 'top',
-                delay: { 'show': 100, 'hide': 100 }
+                delay: { show: 100, hide: 100 }
             });
+
             if (!device().desktop()) {
                 // automatically close the tooltip
-                $tooltips.on('shown.bs.tooltip', function (event) {
+                el.addEventListener('shown.bs.tooltip', function () {
                     setTimeout(function () {
-                        $(event.target).tooltip('hide');
+                        tooltip.hide();
                     }, 2500);
                 });
             }
-        }
+        });
     }
-
 
     function initPlaceholder($element, callback) {
         if (isEditMode() && (typeof $element.data("placeholder") !== "undefined")) {

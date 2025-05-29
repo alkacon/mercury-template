@@ -26,15 +26,15 @@ function exitProcess() {
     process.exit(1);
 }
 
-function getEnvValue(name, optional) {
-    optional = false || optional;
+function getEnvValue(name, required) {
+    required = false || required;
     if (env && env[name]) {
         return env[name];
     }
     if (process.env[name]) {
         return process.env[name];
     }
-    if (! optional) {
+    if (required) {
         log.error(`Error: The variable \x1b[1m\x1b[36m${name}\x1b[31m is not set!`);
         exitProcess();
     }
@@ -46,63 +46,63 @@ function toArray(val) {
     return Array.isArray(val) ? val : [val];
 }
 
-const openCmsServer = getEnvValue('OPENCMS_SERVER');
-const viteSecret = getEnvValue('OPENCMS_VITE_SECRET');
-const workspacePath =  getEnvValue('OPENCMS_WORKSPACE', true);
-const viteRoot = getEnvValue('OPENCMS_VITE_ROOT', true) || './';
-const vitePrefixes = toArray(getEnvValue('OPENCMS_VITE_PREFIX', true));
-const repositories = toArray(getEnvValue('OPENCMS_REPOSITORIES', true));
-const viteMercuryScss = getEnvValue('OPENCMS_MERCURY_SCSS', true);
-const openCmsSite = getEnvValue('OPENCMS_SITE', true);
-const viteMercuryJs = getEnvValue('OPENCMS_MERCURY_JS', true);
-const viteAdditionalCss = toArray(getEnvValue('OPENCMS_VITE_ADD_CSS', true));
-const viteAdditionalJs = toArray(getEnvValue('OPENCMS_VITE_ADD_JS', true));
-const viteReplaceCustom = getEnvValue('OPENCMS_VITE_REPLACE_CUSTOM', true);
-const aliasAddition = toArray(getEnvValue('OPENCMS_VITE_ALIASES', true));
-const fontAddition = toArray(getEnvValue('OPENCMS_VITE_FONTS', true));
+const openCmsServer = getEnvValue('OPENCMS_SERVER', true);
+const viteSecret = getEnvValue('OPENCMS_VITE_SECRET', true);
+const openCmsSite = getEnvValue('OPENCMS_SITE');
+const workspacePath =  getEnvValue('OPENCMS_WORKSPACE');
+const viteRoot = getEnvValue('OPENCMS_VITE_ROOT') || './';
+const repositories = toArray(getEnvValue('OPENCMS_REPOSITORIES') || 'mercury-template');
+const mercuryScssSrc = getEnvValue('OPENCMS_MERCURY_SCSS');
+const mercuryJsSrc = getEnvValue('OPENCMS_MERCURY_JS');
+const viteAdditionalPrefixes = toArray(getEnvValue('OPENCMS_VITE_PREFIX'));
+const viteAdditionalCss = toArray(getEnvValue('OPENCMS_VITE_ADD_CSS'));
+const viteAdditionalJs = toArray(getEnvValue('OPENCMS_VITE_ADD_JS'));
+const viteReplaceCustom = getEnvValue('OPENCMS_VITE_REPLACE_CUSTOM');
+const aliasAddition = toArray(getEnvValue('OPENCMS_VITE_ALIASES'));
+const fontAddition = toArray(getEnvValue('OPENCMS_VITE_FONTS'));
 
-const viteMercuryJsDir = viteMercuryJs ? viteMercuryJs.substring(0, viteMercuryJs.lastIndexOf('/')) : null;
+const viteMercuryJsDir = mercuryJsSrc ? mercuryJsSrc.substring(0, mercuryJsSrc.lastIndexOf('/')) : null;
 
-if ((repositories.length > 0) && (viteAdditionalCss.length == 0) && (viteAdditionalJs.length == 0) && !viteMercuryScss && !viteMercuryJs){
+if ((repositories.length > 0) && (viteAdditionalCss.length == 0) && (viteAdditionalJs.length == 0) && !mercuryScssSrc && !mercuryJsSrc && !viteReplaceCustom){
     log.error(`Error: You must set at least one of the following variables:`);
-    log.error(`➜ \x1b[1m\x1b[36mOPENCMS_VITE_CSS\x1b[31m`);
-    log.error(`➜ \x1b[1m\x1b[36mOPENCMS_VITE_JS\x1b[31m`);
+    log.error(`➜ \x1b[1m\x1b[36mOPENCMS_VITE_REPLACE_CUSTOM\x1b[31m`);
     log.error(`➜ \x1b[1m\x1b[36mOPENCMS_MERCURY_SCSS\x1b[31m`);
     log.error(`➜ \x1b[1m\x1b[36mOPENCMS_MERCURY_JS\x1b[31m`);
     exitProcess();
 }
 
-const opencmsViteSssPrefix = '/scss/';
-if (viteMercuryScss && !vitePrefixes.includes(opencmsViteSssPrefix)) {
-    vitePrefixes.push(opencmsViteSssPrefix);
-}
-
-const opencmsViteCssPrefix = '/@opencms-vite-css/';
-const opencmsViteJsPrefix = '/@opencms-vite-js/';
+const customCssPrefix = '/@opencms-vite-css/';
+const customJsPrefix = '/@opencms-vite-js/';
 const viteLocalCssPath = '/css/';
 const viteLocalJsPath = '/js/';
-if (viteReplaceCustom) {
-    if (!vitePrefixes.includes(opencmsViteCssPrefix)) {
-        vitePrefixes.push(opencmsViteCssPrefix);
-    }
-    if (!vitePrefixes.includes(opencmsViteJsPrefix)) {
-        vitePrefixes.push(opencmsViteJsPrefix);
-    }
-}
+const viteCustomReplaceRules = viteReplaceCustom ? [{
+    find: customCssPrefix,
+    replacement: viteLocalCssPath
+}, {
+    find: customJsPrefix,
+    replacement: viteLocalJsPath
+}] : [];
+const viteCustomPrefixes = viteReplaceCustom ? [customCssPrefix, customJsPrefix] : [];
+
+const defaultVitePrefixes = ['/@fs', '/@vite', '/scss/']
+if (viteMercuryJsDir) defaultVitePrefixes.push(viteMercuryJsDir);
+
+const vitePrefixes = [...new Set([...defaultVitePrefixes, ...viteAdditionalPrefixes, ...viteCustomPrefixes])];
 
 const startupMessage = {
     name: 'opencms-vite-startup',
     config(config) {
-                                     log.info(`OpenCms Server   ➜ \x1b[1m\x1b[33m${openCmsServer}`);
-        if (workspacePath)           log.info(`User Workspace   ➜ \x1b[1m\x1b[33m${workspacePath}`);
-        if (repositories.length > 0) log.info(`Repositories     ➜ \x1b[32m${repositories.join(', ')}`);
-        if (viteEnvFile)             log.info(`Vite Env File    ➜ \x1b[32m${viteEnvFile}`);
-                                     log.info(`Vite Root        ➜ \x1b[32m${viteRoot}`);
-        if (openCmsSite)             log.info(`OpenCms Site     ➜ \x1b[32m${openCmsSite}`);
-        if (viteMercuryScss)         log.info(`Mercury SCSS     ➜ \x1b[35m${viteMercuryScss}`);
-        if (viteMercuryJs)           log.info(`Mercury JS       ➜ \x1b[35m${viteMercuryJs}`);
-        if (viteAdditionalCss.length > 0) log.info(`Custom CSS       ➜ \x1b[35m${viteAdditionalCss.join(', ')}`);
-        if (viteAdditionalJs.length > 0)  log.info(`Custom JS        ➜ \x1b[35m${viteAdditionalJs.join(', ')}`);
+                                          log.info(`OpenCms Server   ➜ \x1b[1m\x1b[33m${openCmsServer}`);
+        if (workspacePath)                log.info(`User Workspace   ➜ \x1b[1m\x1b[33m${workspacePath}`);
+        if (repositories.length > 0)      log.info(`Repositories     ➜ \x1b[32m${repositories.join(', ')}`);
+        if (viteEnvFile)                  log.info(`Vite Env File    ➜ \x1b[32m${viteEnvFile}`);
+                                          log.info(`Vite Root        ➜ \x1b[32m${viteRoot}`);
+        if (openCmsSite)                  log.info(`OpenCms Site     ➜ \x1b[32m${openCmsSite}`);
+        if (viteReplaceCustom)            log.info(`Customs replaced ➜ \x1b[35m${viteReplaceCustom}`);
+        if (mercuryScssSrc)               log.info(`Mercury SCSS     ➜ \x1b[35m${mercuryScssSrc}`);
+        if (mercuryJsSrc)                 log.info(`Mercury JS       ➜ \x1b[35m${mercuryJsSrc}`);
+        if (viteAdditionalCss.length > 0) log.info(`Additional CSS   ➜ \x1b[35m${viteAdditionalCss.join(', ')}`);
+        if (viteAdditionalJs.length > 0)  log.info(`Additional JS    ➜ \x1b[35m${viteAdditionalJs.join(', ')}`);
     }
 };
 
@@ -140,16 +140,7 @@ export default defineConfig({
                 }))
                 : []
             ),
-            ...(viteReplaceCustom
-                ? [{
-                    find: opencmsViteCssPrefix,
-                    replacement: viteLocalCssPath
-                }, {
-                    find: opencmsViteJsPrefix,
-                    replacement: viteLocalJsPath
-                }]
-                : []
-            ),
+            ...(viteCustomReplaceRules),
             ...(aliasAddition)
         ]
     },
@@ -163,15 +154,12 @@ export default defineConfig({
                 target: openCmsServer,
                 changeOrigin: true,
                 bypass: (req) => {
-                    // These resources will be served from Vite
                     if (
+                        // These resources will be served from Vite
                         vitePrefixes.some(prefix => req.url.startsWith(prefix)) ||
-                        (viteMercuryJsDir && req.url.startsWith(viteMercuryJsDir)) ||
-                        req.url.includes('/vite/dist') ||
-                        req.url.includes('/@fs') ||
-                        req.url.includes('/@vite')
+                        req.url.includes('/vite/dist')
                     ) {
-                        // Everything else is served through the proxy
+                        // Everything else is served through the proxy directly from OpenCms
                         return req.url;
                     }
                 },
@@ -185,11 +173,11 @@ export default defineConfig({
                         if (viteReplaceCustom) {
                             proxyReq.setHeader('X-Vite-Replace-Custom', 'true');
                         }
-                        if (viteMercuryScss) {
-                            proxyReq.setHeader('X-Vite-Mercury-Scss', viteMercuryScss);
+                        if (mercuryScssSrc) {
+                            proxyReq.setHeader('X-Vite-Mercury-Scss', mercuryScssSrc);
                         }
-                        if (viteMercuryJs) {
-                            proxyReq.setHeader('X-Vite-Mercury-Js', viteMercuryJs);
+                        if (mercuryJsSrc) {
+                            proxyReq.setHeader('X-Vite-Mercury-Js', mercuryJsSrc);
                         }
                         if (viteAdditionalCss.length > 0) {
                             proxyReq.setHeader('X-Vite-Additional-Css', viteAdditionalCss.join(','));

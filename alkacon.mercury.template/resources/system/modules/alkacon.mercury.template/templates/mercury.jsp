@@ -67,16 +67,10 @@ var __isOnline=${cms.isOnlineProject},
 </script>
 </m:print>
 
-<c:choose>
-    <c:when test="${empty cms.plugins['custom-js']}">
-        <%-- Load the main JavaScript in async mode --%>
-        <script async src="<m:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
-    </c:when>
-    <c:otherwise>
-        <%-- Use custom JS plugin --%>
-        <m:load-plugins group="custom-js" type="jsp" />
-    </c:otherwise>
-</c:choose>
+<m:check-devmode part="js">
+    <%-- Load the main JavaScript in async mode --%>
+    <script async src="<m:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
+</m:check-devmode>
 
 ${canonicalLinks}
 
@@ -86,20 +80,22 @@ ${canonicalLinks}
 <m:load-plugins group="js-defer" />
 <m:load-plugins group="template-head-includes" type="jsp" />
 
-<c:choose>
-    <c:when test="${empty cms.plugins['custom-css']}">
-        <%-- Use default CSS configuration --%>
-        <m:load-icons>
-            <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme']}" />
-            <link rel="stylesheet" href="<m:link-resource resource='${cssTheme}'/>"><%----%>
-            <m:nl />
-        </m:load-icons>
-    </c:when>
-    <c:otherwise>
-        <%-- Use custom CSS plugin --%>
-        <m:load-plugins group="custom-css" type="jsp" />
-    </c:otherwise>
-</c:choose>
+<m:check-devmode part="css" contentPropertiesSearch="${contentPropertiesSearch}">
+    <c:choose>
+        <c:when test="${empty cms.plugins['custom-css']}">
+            <%-- Use default CSS configuration --%>
+            <m:load-icons>
+                <c:set var="cssTheme" value="${empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme']}" />
+                <link rel="stylesheet" href="<m:link-resource resource='${cssTheme}'/>"><%----%>
+                <m:nl />
+            </m:load-icons>
+        </c:when>
+        <c:otherwise>
+            <%-- Use custom CSS plugin --%>
+            <m:load-plugins group="custom-css" type="jsp" />
+        </c:otherwise>
+    </c:choose>
+</m:check-devmode>
 
 <%-- Include CSS from plugins after main Mercury CSS --%>
 <m:load-plugins group="css" />
@@ -107,20 +103,14 @@ ${canonicalLinks}
 
 <%-- Include additional CSS / JS from Mercury template modifications (if allowed) --%>
 <c:if test="${allowTemplateMods}">
-    <c:choose>
-        <c:when test="${empty cms.plugins['custom-mods']}">
-            <m:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
-                <link rel="stylesheet" href="<m:link-resource resource='${resourcePath}'/>"><m:nl />
-            </m:load-resource>
-            <m:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
-                <script src="<m:link-resource resource='${resourcePath}'/>" defer></script><m:nl />
-            </m:load-resource>
-        </c:when>
-        <c:otherwise>
-            <%-- Use custom CSS plugin --%>
-            <m:load-plugins group="custom-mods" type="jsp" />
-        </c:otherwise>
-    </c:choose>
+    <m:check-devmode part="mods">
+        <m:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
+            <link rel="stylesheet" href="<m:link-resource resource='${resourcePath}'/>"><m:nl />
+        </m:load-resource>
+        <m:load-resource path="${contentPropertiesSearch['mercury.extra.js']}" defaultPath="${cms.subSitePath}" name="custom.js">
+            <script src="<m:link-resource resource='${resourcePath}'/>" defer></script><m:nl />
+        </m:load-resource>
+    </m:check-devmode>
 </c:if>
 
 <c:choose>
@@ -195,6 +185,8 @@ ${canonicalLinks}
          <cms:include file="${resourcePath}" cacheable="false" /><m:nl />
      </m:load-resource>
 </c:if>
+
+<m:check-devmode part="foot" />
 
 <%-- Privacy policy banner markup --%>
 <m:privacy-policy-banner contentUri="${cms.requestContext.uri}" contentPropertiesSearch="${contentPropertiesSearch}" />

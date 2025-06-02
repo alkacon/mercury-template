@@ -67,7 +67,7 @@ var __isOnline=${cms.isOnlineProject},
 </script>
 </m:print>
 
-<m:check-devmode part="js">
+<m:check-devmode part="js" contentPropertiesSearch="${contentPropertiesSearch}">
     <%-- Load the main JavaScript in async mode --%>
     <script async src="<m:link-resource resource='%(link.weak:/system/modules/alkacon.mercury.theme/js/mercury.js:2cf5d884-fea8-11e8-aee0-0242ac11002b)'/>"></script>
 </m:check-devmode>
@@ -103,7 +103,7 @@ ${canonicalLinks}
 
 <%-- Include additional CSS / JS from Mercury template modifications (if allowed) --%>
 <c:if test="${allowTemplateMods}">
-    <m:check-devmode part="mods">
+    <m:check-devmode part="mods" contentPropertiesSearch="${contentPropertiesSearch}">
         <m:load-resource path="${contentPropertiesSearch['mercury.extra.css']}" defaultPath="${cms.subSitePath}" name="custom.css">
             <link rel="stylesheet" href="<m:link-resource resource='${resourcePath}'/>"><m:nl />
         </m:load-resource>
@@ -186,7 +186,7 @@ ${canonicalLinks}
      </m:load-resource>
 </c:if>
 
-<m:check-devmode part="foot" />
+<m:check-devmode part="marker" contentPropertiesSearch="${contentPropertiesSearch}" />
 
 <%-- Privacy policy banner markup --%>
 <m:privacy-policy-banner contentUri="${cms.requestContext.uri}" contentPropertiesSearch="${contentPropertiesSearch}" />

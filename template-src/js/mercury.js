@@ -552,7 +552,7 @@ const Mercury = function (jQ) {
             const tooltip = bsTooltip.getOrCreateInstance(el, {
                 container: 'body',
                 placement: 'top',
-                delay: { show: 100, hide: 100 }
+                delay: { show: 100, hide: 100000 }
             });
 
             if (!device().desktop()) {

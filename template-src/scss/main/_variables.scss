@@ -141,7 +141,6 @@ $container-max-widths: (
 // Rounded corners
 
 $default-border-radius:             0 !default;
-$enable-rounded:                    $default-border-radius > 0 !default;
 $copyright-border-radius:           floor($default-border-radius * 0.5) !default;
 $image-border-radius:               var(--#{$prefix}border-radius) !default;
 

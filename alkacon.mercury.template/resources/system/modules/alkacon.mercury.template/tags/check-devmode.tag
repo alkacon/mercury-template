@@ -13,10 +13,14 @@
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
+
+
+<c:set var="DEBUG" value="${true}" />
 
 <%-- Vite is only supported in the offline project --%>
 <c:if test="${not cms.isOnlineProject}">
@@ -39,6 +43,50 @@
                         <c:set var="viteMercuryJs" value="${header['X-Vite-Mercury-Js']}" />
                         <c:set var="viteAdditionalCss" value="${not empty header['X-Vite-Additional-Css'] ? fn:split(header['X-Vite-Additional-Css'], ',') : null}" />
                         <c:set var="viteAdditionalJs" value="${not empty header['X-Vite-Additional-Js'] ? fn:split(header['X-Vite-Additional-Js'], ',') : null}" />
+
+                        <c:if test="${((part eq 'css') or (part eq 'marker')) and fn:endsWith(viteMercuryScss, '/')}">
+                            <c:choose>
+                                <c:when test="${empty param.vo}">
+                                    <c:set var="themeRes" value="${cms.readResource(empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme'])}" />
+                                    <c:if test="${not empty themeRes}">
+                                        <m:print test="${DEBUG}">
+                                            cms.requestContext.uri: ${cms.requestContext.uri}
+                                            viteMercuryScss (header): ${viteMercuryScss}
+                                            contentPropertiesSearch['mercury.theme']: ${contentPropertiesSearch['mercury.theme']}
+                                            themeRes.rootPath: ${themeRes.rootPath}
+                                            themeRes.name: ${themeRes.name}
+                                            themeRes.property['NavInfo']: ${themeRes.property['NavInfo']}
+                                        </m:print>
+                                        <c:choose>
+                                            <c:when test="${fn:startsWith(themeRes.property['NavInfo'], '/themes')}">
+                                                <c:set var="viteMercuryScss" value="/scss${themeRes.property['NavInfo']}" />
+                                                <c:set var="viteMercuryScss" value="${viteMercuryScss}${fn:endsWith(viteMercuryScss, '/') ? '' : '/'}" />
+                                            </c:when>
+                                            <c:when test="${not fn:startsWith(themeRes.rootPath, '/system/modules/')}">
+                                                <c:set var="viteMercuryScss" value="${null}" />
+                                            </c:when>
+                                        </c:choose>
+                                        <c:choose>
+                                            <c:when test="${not empty viteMercuryScss}">
+                                                <c:set var="resName" value="${fn:substringBefore(themeRes.name, '.')}" />
+                                                <c:if test="${not empty resName}">
+                                                    <c:set var="viteMercuryScss" value="${viteMercuryScss}${resName}.scss" />
+                                                </c:if>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:set var="viteMercuryScss" value="${null}" />
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:if>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:set var="viteMercuryScss" value="${param.vo}" />
+                                </c:otherwise>
+                            </c:choose>
+                            <m:print test="${DEBUG}">
+                                viteMercuryScss (final): ${viteMercuryScss}
+                            </m:print>
+                        </c:if>
                     </c:if>
                 </m:checkprincipal>
             </c:when>
@@ -78,20 +126,6 @@
 
         <c:choose>
             <c:when test="${not empty viteMercuryScss}">
-                <c:if test="${fn:endsWith(viteMercuryScss, '/')}">
-                    <c:choose>
-                        <c:when test="${empty param.vf}">
-                            <c:set var="styleRes" value="${cms.readResource(contentPropertiesSearch['mercury.theme'])}" />
-                            <c:if test="${not empty styleRes}">
-                                <c:set var="resName" value="${fn:substringBefore(styleRes.name, '.')}" />
-                                <c:set var="viteMercuryScss" value="${viteMercuryScss}${viteMercuryScss.endsWith('/') ? '' : '/'}${resName}.scss" />
-                            </c:if>
-                        </c:when>
-                        <c:otherwise>
-                            <c:set var="viteMercuryScss" value="${param.vf}" />
-                        </c:otherwise>
-                    </c:choose>
-                </c:if>
                 <m:load-icons>
                     <!-- Vite integration - Mercury SCSS replaced: --><m:nl />
                     <link rel="stylesheet" href="${viteMercuryScss}"><m:nl />
@@ -130,7 +164,7 @@
             </c:otherwise>
         </c:choose>
     </c:when>
-    <c:when test="${part eq 'foot'}">
+    <c:when test="${part eq 'marker'}">
 
         <fmt:setLocale value="${cms.locale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
@@ -153,16 +187,29 @@
                     }
                     .vite-marker-tooltip {
                         --my-tooltip-zindex: 400000;
-                        --my-tooltip-max-width: 400px;
+                        --my-tooltip-max-width: 600px;
+                        --my-tooltip-margin: 0px;
+                        --my-tooltip-font-size: 14px;
+                        --my-tooltip-color: #fff;
+                        --my-tooltip-bg: #474747;
+                        --my-tooltip-padding-x: 12px;
+                        --my-tooltip-padding-y: 6px;
+                        --my-tooltip-border-radius: 4px;
+                        --my-tooltip-opacity: 0.95;
+                        --my-tooltip-arrow-width: 10px;
+                        --my-tooltip-arrow-height: 5px;
+
                         position: fixed !important;
                         transform: none !important;
-                        inset: 5px 64px auto auto !important;
+                        inset: 5px 65px auto auto !important;
                         margin: 0 !important;
+                        font-family: "Open Sans", sans-serif !important;
+
                         .tooltip-arrow {
                             position: fixed !important;
                             width: var(--my-tooltip-arrow-height) !important;
                             height: var(--my-tooltip-arrow-width) !important;
-                            inset: 21px 60px auto auto !important;
+                            inset: 20px 60px auto auto !important;
                             transform: none !important;
                             &::before {
                                 inset: auto auto auto auto !important;

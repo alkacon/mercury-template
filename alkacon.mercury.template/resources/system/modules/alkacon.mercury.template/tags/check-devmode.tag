@@ -218,6 +218,12 @@
                                 border-bottom-color: transparent !important;
                             }
                         }
+                        strong {
+                            font-weight: 600;
+                        }
+                        .vite-title {
+                            font-size: 18px;
+                        }
                     }
                     html:not(.opencms-page-editor) {
                         #vite-marker {
@@ -228,12 +234,12 @@
                 <fmt:message var="viteTitle" key="msg.page.vite.active" />
                 <c:set var="viteTooltip">
                     <m:print comment="${false}" delimiter="">
-                        <strong>${viteTitle}</strong>
+                        <strong class='vite-title'>${viteTitle}</strong>
                         <c:if test="${not empty viteMercuryScss}">
-                            <br><em>Mercury SCSS: ${viteMercuryScss}</em>
+                            <br><strong>Mercury SCSS:</strong> <em>${viteMercuryScss}</em>
                         </c:if>
                         <c:if test="${not empty viteMercuryJs}">
-                            <br><em>Mercury JS: ${viteMercuryJs}</em>
+                            <br><strong>Mercury JS:</strong> <em>${viteMercuryJs}</em>
                         </c:if>
                         <c:if test="${viteReplaceCustom}">
                             <br><em>Custom CSS / JS</em>

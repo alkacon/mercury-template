@@ -130,7 +130,9 @@ function showSingleMap(mapData) {
         });
         const attributionControl = new mapgl.AttributionControl({compact:true});
         m_maps[mapData.id].addControl(attributionControl);
-        attributionControl._container.style.display = "none";
+        if (mapData.displayAttributionControl != "true") {
+            attributionControl._container.style.display = "none";
+        }
         m_maps[mapData.id].on('mousedown', function (e) {
             this.scrollZoom.enable();
             this.dragPan.enable();
@@ -145,8 +147,10 @@ function showSingleMap(mapData) {
 
         m_maps[mapData.id].on('load', function () {
             this.addControl(new mapgl.NavigationControl());
-            attributionControl._toggleAttribution();
-            attributionControl._container.style.display = "block";
+            if (mapData.displayAttributionControl != "true") {
+                attributionControl._toggleAttribution();
+                attributionControl._container.style.display = "block";
+            }
         });
     }
 
@@ -204,7 +208,9 @@ function showSingleMapClustered(mapData, filterByGroup) {
         });
         const attributionControl = new mapgl.AttributionControl({compact:true});
         map.addControl(attributionControl);
-        attributionControl._container.style.display = "none";
+        if (mapData.displayAttributionControl != "true") {
+            attributionControl._container.style.display = "none";
+        }
         map.on('mousedown', function (e) {
             this.scrollZoom.enable();
             this.dragPan.enable();
@@ -217,8 +223,10 @@ function showSingleMapClustered(mapData, filterByGroup) {
         });
         map.on("load", function () {
             this.addControl(new mapgl.NavigationControl());
-            attributionControl._toggleAttribution();
-            attributionControl._container.style.display = "block";
+            if (mapData.displayAttributionControl != "true") {
+                attributionControl._toggleAttribution();
+                attributionControl._container.style.display = "block";
+            }
         });
         m_maps[mapData.id] = map;
     }

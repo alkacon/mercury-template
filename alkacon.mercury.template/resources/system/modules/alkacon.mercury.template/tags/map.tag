@@ -154,6 +154,7 @@
     <c:if test="${isOsm}">
         <c:set var="cssPath"><m:link-resource resource="/system/modules/alkacon.mercury.template/osmviewer/map.css" /></c:set>
         <cms:jsonvalue key="css" value="${cssPath}" />
+        <cms:jsonvalue key="displayAttributionControl">${cms.sitemapConfig.attribute['osm.attribution']}</cms:jsonvalue>
     </c:if>
     <cms:jsonvalue key="markerCluster" value="${empty markerCluster ? false : markerCluster}" />
     <cms:jsonvalue key="markerTitle"><fmt:message key="msg.page.map.marker.title" /></cms:jsonvalue>

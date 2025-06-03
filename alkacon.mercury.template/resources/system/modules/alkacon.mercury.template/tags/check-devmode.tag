@@ -33,9 +33,18 @@
             <c:when test="${(not empty viteSecret) and (viteSecret eq reqSecret)}">
                 <%-- Vite user must have developer role --%>
                 <m:checkprincipal type="role" name="DEVELOPER">
+                    <c:set var="partJs" value="${part eq 'js'}" />
+                    <c:set var="partCss" value="${part eq 'css'}" />
+                    <c:set var="partMods" value="${part eq 'mods'}" />
+                    <c:set var="partMarker" value="${part eq 'marker'}" />
                     <c:set var="openCmsSite" value="${header['X-Vite-OpenCms-Site']}" />
+                    <c:set var="uriRootPath" value="${cms.readResource(cms.uri()).getRootPath()}" />
+                    <m:print test="${DEBUG and partCss}">
+                        openCmsSite (header): [${openCmsSite}]
+                        uri.rootPath: ${uriRootPath}
+                    </m:print>
                     <%-- If openCmsSite has been specified, the OpenCms site path from the current URI must start with openCmsSite --%>
-                    <c:if test="${(empty openCmsSite) or fn:startsWith(cms.readResource(cms.uri()).getRootPath(), openCmsSite)}">
+                    <c:if test="${(empty openCmsSite) or fn:startsWith(uriRootPath, openCmsSite)}">
                         <%-- Set Vite path information from request heders, these will be only present in case a vite proxy is used --%>
                         <c:set var="viteEnabled" value="${true}" />
                         <c:set var="viteReplaceCustom" value="${header['X-Vite-Replace-Custom'] eq 'true'}" />
@@ -43,26 +52,27 @@
                         <c:set var="viteMercuryJs" value="${header['X-Vite-Mercury-Js']}" />
                         <c:set var="viteAdditionalCss" value="${not empty header['X-Vite-Additional-Css'] ? fn:split(header['X-Vite-Additional-Css'], ',') : null}" />
                         <c:set var="viteAdditionalJs" value="${not empty header['X-Vite-Additional-Js'] ? fn:split(header['X-Vite-Additional-Js'], ',') : null}" />
-
-                        <c:if test="${((part eq 'css') or (part eq 'marker')) and fn:endsWith(viteMercuryScss, '/')}">
+                        <c:if test="${(partCss or partMarker) and fn:endsWith(viteMercuryScss, '/')}">
                             <c:choose>
                                 <c:when test="${empty param.vo}">
                                     <c:set var="themeRes" value="${cms.readResource(empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme'])}" />
                                     <c:if test="${not empty themeRes}">
-                                        <m:print test="${DEBUG}">
-                                            cms.requestContext.uri: ${cms.requestContext.uri}
-                                            viteMercuryScss (header): ${viteMercuryScss}
+                                        <c:set var="navInfo" value="${themeRes.property['NavInfo']}" />
+                                        <m:print test="${DEBUG and partCss}">
+                                            viteMercuryScss (header): [${viteMercuryScss}]
                                             contentPropertiesSearch['mercury.theme']: ${contentPropertiesSearch['mercury.theme']}
                                             themeRes.rootPath: ${themeRes.rootPath}
                                             themeRes.name: ${themeRes.name}
-                                            themeRes.property['NavInfo']: ${themeRes.property['NavInfo']}
+                                            themeRes.property['NavInfo']: ${navInfo}
                                         </m:print>
                                         <c:choose>
-                                            <c:when test="${fn:startsWith(themeRes.property['NavInfo'], '/themes')}">
-                                                <c:set var="viteMercuryScss" value="/scss${themeRes.property['NavInfo']}" />
-                                                <c:set var="viteMercuryScss" value="${viteMercuryScss}${fn:endsWith(viteMercuryScss, '/') ? '' : '/'}" />
+                                            <c:when test="${fn:startsWith(navInfo, '/@')}">
+                                                <c:set var="viteMercuryScss" value="${navInfo}" />
                                             </c:when>
-                                            <c:when test="${not fn:startsWith(themeRes.rootPath, '/system/modules/')}">
+                                            <c:when test="${fn:startsWith(navInfo, '/themes')}">
+                                                <c:set var="viteMercuryScss" value="/scss${navInfo}" />
+                                            </c:when>
+                                            <c:when test="${(not fn:startsWith(themeRes.rootPath, '/system/modules/')) or (fn:endsWith(viteMercuryScss, '/themes/'))}">
                                                 <c:set var="viteMercuryScss" value="${null}" />
                                             </c:when>
                                         </c:choose>
@@ -70,7 +80,7 @@
                                             <c:when test="${not empty viteMercuryScss}">
                                                 <c:set var="resName" value="${fn:substringBefore(themeRes.name, '.')}" />
                                                 <c:if test="${not empty resName}">
-                                                    <c:set var="viteMercuryScss" value="${viteMercuryScss}${resName}.scss" />
+                                                    <c:set var="viteMercuryScss" value="${viteMercuryScss}${fn:endsWith(viteMercuryScss, '/') ? '' : '/'}${resName}.scss" />
                                                 </c:if>
                                             </c:when>
                                             <c:otherwise>
@@ -83,7 +93,7 @@
                                     <c:set var="viteMercuryScss" value="${param.vo}" />
                                 </c:otherwise>
                             </c:choose>
-                            <m:print test="${DEBUG}">
+                            <m:print test="${DEBUG and partCss}">
                                 viteMercuryScss (final): ${viteMercuryScss}
                             </m:print>
                         </c:if>
@@ -107,7 +117,7 @@
         <jsp:doBody/>
 
     </c:when>
-    <c:when test="${part eq 'js'}">
+    <c:when test="${partJs}">
 
         <!-- Vite integration - Enable HMR: --><m:nl />
         <script type="module" src="/@vite/client"></script><m:nl />
@@ -122,7 +132,7 @@
         </c:choose>
 
     </c:when>
-    <c:when test="${part eq 'css'}">
+    <c:when test="${partCss}">
 
         <c:choose>
             <c:when test="${not empty viteMercuryScss}">
@@ -145,7 +155,7 @@
         </c:forEach>
 
     </c:when>
-    <c:when test="${part eq 'mods'}">
+    <c:when test="${partMods}">
 
         <c:choose>
             <c:when test="${viteReplaceCustom}">
@@ -164,9 +174,9 @@
             </c:otherwise>
         </c:choose>
     </c:when>
-    <c:when test="${part eq 'marker'}">
+    <c:when test="${partMarker}">
 
-        <fmt:setLocale value="${cms.locale}" />
+        <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">
             <m:print delimiter="">
                 <style>
@@ -189,7 +199,7 @@
                         --my-tooltip-zindex: 400000;
                         --my-tooltip-max-width: 600px;
                         --my-tooltip-margin: 0px;
-                        --my-tooltip-font-size: 14px;
+                        --my-tooltip-font-size: 12px;
                         --my-tooltip-color: #fff;
                         --my-tooltip-bg: #474747;
                         --my-tooltip-padding-x: 12px;
@@ -222,7 +232,7 @@
                             font-weight: 600;
                         }
                         .vite-title {
-                            font-size: 18px;
+                            font-size: 15px;
                         }
                     }
                     html:not(.opencms-page-editor) {
@@ -236,13 +246,14 @@
                     <m:print comment="${false}" delimiter="">
                         <strong class='vite-title'>${viteTitle}</strong>
                         <c:if test="${not empty viteMercuryScss}">
-                            <br><strong>Mercury SCSS:</strong> <em>${viteMercuryScss}</em>
+                            <c:set var="viteMercuryScssShort" value="${fn:replace(viteMercuryScss, '/template-src/scss/themes/', '|')}" />
+                            <br><strong>Mercury SCSS:</strong> ${viteMercuryScssShort}
                         </c:if>
                         <c:if test="${not empty viteMercuryJs}">
-                            <br><strong>Mercury JS:</strong> <em>${viteMercuryJs}</em>
+                            <br><strong>Mercury JS:</strong> ${viteMercuryJs}
                         </c:if>
                         <c:if test="${viteReplaceCustom}">
-                            <br><em>Custom CSS / JS</em>
+                            <br><strong>Custom CSS / JS</strong>
                         </c:if>
                     </m:print>
                 </c:set>

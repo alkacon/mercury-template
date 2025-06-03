@@ -46,11 +46,11 @@ function toArray(val) {
     return Array.isArray(val) ? val : [val];
 }
 
-const openCmsServer = getEnvValue('OPENCMS_SERVER', true);
-const viteSecret = getEnvValue('OPENCMS_VITE_SECRET', true);
-const openCmsSite = getEnvValue('OPENCMS_SITE');
+const opencmsServer = getEnvValue('OPENCMS_SERVER', true);
 const workspacePath =  getEnvValue('OPENCMS_WORKSPACE');
 const viteRoot = getEnvValue('OPENCMS_VITE_ROOT') || './';
+const viteSecret = getEnvValue('OPENCMS_VITE_SECRET', true);
+const opencmsSite = getEnvValue('OPENCMS_SITE');
 const repositories = toArray(getEnvValue('OPENCMS_REPOSITORIES') || 'mercury-template');
 const mercuryScssSrc = getEnvValue('OPENCMS_MERCURY_SCSS');
 const mercuryJsSrc = getEnvValue('OPENCMS_MERCURY_JS');
@@ -87,17 +87,19 @@ const viteCustomPrefixes = viteReplaceCustom ? [customCssPrefix, customJsPrefix]
 const defaultVitePrefixes = ['/@fs', '/@vite', '/scss/']
 if (viteMercuryJsDir) defaultVitePrefixes.push(viteMercuryJsDir);
 
-const vitePrefixes = [...new Set([...defaultVitePrefixes, ...viteAdditionalPrefixes, ...viteCustomPrefixes])];
+const viteRepoPrefixes = repositories.map(repo => `/@${repo}`);
+
+const vitePrefixes = [...new Set([...defaultVitePrefixes, ...viteRepoPrefixes, ...viteAdditionalPrefixes, ...viteCustomPrefixes])];
 
 const startupMessage = {
     name: 'opencms-vite-startup',
     config(config) {
-                                          log.info(`OpenCms Server   ➜ \x1b[1m\x1b[33m${openCmsServer}`);
+                                          log.info(`OpenCms Server   ➜ \x1b[1m\x1b[33m${opencmsServer}`);
         if (workspacePath)                log.info(`User Workspace   ➜ \x1b[1m\x1b[33m${workspacePath}`);
         if (repositories.length > 0)      log.info(`Repositories     ➜ \x1b[32m${repositories.join(', ')}`);
         if (viteEnvFile)                  log.info(`Vite Env File    ➜ \x1b[32m${viteEnvFile}`);
                                           log.info(`Vite Root        ➜ \x1b[32m${viteRoot}`);
-        if (openCmsSite)                  log.info(`OpenCms Site     ➜ \x1b[32m${openCmsSite}`);
+        if (opencmsSite)                  log.info(`OpenCms Site     ➜ \x1b[32m${opencmsSite}`);
         if (viteReplaceCustom)            log.info(`Customs replaced ➜ \x1b[35m${viteReplaceCustom}`);
         if (mercuryScssSrc)               log.info(`Mercury SCSS     ➜ \x1b[35m${mercuryScssSrc}`);
         if (mercuryJsSrc)                 log.info(`Mercury JS       ➜ \x1b[35m${mercuryJsSrc}`);
@@ -134,10 +136,16 @@ export default defineConfig({
     resolve: {
         alias: [
             ...((workspacePath && (repositories.length > 0))
-                ? repositories.map(repo => ({
-                    find: new RegExp(`^${repo}/`),
-                    replacement: `${workspacePath}/${repo}/`
-                }))
+                ? repositories.flatMap(repo => ([
+                    {
+                        find: new RegExp(`^${repo}/`),
+                        replacement: `${workspacePath}/${repo}/`
+                    },
+                    {
+                        find: new RegExp(`^/@${repo}/`),
+                        replacement: `${workspacePath}/${repo}/`
+                    }
+                ]))
                 : []
             ),
             ...(viteCustomReplaceRules),
@@ -151,7 +159,7 @@ export default defineConfig({
         },
         proxy: {
             '^/': {
-                target: openCmsServer,
+                target: opencmsServer,
                 changeOrigin: true,
                 bypass: (req) => {
                     if (
@@ -167,8 +175,8 @@ export default defineConfig({
                     // Set "Vite" headers for the request to OpenCms
                     proxy.on('proxyReq', (proxyReq, req, res, options) => {
                         proxyReq.setHeader('X-Vite-Secret', viteSecret);
-                        if (openCmsSite) {
-                            proxyReq.setHeader('X-Vite-OpenCms-Site', openCmsSite);
+                        if (opencmsSite) {
+                            proxyReq.setHeader('X-Vite-OpenCms-Site', opencmsSite);
                         }
                         if (viteReplaceCustom) {
                             proxyReq.setHeader('X-Vite-Replace-Custom', 'true');

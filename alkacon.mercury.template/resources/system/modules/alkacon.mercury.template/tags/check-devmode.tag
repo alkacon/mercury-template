@@ -72,7 +72,7 @@
                                             <c:when test="${fn:startsWith(navInfo, '/themes')}">
                                                 <c:set var="viteMercuryScss" value="/scss${navInfo}" />
                                             </c:when>
-                                            <c:when test="${(not fn:startsWith(themeRes.rootPath, '/system/modules/')) or (fn:endsWith(viteMercuryScss, '/themes/'))}">
+                                            <c:when test="${(not fn:startsWith(themeRes.rootPath, '/system/modules/')) or (fn:endsWith(viteMercuryScss, '/themes/')) or (viteMercuryScss eq '/any/')}">
                                                 <c:set var="viteMercuryScss" value="${null}" />
                                             </c:when>
                                         </c:choose>

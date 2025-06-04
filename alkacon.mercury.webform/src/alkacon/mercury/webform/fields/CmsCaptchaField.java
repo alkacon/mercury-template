@@ -313,10 +313,9 @@ public class CmsCaptchaField extends A_CmsField {
         ServletOutputStream out = null;
         try {
             CmsFlexController controller = CmsFlexController.getController(cms.getRequest());
-            HttpServletResponse response = controller.getCurrentResponse();
-            response.setHeader("Cache-Control", "no-store");
-            response.setHeader("Pragma", "no-cache");
-            response.setDateHeader("Expires", 0);
+            controller.setHeader("Cache-Control", "no-store");
+            controller.setHeader("Pragma", "no-cache");
+            controller.setDateHeader("Expires", 0);
             controller.setContentType("image/jpeg");
 
             ByteArrayOutputStream captchaImageOutput = new ByteArrayOutputStream();

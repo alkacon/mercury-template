@@ -989,8 +989,8 @@ public class CmsFormHandler extends CmsJspActionElement {
         super.init(context, req, res);
         try {
             // set the webform HTTP header
-            HttpServletResponse currentResponse = CmsFlexController.getController(req).getCurrentResponse();
-            currentResponse.setHeader(HEADER_OC_WEBFORM, HEADER_VALUE_OC_WEBFORM);
+            CmsFlexController controller = CmsFlexController.getController(req);
+            controller.setHeader(HEADER_OC_WEBFORM, HEADER_VALUE_OC_WEBFORM);
             // initialize the form configuration
             configureForm(req, formConfigUri, dynamicConfig, extraConfig);
             m_initSuccess = true;

@@ -317,6 +317,7 @@ public class CmsCaptchaField extends A_CmsField {
             controller.setHeader("Pragma", "no-cache");
             controller.setDateHeader("Expires", 0);
             controller.setContentType("image/jpeg");
+            controller.getCurrentResponse().setCharacterEncoding(null);
 
             ByteArrayOutputStream captchaImageOutput = new ByteArrayOutputStream();
             ImageIO.write(captchaImage, "jpg", captchaImageOutput);

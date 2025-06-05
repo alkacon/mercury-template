@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import postcssUrlRewrite from 'postcss-urlrewrite';
+import fs from 'fs';
 
 let env = {};
 const viteEnvFile = process.env.OPENCMS_VITEENV ? process.env.OPENCMS_VITEENV : './vite.env.js';
@@ -47,9 +48,9 @@ function toArray(val) {
 }
 
 const opencmsServer = getEnvValue('OPENCMS_SERVER', true);
+const viteSecret = getEnvValue('OPENCMS_VITE_SECRET', true);
 const workspacePath =  getEnvValue('OPENCMS_WORKSPACE');
 const viteRoot = getEnvValue('OPENCMS_VITE_ROOT') || './';
-const viteSecret = getEnvValue('OPENCMS_VITE_SECRET', true);
 const opencmsSite = getEnvValue('OPENCMS_SITE');
 const repositories = toArray(getEnvValue('OPENCMS_REPOSITORIES') || 'mercury-template');
 const mercuryScssSrc = getEnvValue('OPENCMS_MERCURY_SCSS');
@@ -58,8 +59,9 @@ const viteAdditionalPrefixes = toArray(getEnvValue('OPENCMS_VITE_PREFIX'));
 const viteAdditionalCss = toArray(getEnvValue('OPENCMS_VITE_ADD_CSS'));
 const viteAdditionalJs = toArray(getEnvValue('OPENCMS_VITE_ADD_JS'));
 const viteReplaceCustom = getEnvValue('OPENCMS_VITE_REPLACE_CUSTOM');
-const aliasAddition = toArray(getEnvValue('OPENCMS_VITE_ALIASES'));
+const aliasAdditions = toArray(getEnvValue('OPENCMS_VITE_ALIASES'));
 const fontAddition = toArray(getEnvValue('OPENCMS_VITE_FONTS'));
+const localAssets = toArray(getEnvValue('OPENCMS_VITE_LOCAL_ASSETS'));
 
 const viteMercuryJsDir = mercuryJsSrc ? mercuryJsSrc.substring(0, mercuryJsSrc.lastIndexOf('/')) : null;
 
@@ -108,10 +110,58 @@ const startupMessage = {
     }
 };
 
+const contentTypeMappings = [
+    { ext: '.css', type: 'text/css' },
+    { ext: '.js', type: 'application/javascript' },
+    { ext: '.json', type: 'application/json' },
+    { ext: '.svg', type: 'image/svg+xml' },
+    { ext: '.woff2', type: 'font/woff2' },
+    { ext: '.woff', type: 'font/woff' },
+    { ext: '.ttf', type: 'font/ttf' },
+    { ext: '.eot', type: 'application/vnd.ms-fontobject' },
+    { ext: '.otf', type: 'font/otf' }
+];
+
+const handleLocaleAssets = {
+    name: 'opencms-vite-handle-local-assets',
+    configureServer(server) {
+        localAssets.forEach(mapping => {
+            if (mapping.realPath) {
+                server.watcher.add(mapping.realPath);
+            }
+        });
+        server.watcher.on('change', (file) => {
+            if (localAssets.some(mapping => mapping.realPath === file)) {
+                server.ws.send({ type: 'full-reload' });
+            }
+        });
+        server.middlewares.use((req, res, next) => {
+            const mapping = localAssets.find(m => req.url && req.url.startsWith(m.url));
+            if (mapping) {
+                fs.readFile(mapping.realPath, (err, data) => {
+                    if (err) {
+                        res.statusCode = 404;
+                        res.end('Not found');
+                    } else {
+                        // Content-Type anhand der Dateiendung bestimmen
+                        const ext = mapping.realPath.substring(mapping.realPath.lastIndexOf('.')).toLowerCase();
+                        const ct = (contentTypeMappings.find(m => m.ext === ext) || {type: 'application/octet-stream'}).type;
+                        res.setHeader('Content-Type', ct);
+                        res.end(data);
+                    }
+                });
+                return; // handled
+            }
+            next();
+        });
+    }
+}
+
 export default defineConfig({
     root: viteRoot,
     plugins: [
-        startupMessage
+        startupMessage,
+        handleLocaleAssets
     ],
     css: {
         devSourcemap: true,
@@ -149,7 +199,7 @@ export default defineConfig({
                 : []
             ),
             ...(viteCustomReplaceRules),
-            ...(aliasAddition)
+            ...(aliasAdditions)
         ]
     },
     server: {

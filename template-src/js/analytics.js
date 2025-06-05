@@ -30,6 +30,27 @@ var m_googleInitialized = false;
 var m_piwikInitialized = false;
 var m_matomoInitialized = false;
 
+function getNormalizedPathForAnalytics(addSlash = true, addSearch = false) {
+    const REMOVE_FILES = ['index.html', 'index.jsp', 'index.htm'];
+    let path = window.location.pathname;
+    REMOVE_FILES.forEach(file => {
+        const regex = new RegExp(`${file}$`);
+        path = path.replace(regex, '');
+    });
+    if (path === '') path = '/';
+    if (path !== '/') {
+        if (addSlash) {
+            path = path.endsWith('/') ? path : path + '/';
+        } else {
+            path = path.endsWith('/') ? path.slice(0, -1) : path;
+        }
+    }
+    if (addSearch) {
+        path += window.location.search;
+    }
+    return path;
+}
+
 function addGoogleAnalytics(analyticsId) {
 
     if (Mercury.debug()) console.info("Analytics.addGoogleAnalytics() initializing Google analytics using id: " + analyticsId);
@@ -40,7 +61,9 @@ function addGoogleAnalytics(analyticsId) {
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     ga('create', analyticsId, 'auto');
     ga('set', 'anonymizeIp', true);
-    ga('send', 'pageview');
+    ga('send', 'pageview', {
+        'page': getNormalizedPathForAnalytics()
+    });
     m_googleInitialized = true;
 }
 
@@ -59,7 +82,7 @@ function addPiwik(piwikData) {
     // use the tag manager if the piwikData.id property starts with "container_"
     let useTagManager = piwikData.url && typeof piwikData.url === "string" && piwikData.id.startsWith("container_");
     if (useTagManager) {
-        // the Piwik Pro tag manager listens on the subdomain "*.containers.piwik.pro" 
+        // the Piwik Pro tag manager listens on the subdomain "*.containers.piwik.pro"
         if (!piwikData.url.includes(".containers.") && piwikData.url.endsWith(".piwik.pro")) {
             let subdomain = piwikData.url.substring(0, piwikData.url.indexOf(".piwik.pro"));
             piwikData.url = subdomain + ".containers.piwik.pro";
@@ -110,6 +133,7 @@ function addPiwik(piwikData) {
         if (typeof piwikData.setDomains != 'undefined'){
             _ppas.push(["setDomains", piwikData.setDomains]);
         }
+        _ppas.push(['setCustomUrl', getNormalizedPathForAnalytics()]);
         _ppas.push(['trackPageView']);
         _ppas.push(['enableLinkTracking']);
         (function() {
@@ -154,6 +178,7 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
         if (typeof matomoData.setDomains != 'undefined'){
             _paq.push(["setDomains", matomoData.setDomains]);
         }
+        _paq.push(['setCustomUrl', getNormalizedPathForAnalytics()]);
         // see: https://developer.matomo.org/guides/tracking-consent
         _paq.push(['requireCookieConsent']);
         if (userAllowedStatisticalCookies) {

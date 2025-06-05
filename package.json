@@ -57,6 +57,7 @@
   },
   "scripts": {
     "vite-proxy": "vite",
+    "debug-vite-proxy": "DEBUG=vite:* vite",
     "dist": "npm run css && npm run js",
     "css": "npm run --silent cssg:all --xsrcdir=template-src/scss/themes --xbuilddir=build/npm --xdeploydir=$npm_package_config_templateThemeVfsDir/css",
     "cssi:icons": "sass --source-map --embed-sources --stop-on-error template-src/fork-awesome/scss:$npm_config_xbuilddir/1_processed",

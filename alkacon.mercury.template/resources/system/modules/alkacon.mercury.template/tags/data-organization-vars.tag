@@ -33,11 +33,11 @@
             <cms:jsonobject var="orgJsonLd" mode="object">
                 <cms:jsonvalue key="@type" value="Organization" />
                 <cms:jsonvalue key="name" value="${orgName}" />
-                <c:set var="sameAs" value="${content.wrap.propertySearch['site.organization.url']}" />
+                <c:set var="sameAs" value="${content.wrap.readAttributeOrProperty['site.organization.url']}" />
                 <c:if test="${not empty sameAs}">
                     <cms:jsonvalue key="sameAs" value="${sameAs}" />
                 </c:if>
-                <c:set var="logo" value="${content.wrap.propertySearch['site.organization.logo']}" />
+                <c:set var="logo" value="${content.wrap.readAttributeOrProperty['site.organization.logo']}" />
                 <c:if test="${(not empty logo) and cms.vfs.existsResource[logo]}">
                     <c:choose>
                         <c:when test="${not logoAsImageObject}">

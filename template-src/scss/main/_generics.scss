@@ -63,7 +63,8 @@
 
 .box,
 .box-inner,
-.box-colors {
+.box-colors,
+.system-colors {
     color: var(--#{$prefix}body-color);
     background-color: var(--#{$prefix}body-bg);
 }
@@ -138,6 +139,14 @@
     .color-#{""+$color}:not(.imageflip) {
         @include change-colors($value);
     }
+}
+
+.system-colors {
+    $system-color-map: (
+        "link-color": $con-col-orange,
+        "link-hover-color": $con-col-orange-hover
+    );
+    @include set-box-colors($con-col-grey-lighter, true, true, $system-color-map);
 }
 
 // Colored text

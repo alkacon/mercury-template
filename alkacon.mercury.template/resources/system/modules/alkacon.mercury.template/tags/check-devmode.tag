@@ -19,8 +19,7 @@
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-
-<c:set var="DEBUG" value="${true}" />
+<c:set var="DEBUG" value="${false}" />
 
 <%-- Vite is only supported in the offline project --%>
 <c:if test="${not cms.isOnlineProject}">

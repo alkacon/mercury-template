@@ -58,6 +58,7 @@ $con-col-red:                       #b31b34 !default;
 $con-col-red-dark:                  #8b1528 !default;
 $con-col-purple:                    #eed2ee !default;
 $con-col-green-light:               #effab4 !default;
+$con-col-grey-lighter:              #f5f5f5 !default;
 
 $con-text-col-dark:                 #444 !default;
 $con-text-col-grey:                 #7f8691 !default;
@@ -873,6 +874,8 @@ $placeholder-border-color:          var(--#{$prefix}highlight-border-color) !def
 $pp-link-settings-background:       var(--#{$prefix}main-theme) !default;
 $pp-link-settings-color:            var(--#{$prefix}text-light) !default;
 $pp-link-settings-icon-char:        "A"; // A is cookie, B is finger print
+$pp-link-settings-border-radius:    50% !default;
+$pp-link-settings-opacity:          .8 !default;
 
 // POI accessible icons
 

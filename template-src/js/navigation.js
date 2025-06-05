@@ -663,13 +663,13 @@ function initClickmeShowme() {
 // auto-scroll to an opened accordion tab
 function initAccordionScroll() {
     jQ('article.accordion').on('shown.bs.collapse', function() {
-        var $tab = $(this).closest('article.accordion').find('.acco-header');
+        var $tab = jQ(this).closest('article.accordion').find('.acco-header');
         if (! $tab.visible()) {
             doScrollToAnchor($tab, -5);
         }
     })
     jQ('.collapse-target').on('shown.bs.collapse', function() {
-        var $tar = $(this);
+        var $tar = jQ(this);
         setTimeout(function () {
             // must wait for animation to finish before calculating the anchor position
             var $tab = $tar.find('.collapse-container');
@@ -736,7 +736,7 @@ function focusOnElement($element) {
     if (!($element.is(':input:enabled, a[href], area[href], object, [tabindex]') && !$element.is(':hidden'))) {
         // add tabindex to make focusable and remove again
         $element.attr('tabindex', -1).on('blur focusout', function () {
-            $(this).removeAttr('tabindex');
+            jQ(this).removeAttr('tabindex');
         });
     }
     $element.focus();

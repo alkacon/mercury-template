@@ -452,12 +452,12 @@ public class CmsFormDataHandler extends A_CmsFormDataHandler {
                     mailMoveUpUser.sendMail();
                 }
             } else if (action.equals(ACTION_GROUPSIZE)) {
-                CmsFormMailGroupSizeAdmin mailMoveUpAdmin = new CmsFormMailGroupSizeAdmin(
+                CmsFormMailGroupSizeAdmin mailGroupSizeAdmin = new CmsFormMailGroupSizeAdmin(
                     m_formHandler,
                     formDataFields,
                     formDataString,
                     bean.getGroupSize());
-                mailMoveUpAdmin.sendMail(null);
+                mailGroupSizeAdmin.sendMail(null);
                 if (m_formHandler.getFormConfiguration().isConfirmationMailEnabled()) {
                     CmsFormMailGroupSizeUser mailMoveUpUser = new CmsFormMailGroupSizeUser(
                         m_formHandler,

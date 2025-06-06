@@ -30,6 +30,7 @@ package alkacon.mercury.template.writer;
 import org.opencms.main.CmsLog;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
 
@@ -64,8 +65,23 @@ public abstract class A_CmsWriter {
      */
     public void addTable(Map<String, Integer> columnNames) {
 
+        addTable(columnNames, null);
+    }
+
+    /**
+     * Starts a new table for given column names.
+     * @param columnNames the columnNames
+     * @param columnHeadlines the map from column names to headlines,
+     *          only when the headline differs from the name, an entry is necessary.
+     */
+    public void addTable(Map<String, Integer> columnNames, Map<String, String> columnHeadlines) {
+
         m_columnNames = columnNames;
-        addRow(columnNames.keySet().toArray(new String[0]));
+        addRow(
+            columnNames.keySet().stream().map(
+                (name) -> (columnHeadlines != null) && (columnHeadlines.get(name) != null)
+                ? columnHeadlines.get(name)
+                : name).collect(Collectors.toList()).toArray(new String[0]));
     }
 
     /**

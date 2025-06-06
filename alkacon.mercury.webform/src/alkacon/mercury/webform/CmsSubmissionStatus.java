@@ -180,6 +180,8 @@ public class CmsSubmissionStatus {
     /**
      * Returns the number of regular submissions that are allowed. <code>null</code> means unlimited.
      * @return the number of regular submissions that are allowed. <code>null</code> means unlimited.
+     *
+     * @deprecated use {@link #getMaxRegularPlaces()} instead
      */
     @Deprecated
     public Integer getMaxRegularSubmissions() {
@@ -199,6 +201,8 @@ public class CmsSubmissionStatus {
     /**
      * Returns the number of waitlist submissions that are allowed.
      * @return the number of waitlist submissions that are allowed.
+     *
+     * @deprecated use {@link #getMaxWaitlistPlaces()} instead
      */
     @Deprecated
     public int getMaxWaitlistSubmissions() {

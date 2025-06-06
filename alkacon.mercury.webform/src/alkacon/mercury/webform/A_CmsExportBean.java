@@ -38,6 +38,7 @@ import org.opencms.jsp.util.CmsJspContentAccessValueWrapper;
 import org.opencms.main.CmsException;
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
+import org.opencms.util.CmsPair;
 import org.opencms.util.CmsStringUtil;
 import org.opencms.widgets.serialdate.CmsSerialDateValue;
 import org.opencms.xml.I_CmsXmlDocument;
@@ -406,7 +407,21 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
      */
     protected Map<String, Integer> collectColumnNames(List<CmsFormDataBean> formDataBeans) {
 
+        return collectColumnNamesWithHeadlineMappings(formDataBeans).getFirst();
+    }
+
+    /**
+     * Collects all actual and former data keys from a collection of stored form submissions and
+     * transforms the collected data keys into a ordered map with the column names as the keys
+     * of the map and the position as the value. Adds system fields if configured.
+     * @param formDataBeans the form data beans
+     * @return the column name / position map and column name / headlines map for headlines differing from the column name.
+     */
+    protected CmsPair<Map<String, Integer>, Map<String, String>> collectColumnNamesWithHeadlineMappings(
+        List<CmsFormDataBean> formDataBeans) {
+
         Map<String, Integer> columnNames = new LinkedHashMap<String, Integer>();
+        Map<String, String> columnHeadlines = new HashMap<String, String>();
         for (CmsFormDataBean formDataBean : formDataBeans) {
             for (String field : formDataBean.getData().keySet()) {
                 if (m_exportConfigFieldIgnore.contains(field)) {
@@ -420,25 +435,33 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                 }
             }
         }
-        columnNames.put(m_messages.key(KEY_STATUS), Integer.valueOf(columnNames.size()));
-        columnNames.put(m_messages.key(KEY_DATE_REGISTERED), Integer.valueOf(columnNames.size()));
-        columnNames.put(m_messages.key(KEY_DATE_STATUSCHANGED), Integer.valueOf(columnNames.size()));
+        columnNames.put(KEY_STATUS, Integer.valueOf(columnNames.size()));
+        columnHeadlines.put(KEY_STATUS, m_messages.key(KEY_STATUS));
+        columnNames.put(KEY_DATE_REGISTERED, Integer.valueOf(columnNames.size()));
+        columnHeadlines.put(KEY_DATE_REGISTERED, m_messages.key(KEY_DATE_REGISTERED));
+        columnNames.put(KEY_DATE_STATUSCHANGED, Integer.valueOf(columnNames.size()));
+        columnHeadlines.put(KEY_DATE_STATUSCHANGED, m_messages.key(KEY_DATE_STATUSCHANGED));
         if (m_exportConfigAddCancelled) {
-            columnNames.put(m_messages.key(KEY_STATUS_CANCELLED), Integer.valueOf(columnNames.size()));
+            columnNames.put(KEY_STATUS_CANCELLED, Integer.valueOf(columnNames.size()));
+            columnHeadlines.put(KEY_STATUS_CANCELLED, m_messages.key(KEY_STATUS_CANCELLED));
         }
         if (m_exportConfigAddWaitlist) {
-            columnNames.put(m_messages.key(KEY_STATUS_WAITLIST), Integer.valueOf(columnNames.size()));
+            columnNames.put(KEY_STATUS_WAITLIST, Integer.valueOf(columnNames.size()));
+            columnHeadlines.put(KEY_STATUS_WAITLIST, m_messages.key(KEY_STATUS_WAITLIST));
         }
         if (m_exportConfigAddConfirmed) {
-            columnNames.put(m_messages.key(KEY_STATUS_CONFIRMED), Integer.valueOf(columnNames.size()));
+            columnNames.put(KEY_STATUS_CONFIRMED, Integer.valueOf(columnNames.size()));
+            columnHeadlines.put(KEY_STATUS_CONFIRMED, m_messages.key(KEY_STATUS_CONFIRMED));
         }
         if (m_exportConfigAddChanged) {
-            columnNames.put(m_messages.key(KEY_STATUS_CHANGED), Integer.valueOf(columnNames.size()));
+            columnNames.put(KEY_STATUS_CHANGED, Integer.valueOf(columnNames.size()));
+            columnHeadlines.put(KEY_STATUS_CHANGED, m_messages.key(KEY_STATUS_CHANGED));
         }
         if (m_exportConfigAddGroupSize) {
-            columnNames.put(m_messages.key(KEY_STATUS_GROUP_SIZE), Integer.valueOf(columnNames.size()));
+            columnNames.put(KEY_STATUS_GROUP_SIZE, Integer.valueOf(columnNames.size()));
+            columnHeadlines.put(KEY_STATUS_GROUP_SIZE, m_messages.key(KEY_STATUS_GROUP_SIZE));
         }
-        return columnNames;
+        return new CmsPair<>(columnNames, columnHeadlines);
     }
 
     /**
@@ -488,42 +511,36 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             }
         }
         if (formData.isWaitlistMovedUp()) {
-            merged.put(m_messages.key(KEY_STATUS), m_messages.key(KEY_STATUS_MOVEDUP));
+            merged.put(KEY_STATUS, m_messages.key(KEY_STATUS_MOVEDUP));
         } else if (formData.isWaitlist()) {
-            merged.put(m_messages.key(KEY_STATUS), m_messages.key(KEY_STATUS_WAITLIST));
+            merged.put(KEY_STATUS, m_messages.key(KEY_STATUS_WAITLIST));
         } else if (formData.isCancelled()) {
-            merged.put(m_messages.key(KEY_STATUS), m_messages.key(KEY_STATUS_CANCELLED));
+            merged.put(KEY_STATUS, m_messages.key(KEY_STATUS_CANCELLED));
         } else {
-            merged.put(m_messages.key(KEY_STATUS), m_messages.key(KEY_STATUS_REGISTERED));
+            merged.put(KEY_STATUS, m_messages.key(KEY_STATUS_REGISTERED));
         }
-        merged.put(
-            m_messages.key(KEY_DATE_REGISTERED),
-            m_messages.getDateTime(formData.getDateRegistered(), DateFormat.SHORT));
+        merged.put(KEY_DATE_REGISTERED, m_messages.getDateTime(formData.getDateRegistered(), DateFormat.SHORT));
         if (formData.getDateCancelled() != null) {
-            merged.put(
-                m_messages.key(KEY_DATE_STATUSCHANGED),
-                m_messages.getDateTime(formData.getDateCancelled(), DateFormat.SHORT));
+            merged.put(KEY_DATE_STATUSCHANGED, m_messages.getDateTime(formData.getDateCancelled(), DateFormat.SHORT));
         } else if (formData.getDateMovedUp() != null) {
-            merged.put(
-                m_messages.key(KEY_DATE_STATUSCHANGED),
-                m_messages.getDateTime(formData.getDateMovedUp(), DateFormat.SHORT));
+            merged.put(KEY_DATE_STATUSCHANGED, m_messages.getDateTime(formData.getDateMovedUp(), DateFormat.SHORT));
         } else {
-            merged.put(m_messages.key(KEY_DATE_STATUSCHANGED), "");
+            merged.put(KEY_DATE_STATUSCHANGED, "");
         }
         if (m_exportConfigAddCancelled) {
-            merged.put(m_messages.key(KEY_STATUS_CANCELLED), asString(formData.isCancelled()));
+            merged.put(KEY_STATUS_CANCELLED, asString(formData.isCancelled()));
         }
         if (m_exportConfigAddWaitlist) {
-            merged.put(m_messages.key(KEY_STATUS_WAITLIST), asString(formData.isWaitlist()));
+            merged.put(KEY_STATUS_WAITLIST, asString(formData.isWaitlist()));
         }
         if (m_exportConfigAddConfirmed) {
-            merged.put(m_messages.key(KEY_STATUS_CONFIRMED), asString(formData.isConfirmationMailSent()));
+            merged.put(KEY_STATUS_CONFIRMED, asString(formData.isConfirmationMailSent()));
         }
         if (m_exportConfigAddChanged) {
-            merged.put(m_messages.key(KEY_STATUS_CHANGED), asString(formData.isChanged()));
+            merged.put(KEY_STATUS_CHANGED, asString(formData.isChanged()));
         }
         if (m_exportConfigAddGroupSize) {
-            merged.put(m_messages.key(KEY_STATUS_GROUP_SIZE), String.valueOf(formData.getGroupSize()));
+            merged.put(KEY_STATUS_GROUP_SIZE, String.valueOf(formData.getGroupSize()));
         }
         return merged;
     }
@@ -586,7 +603,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
 
         List<CmsFormDataBean> formDataBeans = readFormDataBeans();
         Collections.reverse(formDataBeans);
-        writer.addTable(collectColumnNames(formDataBeans));
+        CmsPair<Map<String, Integer>, Map<String, String>> columnInfo = collectColumnNamesWithHeadlineMappings(
+            formDataBeans);
+        writer.addTable(columnInfo.getFirst(), columnInfo.getSecond());
         for (CmsFormDataBean formDataBean : formDataBeans) {
             writer.addTableRow(getData(formDataBean));
         }
@@ -651,9 +670,6 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
                 prefixOneLinePerGroup,
                 locale).getStringValue(cms);
             m_exportConfigOneLinePerGroup = Boolean.valueOf(configOneLinePerGroup).booleanValue();
-            if (m_exportConfigOneLinePerGroup) {
-                m_exportConfigAddGroupSize = true;
-            }
         }
     }
 
@@ -815,12 +831,12 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
         writer.addRow(m_messages.key(KEY_SUBMISSIONS_LABEL), submissionsValue);
         String placesValue = m_messages.key(
             KEY_MAXSUBMISSIONS_WAITLIST_2,
-            status.getMaxRegularSubmissions(),
-            Integer.valueOf(status.getMaxWaitlistSubmissions()));
-        if (status.getMaxWaitlistSubmissions() == 0) {
+            status.getMaxRegularPlaces(),
+            Integer.valueOf(status.getMaxWaitlistPlaces()));
+        if (status.getMaxWaitlistPlaces() == 0) {
             placesValue = m_messages.key(KEY_PLACES_LABEL_UNLIMITED);
-        } else if (status.getMaxWaitlistSubmissions() == 0) {
-            placesValue = m_messages.key(KEY_MAXSUBMISSIONS_NOWAITLIST_1, status.getMaxRegularSubmissions());
+        } else if (status.getMaxWaitlistPlaces() == 0) {
+            placesValue = m_messages.key(KEY_MAXSUBMISSIONS_NOWAITLIST_1, status.getMaxRegularPlaces());
         }
         writer.addRow(m_messages.key(KEY_PLACES_LABEL), placesValue);
         String freeplacesValue = "";
@@ -830,7 +846,7 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             freeplacesValue = m_messages.key(
                 KEY_ONLYWAITLIST_1,
                 Integer.valueOf(status.getNumRemainingWaitlistSubmissions()));
-        } else if (status.getMaxWaitlistSubmissions() == 0) {
+        } else if (status.getMaxWaitlistPlaces() == 0) {
             if (status.getNumRemainingRegularSubmissions() == null) {
                 freeplacesValue = m_messages.key(KEY_REMAININGSUBMISSIONS_NOWAITLIST_0);
             } else {

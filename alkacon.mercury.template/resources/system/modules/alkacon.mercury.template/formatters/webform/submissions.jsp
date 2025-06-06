@@ -16,7 +16,7 @@
     <c:set var="hasGroupBooking" value="${cms.element.setting.hasGroupBooking.toBoolean}" />
     <c:set var="rawContent" value="${content.rawContent}" />
     <c:set var="bean" value='<%=new alkacon.mercury.webform.CmsFormDataBean((org.opencms.xml.I_CmsXmlDocument) pageContext.getAttribute("rawContent")) %>' />
-    <c:set var="freePlaces" value="${0}" />
+    <c:set var="freePlaces" value="${-1}" />
     <c:if test="${not empty param.numFreeParticipantPlaces}">
         <fmt:parseNumber integerOnly="true" value="${param.numFreeParticipantPlaces}" var="freePlaces" />
     </c:if>
@@ -103,7 +103,7 @@
                             ${messageConfirmationMailEnabled}
                             <div class="group-size subelement">
                                 <label for="size"><fmt:message key="msg.page.form.submission.input.size"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></label>
-                                <input type="number" name="size" min="1" max="${freePlaces > 0 ? (bean.groupSize + freePlaces) : 99}" value="${bean.groupSize}"/>
+                                <input type="number" name="size" min="1" max="${freePlaces >= 0 ? (bean.groupSize + freePlaces) : 99}" value="${bean.groupSize}"/>
                             </div>
                             <div class="buttons"><%----%>
                                 <button value="cancel" class="btn"><%----%>

@@ -22,8 +22,8 @@
 <%@ taglib prefix="cms" uri="http://www.opencms.org/taglib/cms"%>
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
-
-<c:set var="orgName" value="${cms.readAttributeOrProperty[content.resource.sitePath]['site.organization']}" />
+<c:set var="attributeOrProperty" value="${cms.readAttributeOrProperty[content.resource.sitePath]}" />
+<c:set var="orgName" value="${attributeOrProperty['site.organization']}" />
 <c:if test="${not empty orgName}">
     <c:choose>
         <c:when test="${cms.vfs.exists[orgName]}">
@@ -33,11 +33,11 @@
             <cms:jsonobject var="orgJsonLd" mode="object">
                 <cms:jsonvalue key="@type" value="Organization" />
                 <cms:jsonvalue key="name" value="${orgName}" />
-                <c:set var="sameAs" value="${content.wrap.readAttributeOrProperty['site.organization.url']}" />
+                <c:set var="sameAs" value="${attributeOrProperty['site.organization.url']}" />
                 <c:if test="${not empty sameAs}">
                     <cms:jsonvalue key="sameAs" value="${sameAs}" />
                 </c:if>
-                <c:set var="logo" value="${content.wrap.readAttributeOrProperty['site.organization.logo']}" />
+                <c:set var="logo" value="${attributeOrProperty['site.organization.logo']}" />
                 <c:if test="${(not empty logo) and cms.vfs.existsResource[logo]}">
                     <c:choose>
                         <c:when test="${not logoAsImageObject}">

@@ -94,7 +94,8 @@
     </c:when>
     <c:otherwise>
         <%-- The icon font is 'fa', there may or may not be an 'fa-' prefix, we will check this later. --%>
-        <c:set var="inline"         value="${fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}" />
+        <%-- Important: The default is to NOT inline for 'fa-' icons, as there are some extensions (e.g. Newsletter) that rely on this behaviour. --%>
+        <c:set var="inline"         value="${inline and fn:contains(cms.sitemapConfig.attribute['mercury.iconFont.config'].toString, 'Selection')}" />
     </c:otherwise>
 </c:choose>
 

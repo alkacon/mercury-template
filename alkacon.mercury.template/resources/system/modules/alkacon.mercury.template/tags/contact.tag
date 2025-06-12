@@ -245,11 +245,11 @@
     <c:choose>
         <c:when test="${kind eq 'org'}">
             <c:if test="${showOrganization}">
-                <m:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" escapeXml="${escapeXml}" />
+                <m:heading level="${hsize}" css="fn n" text="${organization}" suffix="${nameSuffix}" ade="${false}" attr="translate=\"no\"" escapeXml="${escapeXml}" />
             </c:if>
             <c:if test="${showOrganization and (showName or showPosition)}">
                 <%-- In case of organization 'showOrganization' means 'showContactPerson'  --%>
-                <div class="subfn"><%----%>
+                <div class="subfn" translate="no"><%----%>
                     <c:if test="${showName}">
                         <div class="h${hsize + 1} org"><%----%>
                             <m:link link="${linkToRelated}">${personname}</m:link>
@@ -265,12 +265,12 @@
         </c:when>
         <c:when test="${kind eq 'poi'}">
             <c:if test="${showName}">
-                <m:heading level="${hsize}" css="fn n" text="${name}" suffix="${nameSuffix}" ade="${false}"  escapeXml="${escapeXml}" />
+                <m:heading level="${hsize}" css="fn n" text="${name}" suffix="${nameSuffix}" ade="${false}" attr="translate=\"no\"" escapeXml="${escapeXml}" />
             </c:if>
         </c:when>
         <c:otherwise>
             <c:if test="${showName}">
-                <m:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}" escapeXml="${escapeXml}">
+                <m:heading level="${hsize}" css="fn n" suffix="${nameSuffix}" ade="${false}" attr="translate=\"no\"" escapeXml="${escapeXml}">
                     <jsp:attribute name="markupText">${personname}</jsp:attribute>
                 </m:heading>
                 <c:if test="${showPosition}">
@@ -280,7 +280,7 @@
                 </c:if>
             </c:if>
             <c:if test="${showOrganization}">
-                <div class="org"><%----%>
+                <div class="org" translate="no"><%----%>
                     <m:link link="${linkToRelated}">${organization}</m:link>
                 </div><%----%>
             </c:if>
@@ -306,7 +306,7 @@
         <c:if test="${showAddress}">
             <c:set var="animatedAddress" value="${not showAddressAlways}" />
             <m:div test="${animatedAddress}" css="clickme-showme adr-p">
-                <div class="adr ${animatedAddress ? 'clickme' : ''}"><%----%>
+                <div class="adr ${animatedAddress ? 'clickme' : ''}" translate="no"><%----%>
                     <c:if test="${not empty locData.streetAddress}">
                         <div class="street-address">${locData.streetAddress}</div><%----%>
                     </c:if>

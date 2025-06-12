@@ -93,7 +93,7 @@
 
     <jsp:attribute name="text">
         <c:if test="${showLocation}">
-            <div class="adr" <%--
+            <div class="adr" translate="no" <%--
             --%>itemprop="address" itemscope <%--
             --%>itemtype="http://schema.org/PostalAddress"><%----%>
                 <div itemprop="streetAddress" class="street-address" ${value.Address.value.StreetAddress.rdfaAttr}>${value.Address.value.StreetAddress}</div><%----%>

@@ -154,9 +154,9 @@
                             </c:if>
                             <c:if test="${not empty locData}">
                                 <c:if test="${not empty locData.name}">
-                                    <div class="locname">${locData.name}</div><%----%>
+                                    <div class="locname" translate="no">${locData.name}</div><%----%>
                                 </c:if>
-                                <div class="address"><%----%>
+                                <div class="address" translate="no"><%----%>
                                     <div class="street"> ${locData.streetAddress}</div><%----%>
                                     <c:if test="${not empty locData.extendedAddress}">
                                         <div class="extended"> ${locData.extendedAddress}</div><%----%>

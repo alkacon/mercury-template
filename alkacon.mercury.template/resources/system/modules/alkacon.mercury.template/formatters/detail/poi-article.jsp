@@ -182,16 +182,16 @@ ${settingDefaultsDebug}
     <div class="adr detail-content"><%----%>
         <fmt:message key="msg.page.address" var="addressHeading" />
         <m:heading level="${hsize+1}" text="${addressHeading}" css="address-heading" />
-        <div class="street-address" ${value.Address.value.StreetAddress.rdfaAttr}>${value.Address.value.StreetAddress}</div><%----%>
+        <div class="street-address" translate="no" ${value.Address.value.StreetAddress.rdfaAttr}>${value.Address.value.StreetAddress}</div><%----%>
         <c:if test="${value.Address.value.ExtendedAddress.isSet}">
-            <div class="extended-address" ${value.Address.value.ExtendedAddress.rdfaAttr}>${value.Address.value.ExtendedAddress}</div><%----%>
+            <div class="extended-address" translate="no" ${value.Address.value.ExtendedAddress.rdfaAttr}>${value.Address.value.ExtendedAddress}</div><%----%>
         </c:if>
-        <div><%----%>
+        <div translate="no"><%----%>
             <span class="postal-code" ${value.Address.value.PostalCode.rdfaAttr}>${value.Address.value.PostalCode}</span>${' '}<%----%>
             <span class="locality" ${value.Address.value.Locality.rdfaAttr}>${value.Address.value.Locality}</span><%----%>
         </div><%----%>
         <c:if test="${value.Address.value.Region.isSet or value.Address.value.Country.isSet}">
-            <div><%----%>
+            <div translate="no"><%----%>
                 <c:if test="${value.Address.value.Region.isSet}">
                     <span class="region" ${value.Address.value.Region.rdfaAttr}>${value.Address.value.Region}</span>${' '}<%----%>
                 </c:if>

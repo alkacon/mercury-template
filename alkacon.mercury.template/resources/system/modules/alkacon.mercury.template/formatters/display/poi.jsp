@@ -111,7 +111,7 @@
                 test="${not isMapMarker}"
                 testFailTag="div">
 
-                <div class="adr"><%----%>
+                <div class="adr" translate="no"><%----%>
                     <div itemprop="streetAddress" class="street-address">${value.Address.value.StreetAddress}</div><%----%>
                     <c:if test="${value.Address.value.ExtendedAddress.isSet}">
                         <div class="extended-address">${value.Address.value.ExtendedAddress}</div><%----%>

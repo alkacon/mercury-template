@@ -7,7 +7,12 @@ const viteEnvFile = process.env.OPENCMS_VITEENV ? process.env.OPENCMS_VITEENV : 
 try {
     env = require(viteEnvFile);
 } catch (e) {
-    env = {};
+    if (e.code === 'MODULE_NOT_FOUND' && e.message.includes(viteEnvFile)) {
+        env = {};
+    } else {
+        console.error(`Error reading ${viteEnvFile}:`, e);
+        process.exit(2);
+    }
 }
 
 const log = {
@@ -177,6 +182,7 @@ export default defineConfig({
                 postcssUrlRewrite({
                     rules: [
                         { from: '../fonts/', to: '/system/modules/alkacon.mercury.theme/fonts/' },
+                        { from: '/mercury-template/template-src/scss/fonts/', to: '/system/modules/alkacon.mercury.theme/fonts/' },
                         ...(fontAddition)
                     ]
                 })

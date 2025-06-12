@@ -64,15 +64,6 @@
 
         &.fixed {
             transform: translateY(0);
-            // z-index: $above-oc-z-index + 100; // must be above fixed head navigation
-            // left: 0;
-            // position: fixed;
-            // &.top {
-            //     top: 0;
-            // }
-            // &.bottom {
-            //     bottom: 0;
-            // }
         }
     }
 
@@ -179,14 +170,6 @@
 
         .btn-save {
             @include button-color-setvars($policy-banner-save-button-color, $policy-banner-save-hover-color);
-            // &:focus {
-            //     background-color: $policy-banner-save-button-color;
-            //     color: get-text-color($policy-banner-save-button-color);
-            // }
-            // &:hover {
-            //     background-color: $policy-banner-save-hover-color;
-            //     color: get-text-color($policy-banner-save-hover-color);
-            // }
             @if ($policy-banner-save-button-color == $policy-banner-background) {
                 border-color: get-text-color($policy-banner-save-button-color);
             }

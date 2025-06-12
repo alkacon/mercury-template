@@ -173,7 +173,7 @@
             </c:otherwise>
         </c:choose>
     </c:when>
-    <c:when test="${partMarker}">
+    <c:when test="${partMarker and cms.isEditMode}">
 
         <fmt:setLocale value="${cms.workplaceLocale}" />
         <cms:bundle basename="alkacon.mercury.template.messages">

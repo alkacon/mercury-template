@@ -666,9 +666,9 @@ public abstract class A_CmsExportBean extends A_CmsJspCustomContextBean {
             String configCancelled = m_form.getFormConfig().getValue(prefixCancelled, locale).getStringValue(cms);
             m_exportConfigCancelled = Boolean.valueOf(configCancelled).booleanValue();
             String prefixOneLinePerGroup = pathPrefix + "/" + NODE_EXPORT_CONFIG_ONE_LINE_PER_GROUP;
-            String configOneLinePerGroup = m_form.getFormConfig().getValue(
-                prefixOneLinePerGroup,
-                locale).getStringValue(cms);
+            String configOneLinePerGroup = m_form.getFormConfig().hasValue(prefixOneLinePerGroup, locale)
+            ? m_form.getFormConfig().getValue(prefixOneLinePerGroup, locale).getStringValue(cms)
+            : "false";
             m_exportConfigOneLinePerGroup = Boolean.valueOf(configOneLinePerGroup).booleanValue();
         }
     }

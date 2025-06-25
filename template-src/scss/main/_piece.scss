@@ -326,7 +326,6 @@ html.keyboard-nav .piece {
         flex-grow: 1;
     }
     > .piece.full,
-    > .type-contact.box,
     > .pivot:not(.piece).box {
         &:only-child {
             display: flex;

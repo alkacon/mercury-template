@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[A configurable form module for the Mercury template.]]></description>
-		<version>19.0.11</version>
+		<version>19.0.12</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -596,10 +596,6 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Exports submission data of webforms in Excel format]]></value>
-				</property>
-				<property>
-					<name>cache</name>
-					<value><![CDATA[bypass]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

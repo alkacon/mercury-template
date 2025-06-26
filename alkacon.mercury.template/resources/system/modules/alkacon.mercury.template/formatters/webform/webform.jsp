@@ -19,9 +19,7 @@
 <m:setting-defaults>
 
 <c:set var="webformCssWrapper" value="${cms.sitemapConfig.attribute['template.webform.cssWrapper']}"/>
-<c:if test="${webformCssWrapper.isSetNotNone}">
-    <c:set var="setCssWrapperAll" value="${setCssWrapperAll}${' '}${webformCssWrapper.toString}" />
-</c:if>
+<m:concat var="setCssWrapperAll" strings="${[setCssWrapperAll, webformCssWrapper.isSetNotNone ? webformCssWrapper.toString : 'pivot']}" />
 
 <div class="element type-webform${setCssWrapperAll}">
 

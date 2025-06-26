@@ -19,8 +19,6 @@
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 
-<c:set var="DEBUG" value="${false}" />
-
 <%-- Vite is only supported in the offline project --%>
 <c:if test="${not cms.isOnlineProject}">
     <%-- Vite secret header must be present in request --%>
@@ -28,17 +26,18 @@
     <c:if test="${not empty reqSecret}">
         <%-- Vite secret header must match secret stored in user additional info --%>
         <c:set var="viteSecret" value="${cms.requestContext.currentUser.additionalInfo['Vite-Secret']}" />
+        <c:set var="partCss" value="${part eq 'css'}" />
+        <c:set var="DBGHEAD" value="${partCss and (param.devdebug eq '1')}" />
         <c:choose>
             <c:when test="${(not empty viteSecret) and (viteSecret eq reqSecret)}">
                 <%-- Vite user must have developer role --%>
                 <m:checkprincipal type="role" name="DEVELOPER">
                     <c:set var="partJs" value="${part eq 'js'}" />
-                    <c:set var="partCss" value="${part eq 'css'}" />
                     <c:set var="partMods" value="${part eq 'mods'}" />
                     <c:set var="partMarker" value="${part eq 'marker'}" />
                     <c:set var="openCmsSite" value="${header['X-Vite-OpenCms-Site']}" />
                     <c:set var="uriRootPath" value="${cms.readResource(cms.uri()).getRootPath()}" />
-                    <m:print test="${DEBUG and partCss}">
+                    <m:print test="${DBGHEAD}">
                         openCmsSite (header): [${openCmsSite}]
                         uri.rootPath: ${uriRootPath}
                     </m:print>
@@ -57,7 +56,7 @@
                                     <c:set var="themeRes" value="${cms.readResource(empty contentPropertiesSearch['mercury.theme'] ? '/system/modules/alkacon.mercury.theme/css/theme-standard.min.css' : contentPropertiesSearch['mercury.theme'])}" />
                                     <c:if test="${not empty themeRes}">
                                         <c:set var="navInfo" value="${themeRes.property['NavInfo']}" />
-                                        <m:print test="${DEBUG and partCss}">
+                                        <m:print test="${DBGHEAD}">
                                             viteMercuryScss (header): [${viteMercuryScss}]
                                             contentPropertiesSearch['mercury.theme']: ${contentPropertiesSearch['mercury.theme']}
                                             themeRes.rootPath: ${themeRes.rootPath}
@@ -92,7 +91,7 @@
                                     <c:set var="viteMercuryScss" value="${param.vo}" />
                                 </c:otherwise>
                             </c:choose>
-                            <m:print test="${DEBUG and partCss}">
+                            <m:print test="${DBGHEAD}">
                                 viteMercuryScss (final): ${viteMercuryScss}
                             </m:print>
                         </c:if>
@@ -100,12 +99,14 @@
                 </m:checkprincipal>
             </c:when>
             <c:otherwise>
-                <c:if test="${(not empty viteSecret) and (not empty reqSecret)}">
+                <c:if test="${not empty viteSecret}">
+                    <m:print test="${DBGHEAD}">
+                        Vite error: User ${cms.requestContext.currentUser.name} send bad vite secret.
+                    </m:print>
                     <m:log channel="error" message="Vite integration: User ${cms.requestContext.currentUser.name} send bad vite secret for site '${cms.site.siteRoot}'." />
                 </c:if>
             </c:otherwise>
         </c:choose>
-
     </c:if>
 </c:if>
 

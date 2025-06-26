@@ -231,7 +231,7 @@ $row_end(field=field,formconfig=formconfig)$
 field_privacy(field,formconfig,attributes,errormessage,mandatory,label,link,linktext) ::= <<
 $! ###### PRIVACY field ###### !$
 $row_start(field=field)$
-$label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=mandatory)$
+<span class="label">$field.label$ $mandatory$</span>
 <div class="inline-group">
 $!  !$$field.items:{
 $!      !$<label class="checkbox$if(errormessage)$ state-error$endif$">

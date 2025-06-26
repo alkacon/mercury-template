@@ -91,30 +91,30 @@
                         <button id="size_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
                             <fmt:message key="msg.page.form.submission.action.groupsize.change" />
                         </button><%----%>
+                        <dialog id="size_dialog_${itemId}"
+                                class="submissions-dialog"
+                                data-action="size"
+                                data-item-id="${itemId}"
+                                data-content-id="${content.id}"><%----%>
+                            <form method="dialog"><%----%>
+                                <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
+                                <div><fmt:message key="msg.page.form.submission.ask.size"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                                ${messageConfirmationMailEnabled}
+                                <div class="group-size subelement">
+                                    <label for="size"><fmt:message key="msg.page.form.submission.input.size"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></label>
+                                    <input type="number" name="size" min="1" max="${freePlaces >= 0 ? (bean.groupSize + freePlaces) : 99}" value="${bean.groupSize}"/>
+                                </div>
+                                <div class="buttons"><%----%>
+                                    <button value="cancel" class="btn"><%----%>
+                                        <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                    </button><%----%>
+                                    <button value="confirm" class="btn"><%----%>
+                                        <fmt:message key="msg.page.form.submission.confirm.size" />
+                                    </button><%----%>
+                                </div><%----%>
+                            </form><%----%>
+                        </dialog><%----%>
                     </c:if>
-                    <dialog id="size_dialog_${itemId}"
-                            class="submissions-dialog"
-                            data-action="size"
-                            data-item-id="${itemId}"
-                            data-content-id="${content.id}"><%----%>
-                        <form method="dialog"><%----%>
-                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
-                            <div><fmt:message key="msg.page.form.submission.ask.size"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
-                            ${messageConfirmationMailEnabled}
-                            <div class="group-size subelement">
-                                <label for="size"><fmt:message key="msg.page.form.submission.input.size"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></label>
-                                <input type="number" name="size" min="1" max="${freePlaces >= 0 ? (bean.groupSize + freePlaces) : 99}" value="${bean.groupSize}"/>
-                            </div>
-                            <div class="buttons"><%----%>
-                                <button value="cancel" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
-                                </button><%----%>
-                                <button value="confirm" class="btn"><%----%>
-                                    <fmt:message key="msg.page.form.submission.confirm.size" />
-                                </button><%----%>
-                            </div><%----%>
-                        </form><%----%>
-                    </dialog><%----%>
                     <button id="cancel_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
                         <fmt:message key="msg.page.form.submission.action.cancel" />
                     </button><%----%>

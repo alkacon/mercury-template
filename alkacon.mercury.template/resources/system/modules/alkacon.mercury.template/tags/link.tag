@@ -215,9 +215,7 @@
 
                 <c:otherwise>
                     <%-- targetLink was empty --%>
-                    ${'<span class="empty-href">'}
-                        ${body}
-                    ${'</span>'}
+                    ${body}
                 </c:otherwise>
 
             </c:choose>

@@ -322,7 +322,8 @@ html.keyboard-nav .piece {
 
 .flex-col {
     // .flex-col makes single columns in a row use the complete available height
-    > .piece.flex {
+    > .piece.flex,
+    > .type-contact.box {
         flex-grow: 1;
     }
     > .piece.full,

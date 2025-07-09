@@ -86,7 +86,7 @@
                 </Setting>
                 <Setting>
                     <PropertyName>Image/Decorative</PropertyName>
-                    <Visibility>hidden</Visibility>
+                    <Default>true</Default>
                 </Setting>
                 <Setting>
                     <PropertyName>Category</PropertyName>

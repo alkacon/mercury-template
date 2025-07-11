@@ -288,6 +288,12 @@
                                                     </c:when>
                                                     <c:otherwise>
                                                         <c:set var="label"><cms:label>type.${itemName}.name</cms:label></c:set>
+                                                        <c:if test="${label.startsWith('???')}">
+                                                            <c:set var="label"><cms:label>fileicon.${itemName}</cms:label></c:set>
+                                                        </c:if>
+                                                        <c:if test="${label.startsWith('???')}">
+                                                            <c:set var="label"><cms:label>${itemName}</cms:label></c:set>
+                                                        </c:if>
                                                     </c:otherwise>
                                                 </c:choose>
                                             </c:when>
@@ -494,6 +500,12 @@
                                         </c:when>
                                         <c:when test="${not empty resultType}">
                                             <c:set var="typeBadge"><cms:label>type.${resultType}.name</cms:label></c:set>
+                                            <c:if test="${typeBadge.startsWith('???')}">
+                                                <c:set var="typeBadge"><cms:label>fileicon.${itemName}</cms:label></c:set>
+                                            </c:if>
+                                            <c:if test="${typeBadge.startsWith('???')}">
+                                                <c:set var="typeBadge"><cms:label>${itemName}</cms:label></c:set>
+                                            </c:if>
                                         </c:when>
                                         <c:otherwise>
                                             <c:set var="typeBadge" value="" />

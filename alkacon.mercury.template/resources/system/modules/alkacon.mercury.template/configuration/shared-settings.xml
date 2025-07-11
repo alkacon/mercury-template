@@ -4113,6 +4113,14 @@
       <Default><![CDATA[false]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[andSearch.search]]></IncludeName>
+      <PropertyName><![CDATA[andSearch]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.search.andSearch)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.search.andSearch.help)]]></Description>
+      <Widget><![CDATA[checkbox]]></Widget>
+      <Default><![CDATA[false]]></Default>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[pageSize.search]]></IncludeName>
       <PropertyName><![CDATA[pageSize]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.search.pageSize)]]></DisplayName>

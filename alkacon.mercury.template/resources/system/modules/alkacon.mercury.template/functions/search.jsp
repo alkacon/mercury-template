@@ -35,7 +35,7 @@
 <c:set var="showDateLastModified"   value="${dateFormat ne 'none'}" />
 <c:set var="slotText"               value="${setting.slotText.toString}" />
 <c:set var="slotButton"             value="${setting.slotButton.toString}" />
-
+<c:set var="andSearch"              value="${setting.andSearch.toBoolean}" />
 <c:if test="${empty slotText}">
     <c:set var="slotText"><fmt:message key='msg.page.search.enterquery' /></c:set>
 </c:if>
@@ -140,7 +140,7 @@
 <c:set var="config">
     {
         "searchforemptyquery" : ${searchForEmptyQuery},
-        "querymodifier" :       "{!type=edismax qf=\"content_${cms.locale} Title_dprop Description_dprop Description.html_dprop keywords_${cms.locale} description_${cms.locale}\"}(%(query))",
+        "querymodifier" :       "{!type=edismax${andSearch ? ' q.op=AND ' : ' '}qf=\"content_${cms.locale} Title_dprop Description_dprop Description.html_dprop keywords_${cms.locale} description_${cms.locale}\"}(%(query))",
         "escapequerychars" :    true,
         "extrasolrparams" :     "bq=search.boost_mvs:always^${boostPage}&bq=(search.boost_mvs:keywords AND keywords_${cms.locale}:(%(query)))^${boostKeywords}&fq=parent-folders:${searchscope}&fq=type:(${typesRestriction})&fq=con_locales:${cms.locale}&spellcheck.dictionary=${cms.locale}&fq=-filename:\"mega.menu\"&fl=${returnFields},keywordMatch:if(gt(query({!edismax%20 qf=\"keywords_${cms.locale}\" v=\"%(query)\"},0),0.0),\"true\",\"false\")",
         "pagesize" :            ${pageSize},

@@ -68,5 +68,8 @@
     <Setting>
       <IncludeName><![CDATA[searchForEmptyQuery.search]]></IncludeName>
     </Setting>
+    <Setting>
+      <IncludeName><![CDATA[andSearch.search]]></IncludeName>
+    </Setting>
   </FunctionConfig>
 </FunctionConfigs>

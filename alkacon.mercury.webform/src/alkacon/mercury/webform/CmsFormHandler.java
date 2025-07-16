@@ -1096,7 +1096,6 @@ public class CmsFormHandler extends CmsJspActionElement {
                         contentValues,
                         submissionOption.equals(SubmissionCheckResult.POSSIBLE_WAITLIST));
                     ugcHandler.saveWithStatus(false, false);
-                    ugcHandler.finish();
                 } else {
                     getErrors().put(
                         ERROR_STORE_FORMDATA,

@@ -184,15 +184,23 @@
                 font-weight: normal;
                 border-bottom: none;
                 border: solid 1px $fixed-bottom-bar-background;
+                box-shadow: unset !important;
                 li {
                     a {
                         border-top: none !important;
                         border-bottom: none !important;
+                        padding-top: 9px;
+                        padding-bottom: 10px;
+                        @include media-breakpoint-down(md) {
+                            padding-top: 4px;
+                            padding-bottom: 5px;
+                        }
                     }
                 }
                 @include media-breakpoint-down(md) {
                     inset: auto auto 0px 30px !important;
                     transform: unset !important;
+                    min-width: 150px !important;
                 }
             }
         }

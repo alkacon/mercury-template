@@ -121,3 +121,80 @@
         }
     }
 }
+
+#fixed-bottom-bar {
+    display: flex;
+    flex-direction: column;
+    z-index: #{$above-oc-z-index + 150}; // should be above the edit points and the privacy policy banner
+    position: fixed;
+    bottom: $grid-gutter-width-half;
+
+    @if ($nav-mobile-position == right) {
+        left: $nav-mobile-toggle-side;
+        @if ($nav-breakpoint-mobile != xxl) {
+            @include media-breakpoint-up($nav-breakpoint-desktop) {
+                left: $grid-gutter-width-half;
+            }
+            @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
+                @include media-breakpoint-down(md) {
+                    left: $nav-mobile-toggle-side-xs;
+                }
+            }
+        }
+    } @else {
+        left: $grid-gutter-width-half;
+    }
+
+    .fixed-bottom-bar-item {
+        cursor: pointer;
+        color: $fixed-bottom-bar-color;
+        background: $fixed-bottom-bar-background;
+        border-radius: $fixed-bottom-bar-border-radius;
+        opacity: $fixed-bottom-bar-opacity;
+        width: $nav-toggle-size;
+        height: $nav-toggle-size;
+
+        @include media-breakpoint-down(md) {
+            width: round($nav-toggle-size-xs);
+            height: round($nav-toggle-size-xs);
+        }
+
+        &:not(:last-child) {
+            margin-bottom: $default-margin-verysmall;
+        }
+
+        .fixed-bottom-bar-icon {
+            width: inherit;
+            height: inherit;
+            font-size: $nav-toggle-font-size;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @include media-breakpoint-down(md) {
+                font-size: round($nav-font-size * 1.25);
+            }
+        }
+
+        .fixed-bottom-bar-menu {
+            .dropdown-menu {
+                inset: auto auto 0px 40px !important;
+                transform: unset !important;
+                font-size: $nav-font-size;
+                font-weight: normal;
+                border-bottom: none;
+                border: solid 1px $fixed-bottom-bar-background;
+                li {
+                    a {
+                        border-top: none !important;
+                        border-bottom: none !important;
+                    }
+                }
+                @include media-breakpoint-down(md) {
+                    inset: auto auto 0px 30px !important;
+                    transform: unset !important;
+                }
+            }
+        }
+    }
+}

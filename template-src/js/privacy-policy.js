@@ -206,7 +206,7 @@ function initPrivacyLinkSettings() {
                 location.href = m_policy.lPLS;
             });
             $privacyLinkSettings.attr("title", m_policy.lPLSTxt);
-            $privacyLinkSettings.html("<span></span>");
+            $privacyLinkSettings.html("<span class='fixed-bottom-bar-icon'></span>");
             privacyLinkSettingsToggle();
         } else {
             if (DEBUG) console.info("PrivacyPolicy: Link to settings not initialized.");

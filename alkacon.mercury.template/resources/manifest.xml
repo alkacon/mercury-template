@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>19.0.85</version>
+		<version>19.0.82</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -8313,6 +8313,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Returns the parent OUs for a VFS URI]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/fixed-bottom-bar.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/fixed-bottom-bar.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>74ba5fb6-6242-11f0-8ae5-0242ac11002b</uuidstructure>
+			<uuidresource>74ba5fb7-6242-11f0-8ae5-0242ac11002b</uuidresource>
+			<datecreated>Wed, 16 Jul 2025 12:43:21 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Generates a fixed bottom bar for icon links]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

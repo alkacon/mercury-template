@@ -703,51 +703,14 @@ html.keyboard-nav {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#privacy-policy-link-settings {
-    cursor: pointer;
+#fixed-bottom-bar #privacy-policy-link-settings {
     display: none;
-    color: $pp-link-settings-color;
-    background: $pp-link-settings-background;
-    z-index: #{$above-oc-z-index + 150}; // the back to top icon should be above the edit points and the privacy policy banner
-    position: fixed;
-    bottom: $grid-gutter-width-half;
-    border-radius: $pp-link-settings-border-radius;
-    opacity: $pp-link-settings-opacity;
-
-    @if ($nav-mobile-position == right) {
-        left: $nav-mobile-toggle-side;
-        @if ($nav-breakpoint-mobile != xxl) {
-            @include media-breakpoint-up($nav-breakpoint-desktop) {
-                left: $grid-gutter-width-half;
-            }
-            @if ($nav-mobile-toggle-side-xs != $nav-mobile-toggle-side) {
-                @include media-breakpoint-down(md) {
-                    left: $nav-mobile-toggle-side-xs;
-                }
-            }
-        }
-    } @else {
-        left: $grid-gutter-width-half;
-    }
-
-    span {
-        width: $nav-toggle-size;
-        height: $nav-toggle-size;
-        font-size: $nav-toggle-font-size;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .fixed-bottom-bar-icon {
 
         &::after {
             font-family: "mercury-pp-font" !important;
             content: $pp-link-settings-icon-char; // A is cookie, B is finger print
             line-height: 1;
-        }
-
-        @include media-breakpoint-down(md) {
-            width: round($nav-toggle-size-xs);
-            height: round($nav-toggle-size-xs);
-            font-size: round($nav-font-size * 1.25);
         }
     }
 }

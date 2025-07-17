@@ -871,11 +871,14 @@ $cookie-notice-togglebox-height:    2rem !default;
 $placeholder-bg-color:              var(--#{$prefix}highlight-color) !default;
 $placeholder-border-color:          var(--#{$prefix}highlight-border-color) !default;
 
-$pp-link-settings-background:       var(--#{$prefix}main-theme) !default;
-$pp-link-settings-color:            var(--#{$prefix}text-light) !default;
+// Fixed bottom bar
+
+$fixed-bottom-bar-background:       var(--#{$prefix}main-theme) !default;
+$fixed-bottom-bar-color:            var(--#{$prefix}text-light) !default;
+$fixed-bottom-bar-border-radius:    50% !default;
+$fixed-bottom-bar-opacity:          .8 !default;
+
 $pp-link-settings-icon-char:        "A"; // A is cookie, B is finger print
-$pp-link-settings-border-radius:    50% !default;
-$pp-link-settings-opacity:          .8 !default;
 
 // POI accessible icons
 

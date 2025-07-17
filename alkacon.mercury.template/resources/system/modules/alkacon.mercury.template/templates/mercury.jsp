@@ -188,6 +188,9 @@ ${canonicalLinks}
 
 <m:check-devmode part="marker" contentPropertiesSearch="${contentPropertiesSearch}" />
 
+<%-- Fixed bottom bar markup --%>
+<m:fixed-bottom-bar contentUri="${cms.requestContext.uri}" contentPropertiesSearch="${contentPropertiesSearch}" />
+
 <%-- Privacy policy banner markup --%>
 <m:privacy-policy-banner contentUri="${cms.requestContext.uri}" contentPropertiesSearch="${contentPropertiesSearch}" />
 

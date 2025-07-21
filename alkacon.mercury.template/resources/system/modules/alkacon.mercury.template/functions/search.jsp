@@ -501,10 +501,10 @@
                                         <c:when test="${not empty resultType}">
                                             <c:set var="typeBadge"><cms:label>type.${resultType}.name</cms:label></c:set>
                                             <c:if test="${typeBadge.startsWith('???')}">
-                                                <c:set var="typeBadge"><cms:label>fileicon.${itemName}</cms:label></c:set>
+                                                <c:set var="typeBadge"><cms:label>fileicon.${resultType}</cms:label></c:set>
                                             </c:if>
                                             <c:if test="${typeBadge.startsWith('???')}">
-                                                <c:set var="typeBadge"><cms:label>${itemName}</cms:label></c:set>
+                                                <c:set var="typeBadge"><cms:label>${resultType}</cms:label></c:set>
                                             </c:if>
                                         </c:when>
                                         <c:otherwise>

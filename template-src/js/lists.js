@@ -483,6 +483,9 @@ function generateListHtml(list, reloadEntries, listHtml, page, isInitialLoad = f
         }
     } else {
         if (!skipInitialLoad) {
+            if (page == 1) {
+                list.$entries.empty();
+            }
             $newEntries.appendTo(list.$entries);
         }
         // set pagination element with new content

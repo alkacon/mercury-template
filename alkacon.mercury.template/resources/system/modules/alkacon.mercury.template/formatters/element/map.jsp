@@ -76,6 +76,33 @@
         <jsp:useBean id="markerList"    class="java.util.ArrayList" />
         <jsp:useBean id="coordBean"     class="org.opencms.widgets.CmsLocationPickerWidgetValue" />
 
+
+        <c:if test="${not empty content.valueList.MarkerConfig}">
+            <cms:jsonobject var="markerConfig" mode="object">
+                <cms:jsonarray key="config">
+                    <c:forEach var="config" items="${content.valueList.MarkerConfig}" varStatus="status">
+                        <c:set var="markerGroup" value="${fn:trim(config.value.MarkerGroup)}" />
+                        <c:set var="markerIcon" value="${config.value.MarkerIcon}" />
+                        <c:set var="markerColor" value="${config.value.MarkerColor}" />
+                        <c:if test="${not empty markerGroup and (not empty markerIcon or not emptymarkerColor)}">
+                            <cms:jsonobject>
+                                <cms:jsonvalue key="group" value="${markerGroup}" />
+                                <c:if test="${not empty markerIcon}">
+                                    <m:icon-resource icon="${markerIcon}" />
+                                    <c:if test="${iconIsValid}">
+                                        <cms:jsonvalue key="url" value="${iconResource.rootPath}" />
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${not empty markerColor}">
+                                    <cms:jsonvalue key="color" value="${markerColor}" />
+                                </c:if>
+                            </cms:jsonobject>
+                        </c:if>
+                    </c:forEach>
+                </cms:jsonarray>
+            </cms:jsonobject>
+        </c:if>
+
         <c:forEach var="poi" items="${content.valueList.MapPoi}" varStatus="status">
             <m:map-marker-vars content="${cms.vfs.readXml[poi.value.PoiLink]}" showLink="${showLink}" showFacilities="${showFacilities}" showRoute="${showRoute}">
                 <c:if test="${not empty markerData}">
@@ -89,7 +116,6 @@
         </c:forEach>
 
         <c:forEach var="marker" items="${content.valueList.MapCoord}" varStatus="status">
-
             <m:map-marker-vars marker="${marker}" showLink="${showLink}" showFacilities="${showFacilities}" showRoute="${showRoute}">
                 <c:if test="${not empty markerData}">
                     <c:set var="markerGroup" value="${marker.value.MarkerGroup.isEmptyOrWhitespaceOnly ? 'default' : fn:trim(marker.value.MarkerGroup)}" />
@@ -107,6 +133,7 @@
             ratio="${mapRatio}"
             ratioLg="${mapRatioLg}"
             zoom="${mapZoom}"
+            config="${markerConfig}"
             markers="${markerList}"
             type="${mapType}"
             showLink="${showLink}"

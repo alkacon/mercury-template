@@ -2,15 +2,20 @@
     display-name="icon-resource"
     body-content="empty"
     trimDirectiveWhitespaces="true"
-    description="Displays icons from different icon sets." %>
+    description="Generates the resource name for an icon from the included icon sets." %>
 
 
 <%@ attribute name="icon" type="java.lang.String" required="true"
     description="The name or id of the icon to render.
     The selection is based on a prefix.
     Supported prefixes are:
-    fa- : use Fork Awesome
-    bi- : use Boostrap Icons.
+    fa- : use Fork Awesome.
+    bi- : use Boostrap icons.
+    my- : use Mercury icons.
+    fab- : use Font Awesome Brand icons.
+    fas- : use Font Awesome Solid icons.
+    far- : use Font Awesome Regular icons.
+    nf- : use National Flag icons.
     In case no prefix is given, the default is Fork Awesome" %>
 
 <%@ attribute name="setFallback" type="java.lang.Boolean" required="false"

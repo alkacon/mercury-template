@@ -1,0 +1,61 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="MarkerConfigData" type="OpenCmsMarkerConfigData"/>
+
+    <xsd:complexType name="OpenCmsMarkerConfigData">
+        <xsd:sequence>
+            <xsd:element name="MarkerConfig" type="OpenCmsMarkerConfig" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsMarkerConfig">
+        <xsd:sequence>
+            <xsd:element name="MarkerGroup" type="OpenCmsString" />
+            <xsd:element name="MarkerIcon" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MarkerColor" type="OpenCmsColor" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>MarkerGroup</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MarkerGroup)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MarkerGroup.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Search>false</Search>
+                    <Display>singleline</Display>
+                </Setting>
+                <Setting>
+                    <PropertyName>MarkerIcon</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MarkerIcon)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MarkerIcon.help)]]></Description>
+                    <Widget><![CDATA[selectcombo]]></Widget>
+                    <Default><![CDATA[none]]></Default>
+                    <WidgetConfig><![CDATA[
+                        none:%(key.msg.icon.none)|
+                        calendar:%(key.msg.icon.calendar)|
+                        music:%(key.msg.icon.music)|
+                        info:%(key.msg.icon.info)|
+                        globe:%(key.msg.icon.globe)
+                    ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>MarkerColor</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MarkerColor)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MarkerColor.help)]]></Description>
+                    <Widget>colorpicker</Widget>
+                    <Error><![CDATA[%(key.msg.error.colorformat)]]></Error>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

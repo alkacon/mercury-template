@@ -268,8 +268,13 @@ label.MapCoord.Coord=Koordinaten
 label.MapCoord.Coord.help=Die Geokoordinaten der anzuzeigenden Markierung.
 label.MapCoord.Link.help=Der Link für die Markierung.
 label.Marker=Markierung
+label.MarkerColor=Farbe
+label.MarkerColor.help=Setzt die Farbe für das Icon der Markierung. Wird keine Farbe angegeben, so wird eine Vorgabe aus dem CSS verwendet.
+label.MarkerConfig=Markierungskonfiguration
 label.MarkerGroup=Gruppe
 label.MarkerGroup.help=Diese Option kann zur Gruppierung von Markierungen benutzt werden. Benutzen Sie den gleichen Namen für alle Markierungen, die zu einer Gruppe gehören.
+label.MarkerIcon=Icon
+label.MarkerIcon.help=<p>Das für die Markierungen auf der Karte zu verwendende Icon.</p> \n<p>Alternativ zur Auswahlliste kann jeder Name eines Icons aus dem Mercury Template direkt eingegeben werden, z.B. 'bi-heart-fill'.</p> \n<p>Die vollständige Liste aller möglichen Icons finden Sie auf der <a href\="https\://mercury-template.opencms.org/anleitungen/grundlagen/icons/" target\="_blank">Mercury Dokumentations-Website</a>.
 label.Media.Copyright.help=Optionale Copyright-Informationen für die Mediendatei.
 label.Media.Length=Länge / Zusätzlicher Hinweis
 label.Media.Length.help=<p>Die Länge der Mediendatei oder ein zusätzlicher Hinweistext für den Benutzer.</p><p>Es kann ein beliebiger Text eingegeben werden.</p>

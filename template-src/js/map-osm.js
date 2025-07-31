@@ -34,6 +34,9 @@ var m_maps = {};
 // all map data sets found on the page, as array for easy iteration
 var m_mapData = [];
 
+// map icons loaded externally
+var m_mapIcons = [];
+
 // API key for accessing the map data
 var m_apiKey;
 
@@ -50,15 +53,68 @@ const m_fitBoundsOptions = {
     speed: 2
 }
 
-function getPuempel(color) {
+async function loadExternalSVGs(iconObjs) {
+    try {
+        const filteredIconObjs = iconObjs.filter(iconObj => iconObj && iconObj.url && !m_mapIcons.some(icon => icon.url === iconObj.url));
+        const promises = filteredIconObjs.map(iconObj => fetch(iconObj.url).then(res => {
+            if (!res.ok) throw new Error(`Error loading: ${iconObj.url}`);
+            return res.text().then(svgRaw => ({ svgRaw, url: iconObj.url, group: iconObj.group }));
+        }));
 
-  var strokeColor = tinycolor(color).darken(20);
-  return '<svg xmlns="http://www.w3.org/2000/svg" width="19" height="34" viewBox="-15 -34 19 34">' +
-      '<path fill="#fff" d="M-9-28h7v7h-7z"/>' +
-      '<path fill="' + color +
-      '" stroke="' + strokeColor +
-      '" d="M-5.5-33.4c-4.9 0-8.9 3.6-9 8.4 0 6.6 7.2 8.3 9 25 1.8-16.7 8.9-18.4 8.9-25 0-4.6-4-8.4-8.9-8.4zm0 6.4c1.4 0 2.6 1 2.7 2.5 0 1.5-1.2 2.7-2.7 2.7A2.7 2.7 0 0 1-8-24.5c0-1.4 1.2-2.4 2.5-2.5z"/>' +
-      '</svg>';
+        const svgArray = await Promise.all(promises);
+
+        svgArray.forEach(({ svgRaw, url, group }) => {
+            let viewBoxMatch = svgRaw.match(/viewBox="([^"]+)"/);
+            let viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
+
+            const cleaned = svgRaw
+                .replace(/<svg[^>]*>/, '')
+                .replace('</svg>', '')
+                .replace(/stroke="[^"]*"/g, '')
+                .replace(/fill="[^"]*"/g, '')
+                .replace(/<([a-z]+)([^>]*)>/g, '<$1 stroke="currentColor" fill="currentColor"$2>');
+
+            m_mapIcons.push({
+                url: url,
+                group: group,
+                svg: cleaned,
+                viewBox: viewBox
+            });
+        });
+    } catch (error) {
+        console.error("Error loading external SVGs:", error);
+    }
+}
+
+function getExternalSVG(url) {
+    const found = m_mapIcons.find(icon => icon.url === url);
+    if (found) {
+        return found;
+    }
+    return { svg: '', viewBox: '0 0 24 24' };
+}
+
+function getPuempel(color, svgUrl = null) {
+
+
+    if (svgUrl) {
+        const extSvg = getExternalSVG(svgUrl);
+        const iconColor = tinycolor.mostReadable('' + color, ['#ffffff', '#000000']).toHexString();
+        return '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="32" viewBox="0 0 28 32" style="color:' + iconColor + ';">' +
+            '<rect x="1" y="1" width="26" height="26" rx="4" ry="4" fill="' + color + '" stroke-width="0"/>' +
+            '<polygon points="12,27 16,27 14,31" fill="' + color + '" stroke-width="0"/>' +
+            '<svg x="3" y="3" width="22" height="22" viewBox="' + extSvg.viewBox + '" preserveAspectRatio="xMidYMid meet">' +
+                extSvg.svg +
+            '</svg>' +
+        '</svg>';
+    }
+    const strokeColor = tinycolor(color).darken(20);
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="19" height="34" viewBox="-15 -34 19 34">' +
+            '<path fill="#fff" d="M-9-28h7v7h-7z"/>' +
+            '<path fill="' + color +
+            '" stroke="' + strokeColor +
+            '" d="M-5.5-33.4c-4.9 0-8.9 3.6-9 8.4 0 6.6 7.2 8.3 9 25 1.8-16.7 8.9-18.4 8.9-25 0-4.6-4-8.4-8.9-8.4zm0 6.4c1.4 0 2.6 1 2.7 2.5 0 1.5-1.2 2.7-2.7 2.7A2.7 2.7 0 0 1-8-24.5c0-1.4 1.2-2.4 2.5-2.5z"/>' +
+        '</svg>';
 }
 
 function getCenterPointGraphic() {
@@ -86,23 +142,12 @@ function getClusterGraphicTextColor() {
     return perceivedColor.isLight() ? tinycolor(color).darken(70) : tinycolor(color).lighten(70);
 }
 
-function getFeaturesGraphic(imageId, color) {
+function getFeaturesGraphic(imageId, color, svgUrl = null, isOther = false) {
     color = color === undefined ? Mercury.getThemeJSON("map-color[0]", "#ffffff") : color;
-    const svg = window.btoa(getPuempel(color));
-    const image = new Image(19, 34);
+    const svg = window.btoa(getPuempel(color, svgUrl));
+    const image = svgUrl ? new Image(28, 32) : new Image(19, 34);
     image.src = `data:image/svg+xml;base64,${svg}`;
-    image.id = "featuresGraphic" + imageId;
-    image.style.display = "none";
-    document.querySelector("body").appendChild(image);
-    return document.getElementById(image.id);
-}
-
-function getOthersGraphic(imageId, color) {
-    color = color === undefined ? Mercury.getThemeJSON("map-color[0]", "#ffffff") : color;
-    const svg = window.btoa(getPuempel(color));
-    const image = new Image(19, 34);
-    image.src = `data:image/svg+xml;base64,${svg}`;
-    image.id = "othersGraphic" + imageId;
+    image.id = (isOther ? "othersGraphic" : "featuresGraphic") + imageId;
     image.style.display = "none";
     document.querySelector("body").appendChild(image);
     return document.getElementById(image.id);
@@ -168,8 +213,17 @@ function showSingleMap(mapData) {
                     groups[group] = getCenterPointGraphic();
                 } else if (typeof groups[group] === "undefined" ) {
                     var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
-                    if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + color);
-                    groups[group] = getPuempel(color);
+                    let svgUrl = null;
+                    let customColor = color;
+                    if (Array.isArray(mapData.icons)) {
+                        const iconObj = mapData.icons.find(icon => icon.group === group);
+                        if (iconObj) {
+                            svgUrl = iconObj.url ? iconObj.url : null;
+                            customColor = iconObj.color ? iconObj.color : color;
+                        }
+                    }
+                    if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + customColor);
+                    groups[group] = getPuempel(customColor, svgUrl);
                 }
                 // create a HTML element for each feature
                 var el = document.createElement('div');
@@ -178,7 +232,7 @@ function showSingleMap(mapData) {
                     anchor: "bottom",
                     element: el
                 });
-    
+
                 markerObject.setLngLat([parseFloat(marker.lng), parseFloat(marker.lat)]);
                 if (marker.info.length > 0){
                     markerObject.setPopup(new mapgl.Popup({ offset: [0, -25], maxWidth: '400px' }).setHTML(marker.info));
@@ -264,8 +318,17 @@ function showSingleMapClustered(mapData, filterByGroup) {
                     map.marker.push(markerObject);
                 } else if (typeof groups[group] === "undefined" ) {
                     var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
-                    if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + color);
-                    groups[group] = getFeaturesGraphic(mapData.id + group, color);
+                    let svgUrl = null;
+                    let customColor = color;
+                    if (Array.isArray(mapData.icons)) {
+                        const iconObj = mapData.icons.find(icon => icon.group === group);
+                        if (iconObj) {
+                            svgUrl = iconObj.url;
+                            customColor = iconObj.color ? iconObj.color : color;
+                        }
+                    }
+                    if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + customColor);
+                    groups[group] = getFeaturesGraphic(mapData.id + group, customColor, svgUrl);
                 }
             }
         }
@@ -599,7 +662,7 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
         });
     }
     if (geoJsonOthers && !map.hasImage("othersGraphic")) {
-        const othersGraphic = getOthersGraphic(mapId);
+        const othersGraphic = getFeaturesGraphic(mapId, undefined, null, true);
         othersGraphic.addEventListener("load", function() {
             map.addImage("othersGraphic", othersGraphic);
         });
@@ -713,6 +776,7 @@ export function init(jQuery, debug) {
                             mapData = JSON.parse(mapData);
                         }
                         mapData.id = $mapElement.attr("id");
+                        loadExternalSVGs(mapData.icons);
                         mapData.showPlaceholder = Mercury.initPlaceholder($mapElement, showMap);
                         if (DEBUG) console.info("OsmMap.init() map found with id: " + mapData.id);
                         m_mapData.push(mapData);

@@ -1,6 +1,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/map-config.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/map-coord.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/map-poi.xsd"/>
 
@@ -16,6 +17,7 @@
         <xsd:sequence>
             <xsd:element name="Title" type="OpenCmsString" />
             <xsd:element name="Description" type="OpenCmsHtml" minOccurs="0" />
+            <xsd:element name="MarkerConfig" type="OpenCmsMarkerConfig" minOccurs="0" maxOccurs="unbounded" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MapPoi" type="OpenCmsMapPoi" minOccurs="0" maxOccurs="unbounded" />
             <xsd:element name="MapCoord" type="OpenCmsMapCoord" minOccurs="0" maxOccurs="unbounded" />
@@ -43,6 +45,10 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-map.title)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>MarkerConfig</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MarkerConfig)]]></DisplayName>
                 </Setting>
                 <Setting>
                     <PropertyName>Description</PropertyName>

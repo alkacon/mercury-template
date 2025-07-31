@@ -18,6 +18,9 @@
 <%@ attribute name="mediaAttrs" type="java.lang.String" required="false"
     description="Additional attributes that will be appended to the generated media element." %>
 
+<%@ attribute name="withDetails" type="java.lang.String" required="false"
+    description="Whether to read all media details. Default is 'true'. If 'false', read the media type information only." %>
+
 
 <%@ variable name-given="image" declare="true"
     description="The optional image of the media file, as set in the content." %>
@@ -97,6 +100,7 @@
 <c:set var="width" value="${cms:mathRound(cms:toNumber(fn:substringBefore(ratio, '-'), 4))}" />
 <c:set var="height" value="${cms:mathRound(cms:toNumber(fn:substringAfter(ratio, '-'), 3))}" />
 <c:set var="usedRatio" value="${width}-${height}" />
+<c:set var="readDetails" value="${withDetails eq 'false' ? false : true}" />
 
 <c:choose>
     <c:when test="${content.value.MediaContent.value.YouTube.isSet}">
@@ -115,6 +119,8 @@
         <c:set var="isFlexible" value="${true}" />
     </c:when>
 </c:choose>
+
+<c:if test="${readDetails}">
 
 <m:list-element-status>
 
@@ -336,6 +342,8 @@
 </cms:bundle>
 
 </m:list-element-status>
+
+</c:if>
 
 
 <jsp:doBody/>

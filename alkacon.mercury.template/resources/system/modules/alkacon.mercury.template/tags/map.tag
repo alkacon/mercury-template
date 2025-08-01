@@ -16,7 +16,7 @@
 <%@ attribute name="markers" type="java.util.ArrayList" required="true"
     description="A list of map marker points from the Location picker widget." %>
 
-<%@ attribute name="config" type="org.opencms.json.JSONObject" required="true"
+<%@ attribute name="markerConfig" type="org.opencms.json.JSONObject" required="true"
     description="The configuration for the markers." %>
 
 <%@ attribute name="ratio" type="java.lang.String" required="false"
@@ -154,8 +154,8 @@
     <c:if test="${not empty markerList}">
         <cms:jsonvalue key="markers" value="${markerList}" />
     </c:if>
-    <c:if test="${not empty config}">
-        <cms:jsonvalue key="icons" value="${config.getJSONArray('config')}" />
+    <c:if test="${not empty markerConfig}">
+        <cms:jsonvalue key="markerConfig" value="${markerConfig.getJSONArray('markerConfig')}" />
     </c:if>
     <c:if test="${isOsm}">
         <c:set var="cssPath"><m:link-resource resource="/system/modules/alkacon.mercury.template/osmviewer/map.css" /></c:set>

@@ -79,7 +79,7 @@
 
         <c:if test="${not empty content.valueList.MarkerConfig}">
             <cms:jsonobject var="markerConfig" mode="object">
-                <cms:jsonarray key="config">
+                <cms:jsonarray key="markerConfig">
                     <c:forEach var="config" items="${content.valueList.MarkerConfig}" varStatus="status">
                         <c:set var="markerGroup" value="${fn:trim(config.value.MarkerGroup)}" />
                         <c:set var="markerIcon" value="${config.value.MarkerIcon}" />
@@ -87,10 +87,11 @@
                         <c:if test="${not empty markerGroup and (not empty markerIcon or not emptymarkerColor)}">
                             <cms:jsonobject>
                                 <cms:jsonvalue key="group" value="${markerGroup}" />
-                                <c:if test="${not empty markerIcon}">
+                                <c:if test="${markerIcon.isSetNotNone}">
                                     <m:icon-resource icon="${markerIcon}" />
                                     <c:if test="${iconIsValid}">
-                                        <cms:jsonvalue key="url" value="${iconResource.rootPath}" />
+                                        <cms:jsonvalue key="name" value="${markerIcon}" />
+                                        <cms:jsonvalue key="icon" value="${iconResource.content}" />
                                     </c:if>
                                 </c:if>
                                 <c:if test="${not empty markerColor}">
@@ -133,7 +134,7 @@
             ratio="${mapRatio}"
             ratioLg="${mapRatioLg}"
             zoom="${mapZoom}"
-            config="${markerConfig}"
+            markerConfig="${markerConfig}"
             markers="${markerList}"
             type="${mapType}"
             showLink="${showLink}"

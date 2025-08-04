@@ -38,6 +38,9 @@ var m_mapDataMap = {};
 // map styling
 var m_mapStyle = [];
 
+// map icons from SVGs
+var m_svgIcons = [];
+
 // API key for accessing the map data
 var m_apiKey;
 
@@ -47,23 +50,68 @@ var m_googleGeocoder = null;
 // check if the API has already been loaded
 var m_googleApiLoaded = false;
 
-function getPuempel(color) {
 
-    var shade = "" + tinycolor(color).darken(20);
+function prepareExternalSVGs(markerConfig, svgIcons) {
+    try {
+        const filteredIconObjs = markerConfig.filter(mC => mC && mC.name && !svgIcons.some(icon => icon.name === mC.name));
+
+        filteredIconObjs.forEach(mC => {
+            let svgRaw = mC.icon || '';
+            let viewBoxMatch = svgRaw.match(/viewBox="([^"]+)"/);
+            let viewBox = viewBoxMatch ? viewBoxMatch[1] : '0 0 24 24';
+
+            const cleaned = svgRaw
+                .replace(/<svg[^>]*>/, '')
+                .replace('</svg>', '')
+                .replace(/stroke="[^"]*"/g, '')
+                .replace(/fill="[^"]*"/g, '')
+                .replace(/<([a-z]+)([^>]*)>/g, '<$1 stroke="currentColor" fill="currentColor"$2>');
+
+            svgIcons.push({
+                name: mC.name,
+                group: mC.group,
+                svg: cleaned,
+                viewBox: viewBox
+            });
+
+        });
+    } catch (error) {
+        console.error("Error preparing external SVGs:", error);
+    }
+}
+
+function getPuempel(color, name = null) {
+
+    color = String(color);
+    var strokeColor = String(tinycolor(color).darken(20));
+    if (name != null) {
+        const extSvg = m_svgIcons.find(icon => icon.name === name);
+        if (extSvg) {
+            const ol = false;
+            const iconColor = tinycolor.mostReadable(color, ['#ffffff', '#000000']).toHexString();
+            const svgIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="34" viewBox="0 0 28 34" style="color:' + iconColor + ';">' +
+                '<rect x="1" y="1" width="26" height="26" rx="5" ry="5" fill="' + color + (ol ? '" stroke="' + iconColor + '" stroke-width="1"/>' : '"/>') +
+                '<polygon points="10,27 14,34 18,27" fill="' + color + (ol ? '" stroke="' + iconColor + '" stroke-width="1"/>' : '"/>') +
+                (ol ? '<rect x="11" y="26" width="6" height="2" fill="' + color + '"/>' : '') +
+                '<svg x="3" y="3" width="22" height="22" viewBox="' + extSvg.viewBox + '" preserveAspectRatio="xMidYMid meet">' +
+                    extSvg.svg +
+                '</svg>' +
+            '</svg>';
+            return {
+                url: "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svgIcon),
+                scaledSize: new google.maps.Size(28, 34),
+                anchor: new google.maps.Point(14, 34)
+            }
+        }
+    }
     return {
         path: 'M0-37.06c-5.53 0-10 4.15-10 9.26 0 7.4 8 9.26 10 27.8 2-18.54 10-20.4 10-27.8 0-5.1-4.47-9.26-10-9.26zm.08 7a2.9 2.9 0 0 1 2.9 2.9 2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9z',
         scale: 1,
         fillOpacity: 1,
         fillColor: color,
-        strokeColor: shade,
+        strokeColor: strokeColor,
         strokeWeight: 1
     };
-}
-
-function getFeatureGraphic(color) {
-
-    color = color ? color : Mercury.getThemeJSON("map-color[0]", "#ffffff");
-    return getPuempel(color);
 }
 
 function getCenterPointGraphic() {
@@ -308,11 +356,18 @@ function showSingleMap(mapData, filterByGroup){
                 if (DEBUG) console.info("GoogleMap new center point added.");
                 groups[group] = getCenterPointGraphic();
             } else if (typeof groups[group] === "undefined" ) {
-                // Array? Object?
-                // see http://stackoverflow.com/questions/9526860/why-does-a-string-index-in-a-javascript-array-not-increase-the-length-size
-                var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
-                if (DEBUG) console.info("GoogleMap new marker group added: " + group + " with color: " + color);
-                groups[group] = getPuempel(color);
+                let color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
+                let svgName = null;
+                let customColor = color;
+                if (Array.isArray(mapData.markerConfig)) {
+                    const mC = mapData.markerConfig.find(icon => icon.group === group);
+                    if (mC) {
+                        svgName = mC.name ? mC.name : null;
+                        customColor = mC.color ? mC.color : color;
+                    }
+                }
+                if (DEBUG) console.info("GoogleMap new marker group added: " + group + " with color: " + customColor + (svgName == null ? "" : " icon: " + svgName));
+                groups[group] = getPuempel(customColor, svgName);
             }
             if (!mapData.markerCluster || filterByGroup === undefined || filterByGroup == "showall" || decodeURIComponent(filterByGroup) == group) {
                 // get marker data from calling object
@@ -421,11 +476,21 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
             if (!others) {
                 checkBounds(coordinates);
             }
+            let color = featuresColor ? featuresColor : Mercury.getThemeJSON("map-color[0]", "#ffffff");
+            let svgName = null;
+            let customColor = color;
+            if (Array.isArray(mapData.markerConfig)) {
+                const mC = mapData.markerConfig.find(icon => icon.group === group);
+                if (mC) {
+                    svgName = mC.name ? mC.name : null;
+                    customColor = mC.color ? mC.color : color;
+                }
+            }
             const marker = new google.maps.Marker({
                 title: mapData.markerTitle,
                 position: new google.maps.LatLng(coordinates[1], coordinates[0]),
                 map: map,
-                icon: getFeatureGraphic(featuresColor),
+                icon: getPuempel(customColor, svgName),
                 zIndex: i
             });
             markers.push(marker);
@@ -529,6 +594,7 @@ export function init(jQuery, debug) {
                         }
                         mapData.id = $mapElement.attr("id");
                         mapData.showPlaceholder = Mercury.initPlaceholder($mapElement, showMap);
+                        prepareExternalSVGs(mapData.markerConfig, m_svgIcons);
                         if (DEBUG) console.info("GoogleMap found with id: " + mapData.id);
                         m_mapData.push(mapData);
                         m_mapDataMap[mapData.id] = mapData;

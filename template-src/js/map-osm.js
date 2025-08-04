@@ -34,8 +34,8 @@ var m_maps = {};
 // all map data sets found on the page, as array for easy iteration
 var m_mapData = [];
 
-// map icons loaded externally
-var m_mapIcons = [];
+// map icons from SVGs
+var m_svgIcons = [];
 
 // API key for accessing the map data
 var m_apiKey;
@@ -53,9 +53,9 @@ const m_fitBoundsOptions = {
     speed: 2
 }
 
-async function prepareExternalSVGs(markerConfig) {
+function prepareExternalSVGs(markerConfig, svgIcons) {
     try {
-        const filteredIconObjs = markerConfig.filter(mC => mC && mC.name && !m_mapIcons.some(icon => icon.name === mC.name));
+        const filteredIconObjs = markerConfig.filter(mC => mC && mC.name && !svgIcons.some(icon => icon.name === mC.name));
 
         filteredIconObjs.forEach(mC => {
             let svgRaw = mC.icon || '';
@@ -69,7 +69,7 @@ async function prepareExternalSVGs(markerConfig) {
                 .replace(/fill="[^"]*"/g, '')
                 .replace(/<([a-z]+)([^>]*)>/g, '<$1 stroke="currentColor" fill="currentColor"$2>');
 
-            m_mapIcons.push({
+            svgIcons.push({
                 name: mC.name,
                 group: mC.group,
                 svg: cleaned,
@@ -84,12 +84,13 @@ async function prepareExternalSVGs(markerConfig) {
 
 function getPuempel(color, name = null) {
 
-    const strokeColor = tinycolor(color).darken(20);
-    const ol = false;
+    color = String(color);
+    var strokeColor = String(tinycolor(color).darken(20));
     if (name != null) {
-        const extSvg = m_mapIcons.find(icon => icon.name === name);
+        const extSvg = m_svgIcons.find(icon => icon.name === name);
         if (extSvg) {
-            const iconColor = tinycolor.mostReadable('' + color, ['#ffffff', '#000000']).toHexString();
+            const ol = false;
+            const iconColor = tinycolor.mostReadable(color, ['#ffffff', '#000000']).toHexString();
             return '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="34" viewBox="0 0 28 34" style="color:' + iconColor + ';">' +
                 '<rect x="1" y="1" width="26" height="26" rx="5" ry="5" fill="' + color + (ol ? '" stroke="' + iconColor + '" stroke-width="1"/>' : '"/>') +
                 '<polygon points="10,27 14,34 18,27" fill="' + color + (ol ? '" stroke="' + iconColor + '" stroke-width="1"/>' : '"/>') +
@@ -204,7 +205,7 @@ function showSingleMap(mapData) {
                     if (DEBUG) console.info("OSM new center point added.");
                     groups[group] = getCenterPointGraphic();
                 } else if (typeof groups[group] === "undefined" ) {
-                    var color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
+                    let color = Mercury.getThemeJSON("map-color[" + groupsFound++ + "]", "#ffffff");
                     let svgName = null;
                     let customColor = color;
                     if (Array.isArray(mapData.markerConfig)) {
@@ -214,7 +215,7 @@ function showSingleMap(mapData) {
                             customColor = mC.color ? mC.color : color;
                         }
                     }
-                    if (true) console.info("OSM new marker group added: " + group + " with color: " + customColor + (svgName == null ? "" : " icon: " + svgName));
+                    if (DEBUG) console.info("OSM new marker group added: " + group + " with color: " + customColor + (svgName == null ? "" : " icon: " + svgName));
                     groups[group] = getPuempel(customColor, svgName);
                 }
                 // create a HTML element for each feature
@@ -593,8 +594,8 @@ function buildMapLayer(map, source, ajaxUrlMarkersInfo, cluster) {
 }
 
 function getKey(coordinates) {
-    let c0 = ("" + coordinates[0].toFixed(5));
-    let c1 = ("" + coordinates[1].toFixed(5));
+    let c0 = String(coordinates[0].toFixed(5));
+    let c1 = String(coordinates[1].toFixed(5));
     return [c0, c1].join(",");
  }
 
@@ -768,8 +769,8 @@ export function init(jQuery, debug) {
                             mapData = JSON.parse(mapData);
                         }
                         mapData.id = $mapElement.attr("id");
-                        prepareExternalSVGs(mapData.markerConfig);
                         mapData.showPlaceholder = Mercury.initPlaceholder($mapElement, showMap);
+                        prepareExternalSVGs(mapData.markerConfig, m_svgIcons);
                         if (DEBUG) console.info("OsmMap.init() map found with id: " + mapData.id);
                         m_mapData.push(mapData);
                         if (!mapData.showPlaceholder) {

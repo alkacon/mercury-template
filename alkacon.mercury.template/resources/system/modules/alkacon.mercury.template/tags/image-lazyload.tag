@@ -139,6 +139,23 @@
     <c:set var="attrImage" value="${empty attrImage ? styleAttr : attrImage.concat(' ').concat(styleAttr)}" />
 </c:if>
 
+<c:choose>
+    <c:when test="${empty width or empty height}">
+        <c:set var="imgOrientation" value="or-un" />
+    </c:when>
+    <c:when test="${width > (height * 1.05)}">
+        <c:set var="imgOrientation" value="or-ls" />
+    </c:when>
+    <c:when test="${height > (width * 1.05)}">
+        <c:set var="imgOrientation" value="or-po" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="imgOrientation" value="or-sq" />
+    </c:otherwise>
+</c:choose>
+
+<m:concat var="imgCss" strings="${[cssImage, cssImageLazy, imgOrientation]}" />
+
 <m:nl />
 <m:padding-box
     cssWrapper="${empty cssWrapper ? '' : cssWrapper.concat(' ')}image-src-box"
@@ -151,7 +168,7 @@
     <img ${attributes}<%----%>
         <c:if test="${not empty width}">${' '}width="${width}"</c:if>
         <c:if test="${not empty height}">${' '}height="${height}"</c:if>
-        <c:if test="${not empty cssImage or not empty cssImageLazy}">${' '}class="${cssImage}${empty cssImage or empty cssImageLazy ? '' : ' '}${cssImageLazy}"</c:if>
+        ${' '}class="${imgCss}"
         <c:if test="${true}">${' '}alt="<m:out value="${alt}" lenientEscaping="${true}" />"</c:if><%-- Always provide an alt, even if it's empty --%>
         <c:if test="${not empty title and (title ne alt)}">${' '}title="<m:out value="${title}" lenientEscaping="${true}" />"</c:if>
         <c:if test="${not empty attrImage}">${' '}${attrImage}</c:if>

@@ -82,6 +82,9 @@
 <%@ variable name-given="placeholderMessage" declare="true"
     description="The message to display for the placeholder (only for autoplay media element)." %>
 
+<%@ variable name-given="mediaButtonText" declare="true"
+    description="The text to use when linking to the media element, usually in a list." %>
+
 
 <%@ variable name-given="caseNotInList" declare="true" %>
 <%@ variable name-given="caseStaticList" declare="true" %>
@@ -118,6 +121,18 @@
     <c:when test="${content.value.MediaContent.value.Flexible.isSet}">
         <c:set var="isFlexible" value="${true}" />
     </c:when>
+</c:choose>
+
+<c:choose>
+    <c:when test="${isAudio or isSoundCloud}">
+        <c:set var="mediaButtonText" value="${cms.sitemapConfig.attribute['media.teaser.button.audio']}" />
+    </c:when>
+    <c:when test="${isVideo or isYouTube}">
+        <c:set var="mediaButtonText" value="${cms.sitemapConfig.attribute['media.teaser.button.video']}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="mediaButtonText" value="${cms.sitemapConfig.attribute['media.teaser.button.generic']}" />
+    </c:otherwise>
 </c:choose>
 
 <c:if test="${readDetails}">

@@ -22,21 +22,12 @@
 
 <m:media-vars content="${content}" ratio="${setRatio}" withDetails="false">
 
-<c:set var="buttonAudio" value="${cms.sitemapConfig.attribute['media.teaser.button.audio']}" />
-<c:set var="buttonVideo" value="${cms.sitemapConfig.attribute['media.teaser.button.video']}" />
-<c:set var="buttonGeneric" value="${cms.sitemapConfig.attribute['media.teaser.button.generic']}" />
 <c:choose>
     <c:when test="${setButtonText eq 'none'}">
         <c:set var="buttonText" value="${setButtonText}" />
     </c:when>
-    <c:when test="${(isAudio or isSoundCloud) and not empty buttonAudio and buttonAudio ne 'none'}">
-        <c:set var="buttonText" value="${buttonAudio}" />
-    </c:when>
-    <c:when test="${(isVideo or isYouTube) and not empty buttonVideo and buttonVideo ne 'none'}">
-        <c:set var="buttonText" value="${buttonVideo}" />
-    </c:when>
-    <c:when test="${isFlexible and not empty buttonGeneric and buttonGeneric ne 'none'}">
-        <c:set var="buttonText" value="${buttonGeneric}" />
+    <c:when test="${cms.wrap[mediaButtonText].isSetNotNone}">
+        <c:set var="buttonText" value="${mediaButtonText}" />
     </c:when>
     <c:otherwise>
         <c:set var="buttonText" value="${setButtonText}" />

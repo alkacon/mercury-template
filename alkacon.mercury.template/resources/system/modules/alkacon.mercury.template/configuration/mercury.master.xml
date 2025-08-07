@@ -1420,5 +1420,9 @@
             row-square square-m-20:  40
       ]]></Value>
     </Attribute>
+    <Attribute>
+      <Key><![CDATA[template.image.embed.copyright]]></Key>
+      <Value><![CDATA[true]]></Value>
+    </Attribute>
   </SitemapMasterConfiguration>
 </SitemapMasterConfigurations>

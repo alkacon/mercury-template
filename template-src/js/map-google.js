@@ -51,7 +51,7 @@ var m_googleGeocoder = null;
 var m_googleApiLoaded = false;
 
 
-function prepareExternalSVGs(markerConfig, svgIcons) {
+function prepareExternalSVGs(markerConfig = [], svgIcons = []) {
     try {
         const filteredIconObjs = markerConfig.filter(mC => mC && mC.name && !svgIcons.some(icon => icon.name === mC.name));
 

@@ -299,13 +299,15 @@ $oct-edit-infos:
 // Anchor link and admin markers
 
 // Container / editor elements background
+$oct-meta-text-color: $con-text-col-light !default; // fram WCAG perspective this should be get-text-color($con-col-orange, $con-text-col-light);
+
 @mixin oct-meta-bg {
-    --#{$prefix}link-color: #{$con-text-col-light};
-    --#{$prefix}link-hover-color: #{$con-text-col-light};
-    --#{$prefix}link-color-rgb: #{to-rgb($con-text-col-light)};
-    --#{$prefix}link-hover-color-rgb: #{to-rgb($con-text-col-light)};
+    --#{$prefix}link-color: #{$oct-meta-text-color};
+    --#{$prefix}link-hover-color: #{$oct-meta-text-color};
+    --#{$prefix}link-color-rgb: #{to-rgb($oct-meta-text-color)};
+    --#{$prefix}link-hover-color-rgb: #{to-rgb($oct-meta-text-color)};
     border-radius: 4px !important;
-    color: $con-text-col-light !important;
+    color: $oct-meta-text-color;
     background-color: $con-col-orange !important;
     background: linear-gradient(166deg, lighten($con-col-orange, 5%) 0%, darken($con-col-orange, 5%) 100%) !important;
     a:hover {
@@ -330,6 +332,7 @@ $oct-edit-infos:
 }
 
 .btn.oct-meta-info {
+    --#{$prefix}btn-hover-fg: $oct-meta-text-color;
     background: initial !important;
     background-color: $con-col-orange !important;
     &:focus,

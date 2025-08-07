@@ -312,9 +312,9 @@ $text-contrast-threshold:           2.5 !default;
 // WACG contrast focus outline and other accibility settings
 
 $text-use-wcag-contrast:            true !default; // if true, then $text-contrast-threshold is set to predefined values and $text-lightness-threshold is ignored
-$wacg-conformance-level:            "AA" !default; // if this is not set to "AAA" then "AA" is assumed, see https://www.w3.org/WAI/WCAG21/Understanding/conformance#conformance-requirements
+$wcag-conformance-level:            "AA" !default; // if this is not set to "AAA" then "AA" is assumed, see https://www.w3.org/WAI/WCAG21/Understanding/conformance#conformance-requirements
 @if $text-use-wcag-contrast {
-    @if $wacg-conformance-level == "AAA" {
+    @if $wcag-conformance-level == "AAA" {
         $text-contrast-threshold: 7;
     } @else {
         $text-contrast-threshold: 4.5;

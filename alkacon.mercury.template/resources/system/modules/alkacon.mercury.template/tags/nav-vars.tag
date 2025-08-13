@@ -41,6 +41,16 @@
     </c:when>
 </c:choose>
 
+<c:set var="navPathResPlugins" value="${cms.plugins['nav-path-res']}" />
+<c:if test="${not empty navPathResPlugins}">
+    <c:set var="navPathResPlugin" value="${navPathResPlugins.get(0)}" />
+    <c:set var="reqScopeNavPathRes" value="${navPathRes}" scope="request" />
+    <cms:include file="${navPathResPlugin.path}" cacheable="false" />
+    <c:if test="${reqScopeNavPathRes ne navPathRes}">
+        <c:set var="navPathRes" value="${reqScopeNavPathRes}" />
+    </c:if>
+</c:if>
+
 <%-- Make sure the navPathRes is in the current site --%>
 <c:set var="navPathRes" value="${(not empty navPathRes) and fn:startsWith(navPathRes.rootPath, cms.requestContext.siteRoot) ? navPathRes : null}" />
 

@@ -16,7 +16,7 @@
 <%@ attribute name="markers" type="java.util.ArrayList" required="true"
     description="A list of map marker points from the Location picker widget." %>
 
-<%@ attribute name="markerConfig" type="org.opencms.json.JSONObject" required="true"
+<%@ attribute name="markerConfig" type="org.opencms.json.JSONObject" required="false"
     description="The configuration for the markers." %>
 
 <%@ attribute name="ratio" type="java.lang.String" required="false"

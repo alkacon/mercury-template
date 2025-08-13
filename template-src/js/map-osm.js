@@ -67,11 +67,12 @@ function prepareExternalSVGs(markerConfig = [], svgIcons = []) {
                 .replace('</svg>', '')
                 .replace(/stroke="[^"]*"/g, '')
                 .replace(/fill="[^"]*"/g, '')
-                .replace(/<([a-z]+)([^>]*)>/g, '<$1 stroke="currentColor" fill="currentColor"$2>');
+                .replace(/<([a-z]+)([^>]*)>/g, '<$1 fill="currentColor"$2>');
 
             svgIcons.push({
                 name: mC.name,
                 group: mC.group,
+                box: mC.box,
                 svg: cleaned,
                 viewBox: viewBox
             });
@@ -88,16 +89,20 @@ function getPuempel(color, name = null) {
     var strokeColor = String(tinycolor(color).darken(20));
     if (name != null) {
         const extSvg = m_svgIcons.find(icon => icon.name === name);
-        if (extSvg) {
+        if (extSvg && extSvg.box) {
             const ol = false;
             const iconColor = tinycolor.mostReadable(color, ['#ffffff', '#000000']).toHexString();
             return '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="34" viewBox="0 0 28 34" style="color:' + iconColor + ';">' +
-                '<rect x="1" y="1" width="26" height="26" rx="5" ry="5" fill="' + color + (ol ? '" stroke="' + iconColor + '" stroke-width="1"/>' : '"/>') +
-                '<polygon points="10,27 14,34 18,27" fill="' + color + (ol ? '" stroke="' + iconColor + '" stroke-width="1"/>' : '"/>') +
-                (ol ? '<rect x="11" y="26" width="6" height="2" fill="' + color + '"/>' : '') +
+                '<rect x="1" y="1" width="26" height="26" rx="5" ry="5" fill="' + color + (ol ? '" stroke="' + strokeColor + '" stroke-width="1"/>' : '"/>') +
+                '<polygon points="10,27 14,34 18,27" fill="' + color + (ol ? '" stroke="' + strokeColor + '" stroke-width="1"/>' : '"/>') +
+                (ol ? '<line x1="10.5" y1="26.8" x2="17.5" y2="26.8"' + '" stroke="' + color + '" stroke-width="1.4"/>' : '') +
                 '<svg x="3" y="3" width="22" height="22" viewBox="' + extSvg.viewBox + '" preserveAspectRatio="xMidYMid meet">' +
                     extSvg.svg +
                 '</svg>' +
+            '</svg>';
+        } else if (extSvg) {
+            return '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="' + extSvg.viewBox + '" preserveAspectRatio="xMidYMid meet" style="color:' + color + ';">' +
+                extSvg.svg +
             '</svg>';
         }
     }

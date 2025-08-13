@@ -13,8 +13,9 @@
     <xsd:complexType name="OpenCmsMarkerConfig">
         <xsd:sequence>
             <xsd:element name="MarkerGroup" type="OpenCmsString" />
-            <xsd:element name="MarkerIcon" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="MarkerColor" type="OpenCmsColor" minOccurs="0" />
+            <xsd:element name="MarkerIcon" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="MarkerBox"  type="OpenCmsBoolean" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
     </xsd:complexType>
@@ -34,6 +35,13 @@
                     <Display>singleline</Display>
                 </Setting>
                 <Setting>
+                    <PropertyName>MarkerColor</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MarkerColor)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MarkerColor.help)]]></Description>
+                    <Widget>colorpicker</Widget>
+                    <Error><![CDATA[%(key.msg.error.colorformat)]]></Error>
+                </Setting>
+                <Setting>
                     <PropertyName>MarkerIcon</PropertyName>
                     <DisplayName><![CDATA[%(key.label.MarkerIcon)]]></DisplayName>
                     <Description><![CDATA[%(key.label.MarkerIcon.help)]]></Description>
@@ -42,11 +50,11 @@
                     <Search>false</Search>
                 </Setting>
                 <Setting>
-                    <PropertyName>MarkerColor</PropertyName>
-                    <DisplayName><![CDATA[%(key.label.MarkerColor)]]></DisplayName>
-                    <Description><![CDATA[%(key.label.MarkerColor.help)]]></Description>
-                    <Widget>colorpicker</Widget>
-                    <Error><![CDATA[%(key.msg.error.colorformat)]]></Error>
+                    <PropertyName>MarkerBox</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MarkerBox)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MarkerBox.help)]]></Description>
+                    <Widget>checkbox</Widget>
+                    <Display>singleline</Display>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

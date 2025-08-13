@@ -84,6 +84,7 @@
                         <c:set var="markerGroup" value="${fn:trim(config.value.MarkerGroup)}" />
                         <c:set var="markerIcon" value="${config.value.MarkerIcon}" />
                         <c:set var="markerColor" value="${config.value.MarkerColor}" />
+                        <c:set var="markerBox" value="${config.value.MarkerBox.toBoolean}" />
                         <c:if test="${not empty markerGroup and (not empty markerIcon or not emptymarkerColor)}">
                             <cms:jsonobject>
                                 <cms:jsonvalue key="group" value="${markerGroup}" />
@@ -96,6 +97,9 @@
                                 </c:if>
                                 <c:if test="${not empty markerColor}">
                                     <cms:jsonvalue key="color" value="${markerColor}" />
+                                </c:if>
+                                <c:if test="${markerBox}">
+                                    <cms:jsonvalue key="box" value="${markerBox}" />
                                 </c:if>
                             </cms:jsonobject>
                         </c:if>

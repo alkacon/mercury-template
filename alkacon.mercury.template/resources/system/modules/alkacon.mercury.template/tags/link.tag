@@ -90,7 +90,7 @@
                 <c:when test="${cms:isWrapper(link)}">
                     <c:choose>
                         <c:when test="${link.isSet and link.value.URI.isSet}">
-                            <c:set var="targetLink" value="${link.value.URI.toLink}" />
+                            <c:set var="targetLink" value="${link.value.URI.toLink.toString()}" />
                             <c:if test="${empty newWin}">
                                 <c:set var="newWin" value="${link.value.NewWindow.toBoolean}" />
                             </c:if>
@@ -121,6 +121,13 @@
                     <c:set var="targetLink" value="${link.toString()}" />
                 </c:otherwise>
             </c:choose>
+
+            <c:if test="${(not empty targetLink) and (not empty applicationScope.linkRewriteRules)}">
+                <c:set var="rewriteLink" value="${applicationScope.linkRewriteRules[targetLink]}" />
+                <c:if test="${not empty rewriteLink}">
+                    <c:set var="targetLink" value="${rewriteLink}" />
+                </c:if>
+            </c:if>
 
             <c:if test="${not empty targetLink}">
                 <c:if test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:') or fn:startsWith(targetLink, 'opencms:')}">

@@ -58,7 +58,7 @@
 <c:set var="bootstrapGridEmpty"     value="${empty bootstrapGrid}" />
 <c:set var="srcSet"                 value="${empty srcSet ? true : srcSet}" />
 <c:set var="bootstrapGrid"          value="${bootstrapGridEmpty ? 'template.bootstrap.grid.default' : bootstrapGrid}" />
-<c:set var="forceClearCache"        value="${DEBUG and true}" />
+<c:set var="forceClearCache"        value="${DEBUG}" />
 <c:set var="clearCache"             value="${forceClearCache or cms.sitemapConfig.attribute['template.clearCache'].toBoolean}" />
 
 

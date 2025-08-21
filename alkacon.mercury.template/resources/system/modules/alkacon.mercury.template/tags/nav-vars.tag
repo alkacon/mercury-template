@@ -41,13 +41,10 @@
     </c:when>
 </c:choose>
 
-<c:set var="navPathResPlugins" value="${cms.plugins['nav-path-res']}" />
-<c:if test="${not empty navPathResPlugins}">
-    <c:set var="navPathResPlugin" value="${navPathResPlugins.get(0)}" />
-    <c:set var="reqScopeNavPathRes" value="${navPathRes}" scope="request" />
-    <cms:include file="${navPathResPlugin.path}" cacheable="false" />
-    <c:if test="${reqScopeNavPathRes ne navPathRes}">
-        <c:set var="navPathRes" value="${reqScopeNavPathRes}" />
+<c:if test="${(not empty navPathRes) and (not empty applicationScope.linkRewriteRules)}">
+    <c:set var="rewriteLink" value="${applicationScope.linkRewriteRules[navPathRes.sitePath]}" />
+    <c:if test="${not empty rewriteLink}">
+        <c:set var="navPathRes"  value="${cms.vfs.resource[rewriteLink]}" />
     </c:if>
 </c:if>
 

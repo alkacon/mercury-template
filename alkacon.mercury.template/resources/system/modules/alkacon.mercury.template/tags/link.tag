@@ -79,6 +79,7 @@
         </c:when>
         <c:otherwise>
             <jsp:doBody var="body" />
+            <c:set var="noExternalMarker" value="${empty noExternalMarker ? true : noExternalMarker}" />
         </c:otherwise>
     </c:choose>
 
@@ -130,21 +131,19 @@
             </c:if>
 
             <c:if test="${not empty targetLink}">
-                <c:if test="${fn:startsWith(targetLink, '/') or fn:startsWith(targetLink, 'javascript:') or fn:startsWith(targetLink, 'opencms:')}">
-                    <c:set var="internal" value="${true}" />
-                </c:if>
                 <c:if test="${(not empty fragment) and (not fn:contains(targetLink, '#'))}">
                     <c:set var="targetLink" value="${targetLink}#${fragment}" />
                 </c:if>
                 <c:set var="targetLink"><m:link-opencms targetLink="${targetLink}" /></c:set>
                 <%-- targetLink may be returned empty by link-opencms --%>
+                <c:set var="internal" value="${not noExternalMarker and (fn:startsWith(targetLink, 'javascript:') or not cms.wrap(targetLink).toLink.isExternal)}" />
             </c:if>
 
             <c:choose>
                 <c:when test="${not empty targetLink}">
 
                     <c:set var="createButton" value="${createButton and empty body}" />
-                    <c:if test="${empty body and not internal and not noExternalMarker}">
+                    <c:if test="${not internal and not noExternalMarker}">
                         <c:set var="css" value="${css} external" />
                     </c:if>
 

@@ -100,6 +100,7 @@
                 link="${link}"
                 title="${linkTitle}"
                 css="${css}${not empty css and not empty cssWrapper ? ' ' : ''}${cssWrapper}"
+                noExternalMarker="${false}"
                 attr="${linkAttr}">
                     ${empty addSpan ? '' : '<span class=\"'.concat(addSpan).concat('\">')}
                         ${linkIcon}${linkMessage}

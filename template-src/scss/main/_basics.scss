@@ -291,6 +291,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .no-external,
     .type-iconbox,
+    .ls-buttons,
     .section-visual {
         a.external::after {
             content: "";
@@ -299,6 +300,11 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.subfoot .type-linksequence {
+    li.li-md-oc-docu > span {
+        display: none;
+    }
+}
 
 // Badges
 .badge {

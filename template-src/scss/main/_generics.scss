@@ -21,13 +21,13 @@
 
 // Colored backgrounds
 
+.box-colors {
+    @include set-box-colors($body-bg, true, true);
+}
+
 .box,
 .box-high {
     @include set-box-colors($highlight-color, true, true);
-}
-
-.box-colors {
-    @include set-box-colors($body-bg, true, true);
 }
 
 .box-oct-warning {

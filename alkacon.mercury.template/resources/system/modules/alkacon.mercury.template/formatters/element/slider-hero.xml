@@ -77,16 +77,16 @@
       <IncludeName><![CDATA[textColorSub.slider]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
+      <IncludeName><![CDATA[showDots.inside]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showArrows.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showDots.true]]></IncludeName>
+      <IncludeName><![CDATA[pauseOnHover.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[pauseOnHover.true]]></IncludeName>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[sliderType.slider.hero]]></IncludeName>

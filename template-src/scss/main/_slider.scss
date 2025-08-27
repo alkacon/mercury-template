@@ -32,10 +32,6 @@ $slider-text-below-breakpoint: md !default;
 
     --#{$prefix}slider-slide-border-radius: #{$slider-slide-border-radius};
     --#{$prefix}slider-caption-border-radius: #{$slider-caption-border-radius};
-    // --#{$prefix}slider-bg: var(--#{$prefix}main-theme-rgb);
-    // --#{$prefix}slider-fg: var(--#{$prefix}main-theme-fg);
-    // --#{$prefix}slider-caption-top: var(--#{$prefix}slider-bg);
-    // --#{$prefix}slider-caption-sub: var(--#{$prefix}slider-bg);
 
     &.hero-slider {
         // make sure not visible slides are hidden while loading
@@ -349,10 +345,79 @@ $slider-text-below-breakpoint: md !default;
         }
     }
 
+    &.dots-outside {
+        .slider-dot-container {
+            --#{$prefix}slider-dots: var(--#{$prefix}main-theme);
+
+            display: flex;
+            margin-top: var(--#{$prefix}default-margin);
+            justify-content: center;
+        }
+        .slider-dots {
+            bottom: 20px;
+
+            button,
+            [type="button"] {
+                margin: 0 0.75rem;
+                &::before {
+                    border-radius: 50%;
+                    height: 10px;
+                    width: 10px;
+                    background-image: none;
+                    background-color: var(--#{$prefix}slider-dots);
+                }
+            }
+        }
+    }
+
+    &.dots-always,
+    &.dots-inside {
+        .slider-dots {
+            position: absolute;
+            right: 50%;
+            transform: translateX(50%);
+            bottom: 5px;
+            z-index: 1100;
+        }
+    }
+
+    &.dots-inside {
+        .slider-dots {
+            opacity: 0;
+            transition: opacity 0.5s linear;
+        }
+    }
+
+    &.dots-always {
+        .slider-dots {
+            opacity: 1;
+            transition: none;
+        }
+
+        @include media-breakpoint-down($slider-text-below-breakpoint) {
+            &.text-below-on-xs {
+                .slider-dots {
+                    position: relative;
+                    justify-content: center;
+                    padding: var(--#{$prefix}default-margin-small);
+                    background-color: rgb(var(--#{$prefix}slider-bg));
+                    bottom: 0;
+                    top: 0;
+                }
+                .slide-container,
+                .slide-wrapper .captions,
+                .slide-wrapper .caption {
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+            }
+        }
+    }
+
     @include media-breakpoint-down($slider-text-below-breakpoint) {
         &.text-below-on-xs {
 
-            .slider-dots {
+            .slider-box .slider-dots {
                 bottom: 2px;
             }
 
@@ -363,6 +428,14 @@ $slider-text-below-breakpoint: md !default;
             @include caption-below;
 
             .slider-box {
+                .captions {
+                    .caption {
+                        width: 100%;
+                        .titlecaption, small {
+                            text-shadow: none;
+                        }
+                    }
+                }
                 &.custom {
                     .captions {
                         width: 100%;
@@ -497,7 +570,8 @@ $slider-text-below-breakpoint: md !default;
     }
 }
 
-.slider-box {
+.slider-box,
+.slider-dot-container {
     button,
     [type="button"] {
         -webkit-appearance: auto; // important for safari
@@ -558,20 +632,20 @@ $slider-text-below-breakpoint: md !default;
 
 .slider-dots {
     display: flex;
-    position: absolute;
-    right: 50%;
-    transform: translateX(50%);
-    bottom: 5px;
-    z-index: 1100;
+    // position: absolute;
+    // right: 50%;
+    // transform: translateX(50%);
+    // bottom: 5px;
+    // z-index: 1100;
+    // opacity: 0;
+    // transition: opacity 0.5s linear;
 
     list-style: none;
     text-align: center;
-
     padding: 0;
     margin: 0;
 
-    opacity: 0;
-    transition: opacity 0.5s linear;
+
 
     button {
         position: relative;

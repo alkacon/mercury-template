@@ -1570,12 +1570,22 @@
       <Default><![CDATA[true]]></Default>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showDots.true]]></IncludeName>
+      <IncludeName><![CDATA[showDots.inside]]></IncludeName>
       <PropertyName><![CDATA[showDots]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.slider.showDots)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.slider.showDots.help)]]></Description>
-      <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[true]]></Default>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[inside]]></Default>
+      <WidgetConfig><![CDATA[
+        inside:     %(key.msg.setting.slider.showDots.inside)|
+        always:     %(key.msg.setting.slider.showDots.always)|
+        outside:    %(key.msg.setting.slider.showDots.below)|
+        none:       %(key.msg.setting.slider.showDots.none)
+      ]]></WidgetConfig>
+      <ValueTranslation><![CDATA[
+          inside: true|
+          none: false
+      ]]></ValueTranslation>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[pauseOnHover.true]]></IncludeName>

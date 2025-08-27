@@ -99,10 +99,10 @@ const selectDotBtn = (dotsArray, embla) => () => {
     const previous = embla.previousScrollSnap();
     const selected = embla.selectedScrollSnap();
     dotsArray[previous].classList.remove('active');
-    dotsArray[previous].setAttribute('tabindex', '-1');
+    // dotsArray[previous].setAttribute('tabindex', '-1');
     dotsArray[previous].setAttribute('aria-selected', false);
     dotsArray[selected].classList.add('active');
-    dotsArray[selected].setAttribute('tabindex', '0');
+    // dotsArray[selected].setAttribute('tabindex', '0');
     dotsArray[selected].setAttribute('aria-selected', true);
 };
 

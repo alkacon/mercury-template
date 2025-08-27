@@ -64,16 +64,16 @@
       <IncludeName><![CDATA[textColorSub.slider]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
-    </Setting>
-    <Setting>
-      <IncludeName><![CDATA[isDraggable.true]]></IncludeName>
+      <IncludeName><![CDATA[showDots.inside]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[showArrows.true]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showDots.true]]></IncludeName>
+      <IncludeName><![CDATA[isDraggable.true]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[showImageCopyright.default]]></IncludeName>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[sliderType.slider.timed]]></IncludeName>

@@ -33,11 +33,14 @@
 <c:set var="imageRatioXL"           value="${setting.imageRatioLarge.toString}" />
 <c:set var="showArrows"             value="${setting.showArrows.toBoolean}" />
 <c:set var="pauseOnHover"           value="${setting.pauseOnHover.toBoolean}" />
-<c:set var="showDots"               value="${setting.showDots.toBoolean}" />
 <c:set var="isDraggable"            value="${setting.isDraggable.useDefault('true').toBoolean}" />
 <c:set var="visibleSlideSetting"    value="${setting.visibleSlides.toString}" />
 <c:set var="textDisplay"            value="${setting.textDisplay.isSetNotNone ? setting.textDisplay.toString : null}" />
 <c:set var="hsizeTitle"             value="${setting.hsizeTitle.isSet ? setting.hsizeTitle.toInteger : 0}" />
+
+<c:set var="showDotsStr"            value="${setting.showDots.validate(['none','inside','outside', 'always'],'inside').toString}" />
+<c:set var="showDots"               value="${showDotsStr ne 'none'}" />
+<c:set var="showDotsOutside"        value="${showDots and (showDotsStr eq 'outside')}" />
 
 <c:set var="bgColorHead"            value="${setting.textColorHead.isSet and not (setting.textColorHead eq 'css') ? setting.textColorHead.toString : null}" />
 <c:set var="bgColorSub"             value="${setting.textColorSub.isSet and not (setting.textColorSub eq 'css') ? setting.textColorSub.toString : null}" />
@@ -105,6 +108,9 @@
     </c:when>
     <c:otherwise>
     <%-- Hero slider (default) --%>
+        <c:if test="${fn:contains(sliderType, 'nobox')}">
+            <c:set var="setCssWrapper123" value="${fn:replace(setCssWrapper123, 'box box-', 'box-colors box-')}" />
+        </c:if>
         <c:set var="isHeroSlider" value="${true}" />
         <c:set var="showSlideText" value="${true}" />
         <c:set var="marginClass" value="${marginClass}${' tr-'.concat(transition)}" />
@@ -120,9 +126,17 @@
     </c:otherwise>
 </c:choose>
 
-<div class="element type-slider${justOneSlide ? ' just-one-slide' : ' use-embla-slider'}${isHeroSlider ? ' hero-slider ' : ' logo-slider '}pivot pivot-full${setCssWrapper123}${setCssVisibility}${' '}${textDisplay}" <%--
---%>id="<m:idgen prefix='sl' uuid='${cms.element.id}' />"<%--
---%>><m:nl />
+<m:concat var="sliderClasses" strings="${[
+    'element type-slider pivot pivot-full',
+    justOneSlide ? 'just-one-slide' : 'use-embla-slider',
+    isHeroSlider ? 'hero-slider ' : 'logo-slider ',
+    'dots-'.concat(showDotsStr),
+    setCssWrapper123,
+    setCssVisibility,
+    textDisplay
+]}" leadSpace="${false}" />
+
+<div class="${sliderClasses}" id="<m:idgen prefix='sl' uuid='${cms.element.id}' />"><m:nl />
 
     <m:heading level="${hsize}" text="${value.Title}" css="heading" ade="${ade}" />
 
@@ -450,12 +464,22 @@
             </button><%----%>
         </c:if>
         <c:if test="${showDots}">
-            <div class="slider-dots rs_skip" role="tablist"><%----%>
-                <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1"><fmt:message key='msg.page.slider.pagination.dots' /></button><%----%>
-            </div><%----%>
+            <c:set var="dotMarkup">
+                <div class="slider-dots rs_skip" role="tablist"><%----%>
+                    <button type="button" class="dot-btn" role="tab" aria-selected="false" tabindex="-1"><fmt:message key='msg.page.slider.pagination.dots' /></button><%----%>
+                </div><%----%>
+            </c:set>
+            <c:if test="${not showDotsOutside}">
+                ${dotMarkup}
+            </c:if>
         </c:if>
     </c:if>
     </div><%----%>
+    <c:if test="${showDots and showDotsOutside}">
+         <div class="slider-dot-container"><%----%>
+            ${dotMarkup}
+        </div><%----%>
+    </c:if>
 
 </div><%----%>
 <m:nl />

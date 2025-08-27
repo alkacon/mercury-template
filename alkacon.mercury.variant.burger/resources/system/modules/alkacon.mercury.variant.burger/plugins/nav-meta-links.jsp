@@ -33,6 +33,7 @@
                         title="${metaMap.title}"
                         css="${metaMap.css}"
                         attr="${metaMap.attr}"
+                        noExternalMarker="${true}"
                         forceText="${metaMap.icon}" />
                 </li><%----%>
             </c:set>
@@ -73,7 +74,7 @@
 
 <c:if test="${not empty metaLinksIconOnly}">
     <li class="nav-meta-icons"><ul><%----%>
-    ${metaLinksIconOnly}
+        ${metaLinksIconOnly}
     </ul></li><%----%>
     <m:nl />
 </c:if>

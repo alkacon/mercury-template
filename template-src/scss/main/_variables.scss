@@ -1072,9 +1072,8 @@ $transition-function:               ease; // default timing function used for :h
 $cursor-disabled:                   not-allowed !default;
 
 
-// Controls if links marked with the CSS "external" get a special icon.
-// Note that this also uses JavaScript for links in HTML WYSIWYG parts.
-$link-external-icon:                true !default;
+// Controls if links marked with the CSS "external" get a special icon
+$link-external-icon:                false !default;
 
 
 // The height of the OpenCms toolbar visible in edit mode

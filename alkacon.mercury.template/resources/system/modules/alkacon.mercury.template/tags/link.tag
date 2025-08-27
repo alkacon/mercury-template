@@ -144,7 +144,7 @@
 
                     <c:set var="createButton" value="${createButton and empty body}" />
                     <c:if test="${not internal and not noExternalMarker}">
-                        <c:set var="css" value="${css} external" />
+                        <c:set var="css" value="${css}${empty css ? '' : ' '}external" />
                     </c:if>
 
                     <c:choose>

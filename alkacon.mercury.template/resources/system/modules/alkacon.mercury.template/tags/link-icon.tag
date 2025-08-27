@@ -1,5 +1,5 @@
 <%@ tag pageEncoding="UTF-8"
-    display-name="icon-link"
+    display-name="link-icon"
     body-content="empty"
     trimDirectiveWhitespaces="true"
     description="Generates a link with optional icon prefix.
@@ -100,7 +100,7 @@
                 link="${link}"
                 title="${linkTitle}"
                 css="${css}${not empty css and not empty cssWrapper ? ' ' : ''}${cssWrapper}"
-                noExternalMarker="${false}"
+                noExternalMarker="${empty linkMessage}"
                 attr="${linkAttr}">
                     ${empty addSpan ? '' : '<span class=\"'.concat(addSpan).concat('\">')}
                         ${linkIcon}${linkMessage}

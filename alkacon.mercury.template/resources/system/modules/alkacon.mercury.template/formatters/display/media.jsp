@@ -23,7 +23,7 @@
 <m:media-vars content="${content}" ratio="${setRatio}" withDetails="false">
 
 <c:choose>
-    <c:when test="${setButtonText eq 'none'}">
+    <c:when test="${setButtonText eq 'none' or not inList}">
         <c:set var="buttonText" value="${setButtonText}" />
     </c:when>
     <c:when test="${cms.wrap[mediaButtonText].isSetNotNone}">

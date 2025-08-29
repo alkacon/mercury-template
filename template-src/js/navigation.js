@@ -843,5 +843,5 @@ export function init(jQuery, debug, verbose) {
     initSmoothScrolling();
     initAccordionScroll();
     initClickmeShowme();
-    initExternalLinks();
+    // initExternalLinks();
 }

@@ -2233,7 +2233,7 @@
       <IncludeName><![CDATA[iconClass.linksequence]]></IncludeName>
       <PropertyName><![CDATA[iconClass]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.iconClass)]]></DisplayName>
-      <Description><![CDATA[%(key.msg.setting.iconClass.help)]]></Description>
+      <Description><![CDATA[%(key.msg.setting.iconClass.nocombo.help)]]></Description>
       <Widget><![CDATA[select]]></Widget>
       <Default><![CDATA[caret-right]]></Default>
       <WidgetConfig><![CDATA[

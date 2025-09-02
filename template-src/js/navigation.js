@@ -689,31 +689,6 @@ function openTabFromHash($tab) {
     doScrollToAnchor($parent, -5);
 }
 
-// apply "external" class to all a href links
-function initExternalLinks() {
-
-    var $aHrefs = jQ('.piece text a');
-    if (DEBUG) console.info("Navigation.initExternalLinks() a elements found in '.piece text': " + $aHrefs.length);
-    if (DEBUG) console.info("Navigation.initExternalLinks() location.hostname is: " + location.hostname);
-    try {
-        if (! Mercury.isEditMode()) {
-            $aHrefs.each(function() {
-
-                var $element = jQ(this);
-                var hostname = $element.prop("hostname");
-                if (hostname && hostname !== location.hostname) {
-                    $element.addClass("external");
-                }
-            });
-        } else {
-            if (DEBUG) console.info("Navigation.initExternalLinks() skipped external a element extension because of edit mode");
-        }
-    } catch (err) {
-        // required otherwise IE may prodice an error and stop execution
-        console.info("initExternalLinks() Error " + err);
-    }
-}
-
 function addEnterIsClick($element) {
     if (DEBUG) console.info("Navigation.addEnterIsClick()", $element);
     $element.keyup(function(event) {
@@ -843,5 +818,4 @@ export function init(jQuery, debug, verbose) {
     initSmoothScrolling();
     initAccordionScroll();
     initClickmeShowme();
-    // initExternalLinks();
 }

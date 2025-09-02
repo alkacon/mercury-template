@@ -288,13 +288,8 @@ function loadGoogleApi() {
 export function showMarkers(mapId, group) {
 
     if (DEBUG) console.info("GoogleMap showMapMarkers() called with map id: " + mapId);
-    var map = m_maps[mapId];
-    let mapData;
-    for (let md of m_mapData) {
-        if (md.id === mapId) {
-            mapData = md;
-        }
-    }
+    const map = m_maps[mapId];
+    const mapData = m_mapData.find(md => md.id === mapId);
     if (map) {
         if (!mapData.markerCluster) {
             var markers = map.markers;

@@ -609,13 +609,8 @@ function getKey(coordinates) {
 export function showMarkers(mapId, group){
 
     if (DEBUG) console.info("OSM showMapMarkers() called with id: " + mapId);
-    var map = m_maps[mapId];
-    let mapData;
-    for (let md of m_mapData) {
-        if (md.id === mapId) {
-            mapData = md;
-        }
-    }
+    const map = m_maps[mapId];
+    const mapData = m_mapData.find(md => md.id === mapId);
     if (map) {
         if (!mapData.markerCluster) {
             var markers = map.marker;
@@ -653,10 +648,21 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
     }
     if (DEBUG && (count > 0)) console.info("OsmMap.showGeoJson() styles loaded, proceeding with map id: " + mapId);
     if (!map.hasImage("featuresGraphic")) {
+
+        const mapData = m_mapData.find(md => md.id === mapId);
+        let svgName = null;
+        if (Array.isArray(mapData.markerConfig)) {
+            const mC = mapData.markerConfig.find(icon => icon.group === 'default');
+            if (mC) {
+                svgName = mC.name ? mC.name : null;
+            }
+        }
+
         const centerPointColor = Mercury.getThemeJSON("map-center", "#000000");
-        const featuresGraphic = getFeaturesGraphic(mapId, geoJsonOthers ? centerPointColor : undefined);
+        const featuresGraphic = getFeaturesGraphic(mapId, geoJsonOthers ? centerPointColor : undefined, svgName, true);
+
         featuresGraphic.addEventListener("load", function() {
-            map.addImage("featuresGraphic", featuresGraphic);
+            map.addImage("featuresGraphic", featuresGraphic, { pixelRatio: 2 });
         });
     }
     if (geoJsonOthers && !map.hasImage("othersGraphic")) {

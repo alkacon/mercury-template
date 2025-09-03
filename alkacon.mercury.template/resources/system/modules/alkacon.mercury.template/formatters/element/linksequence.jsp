@@ -114,9 +114,6 @@
                                         forceText="${linkMap.icon}" />
                                 </li><%----%>
                             </c:if>
-                            <c:if test="${false}">
-                                <!-- CHECK2 -->
-                            </c:if>
                         </c:when>
                         <c:otherwise>
                             <m:link-icon

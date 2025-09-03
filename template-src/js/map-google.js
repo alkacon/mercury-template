@@ -480,20 +480,13 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
                 checkBounds(coordinates);
             }
             let color = featuresColor ? featuresColor : Mercury.getThemeJSON("map-color[0]", "#ffffff");
-            let svgName = null;
-            let customColor = color;
-            if (Array.isArray(mapData.markerConfig)) {
-                const mC = mapData.markerConfig.find(icon => icon.group === group);
-                if (mC) {
-                    svgName = mC.name ? mC.name : null;
-                    customColor = mC.color ? mC.color : color;
-                }
-            }
+            // the array will have only one element here with the group name being "default"
+            let svgName = (Array.isArray(mapData.markerConfig) && mapData.markerConfig.length === 1) ? mapData.markerConfig[0].name : null;
             const marker = new google.maps.Marker({
                 title: mapData.markerTitle,
                 position: new google.maps.LatLng(coordinates[1], coordinates[0]),
                 map: map,
-                icon: getPuempel(customColor, svgName),
+                icon: getPuempel(color, svgName),
                 zIndex: i
             });
             markers.push(marker);

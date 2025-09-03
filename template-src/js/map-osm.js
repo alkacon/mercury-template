@@ -650,13 +650,8 @@ export function showGeoJson(mapId, geoJson, ajaxUrlMarkersInfo, count, geoJsonOt
     if (!map.hasImage("featuresGraphic")) {
 
         const mapData = m_mapData.find(md => md.id === mapId);
-        let svgName = null;
-        if (Array.isArray(mapData.markerConfig)) {
-            const mC = mapData.markerConfig.find(icon => icon.group === 'default');
-            if (mC) {
-                svgName = mC.name ? mC.name : null;
-            }
-        }
+        // the array will have only one element here with the group name being "default"
+        let svgName = (Array.isArray(mapData.markerConfig) && mapData.markerConfig.length === 1) ? mapData.markerConfig[0].name : null;
 
         const centerPointColor = Mercury.getThemeJSON("map-center", "#000000");
         const featuresGraphic = getFeaturesGraphic(mapId, geoJsonOthers ? centerPointColor : undefined, svgName, true);

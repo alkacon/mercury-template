@@ -2,7 +2,7 @@
 
 <LayoutSimpleData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/layout-simple.xsd">
   <LayoutSimple language="de">
-    <Title><![CDATA[Row 2 Spalten (4 - 8) [Ab Bildschrimgröße LG]]]></Title>
+    <Title><![CDATA[Row 2 Spalten (4 - 8) [Ab Bildschirmgröße LG]]]></Title>
     <Variant><![CDATA[4-8]]></Variant>
   </LayoutSimple>
   <LayoutSimple language="en">

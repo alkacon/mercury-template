@@ -125,7 +125,7 @@
 #fixed-bottom-bar {
     display: flex;
     flex-direction: column;
-    z-index: #{$above-oc-z-index + 150}; // should be above the edit points and the privacy policy banner
+    z-index: #{$above-oc-z-index + 50}; // should be above the edit points and behind the privacy policy banner
     position: fixed;
     bottom: $grid-gutter-width-half;
 

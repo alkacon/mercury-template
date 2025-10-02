@@ -28,7 +28,7 @@
 
 
 <c:if test="${cms.isEditMode}">
-    <m:read-user-preference var="showTemplateMarker" value="showTemplateMarker" default="${false || useDefault}" />
+    <m:read-user-preference var="showTemplateMarker" value="showTemplateMarker" useDefault="${false || useDefault}" />
     <c:if test="${showTemplateMarker}">
         <c:if test="${inlineCss}">
             <c:set var="showGrid" value="${false}" />

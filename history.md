@@ -2,6 +2,26 @@
 
 ## Release history ##
 
+### Version 20 ###
+
+*October 7, 2025*:
+
+* Updated for OpenCms 20.
+* The "Map" element now supports custom icons for marker groups.
+* Group bookings for "Event" elements.
+* Extended options for "Slider" navigation points.
+* "Article" markup optimization for Google News / SEO.
+* New SEO setting for "Revisit after" in the "Meta info" element.
+* Individual link texts for "Media" elements in lists.
+* Alternative graphics in the header area for desktop and mobile.
+* Display of the template and current screen size in the page editor.
+* Option to make the privacy policy always accessible via icon.
+* Optimization of the cookie banner.
+* Optionally mark images as decorative in the editor.
+* Optionally link full text search words of the user with "AND" instead of "OR".
+* Update of Font Awesome and Bootstrap icons.
+* All NPM dependencies have been updated to a recent version.
+
 ### Version 19 ###
 
 *April 2, 2025*:

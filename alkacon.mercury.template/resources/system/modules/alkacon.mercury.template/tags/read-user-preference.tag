@@ -9,7 +9,7 @@
 <%@ attribute name="value" type="java.lang.String" required="true"
     description="The user setting preference to read." %>
 
-<%@ attribute name="default" type="java.lang.String" required="false"
+<%@ attribute name="useDefault" type="java.lang.String" required="false"
     description="Default value in case the setting is not available." %>
 
 <%@ attribute name="var" required="true" rtexprvalue="false"
@@ -22,7 +22,7 @@
     CmsObject cms =  ((CmsJspStandardContextBean)getJspContext().findAttribute("cms")).getVfs().getCmsObject();
     String result = org.opencms.db.CmsUserSettings.getAdditionalPreference(cms, value, true);
     if (result == null || (result.length() < 1)) {
-        result = (String)getJspContext().getAttribute("default");
+        result = (String)getJspContext().getAttribute("useDefault");
     }
     getJspContext().setAttribute("result", result);
 %>

@@ -4,7 +4,7 @@
 
 ### Version 20 ###
 
-*October 7, 2025*:
+*October 14, 2025*:
 
 * Updated for OpenCms 20.
 * The "Map" element now supports custom icons for marker groups.

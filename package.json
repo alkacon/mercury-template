@@ -1,5 +1,5 @@
 {
-  "version": "19.0.0",
+  "version": "20.0.0",
   "name": "mercury-template",
   "description": "The Alkacon Mercury template for OpenCms.",
   "author": "Alkacon Software GmbH & Co. KG - http://www.alkacon.com",
@@ -11,18 +11,18 @@
     "clean-css": "^5.3.3",
     "clean-css-cli": "^5.6.3",
     "copyfiles": "^2.4.1",
-    "del-cli": "^6.0.0",
-    "glob": "^11.0.2",
+    "del-cli": "^7.0.0",
+    "glob": "^11.0.3",
     "minimist": "^1.2.8",
     "nodemon": "^3.1.10",
-    "npm": "^11.4.1",
-    "postcss": "^8.5.5",
+    "npm": "^11.6.2",
+    "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "postcss-urlrewrite": "^0.3.0",
     "sass": "1.77.8",
-    "webpack": "^5.99.9",
+    "webpack": "^5.102.1",
     "webpack-cli": "^6.0.1",
-    "vite": "^6.3.5"
+    "vite": "^7.1.9"
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "2.5.3",

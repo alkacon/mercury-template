@@ -7,6 +7,7 @@
 *October 14, 2025*:
 
 * Updated for OpenCms 20.
+* Vite.js support with hot module / CSS replacement.
 * The "Map" element now supports custom icons for marker groups.
 * Group bookings for "Event" elements.
 * Extended options for "Slider" navigation points.

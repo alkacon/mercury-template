@@ -7,6 +7,7 @@ The Mercury Template is a complete, modular template for [OpenCms](https://openc
 ## Main Mercury features ##
 
 * Create simple or complex grid layouts via drag & drop using layout row / area / group elements.
+* Vite.js support with hot module / CSS replacement.
 * 'Content section' element that can be formatted in many ways to place text, images, or a combination thereof anywhere on a page.
 * 'Article' element that supports tags, various sorting options, as well as archive display.
 * 'Event' element including support for recurring events.

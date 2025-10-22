@@ -3,7 +3,10 @@ import postcssUrlRewrite from 'postcss-urlrewrite';
 import fs from 'fs';
 
 let env = {};
-const viteEnvFile = process.env.OPENCMS_VITEENV ? process.env.OPENCMS_VITEENV : './vite.env.js';
+const defaultViteEnvFile = './vite.env.js';
+const viteEnvFile = fs.existsSync(defaultViteEnvFile)
+    ? defaultViteEnvFile
+    : (process.env.OPENCMS_VITEENV || defaultViteEnvFile);
 try {
     env = require(viteEnvFile);
 } catch (e) {

@@ -123,8 +123,8 @@
                 </c:otherwise>
             </c:choose>
 
-            <c:if test="${(not empty targetLink) and (not empty applicationScope.linkRewriteRules)}">
-                <c:set var="rewriteLink" value="${applicationScope.linkRewriteRules[targetLink]}" />
+            <c:if test="${(not empty targetLink) and (not empty requestScope.linkRewriteRules)}">
+                <c:set var="rewriteLink" value="${requestScope.linkRewriteRules[targetLink]}" />
                 <c:if test="${not empty rewriteLink}">
                     <c:set var="targetLink" value="${rewriteLink}" />
                 </c:if>

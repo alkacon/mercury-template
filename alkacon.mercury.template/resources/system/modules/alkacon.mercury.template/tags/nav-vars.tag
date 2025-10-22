@@ -41,8 +41,8 @@
     </c:when>
 </c:choose>
 
-<c:if test="${(not empty navPathRes) and (not empty applicationScope.linkRewriteRules)}">
-    <c:set var="rewriteLink" value="${applicationScope.linkRewriteRules[navPathRes.sitePath]}" />
+<c:if test="${(not empty navPathRes) and (not empty requestScope.linkRewriteRules)}">
+    <c:set var="rewriteLink" value="${requestScope.linkRewriteRules[navPathRes.sitePath]}" />
     <c:if test="${not empty rewriteLink}">
         <c:set var="navPathRes"  value="${cms.vfs.resource[rewriteLink]}" />
     </c:if>

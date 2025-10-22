@@ -86,7 +86,7 @@
                 <c:when test="${type eq 'forSite'}">
                     <c:set var="pathparts" value="${fn:split(currentPageFolder, '/')}" />
                     <c:forEach var="folderName" items="${pathparts}" varStatus="status">
-                        <c:if test="${status.count <= navStartLevel}">
+                        <c:if test="${status.count lt navStartLevel}">
                             <c:set var="navStartFolder">${navStartFolder}${folderName}/</c:set>
                         </c:if>
                     </c:forEach>
@@ -106,7 +106,23 @@
                 locale="${cms.locale}"
                 param="true"
                 var="navBean" />
-            <c:set var="navItems" value="${navBean.items}" />
+
+            <c:choose>
+                <c:when test="${empty requestScope.navIgnoreInfo}">
+                    <c:set var="navItems" value="${navBean.items}" />
+                </c:when>
+                <c:otherwise>
+                    <%-- Certain nav entries are to be ignored, these are marked with a nav info property --%>
+                    <jsp:useBean id="keepItems"  class="java.util.ArrayList" />
+                    <c:set var="checkNavItems" value="${navBean.items}" />
+                    <c:forEach var="checkNavItem" items="${checkNavItems}" varStatus="status">
+                        <c:if test="${not fn:contains((cms.wrap[checkNavItem.resource]).propertySearch.get('NavInfo'), requestScope.navIgnoreInfo)}">
+                            <c:set var="ignore" value="${keepItems.add(checkNavItem)}" />
+                        </c:if>
+                    </c:forEach>
+                    <c:set var="navItems" value="${keepItems}" />
+                </c:otherwise>
+            </c:choose>
 
         </c:if>
 

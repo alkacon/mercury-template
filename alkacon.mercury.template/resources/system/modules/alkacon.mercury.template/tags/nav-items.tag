@@ -86,7 +86,7 @@
                 <c:when test="${type eq 'forSite'}">
                     <c:set var="pathparts" value="${fn:split(currentPageFolder, '/')}" />
                     <c:forEach var="folderName" items="${pathparts}" varStatus="status">
-                        <c:if test="${status.count lt navStartLevel}">
+                        <c:if test="${status.count le navStartLevel}">
                             <c:set var="navStartFolder">${navStartFolder}${folderName}/</c:set>
                         </c:if>
                     </c:forEach>

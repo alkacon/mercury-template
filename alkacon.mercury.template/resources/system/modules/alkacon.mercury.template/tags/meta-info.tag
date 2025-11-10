@@ -30,6 +30,9 @@
 <c:set var="titlesuffix" value="${contentPropertiesSearch['mercury.title.suffix'] eq 'none' ? null : contentPropertiesSearch['mercury.title.suffix']}" />
 <c:set var="titlesuffix" value="${(empty titlesuffix) or (titlesuffix eq 'none') or (not empty cms.meta.ogTitle and not cms.detailRequest) ? null : titlesuffix}" />
 
+<c:set var="isDetailSettingsPage" value="${cms.isDetailPage and not cms.detailRequest}" />
+<c:set var="excludeDetailSettingsPage" value="${cms.sitemapConfig.attribute['template.detailsettingspage.exclude'] eq 'true'}" />
+
 <title>${titleprefix}${empty titleprefix ? '' : ' '}${pagetitle}${empty titlesuffix ? '' : ' '}${titlesuffix}</title>
 
 <%-- ###### Get the right description from the content ###### --%>
@@ -69,6 +72,9 @@ to find a sentence end.
 <c:choose>
     <c:when test="${not empty cms.meta.Robots}">
         <c:set var="pagerobots"><m:meta-value text="${cms.meta.Robots}" /></c:set>
+    </c:when>
+    <c:when test="${isDetailSettingsPage and excludeDetailSettingsPage}">
+        <c:set var="pagerobots">noindex, follow</c:set>
     </c:when>
     <c:otherwise>
         <c:set var="pagerobots">index, follow</c:set>

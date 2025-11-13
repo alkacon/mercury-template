@@ -220,10 +220,10 @@
                             <c:set var="collapseId">${collapseIdPrefix}_${0}</c:set>
                             <a class="nav-label fi-toggle" <%--
                                 --%>data-folder-id="${folderId}" <%--
-                                --%>href="<cms:link>${targetUri}?${basicSearchParameters}</cms:link>">
+                                --%>href="?${basicSearchParameters}">
                                 <fmt:message key="msg.page.list.facet.folder.all"/>
                             </a><%----%>
-                            <a href="<cms:link>${targetUri}?${basicSearchParameters}</cms:link>" <%--
+                            <a href="?${basicSearchParameters}" <%--
 	                            --%>class="collapse show" <%--
 	                            --%>data-bs-toggle="collapse" <%--
 	                            --%>data-bs-target="#${collapseId}" <%--
@@ -268,7 +268,7 @@
                                 <c:otherwise>
                                     <c:set var="liAttrs">id="${folderId}" data-value="${previousFolder}" ${isCurrentPage ? ' class="currentpage enabled"' : 'class="enabled"'} data-label="${label.replace('"','&quot;')}"</c:set>
                                     <c:out escapeXml='false' value='<li ${liAttrs}>' />
-                                    <a class="nav-label fi-toggle" data-folder-id="${folderId}" href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>">${label}</a><%----%>
+                                    <a class="nav-label fi-toggle" data-folder-id="${folderId}" href="?${folderParameterMap[previousFolder]}">${label}</a><%----%>
                                     <m:nl />
 
                                     <c:choose>
@@ -336,7 +336,7 @@
                         <%-- Check, if some item has been rendered at all and, if yes, if some nesting levels have to be closed. --%>
                         <c:if test="${not empty startFolderPath}">
                             <li id="${folderId}" data-value="${previousFolder}"${isCurrentPage ? ' class="currentpage enabled"' : ' class="enabled"'} data-label="${label}"><%----%>
-                                <a class="nav-label fi-toggle" data-folder-id="${folderId}" href="<cms:link>${targetUri}?${folderParameterMap[previousFolder]}</cms:link>">${label}</a><%----%>
+                                <a class="nav-label fi-toggle" data-folder-id="${folderId}" href="?${folderParameterMap[previousFolder]}">${label}</a><%----%>
                             </li><%----%>
                             <c:if test="${previousDeps > startDeps}">
                                 <c:forEach begin="1" end="${previousDeps - startDeps}">
@@ -430,7 +430,7 @@
                                 data-value="${facetItem.value}"
                                 data-label="${currMonth}${' '}${currYear}"
                                 data-month-id="${monthId}">
-                                <a href="<cms:link>${targetUri}?${active ? basicSearchParameters : archiveQueryMap[facetItem.value]}</cms:link>" ><%----%>
+                                <a href="?${active ? basicSearchParameters : archiveQueryMap[facetItem.value]}" ><%----%>
                                     <span class="li-entry"><%----%>
                                         <span class="li-label">${currMonth}</span><span class="li-count">${facetItem.count}</span><%----%>
                                     </span><%----%>

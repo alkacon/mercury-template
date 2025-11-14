@@ -20,9 +20,9 @@
     "postcss-cli": "^11.0.1",
     "postcss-urlrewrite": "^0.3.0",
     "sass": "1.77.8",
+    "vite": "^7.2.2",
     "webpack": "^5.102.1",
-    "webpack-cli": "^6.0.1",
-    "vite": "^7.1.12"
+    "webpack-cli": "^6.0.1"
   },
   "dependencies": {
     "@googlemaps/markerclusterer": "2.6.2",
@@ -37,7 +37,7 @@
     "jquery": "3.7.1",
     "js-cookie": "3.0.5",
     "lazysizes": "5.3.2",
-    "maplibre-gl": "5.9.0",
+    "maplibre-gl": "5.12.0",
     "masonry-layout": "4.2.2",
     "photoswipe": "5.4.4",
     "shariff": "3.3.0",

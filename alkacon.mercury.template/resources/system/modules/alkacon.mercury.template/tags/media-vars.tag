@@ -174,10 +174,14 @@
             </c:if>
             <c:set var="youTubePreviewImg" value="none" />
         </c:if>
+        <c:set var="iframeTitle">
+            <fmt:message key="msg.page.media.youtube"><fmt:param>${content.value.Title}</fmt:param></fmt:message>
+        </c:set>
         <c:set var="template"><%--
         --%><iframe class="youtube-video" src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
             --%>autoplay=1&rel=0&iv_load_policy=3&fs=0&enablejsapi=1${autoPlay ? '&mute=1':''}" <%--
-            --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen<%--
+            --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen <%--
+            --%>title="${iframeTitle}" <%--
             --%>${empty mediaAttrs ? '' : ' '.concat(mediaAttrs)}<%--
             --%>${'>'}<%--
         --%></iframe><%----%>

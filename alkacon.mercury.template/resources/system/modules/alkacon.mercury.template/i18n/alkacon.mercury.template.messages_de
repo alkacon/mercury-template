@@ -940,6 +940,7 @@ msg.page.map.route=Route zu diesem Ort
 msg.page.map.route.button=Zeige Route
 msg.page.map.start=Startadresse eingeben\:
 msg.page.media.progressbar=Fortschritt der Medienwiedergabe
+msg.page.media.youtube=YouTube Video: {0}
 msg.page.meta-info.optional=Fehlt (ist aber optional)
 msg.page.meta-info.options-invalid=Meta-Informationen für Google fehlen\!
 msg.page.meta-info.options-missing=Optionale Meta-Informationen für Google fehlen\!

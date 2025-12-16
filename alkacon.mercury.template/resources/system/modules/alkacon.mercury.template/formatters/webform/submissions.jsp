@@ -161,6 +161,28 @@
                             </div><%----%>
                         </form><%----%>
                     </dialog><%----%>
+                    <button id="cancel_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
+                        <fmt:message key="msg.page.form.submission.action.cancel" />
+                    </button><%----%>
+                    <dialog id="cancel_dialog_${itemId}"
+                            class="submissions-dialog"
+                            data-action="cancel"
+                            data-item-id="${itemId}"
+                            data-content-id="${content.id}"><%----%>
+                        <form method="dialog"><%----%>
+                            <h3><fmt:message key="msg.page.form.bookingstatus.dialog.confirm.label" /></h3><%----%>
+                            <div><fmt:message key="msg.page.form.submission.ask.cancel"><fmt:param>${bean.titleProperty}</fmt:param></fmt:message></div><%----%>
+                            ${messageConfirmationMailEnabled}
+                            <div class="buttons"><%----%>
+                                <button value="cancel" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.dialog.cancel" />
+                                </button><%----%>
+                                <button value="confirm" class="btn"><%----%>
+                                    <fmt:message key="msg.page.form.submission.confirm.cancel" />
+                                </button><%----%>
+                            </div><%----%>
+                        </form><%----%>
+                    </dialog><%----%>
                 </c:if>
                 <button id="delete_button_${itemId}" class="btn oct-meta-info btn-sm"><%----%>
                     <fmt:message key="msg.page.form.submission.action.delete" />

@@ -44,6 +44,7 @@ function openPhotoSwipe(index, id) {
     var photoSwipe = new PhotoSwipe(options);
 
     photoSwipe.on('uiRegister', function() {
+        let rootElement = this.element;
         photoSwipe.ui.registerElement({
             name: 'caption',
             order: 9,
@@ -53,6 +54,7 @@ function openPhotoSwipe(index, id) {
                 photoSwipe.on('change', () => {
                     const currSlideData = photoSwipe.currSlide.data;
                     el.innerHTML = '<div class="caption-wrapper">' + currSlideData.title + '</div>';
+                    rootElement.setAttribute("aria-label", currSlideData.alt);
                 });
             }
         });

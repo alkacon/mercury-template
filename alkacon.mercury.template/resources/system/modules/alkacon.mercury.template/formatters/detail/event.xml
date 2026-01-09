@@ -80,6 +80,9 @@
       <IncludeName><![CDATA[cssWrapperParagraphs.detail]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[keyPieceInfoPos.detail]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[bookingOption.simple]]></IncludeName>
     </Setting>
     <Setting>

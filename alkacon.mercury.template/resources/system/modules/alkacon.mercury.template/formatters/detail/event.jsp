@@ -121,7 +121,7 @@
                     </c:otherwise>
                 </c:choose>
             </c:if>
-            <div class="visual-info ${not showLocation ? 'right' : ''}"><%----%>
+            <div class="visual-info ${not showLocation ? 'right' : ''} ${keyPieceInfoPos}"><%----%>
                 <div class="infogroup">
                     <c:if test="${showDate}">
                         <div class="info date"><%----%>
@@ -230,7 +230,9 @@ ${settingDefaultsDebug}
             showImageCopyright="${showImageCopyright}"
             ade="${ade}">
             <jsp:attribute name="markupHeading">
+                <c:if test="${keyPieceInfoPos eq 'ah'}">${keyPieceInfoMarkup}</c:if>
                 <m:intro-headline intro="${intro}" headline="${title}" level="${hsize}"/>
+                <c:if test="${keyPieceInfoPos eq 'bh'}">${keyPieceInfoMarkup}</c:if>
             </jsp:attribute>
         </m:key-visual-piece>
     </jsp:attribute>

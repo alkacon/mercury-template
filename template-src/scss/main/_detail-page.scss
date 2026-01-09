@@ -56,6 +56,13 @@
             display: flex;
             flex-direction: column;
 
+            &.ah, &.bh {
+                margin-bottom: var(--#{$prefix}piece-paragraph-margin-bottom);
+                .location {
+                    order: 20;
+                }
+            }
+
             > div + div,
             .infogroup > div + div {
                 margin-top: var(--#{$prefix}detail-visual-spacer-y);
@@ -217,6 +224,17 @@
                 }
                 > .headline {
                     font-size: $h1-font-size * 1.5;
+                }
+            }
+
+            .visual-info {
+                color: $text-light;
+                &.ah {
+                    margin-bottom: calc(0.5 * var(--#{$prefix}detail-visual-spacer-y));
+                }
+                &.bh {
+                    margin-top: calc(0.5 * var(--#{$prefix}detail-visual-spacer-y));
+                    margin-bottom: 0;
                 }
             }
         }

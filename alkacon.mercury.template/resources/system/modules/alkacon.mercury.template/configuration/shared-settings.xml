@@ -1923,6 +1923,20 @@
       <Default><![CDATA[99]]></Default>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[keyPieceInfoPos.detail]]></IncludeName>
+      <PropertyName><![CDATA[keyPieceInfoPos]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.keyPieceInfoPos)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.keyPieceInfoPos.help)]]></Description>
+      <Visibility><![CDATA[element]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default/>
+      <WidgetConfig><![CDATA[
+            it:     %(key.msg.setting.keyPieceInfoPos.it)|
+            ah:     %(key.msg.setting.keyPieceInfoPos.ah)|
+            bh:     %(key.msg.setting.keyPieceInfoPos.bh)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[keyPiecePrefacePos.detail]]></IncludeName>
       <PropertyName><![CDATA[keyPiecePrefacePos]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.keyPiecePrefacePos)]]></DisplayName>

@@ -64,7 +64,7 @@
             display: flex;
             flex-direction: column;
 
-            &.ah, &.bh {
+            &.ah, &.bh, &.itp {
                 margin-bottom: var(--#{$prefix}headings-margin-bottom);
                 > .location,
                 > .info.person {

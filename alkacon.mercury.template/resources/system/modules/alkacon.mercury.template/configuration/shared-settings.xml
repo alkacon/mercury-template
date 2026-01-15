@@ -1932,6 +1932,7 @@
       <Default/>
       <WidgetConfig><![CDATA[
             it:     %(key.msg.setting.keyPieceInfoPos.it)|
+            itp:    %(key.msg.setting.keyPieceInfoPos.itp)|
             ah:     %(key.msg.setting.keyPieceInfoPos.ah)|
             bh:     %(key.msg.setting.keyPieceInfoPos.bh)
         ]]></WidgetConfig>

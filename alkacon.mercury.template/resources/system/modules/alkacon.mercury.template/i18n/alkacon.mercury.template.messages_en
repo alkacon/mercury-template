@@ -1524,6 +1524,7 @@ msg.setting.keyPieceInfoPos.ah=Above the title
 msg.setting.keyPieceInfoPos.bh=Below the title
 msg.setting.keyPieceInfoPos.help=Specifies where additional information such as date or location is displayed.
 msg.setting.keyPieceInfoPos.it=Below the image / above the text
+msg.setting.keyPieceInfoPos.itp=Prominently below the image / above the text
 msg.setting.keyPieceInfoPos.ov=Outside the key visual
 msg.setting.keyPieceOrigin=Origin of key visual image
 msg.setting.keyPieceOrigin.help=Controls the origin of the key visual.

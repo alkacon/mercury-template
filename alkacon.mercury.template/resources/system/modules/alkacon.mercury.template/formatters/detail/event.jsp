@@ -25,7 +25,7 @@
 <c:set var="keyPieceLayout"         value="${setting.keyPieceLayout.toInteger}" />
 <c:set var="keyPieceSizeDesktop"    value="${setting.keyPieceSizeDesktop.useDefault('99').toInteger}" />
 <c:set var="keyPiecePrefacePos"     value="${setting.keyPiecePrefacePos.toString}" />
-<c:set var="keyPieceInfoPos"        value="${setting.keyPieceInfoPos.toString}" />
+<c:set var="keyPieceInfoPos"        value="${setting.keyPieceInfoPos.validate(['it','itp','ah','bh'],'it').toString}" />
 <c:set var="pieceLayout"            value="${setting.pieceLayout.toInteger}" />
 <c:set var="pieceLayoutAlternating" value="${setting.pieceLayoutAlternating.toBoolean}" />
 <c:set var="pieceLayoutSizeDesktop" value="${setting.pieceLayoutSizeDesktop.useDefault('99').toInteger}" />
@@ -87,17 +87,17 @@
 <c:set var="keyPieceLayout"         value="${showOverlay ? 0 : keyPieceLayout}" />
 <c:if test="${empty image}">
     <c:choose>
-        <c:when test="${(keyPieceLayout >= 2) and (keyPieceLayout <= 5)}">
+        <c:when test="${(keyPieceLayout gt 2) and (keyPieceLayout lt 5)}">
             <c:set var="keyPieceLayout"  value="${0}" />
         </c:when>
-        <c:when test="${(keyPieceLayout >= 6) and (keyPieceLayout <= 9)}">
+        <c:when test="${(keyPieceLayout gt 6) and (keyPieceLayout lt 9)}">
             <c:set var="keyPieceLayout"  value="${1}" />
         </c:when>
     </c:choose>
 </c:if>
 
 <c:set var="keyPiecePrefacePos"     value="${empty keyPiecePrefacePos ? ((showOverlay or (keyPieceLayout == 1)) ? 'bt' : (keyPieceLayout == 0 ? 'ih' : 'tt')) : keyPiecePrefacePos}" />
-<c:set var="keyPieceInfoPos"        value="${empty keyPieceInfoPos ? 'it' : keyPieceInfoPos}" />
+<c:set var="keyPieceInfoPos"        value="${showOverlay ? (keyPieceInfoPos eq 'itp' ? 'itp' : 'it') : keyPieceInfoPos}" />
 
 <%-- keyPiecePrefacePos options:    bt = bottom of text / tt = top of text   / ih = in header --%>
 <%-- keyPieceInfoPos options:       ah = above heading  / bh = below heading / it = in text / ov = outside key visual --%>
@@ -239,7 +239,7 @@ ${settingDefaultsDebug}
 
     <jsp:attribute name="text">
         <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'tt'}" />
-        <c:if test="${keyPieceInfoPos eq 'it'}">${keyPieceInfoMarkup}</c:if>
+        <c:if test="${keyPieceInfoPos eq 'it' or keyPieceInfoPos eq 'itp'}">${keyPieceInfoMarkup}</c:if>
         <m:heading text="${preface}" level="${7}" css="sub-header" ade="${ade}" test="${keyPiecePrefacePos eq 'bt'}" />
     </jsp:attribute>
 

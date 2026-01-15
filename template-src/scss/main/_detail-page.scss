@@ -48,6 +48,14 @@
     // text elements that belong to the main detail visual
     .detail-visual {
 
+        .heading:has(> .visual-info.bh) {
+            display: flex;
+            flex-direction: column;
+            .sub-header {
+                order: 10;
+            }
+        }
+
         .visual-info {
             // applies only to the info labels below the image
             font-size: var(--#{$prefix}body-font-size);
@@ -57,9 +65,16 @@
             flex-direction: column;
 
             &.ah, &.bh {
-                margin-bottom: var(--#{$prefix}piece-paragraph-margin-bottom);
-                .location {
+                margin-bottom: var(--#{$prefix}headings-margin-bottom);
+                > .location,
+                > .info.person {
                     order: 20;
+                }
+                > .infogroup,
+                > .info.date {
+                    @extend .h4;
+                    font-style: normal;
+                    margin-bottom: 0;
                 }
             }
 

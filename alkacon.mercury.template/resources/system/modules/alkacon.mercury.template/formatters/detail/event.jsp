@@ -121,7 +121,7 @@
                     </c:otherwise>
                 </c:choose>
             </c:if>
-            <div class="visual-info ${not showLocation ? 'right' : ''} ${keyPieceInfoPos}"><%----%>
+            <div class="visual-info${not showLocation and (keyPieceInfoPos eq 'it') ? ' right' : ''}${' '}${keyPieceInfoPos}"><%----%>
                 <div class="infogroup">
                     <c:if test="${showDate}">
                         <div class="info date"><%----%>

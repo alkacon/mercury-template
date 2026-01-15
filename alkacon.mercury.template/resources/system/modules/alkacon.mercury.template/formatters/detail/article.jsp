@@ -87,7 +87,7 @@
 <c:choose>
     <c:when test="${showDate or showAuthor}">
         <c:set var="keyPieceInfoMarkup">
-            <div class="visual-info ${not showAuthor ? 'right date-only' : ''} ${keyPieceInfoPos}"><%----%>
+            <div class="visual-info${not showAuthor ? ' right date-only' : ''}${' '}${keyPieceInfoPos}"><%----%>
                 <c:if test="${showDate}">
                     <div class="info date"><%----%>
                         <span class="sr-only"><fmt:message key="msg.page.sr.date" /></span><%----%>

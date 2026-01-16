@@ -143,6 +143,7 @@
 </c:if>
 
 <m:container-attachment content="${content}" name="attachments" type="${containerType}" />
+<m:data-media content="${content}" />
 
 </div><%----%>
 <m:nl />

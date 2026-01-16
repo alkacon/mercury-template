@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>20.0.12</version>
+		<version>20.0.8</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -8016,6 +8016,27 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Generates schema.org data jobs]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/tags/data-media.tag</source>
+			<destination>system/modules/alkacon.mercury.template/tags/data-media.tag</destination>
+			<type>jsp</type>
+			<uuidstructure>69895b39-efaf-11f0-a61b-0242ac11002b</uuidstructure>
+			<uuidresource>69895b3a-efaf-11f0-a61b-0242ac11002b</uuidresource>
+			<datecreated>Mon, 12 Jan 2026 12:08:31 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Generates schema.org data for media]]></value>
 				</property>
 				<property type="shared">
 					<name>export</name>

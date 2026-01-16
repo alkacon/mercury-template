@@ -85,6 +85,9 @@
 <%@ variable name-given="mediaButtonText" declare="true"
     description="The text to use when linking to the media element, usually in a list." %>
 
+<%@ variable name-given="jsonldThumbnailUrl" declare="true"
+    description="Thumbnail URL for JSON-LD objects." %>
+
 
 <%@ variable name-given="caseNotInList" declare="true" %>
 <%@ variable name-given="caseStaticList" declare="true" %>
@@ -174,6 +177,9 @@
             </c:if>
             <c:set var="youTubePreviewImg" value="none" />
         </c:if>
+        <c:if test="${youTubePreviewImg ne 'none'}">
+            <c:set var="jsonldThumbnailUrl" value="${'https://img.youtube.com/vi/'.concat(youTubeId).concat('/').concat(youTubePreviewImg)}" />
+        </c:if>
         <c:set var="iframeTitle">
             <fmt:message key="msg.page.media.youtube"><fmt:param>${content.value.Title}</fmt:param></fmt:message>
         </c:set>
@@ -227,6 +233,7 @@
                 <c:set var="videoSrc" value="${videoData['preview-url']}" />
                 <c:set var="videoCopyright" value="${videoData['copyright']}" />
                 <c:set var="videoPreviewImg" value="${videoData['webimage']}" />
+                <c:set var="jsonldThumbnailUrl" value="${videoPreviewImg}" />
                 <c:set var="extPreviewImg" value="${not empty videoPreviewImg}" />
                 <c:set var="embedFromBynder" value="${empty videoSrc}" />
                 <c:if test="${embedFromBynder}">

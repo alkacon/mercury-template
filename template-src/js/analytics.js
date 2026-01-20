@@ -30,7 +30,7 @@ var m_googleInitialized = false;
 var m_piwikInitialized = false;
 var m_matomoInitialized = false;
 
-function getNormalizedPathForAnalytics(addSlash = false, addSearch = false) {
+function getNormalizedPathForAnalytics(addSlash = false, addSearch = true) {
     const REMOVE_FILES = ['index.html', 'index.jsp', 'index.htm'];
     let path = window.location.pathname;
     REMOVE_FILES.forEach(file => {

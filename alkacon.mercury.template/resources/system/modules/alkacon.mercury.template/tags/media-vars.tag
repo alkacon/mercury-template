@@ -187,7 +187,7 @@
         --%><iframe class="youtube-video" src="https://www.youtube-nocookie.com/embed/${youTubeId}?<%--
             --%>autoplay=1&rel=0&iv_load_policy=3&fs=0&enablejsapi=1${autoPlay ? '&mute=1':''}" <%--
             --%>style="border: none;" allow="autoplay; encrypted-media" allowfullscreen <%--
-            --%>title="${iframeTitle}" <%--
+            --%>title="${iframeTitle}" referrerpolicy="strict-origin-when-cross-origin" <%--
             --%>${empty mediaAttrs ? '' : ' '.concat(mediaAttrs)}<%--
             --%>${'>'}<%--
         --%></iframe><%----%>

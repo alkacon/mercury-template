@@ -1933,6 +1933,7 @@ msg.setting.textAlignment.help=Controls how the heading, text and link is aligne
 msg.setting.textAlignment.justify=Justified
 msg.setting.textAlignment.left=Left aligned
 msg.setting.textAlignment.right=Right aligned
+msg.setting.textAlignment.withImage=(also reduced image)
 msg.setting.textBgColor=Text background color
 msg.setting.textBgColor.help=<p>Sets the background color for the text.</p>
 msg.setting.textLength=Teaser text length

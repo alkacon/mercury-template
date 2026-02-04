@@ -1065,6 +1065,23 @@
         ]]></WidgetConfig>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[textAlignment.withImage]]></IncludeName>
+      <PropertyName><![CDATA[textAlignment]]></PropertyName>
+      <DisplayName><![CDATA[%(key.msg.setting.textAlignment)]]></DisplayName>
+      <Description><![CDATA[%(key.msg.setting.textAlignment.help)]]></Description>
+      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[pal]]></Default>
+      <WidgetConfig><![CDATA[
+            pal:                %(key.msg.setting.textAlignment.left)|
+            pac:                %(key.msg.setting.textAlignment.center)|
+            par:                %(key.msg.setting.textAlignment.right)|
+            paj:                %(key.msg.setting.textAlignment.justify)|
+            pal pial:           %(key.msg.setting.textAlignment.left) %(key.msg.setting.textAlignment.withImage)|
+            par piar:           %(key.msg.setting.textAlignment.right) %(key.msg.setting.textAlignment.withImage)
+        ]]></WidgetConfig>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[verticalAlignment.default]]></IncludeName>
       <PropertyName><![CDATA[verticalAlignment]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.verticalAlignment)]]></DisplayName>

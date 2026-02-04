@@ -231,7 +231,7 @@
 <c:if test="${(not showVisual or not showBody) and not allowEmptyBodyColumn}">
     <%-- In this case there are no columns, so we revert to layout option 0 i.e. full with output. --%>
     <c:set var="pieceOption"    value="full" />
-    <c:set var="gridOption"     value="" />
+    <c:set var="gridOption"     value="${showVisual and not showBody ? gridOption : ''}" />
     <c:set var="pieceLayout"    value="${0}" />
 </c:if>
 
@@ -239,7 +239,7 @@
     <c:when test="${empty textAlignment or (textAlignment eq 'pal')}">
         <%-- Default alignment, no css class added --%>
     </c:when>
-    <c:when test="${(textAlignment eq 'par') or (textAlignment eq 'pac') or (textAlignment eq 'paj')}">
+    <c:when test="${fn:startsWith(textAlignment, 'pa')}">
         <c:set var="pieceAlignment" value="${' '}${textAlignment}" />
     </c:when>
 </c:choose>

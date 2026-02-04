@@ -1933,6 +1933,7 @@ msg.setting.textAlignment.help=Legt fest wie Überschrift, Text und Link ausgeri
 msg.setting.textAlignment.justify=Blocksatz
 msg.setting.textAlignment.left=Linksbündig
 msg.setting.textAlignment.right=Rechtsbündig
+msg.setting.textAlignment.withImage=(auch verkleinertes Bild)
 msg.setting.textBgColor=Text-Hintergrundfarbe
 msg.setting.textBgColor.help=<p>Legt die Hintergrundfarbe für den Text fest.</p>
 msg.setting.textLength=Aufmacher Textlänge

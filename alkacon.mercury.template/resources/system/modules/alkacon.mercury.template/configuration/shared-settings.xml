@@ -1077,8 +1077,8 @@
             pac:                %(key.msg.setting.textAlignment.center)|
             par:                %(key.msg.setting.textAlignment.right)|
             paj:                %(key.msg.setting.textAlignment.justify)|
-            pal pial:           %(key.msg.setting.textAlignment.left) %(key.msg.setting.textAlignment.withImage)|
-            par piar:           %(key.msg.setting.textAlignment.right) %(key.msg.setting.textAlignment.withImage)
+            pal pval:           %(key.msg.setting.textAlignment.left) %(key.msg.setting.textAlignment.withImage)|
+            par pvar:           %(key.msg.setting.textAlignment.right) %(key.msg.setting.textAlignment.withImage)
         ]]></WidgetConfig>
     </Setting>
     <Setting>

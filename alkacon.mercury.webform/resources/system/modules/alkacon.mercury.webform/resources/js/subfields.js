@@ -8,6 +8,16 @@ if (webFormSubFieldMappings == null) {
 	var webFormSubFieldMappings = new Array();
 }
 
+function initWebformSubFields(formID) {
+	const form = document.getElementById(formID);
+	const fields = form.querySelectorAll("input, select");
+	fields.forEach(field => {
+    	if (field.dataset.subfields === "true") {
+		  toggleWebformSubFields(field);
+    	}
+  	});
+}
+
 // toggles the sub field visibility depending on the field value
 function toggleWebformSubFields(inputField) {
 	var subIDToShow = getWebFomSubField(inputField.name, inputField.value);
@@ -15,10 +25,18 @@ function toggleWebformSubFields(inputField) {
 	if (activeID != "" && subIDToShow != activeID) {
 		// deactivate currently active sub fields
 		document.getElementById(activeID).style.display = "none";
+		const fields = document.getElementById(activeID).querySelectorAll("input, select, textarea");
+		fields.forEach(field => {
+			field.disabled = true;
+		});
 	}
 	if (subIDToShow != "") {
 		// set to empty String otherwise FF does not display anything...
 		document.getElementById(subIDToShow).style.display = "";
+		const fields = document.getElementById(subIDToShow).querySelectorAll("input, select, textarea");
+		fields.forEach(field => {
+			field.disabled = false;
+		});
 	}
 	setActiveWebformSubField(inputField.name, subIDToShow);
 }
@@ -63,6 +81,10 @@ function addWebFormSubFieldMapping(parentFieldName, parentFieldValue, subID) {
 	webFormSubFieldMappings[arrIndex].parentFieldName = parentFieldName;
 	webFormSubFieldMappings[arrIndex].parentFieldValue = parentFieldValue;
 	webFormSubFieldMappings[arrIndex].subID = subID;
+	const fields = document.getElementById(subID).querySelectorAll("input, select, textarea");
+	fields.forEach(field => {
+		field.disabled = true;
+	});
 }
 
 // returns the sub field ID to activate for the given parent field name and value

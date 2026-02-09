@@ -68,7 +68,7 @@ $endif$
 
 $if(subfieldjs)$
 $! --- JavaScript for sub fields --- !$
-$!  !$<script type="text/javascript">$subfieldjs$</script>
+$!  !$<script type="text/javascript">$subfieldjs$initWebformSubFields("emailform$formconfig.configId$");</script>
 $endif$
 
 $if(formconfig.formFooterText)$
@@ -253,7 +253,7 @@ $row_start(field=field)$
 $!  !$<div id="$field.name$_box">
 $!      !$$field.items:{
 $!          !$<label for="$field.name$_$i0$" class="$if(field.parameters)$$if(field.parameters.toggle)$toggle$else$radio$endif$$else$radio$endif$$if(errormessage)$ state-error$endif$">
-$!              !$<input type="radio" name="$field.name$" id="$field.name$_$i0$" value="$it.value$" class="radio"$if(it.selected)$ checked="checked"$endif$$if(field.hasSubFields)$ onchange="toggleWebformSubFields(this);"$endif$/><i></i><span>$it.label$</span>
+$!              !$<input type="radio" name="$field.name$" id="$field.name$_$i0$" value="$it.value$" class="radio"$if(it.selected)$ checked="checked"$endif$$if(field.hasSubFields)$ onchange="toggleWebformSubFields(this);" data-subfields="true"$endif$/><i></i><span>$it.label$</span>
 $!          !$</label>
 $!      !$}$
 $!  !$</div>
@@ -269,7 +269,7 @@ $! ###### SELECT field ###### !$
 $row_start(field=field)$
 $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=mandatory)$
 <div class="select$if(errormessage)$ state-error$endif$">
-$!  !$<select name="$field.name$" id="$field.name$" $if(field.hasSubFields)$ onchange="toggleWebformSubFields(this);"$endif$>
+$!  !$<select name="$field.name$" id="$field.name$" $if(field.hasSubFields)$ onchange="toggleWebformSubFields(this);" data-subfields="true"$endif$>
 $!  !$$field.items:{
 $!      !$<option value="$it.value$" $if(it.selected)$ selected="selected"$endif$>$it.label$</option>
 $!  !$}$
@@ -288,7 +288,7 @@ $! ###### SELECT field ###### !$
 $row_start(field=field)$
 $label(field=field,formconfig=formconfig,errormessage=errormessage,mandatory=mandatory)$
 <div class="select$if(errormessage)$ state-error$endif$">
-$!  !$<select name="$field.name$" id="$field.name$" $if(field.hasSubFields)$ onchange="toggleWebformSubFields(this);"$endif$>
+$!  !$<select name="$field.name$" id="$field.name$" $if(field.hasSubFields)$ onchange="toggleWebformSubFields(this);" data-subfields="true"$endif$>
 $!      !$$field.items:{
 $!          !$<option value="$it.valueHash$" $if(it.selected)$ selected="selected"$endif$>$it.label$</option>
 $!      !$}$

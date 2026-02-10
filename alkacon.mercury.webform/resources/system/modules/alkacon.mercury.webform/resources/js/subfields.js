@@ -3,11 +3,12 @@ if (activeWebformSubFields == null) {
 	var activeWebformSubFields = new Array();
 }
 
-// stores the stores the mapping of parent field name, chosen parent value and sub field set ID
+// stores the mapping of parent field name, chosen parent value and sub field set ID
 if (webFormSubFieldMappings == null) {
 	var webFormSubFieldMappings = new Array();
 }
 
+// initializes the visible sub fields
 function initWebformSubFields(formID) {
 	const form = document.getElementById(formID);
 	const fields = form.querySelectorAll("input, select");
@@ -25,18 +26,12 @@ function toggleWebformSubFields(inputField) {
 	if (activeID != "" && subIDToShow != activeID) {
 		// deactivate currently active sub fields
 		document.getElementById(activeID).style.display = "none";
-		const fields = document.getElementById(activeID).querySelectorAll("input, select, textarea");
-		fields.forEach(field => {
-			field.disabled = true;
-		});
+		toggleDisableWebFormSubFields(activeID, true);
 	}
 	if (subIDToShow != "") {
 		// set to empty String otherwise FF does not display anything...
 		document.getElementById(subIDToShow).style.display = "";
-		const fields = document.getElementById(subIDToShow).querySelectorAll("input, select, textarea");
-		fields.forEach(field => {
-			field.disabled = false;
-		});
+		toggleDisableWebFormSubFields(subIDToShow, false);
 	}
 	setActiveWebformSubField(inputField.name, subIDToShow);
 }
@@ -81,9 +76,14 @@ function addWebFormSubFieldMapping(parentFieldName, parentFieldValue, subID) {
 	webFormSubFieldMappings[arrIndex].parentFieldName = parentFieldName;
 	webFormSubFieldMappings[arrIndex].parentFieldValue = parentFieldValue;
 	webFormSubFieldMappings[arrIndex].subID = subID;
+	toggleDisableWebFormSubFields(subID, true);
+}
+
+// diables/enables subfields depending on their visibility
+function toggleDisableWebFormSubFields(subID, disable) {
 	const fields = document.getElementById(subID).querySelectorAll("input, select, textarea");
 	fields.forEach(field => {
-		field.disabled = true;
+		field.disabled = disable;
 	});
 }
 

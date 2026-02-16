@@ -366,7 +366,7 @@
 </c:choose>
 
 <c:if test="${empty copyright and image.isSet and (videoCopyright ne 'none')}">
-    <c:set var="copyright"><cms:property name="Copyright" file="${image.toLink}" locale="${cms.locale}" default="" /></c:set>
+    <c:set var="copyright"><cms:property name="Copyright" file="${image}" locale="${cms.locale}" default="" /></c:set>
 </c:if>
 
 </cms:bundle>

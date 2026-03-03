@@ -1,0 +1,14 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id.startsWith('org.opencms.modules')) {
+                useModule('org.opencms:opencms-gradle-plugin:3.+')
+            }
+        }
+    }
+}
+rootProject.name = 'mercury-template'

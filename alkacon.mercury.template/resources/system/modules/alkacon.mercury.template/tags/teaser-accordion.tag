@@ -26,6 +26,9 @@
 <%@ attribute name="paragraphs" type="java.util.List" required="false"
     description="List of paragraphs to show in the accordion." %>
 
+<%@ attribute name="createAccordionWrapper" type="java.lang.Boolean" required="false"
+    description="If 'true' create a simple list wrapper, so that one single content can be used outside of a real list." %>
+
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -33,19 +36,32 @@
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 
 <c:set var="setting"            value="${cms.element.setting}" />
+
+<c:set var="isSingle"           value="${not setting.nglist.toBoolean}" />
+<c:set var="createAccordionWrapper" value="${empty createAccordionWrapper ? isSingle : createAccordionWrapper}" />
+<c:if test="${createAccordionWrapper}">
+    <c:set var="accordionId"><m:idgen prefix="li" uuid="${cms.element.instanceId}" /></c:set>
+</c:if>
+
 <c:set var="hsize"              value="${setting.hsize.isSet ? setting.hsize.toInteger : 3}" />
 <c:set var="imageRatio"         value="${setting.imageRatio.isSet ? setting.imageRatio.toString : null}"/>
 <c:set var="imageRatioLg"       value="${setting.imageRatioLg.isSet ? setting.imageRatioLg.toString : null}"/>
 <c:set var="showImageZoom"      value="${setting.showImageZoom.toBoolean}" />
 <c:set var="showImageCopyright" value="${setting.showImageCopyright.toBoolean}" />
 <c:set var="showImageSubtitle"  value="${setting.showImageSubtitle.toBoolean}" />
-<c:set var="open"               value="${setting.firstOpen.toBoolean and (setting.index.toInteger == 0)}" />
-<c:set var="multipleOpen"       value="${setting.multipleOpen.toBoolean}" />
+<c:set var="open"               value="${setting.firstOpen.toBoolean and (createAccordionWrapper or (setting.index.toInteger == 0))}" />
+<c:set var="multipleOpen"       value="${createAccordionWrapper or setting.multipleOpen.toBoolean}" />
+
 <c:set var="parentId"           value="${not empty accordionId ? accordionId : setting.listid.toString}" />
 <c:set var="contentId"><m:idgen prefix="" uuid="${not empty contentId ? contentId : cms.element.instanceId}" />${empty instancedate ? '' : '_'.concat(fn:replace(instancedate.hashCode(), '-', ''))}</c:set>
 <c:set var="itemId"             value="a${parentId}${contentId}" />
 
 <m:nl />
+<c:if test="${createAccordionWrapper}">
+    <m:setting-defaults>
+        <div class="element accordion-items accordion-single-item${setCssWrapperAll}" id="${accordionId}"><m:nl />
+    </m:setting-defaults>
+</c:if>
 <article class="accordion ${cssWrapper}"><%----%>
 <m:nl />
 
@@ -90,5 +106,8 @@
 
 <m:nl />
 </article><%----%>
+<c:if test="${createAccordionWrapper}">
+    <m:nl /></div><%----%>
+</c:if>
 <m:nl />
 

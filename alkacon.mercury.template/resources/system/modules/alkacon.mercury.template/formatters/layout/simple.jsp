@@ -18,8 +18,12 @@
 <c:set var="detailContainer"    value="${setting.detailContainer.toString}" />
 <c:set var="reverseMobileOrder" value="${setting.containerOrder.toString eq 'reversed'}" />
 
-<c:set var="customContainer"    value="${detailContainer eq 'maincust'}" />
-<c:set var="mainType"           value="${customContainer ? 'special' : 'element'}" />
+<c:set var="customContainer"    value="${fn:startsWith(detailContainer, 'maincust')}" />
+<c:if test="${customContainer}">
+    <c:set var="specialType" value="${fn:substringAfter(detailContainer, 'maincust#')}" />
+</c:if>
+<c:set var="specialType"        value="${empty specialType ? 'special' : specialType }" />
+<c:set var="mainType"           value="${customContainer ? specialType : 'element' }" />
 <c:set var="detailContainer"    value="${customContainer ? 'maincol' : detailContainer}" />
 
 <c:set var="cssWrapper"         value="${setCssWrapperAll}" />

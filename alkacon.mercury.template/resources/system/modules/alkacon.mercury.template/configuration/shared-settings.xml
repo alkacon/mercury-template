@@ -1163,7 +1163,7 @@
       <PropertyName><![CDATA[multipleOpen]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.multipleOpen)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.multipleOpen.help)]]></Description>
-      <Visibility><![CDATA[elementAndParentShared]]></Visibility>
+      <Visibility><![CDATA[parentShared]]></Visibility>
       <Widget><![CDATA[checkbox]]></Widget>
       <Default><![CDATA[false]]></Default>
     </Setting>

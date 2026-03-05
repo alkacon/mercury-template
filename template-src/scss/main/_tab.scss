@@ -653,3 +653,23 @@
         }
     }
 }
+
+.accordion-single-item {
+    &.element:has(+ .accordion-single-item) {
+        margin-bottom: var(--#{$prefix}at-margin-between);
+        --#{$prefix}at-margin-between: #{$at-margin-between};
+        &.box {
+            --#{$prefix}at-margin-between: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            padding-bottom: calc(0.5 * #{$at-margin-between});
+            + .accordion-single-item.element {
+                &.box {
+                    padding-top: calc(0.5 * #{$at-margin-between});
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
+            }
+        }
+    }
+}

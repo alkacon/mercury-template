@@ -6,7 +6,9 @@
 
 <%@ attribute name="type" type="java.lang.String" required="true"
     description="Type of the alert box to display.
-    Valid values are 'warning', 'error' and 'editor'." %>
+    Valid values are 'warning' (or 'meta'), 'error' and 'editor'".
+    To show a message in the editor to the user in the edit process, use 'meta'.
+    Use 'editor' only rarely and in case of editor extensions. %>
 
 <%@ attribute name="css" type="java.lang.String" required="false"
     description="Optional CSS classes added to the generated alert box" %>
@@ -26,17 +28,16 @@
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
+
 
 <c:if test="${empty test ? cms.isEditMode : test}">
-    <div class="${empty pivot or pivot ? 'pivot ': ''}oct-alert oct-alert-${type}${' '}${css}"><%----%>
+    <div class="${empty pivot or pivot ? 'pivot ': ''}oct-alert oct-alert-${type eq 'meta' ? 'warning' : type}${' '}${css}">
         <c:if test="${not empty head}">
             <div class="head"><jsp:invoke fragment="head" /></div><%----%>
         </c:if>
         <c:if test="${not empty text}">
             <div class="text"><jsp:invoke fragment="text" /></div><%----%>
         </c:if>
-    </div>
-<%----%>
+    </div><m:nl />
 </c:if>
-
-

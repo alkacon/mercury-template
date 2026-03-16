@@ -6,9 +6,9 @@
 
 <%@ attribute name="type" type="java.lang.String" required="true"
     description="Type of the alert box to display.
-    Valid values are 'warning' (or 'meta'), 'error' and 'editor'".
+    Valid values are 'warning' (or 'meta'), 'error' and 'editor'.
     To show a message in the editor to the user in the edit process, use 'meta'.
-    Use 'editor' only rarely and in case of editor extensions. %>
+    Use 'editor' only rarely and in case of editor extensions." %>
 
 <%@ attribute name="css" type="java.lang.String" required="false"
     description="Optional CSS classes added to the generated alert box" %>

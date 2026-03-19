@@ -165,25 +165,6 @@
     </c:otherwise>
 </c:choose>
 
-<c:if test="${empty gridOption}">
-    <c:if test="${sizeMobile < 12}">
-        <c:set var="gridOption" value="${'p-xs-'}${sizeMobile}" />
-    </c:if>
-    <c:if test="${defSizeMobile}">
-        <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dm'}" />
-    </c:if>
-    <c:if test="${sizeDesktop < 12}">
-        <%-- Note regardin p-md breakpoint: This always uses the string 'md' regardless of the 'template.piece.breakpoint' sitemap attribute. --%>
-        <%-- However, since this is no selector used by bootstrap, in your CSS you can modify the behaviour to actually use a differnt breakpoint e.g. 'lg', even if the markup uses 'p-md'. --%>
-        <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-md-'}${sizeDesktop}" />
-    </c:if>
-    <c:if test="${defSizeDesktop}">
-        <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dd'}" />
-    </c:if>
-    <%-- "p-dm" means "piece uses default visual size on mobile". --%>
-    <%-- "p-dd" means "piece uses default visual size on desktop". --%>
-</c:if>
-
 <c:if test="${not empty heading}">
     <jsp:invoke fragment="heading" var="pieceHeading" />
 </c:if>
@@ -228,11 +209,42 @@
 
 <c:set var="showBody"           value="${showText or (showHeading and inlineHeading) or (showLink and inlineLink)}" />
 
+<c:set var="calcGridOption"     value="${empty gridOption}" />
+
 <c:if test="${(not showVisual or not showBody) and not allowEmptyBodyColumn}">
     <%-- In this case there are no columns, so we revert to layout option 0 i.e. full with output. --%>
     <c:set var="pieceOption"    value="full" />
-    <c:set var="gridOption"     value="${showVisual and not showBody ? gridOption : ''}" />
+    <c:set var="calcGridOption" value="${calcGridOption and showVisual and not showBody and not (defSizeDesktop and defSizeMobile)}" />
+    <c:choose>
+        <c:when test="${calcGridOption}">
+            <c:set var="sizeMobile" value="${defSizeMobile ? 12 : sizeMobile}" />
+            <c:set var="sizeDesktop" value="${defSizeDesktop ? 12 : sizeDesktop}" />
+        </c:when>
+        <c:otherwise>
+            <%-- Remove gridOption that was passed to the tag to preserve compatibility. --%>
+            <c:set var="gridOption" value="" />
+        </c:otherwise>
+    </c:choose>
     <c:set var="pieceLayout"    value="${0}" />
+</c:if>
+
+<c:if test="${calcGridOption}">
+    <c:if test="${sizeMobile < 12}">
+        <c:set var="gridOption" value="${'p-xs-'}${sizeMobile}" />
+    </c:if>
+    <c:if test="${defSizeMobile}">
+        <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dm'}" />
+    </c:if>
+    <c:if test="${sizeDesktop < 12}">
+        <%-- Note regardin p-md breakpoint: This always uses the string 'md' regardless of the 'template.piece.breakpoint' sitemap attribute. --%>
+        <%-- However, since this is no selector used by bootstrap, in your CSS you can modify the behaviour to actually use a differnt breakpoint e.g. 'lg', even if the markup uses 'p-md'. --%>
+        <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-md-'}${sizeDesktop}" />
+    </c:if>
+    <c:if test="${defSizeDesktop}">
+        <c:set var="gridOption" value="${empty gridOption ? '' : gridOption.concat(' ')}${'p-dd'}" />
+    </c:if>
+    <%-- "p-dm" means "piece uses default visual size on mobile". --%>
+    <%-- "p-dd" means "piece uses default visual size on desktop". --%>
 </c:if>
 
 <c:choose>

@@ -70,9 +70,9 @@
 <m:content-properties>
 
 <%-- OSM API key --%>
-<c:set var="osmApiKey" value="${contentPropertiesSearch['osm.apikey']}" />
+<c:set var="osmApiKey" value="${not empty cms.getSecretForUri('osm.apikey') ? cms.getSecretForUri('osm.apikey') : contentPropertiesSearch['osm.apikey']}" />
 <%-- Google Maps API key --%>
-<c:set var="googleApiKey" value="${contentPropertiesSearch['google.apikey']}" />
+<c:set var="googleApiKey" value="${not empty cms.getSecretForUri('google.apikey') ? cms.getSecretForUri('google.apikey') : contentPropertiesSearch['google.apikey']}" />
 
 <c:if test="${provider eq 'auto'}">
     <c:choose>

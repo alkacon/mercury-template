@@ -181,19 +181,19 @@
         <%-- Do not use contentUri for properties, always read from the request context URI. This is identical to the m:content-properties.tag --%>
         <c:set var="contentPropertiesSearch" value="${cms.vfs.readPropertiesSearch[policyBaseUri]}" />
     </c:if>
-    
-    <c:set var="matomoUrl" value="${contentPropertiesSearch['matomo.url']}" />
-    <c:set var="matomoId" value="${contentPropertiesSearch['matomo.id']}" />
-    <c:set var="matomoJst" value="${contentPropertiesSearch['matomo.jst']}" />
+
+    <c:set var="matomoUrl" value="${not empty cms.getSecretForUri('matomo.url') ? cms.getSecretForUri('matomo.url') : contentPropertiesSearch['matomo.url']}" />
+    <c:set var="matomoId" value="${not empty cms.getSecretForUri('matomo.id') ? cms.getSecretForUri('matomo.id') : contentPropertiesSearch['matomo.id']}" />
+    <c:set var="matomoJst" value="${not empty cms.getSecretForUri('matomo.jst') ? cms.getSecretForUri('matomo.jst') : contentPropertiesSearch['matomo.jst']}" />
     <c:set var="useMatomoJst" value="${not empty matomoJst ? fn:contains(matomoJst, 'true') : false}" />
     <c:set var="useMatomoDnt" value="${not empty matomoJst ? fn:contains(matomoJst, 'dnt') : false}" />
     <c:set var="showMatomo" value="${(not empty matomoUrl and matomoUrl ne 'none') and (not empty matomoId and matomoId ne 'none')}" />
 
-    <c:set var="piwikUrl" value="${contentPropertiesSearch['piwik.url']}" />
-    <c:set var="piwikId" value="${contentPropertiesSearch['piwik.id']}" />
+    <c:set var="piwikUrl" value="${not empty cms.getSecretForUri('piwik.url') ? cms.getSecretForUri('piwik.url') : contentPropertiesSearch['piwik.url']}" />
+    <c:set var="piwikId" value="${not empty cms.getSecretForUri('piwik.id') ? cms.getSecretForUri('piwik.id') : contentPropertiesSearch['piwik.id']}" />
     <c:set var="showPiwik" value="${(not empty piwikUrl and piwikUrl ne 'none') and (not empty piwikId and piwikId ne 'none')}" />
 
-    <c:set var="googleAnalyticsId" value="${contentPropertiesSearch['google.analytics']}" />
+    <c:set var="googleAnalyticsId" value="${not empty cms.getSecretForUri('google.analytics') ? cms.getSecretForUri('google.analytics') : contentPropertiesSearch['google.analytics']}" />
     <c:set var="showGoogle" value="${not empty googleAnalyticsId and googleAnalyticsId ne 'none'}" />
 
     <c:set var="showUseStatistical" value="${showMatomo or showPiwik or showGoogle}" />

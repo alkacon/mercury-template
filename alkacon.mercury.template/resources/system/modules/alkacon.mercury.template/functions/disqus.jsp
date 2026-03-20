@@ -20,7 +20,7 @@
 <c:set var="clickToLoad"    value="${setting.clickToLoad.toBoolean}" />
 
 <c:if test="${empty disqusSite}">
-    <c:set var="disqusSite"><cms:property name="disqus.site" file="search" default=""/></c:set>
+    <c:set var="disqusSite">${not empty cms.getSecretForUri('disqus.site') ? cms.getSecretForUri('disqus.site') : cms.vfs.propertySearch[cms.requestContext.uri]['disqus.site']}</c:set>
 </c:if>
 
 <m:nl/>

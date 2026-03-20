@@ -21,7 +21,7 @@
 <c:set var="loadCounter"    value="${setting.loadCounter.toBoolean}" />
 
 <c:if test="${empty hyvorTalkSite}">
-    <c:set var="hyvorTalkSite"><cms:property name="hyvor-talk.site" file="search" default=""/></c:set>
+    <c:set var="hyvorTalkSite">${not empty cms.getSecretForUri('hyvor-talk.site') ? cms.getSecretForUri('hyvor-talk.site') : cms.vfs.propertySearch[cms.requestContext.uri]['hyvor-talk.site']}</c:set>
 </c:if>
 
 <c:choose>

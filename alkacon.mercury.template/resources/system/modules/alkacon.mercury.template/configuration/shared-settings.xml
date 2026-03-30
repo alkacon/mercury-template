@@ -3905,8 +3905,18 @@
       <PropertyName><![CDATA[showSearch]]></PropertyName>
       <DisplayName><![CDATA[%(key.msg.setting.nav.showSearch)]]></DisplayName>
       <Description><![CDATA[%(key.msg.setting.nav.showSearch.help)]]></Description>
-      <Widget><![CDATA[checkbox]]></Widget>
-      <Default><![CDATA[true]]></Default>
+      <Widget><![CDATA[select]]></Widget>
+      <Default><![CDATA[default]]></Default>
+      <WidgetConfig><![CDATA[
+            mobile-desktop:     %(key.msg.setting.nav.showSearch.mobile-desktop)|
+            only-desktop:       %(key.msg.setting.nav.showSearch.only-desktop)|
+            default:            %(key.msg.setting.nav.showSearch.default)|
+            none:               %(key.msg.setting.nav.showSearch.none)
+        ]]></WidgetConfig>
+      <ValueTranslation><![CDATA[
+          default: true|
+          none: false
+      ]]></ValueTranslation>
     </Setting>
     <Setting>
       <IncludeName><![CDATA[detailContainer.layout]]></IncludeName>

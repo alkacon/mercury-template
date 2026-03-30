@@ -578,9 +578,11 @@
     }
 
     #nav-main-search {
-        // no search button on mobile
+        // disable desktop search
         display: none !important;
     }
+
+    // #nav-main-search-mobile will use default display flex from surrounding li
 
     .nav-mega-menu {
         // mega menu adjustments
@@ -943,8 +945,8 @@
         display: none;
     }
 
-
     #nav-main-search {
+        // enable desktop search
 
         .nav-menu {
             padding: $nav-header-hor-padding;
@@ -971,6 +973,11 @@
                 right: 0;
             }
         }
+    }
+
+    #nav-main-search-mobile {
+        // disable mobile search
+        display: none;
     }
 
     .nav-main-container {

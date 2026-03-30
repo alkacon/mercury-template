@@ -19,15 +19,20 @@
 
 <c:set var="setting"                    value="${cms.element.setting}" />
 <c:set var="cssWrapper"                 value="${setting.cssWrapper}" />
-<c:set var="showSearch"                 value="${setting.showSearch.useDefault(true).toBoolean}" />
+<c:set var="showSearchStr"              value="${setting.showSearch.useDefault('default').toString}" />
 <c:set var="textDisplay"                value="${setting.textDisplay.useDefault('cap-css').toString}" />
 <c:set var="metaLinks"                  value="${setting.metaLinks.useDefault('top').toString}" />
 <c:set var="showImageLink"              value="${setting.showImageLink.toBoolean}" />
 
-
-<c:if test="${showSearch}">
-    <c:set var="searchPageUri" value="${cms.functionDetailPageExact['Search page']}" />
+<c:if test="${showSearchStr eq 'default'}">
+    <c:set var="showSearchStr"          value="${cms.sitemapConfig.attribute['mercury.nav.showSearch'].validate(['only-desktop', 'mobile-desktop', 'none'], 'mobile-desktop').toString()}" />
 </c:if>
+<c:set var="showSearch"                 value="${fn:contains(showSearchStr, 'desktop')}" />
+<c:if test="${showSearch}">
+    <c:set var="searchPageUri"          value="${cms.functionDetailPageExact['Search page']}" />
+    <c:set var="showSearch"             value="${not empty searchPageUri}" />
+</c:if>
+<c:set var="showSearchMobile"           value="${showSearch and (showSearchStr eq 'mobile-desktop')}" />
 
 <c:set var="logoElements" value="${cms.elementsInContainers['header-image']}" />
 <c:if test="${not empty logoElements}">
@@ -271,9 +276,15 @@
                 ${metaLinksHtml}
             </c:if>
 
-            <c:if test="${not empty searchPageUri}">
+            <c:if test="${showSearch}">
+                <c:if test="${showSearchMobile}">
+                    <li id="nav-main-search-mobile"><%----%>
+                            <a href="${searchPageUri}"><fmt:message key='msg.page.search' />${' '}<m:icon icon="search" tag="span" /></a><%----%>
+                        </a><%----%>
+                    </li><%----%>
+                </c:if>
                 <li id="nav-main-search" class="expand"><%----%>
-                    <a href="${searchPageUri}" title="<fmt:message key="msg.page.search" />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
+                    <a href="${searchPageUri}" title="<fmt:message key='msg.page.search' />" role="button" aria-controls="nav_nav-main-search" aria-expanded="false" id="label_nav-main-search" class="click-direct"><%----%>
                         <m:icon icon="search" tag="span" cssWrapper="search search-btn" />
                     </a><%----%>
                     <ul class="nav-menu" id="nav_nav-main-search" aria-labelledby="label_nav-main-search"><%----%>
@@ -283,7 +294,7 @@
                                     <div class="input button"><%----%>
                                         <label for="searchNavQuery" class="sr-only"><fmt:message key="msg.page.search" /></label><%----%>
                                         <input id="searchNavQuery" name="q" type="text" autocomplete="off" placeholder='<fmt:message key="msg.page.search.enterquery" />' /><%----%>
-                                        <button class="btn" type="button" title="<fmt:message key="msg.page.search" />" onclick="this.form.submit(); return false;"><%----%>
+                                        <button class="btn" type="button" title="<fmt:message key='msg.page.search' />" onclick="this.form.submit(); return false;"><%----%>
                                             <fmt:message key="msg.page.search.submit" /><%----%>
                                         </button><%----%>
                                     </div><%----%>

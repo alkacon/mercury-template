@@ -1385,6 +1385,10 @@
       <Value><![CDATA[awesomeSelection]]></Value>
     </Attribute>
     <Attribute>
+      <Key><![CDATA[mercury.nav.showSearch]]></Key>
+      <Value><![CDATA[mobile-desktop]]></Value>
+    </Attribute>
+    <Attribute>
       <Key><![CDATA[selectOrCombo]]></Key>
       <Value><![CDATA[selectcombo]]></Value>
     </Attribute>

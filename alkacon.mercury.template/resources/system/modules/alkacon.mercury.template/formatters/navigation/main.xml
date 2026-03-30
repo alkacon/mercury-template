@@ -37,10 +37,10 @@
       <IncludeName><![CDATA[metaLinks.navigation]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showImageLink.false]]></IncludeName>
+      <IncludeName><![CDATA[showSearch.navigation]]></IncludeName>
     </Setting>
     <Setting>
-      <IncludeName><![CDATA[showSearch.navigation]]></IncludeName>
+      <IncludeName><![CDATA[showImageLink.false]]></IncludeName>
     </Setting>
   </NewFormatter>
 </NewFormatters>

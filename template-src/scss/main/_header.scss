@@ -42,6 +42,8 @@
      // hide all elements from mega menu that are not navigations
     .mega .nav-mega-menu {
         .teaser,
+        .detail-page,
+        .heading,
         .element:not(.type-nav-side):not(.ls-navigation) {
             display: none;
         }

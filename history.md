@@ -2,6 +2,22 @@
 
 ## Release history ##
 
+### Version 21 ###
+
+*April 14, 2026*:
+
+* Updated for OpenCms 21.
+* Options to show the date more prominently on detail pages for events and articles.
+* Extended options to show smaller images in a content section.
+* More options to show the search function in mobile devices.
+* Fixed issue with nested accordions not scrolling back to the top.
+* Media element: Display the copyright property of the preview image as a fallback.
+* Media element: Added JSON-LD support.
+* Media element: Improved security for embedded YouTube videos.
+* Improved display and handling of dependent fields for webform.
+* Updated bootstrap to version 5.3.8.
+* All NPM dependencies have been updated to a recent version.
+
 ### Version 20 ###
 
 *October 14, 2025*:

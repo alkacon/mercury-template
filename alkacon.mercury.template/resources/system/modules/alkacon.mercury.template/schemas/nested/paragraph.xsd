@@ -33,7 +33,6 @@
                     <DisplayName><![CDATA[%(key.label.Caption)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Caption.help)]]></Description>
                     <Widget>string</Widget>
-                    <Default><![CDATA[%(key.msg.default.new.Caption)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                     <Display>wide</Display>
                 </Setting>
@@ -41,7 +40,6 @@
                     <PropertyName>Text</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Widget>html</Widget>
-                    <Default><![CDATA[%(key.msg.default.new.Text)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
                     <Display>wide</Display>
                 </Setting>

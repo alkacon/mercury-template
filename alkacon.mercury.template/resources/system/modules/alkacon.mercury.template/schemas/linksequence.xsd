@@ -44,7 +44,6 @@
                     <DisplayName><![CDATA[%(key.label.LinkSequence.Text)]]></DisplayName>
                     <Description><![CDATA[%(key.label.LinkSequence.Text.help)]]></Description>
                     <Widget>html</Widget>
-                    <Default><![CDATA[%(key.msg.default.new.Text)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
                 </Setting>
                 <Setting>

@@ -21,6 +21,9 @@ function initWebformSubFields(formID) {
 
 // toggles the sub field visibility depending on the field value
 function toggleWebformSubFields(inputField) {
+	if (inputField.type === "radio" && !inputField.checked) {
+		return;
+	}
 	var subIDToShow = getWebFomSubField(inputField.name, inputField.value);
 	var activeID = getActiveWebFormSubField(inputField.name);
 	if (activeID != "" && subIDToShow != activeID) {

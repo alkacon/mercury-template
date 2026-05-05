@@ -189,7 +189,9 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
 
             String mailFrom = "";
             I_CmsXmlContentValue value = m_event.getValue(PATH_EVENT_MAIL_FROM, cms.getRequestContext().getLocale());
-            if ((value == null) || CmsStringUtil.isEmptyOrWhitespaceOnly(value.getStringValue(cms))) {
+            if ((value != null) && CmsStringUtil.isNotEmptyOrWhitespaceOnly(value.getStringValue(cms))) {
+                mailFrom = value.getStringValue(cms);
+            } else {
                 String path = CmsForm.NODE_OPTIONALCONFIRMATION + "/" + CmsForm.NODE_CONFIRMATIONMAILFROM;
                 mailFrom = m_formConfigParser.getConfigurationValue(path, "");
             }
@@ -211,7 +213,9 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
             I_CmsXmlContentValue value = m_event.getValue(
                 PATH_EVENT_MAIL_FROM_NAME,
                 cms.getRequestContext().getLocale());
-            if ((value == null) || CmsStringUtil.isEmptyOrWhitespaceOnly(value.getStringValue(cms))) {
+            if ((value != null) && CmsStringUtil.isNotEmptyOrWhitespaceOnly(value.getStringValue(cms))) {
+                mailFromName = value.getStringValue(cms);
+            } else {
                 String path = CmsForm.NODE_OPTIONALCONFIRMATION + "/" + CmsForm.NODE_CONFIRMATIONMAILFROMNAME;
                 mailFromName = m_formConfigParser.getConfigurationValue(path, "");
             }

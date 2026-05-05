@@ -6,7 +6,7 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.id.startsWith('org.opencms.modules')) {
-                useModule('org.opencms:opencms-gradle-plugin:latest')
+                useModule('org.opencms:opencms-gradle-plugin:4.+')
             }
         }
     }

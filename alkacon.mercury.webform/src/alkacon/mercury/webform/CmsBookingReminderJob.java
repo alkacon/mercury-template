@@ -67,7 +67,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
-import org.apache.commons.mail.EmailException;
 
 /**
  * Job that reminds users of a booked event that is about to start.
@@ -724,8 +723,15 @@ public class CmsBookingReminderJob implements I_CmsScheduledJob {
             mail.setHtmlMsg(text);
             mail.send();
             return true;
-        } catch (EmailException e) {
-            LOG.error(e.getLocalizedMessage(), e);
+        } catch (Throwable e) {
+            // We need to catch NPEs - that's why we use throwable here.
+            if ((formDataBean != null) && (formDataBean.getFile() != null)) {
+                LOG.error(
+                    "Failed to send reminder mail for form data in file " + formDataBean.getFile().getRootPath(),
+                    e);
+            } else {
+                LOG.error("Failed to send reminder mail. Form data bean was or the bean's file was null", e);
+            }
             return false;
         }
     }

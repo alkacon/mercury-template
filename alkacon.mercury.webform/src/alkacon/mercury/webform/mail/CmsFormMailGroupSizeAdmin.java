@@ -35,7 +35,7 @@ import java.util.Map;
 
 import javax.mail.internet.AddressException;
 
-import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.mail.EmailException;
 
 /**
@@ -67,7 +67,7 @@ public class CmsFormMailGroupSizeAdmin extends A_CmsFormMailAdmin {
      * @see alkacon.mercury.webform.mail.A_CmsFormMailAdmin#sendMail(java.util.Map)
      */
     @Override
-    public void sendMail(Map<String, FileItem> attachements) throws AddressException, EmailException {
+    public void sendMail(Map<String, DiskFileItem> attachements) throws AddressException, EmailException {
 
         String mailPrefix = CmsFormMailMessages.get().container(CmsFormMailMessages.MAIL_PREFIX_GROUPSIZE).key(
             m_cms.getRequestContext().getLocale());

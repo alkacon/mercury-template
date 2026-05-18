@@ -41,7 +41,7 @@ import java.util.Map;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
-import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.mail.EmailException;
 
 /**
@@ -69,7 +69,7 @@ public abstract class A_CmsFormMailAdmin extends A_CmsFormMail {
      * @throws AddressException if there is an error with the mail addresses
      * @throws EmailException if sending the mail fails
      */
-    public abstract void sendMail(Map<String, FileItem> attachments) throws AddressException, EmailException;
+    public abstract void sendMail(Map<String, DiskFileItem> attachments) throws AddressException, EmailException;
 
     /**
     * Internal mail send function.
@@ -79,7 +79,7 @@ public abstract class A_CmsFormMailAdmin extends A_CmsFormMail {
     * @throws EmailException if sending the mail fails
     * @throws AddressException if there is an error with the mail addresses
     */
-    protected void sendMail(String mailSubject, String mailBody, Map<String, FileItem> attachments)
+    protected void sendMail(String mailSubject, String mailBody, Map<String, DiskFileItem> attachments)
     throws EmailException, AddressException {
 
         setAddresses();
@@ -129,9 +129,9 @@ public abstract class A_CmsFormMailAdmin extends A_CmsFormMail {
         } else if ((resource != null)
             && CmsFormMailSettings.getInstance().useDkimMailHost(m_cms, resource)
             && CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromAsReplyTo)) {
-                m_htmlMail.addReplyTo(mailFromAsReplyTo);
-                m_simpleMail.addReplyTo(mailFromAsReplyTo);
-            }
+            m_htmlMail.addReplyTo(mailFromAsReplyTo);
+            m_simpleMail.addReplyTo(mailFromAsReplyTo);
+        }
         m_htmlMail.setTo(createInternetAddresses(mailTo));
         m_simpleMail.setTo(createInternetAddresses(mailTo));
         if (mailCC.size() > 0) {

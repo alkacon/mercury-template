@@ -47,6 +47,7 @@ import org.opencms.util.CmsMacroResolver;
 import org.opencms.util.CmsStringUtil;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -57,7 +58,7 @@ import java.util.StringTokenizer;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
-import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.logging.Log;
 import org.apache.commons.mail.EmailException;
 
@@ -295,22 +296,26 @@ public abstract class A_CmsFormMail {
      * @param attachments the attachments
      * @throws EmailException if settings the attachments fails
      */
-    protected final void setAttachments(Map<String, FileItem> attachments) throws EmailException {
+    protected final void setAttachments(Map<String, DiskFileItem> attachments) throws EmailException {
 
         if (attachments != null) {
-            Iterator<FileItem> i = attachments.values().iterator();
+            Iterator<DiskFileItem> i = attachments.values().iterator();
             while (i.hasNext()) {
-                FileItem attachment = i.next();
+                DiskFileItem attachment = i.next();
                 if (attachment != null) {
                     String filename = attachment.getName().substring(
                         attachment.getName().lastIndexOf(File.separator) + 1);
-                    m_htmlMail.attach(
-                        new CmsByteArrayDataSource(
+                    try {
+                        m_htmlMail.attach(
+                            new CmsByteArrayDataSource(
+                                filename,
+                                attachment.get(),
+                                OpenCms.getResourceManager().getMimeType(filename, null, "application/octet-stream")),
                             filename,
-                            attachment.get(),
-                            OpenCms.getResourceManager().getMimeType(filename, null, "application/octet-stream")),
-                        filename,
-                        filename);
+                            filename);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         }

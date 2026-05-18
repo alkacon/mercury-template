@@ -35,7 +35,7 @@ import java.util.Map;
 
 import javax.mail.internet.AddressException;
 
-import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.mail.EmailException;
 
 /**
@@ -61,7 +61,7 @@ public class CmsFormMailRegisterAdmin extends A_CmsFormMailAdmin {
      * @see alkacon.mercury.webform.mail.A_CmsFormMailAdmin#sendMail(java.util.Map)
      */
     @Override
-    public void sendMail(Map<String, FileItem> fileUploads) throws AddressException, EmailException {
+    public void sendMail(Map<String, DiskFileItem> fileUploads) throws AddressException, EmailException {
 
         String mailSubject = m_macroResolver.resolveMacros(m_form.getMailSubjectPrefix() + m_form.getMailSubject());
         sendMail(mailSubject, createMailBody(), fileUploads);

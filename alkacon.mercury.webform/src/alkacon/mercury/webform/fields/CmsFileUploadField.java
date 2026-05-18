@@ -32,7 +32,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItem;
 
 /**
  * Represents a file upload field.<p>
@@ -41,6 +41,9 @@ public class CmsFileUploadField extends A_CmsField {
 
     /** HTML field type: file. */
     private static final String TYPE = "file";
+
+    /** The size of the uploaded file. */
+    private int m_fileSize;
 
     /**
      * Returns the type of the input field, e.g. "text" or "select".<p>
@@ -51,9 +54,6 @@ public class CmsFileUploadField extends A_CmsField {
 
         return TYPE;
     }
-
-    /** The size of the uploaded file. */
-    private int m_fileSize;
 
     /**
      * @see alkacon.mercury.webform.fields.I_CmsField#buildHtml(CmsFormHandler, CmsMessages, String, boolean, String)
@@ -77,7 +77,7 @@ public class CmsFileUploadField extends A_CmsField {
                 String value = getValue();
                 if (CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
                     // try to read the file name from the session attribute
-                    FileItem fileItem = formHandler.getUploadFile(this);
+                    DiskFileItem fileItem = formHandler.getUploadFile(this);
                     if (fileItem != null) {
                         value = fileItem.getName();
                     }
@@ -128,7 +128,7 @@ public class CmsFileUploadField extends A_CmsField {
         // check the request parameter
         String param = formHandler.getParameter(getName());
         // check the session attribute
-        FileItem fileItem = formHandler.getUploadFile(this);
+        DiskFileItem fileItem = formHandler.getUploadFile(this);
 
         if (CmsStringUtil.isNotEmpty(param) || (fileItem != null)) {
             // set the info message, if the upload field is found as parameter or in the session attribute

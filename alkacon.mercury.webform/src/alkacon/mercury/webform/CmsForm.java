@@ -56,6 +56,7 @@ import org.opencms.xml.content.CmsXmlContent;
 import org.opencms.xml.content.CmsXmlContentFactory;
 import org.opencms.xml.types.I_CmsXmlContentValue;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -68,7 +69,7 @@ import java.util.Optional;
 import java.util.StringTokenizer;
 import java.util.stream.IntStream;
 
-import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.logging.Log;
 
 /**
@@ -2810,12 +2811,16 @@ public class CmsForm {
             if (CmsFileUploadField.class.isAssignableFrom(field.getClass())) {
                 // get the file uploads stored in the session
                 @SuppressWarnings("unchecked")
-                Map<String, FileItem> fileUploads = (Map<String, FileItem>)jsp.getRequest().getSession().getAttribute(
+                Map<String, DiskFileItem> fileUploads = (Map<String, DiskFileItem>)jsp.getRequest().getSession().getAttribute(
                     CmsFormHandler.ATTRIBUTE_FILEITEMS);
                 if (fileUploads != null) {
-                    FileItem attachment = fileUploads.get(field.getName());
+                    DiskFileItem attachment = fileUploads.get(field.getName());
                     if (attachment != null) {
-                        ((CmsFileUploadField)field).setFileSize(attachment.get().length);
+                        try {
+                            ((CmsFileUploadField)field).setFileSize(attachment.get().length);
+                        } catch (IOException e) {
+                            throw new RuntimeException();
+                        }
                     }
                 }
             }

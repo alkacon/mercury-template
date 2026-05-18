@@ -92,7 +92,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 
-import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.logging.Log;
 import org.apache.commons.mail.EmailException;
 
@@ -255,7 +255,7 @@ public class CmsFormHandler extends CmsJspActionElement {
     protected CmsMultiMessages m_messages;
 
     /** The multipart file items. */
-    protected List<FileItem> m_multipartFileItems;
+    protected List<DiskFileItem> m_multipartFileItems;
 
     /** The templates for the web form output. */
     protected StringTemplateGroup m_outputTemplates;
@@ -546,7 +546,7 @@ public class CmsFormHandler extends CmsJspActionElement {
                 value = current.getValue();
                 if (CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
                     // try to read upload item from session attribute
-                    FileItem fileItem = getUploadFile(current);
+                    DiskFileItem fileItem = getUploadFile(current);
                     if (fileItem != null) {
                         value = fileItem.getName();
                     }
@@ -881,15 +881,15 @@ public class CmsFormHandler extends CmsJspActionElement {
      * @return <code>null</code> or the file item for the given field in
      *      case it is of type <code>{@link CmsFileUploadField}</code>
      */
-    public FileItem getUploadFile(I_CmsField isFileUploadField) {
+    public DiskFileItem getUploadFile(I_CmsField isFileUploadField) {
 
-        FileItem result = null;
-        FileItem current;
+        DiskFileItem result = null;
+        DiskFileItem current;
         String fieldName = isFileUploadField.getName();
         String uploadFileFieldName;
-        Map<String, FileItem> fileUploads = getFileUploads();
+        Map<String, DiskFileItem> fileUploads = getFileUploads();
         if (fileUploads != null) {
-            Iterator<FileItem> i = fileUploads.values().iterator();
+            Iterator<DiskFileItem> i = fileUploads.values().iterator();
             while (i.hasNext()) {
                 current = i.next();
                 uploadFileFieldName = current.getFieldName();
@@ -1251,8 +1251,8 @@ public class CmsFormHandler extends CmsJspActionElement {
         } else if (getFormConfiguration().captchaFieldIsOnCheckPage()
             && ACTION_CONFIRMED.equals(getParameter(PARAM_FORMACTION))
             && !validate()) {
-                result = true;
-            }
+            result = true;
+        }
 
         return result;
     }
@@ -1298,14 +1298,14 @@ public class CmsFormHandler extends CmsJspActionElement {
         } else if (ACTION_CONFIRMED.equalsIgnoreCase(formAction)
             && getFormConfiguration().captchaFieldIsOnCheckPage()
             && !validate()) {
-                // captcha field validation on check page failed: redisplay the check page, not the input page!
-                result = false;
-            } else if (CmsStringUtil.isNotEmpty(getParameter(PARAM_BACK + getFormConfiguration().getConfigId()))) {
-                result = true;
-            } else if ((CmsStringUtil.isNotEmpty(getParameter(PARAM_PAGE + getFormConfiguration().getConfigId())))
-                && CmsStringUtil.isEmpty(getParameter(PARAM_FINALPAGE))) {
-                    result = true;
-                }
+            // captcha field validation on check page failed: redisplay the check page, not the input page!
+            result = false;
+        } else if (CmsStringUtil.isNotEmpty(getParameter(PARAM_BACK + getFormConfiguration().getConfigId()))) {
+            result = true;
+        } else if ((CmsStringUtil.isNotEmpty(getParameter(PARAM_PAGE + getFormConfiguration().getConfigId())))
+            && CmsStringUtil.isEmpty(getParameter(PARAM_FINALPAGE))) {
+            result = true;
+        }
 
         return result;
     }
@@ -1498,7 +1498,7 @@ public class CmsFormHandler extends CmsJspActionElement {
                 } else if (current instanceof CmsFileUploadField) {
                     if (CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
                         // try to read upload item from session attribute
-                        FileItem fileItem = getUploadFile(current);
+                        DiskFileItem fileItem = getUploadFile(current);
                         if (fileItem != null) {
                             value = fileItem.getName();
                         }
@@ -1567,7 +1567,7 @@ public class CmsFormHandler extends CmsJspActionElement {
             } else if (current instanceof CmsFileUploadField) {
                 if (CmsStringUtil.isEmptyOrWhitespaceOnly(value)) {
                     // try to read upload item from session attribute
-                    FileItem fileItem = getUploadFile(current);
+                    DiskFileItem fileItem = getUploadFile(current);
                     if (fileItem != null) {
                         value = fileItem.getName();
                     }
@@ -1965,14 +1965,14 @@ public class CmsFormHandler extends CmsJspActionElement {
         }
 
         if (m_multipartFileItems != null) {
-            Map<String, FileItem> fileUploads = getFileUploads();
+            Map<String, DiskFileItem> fileUploads = getFileUploads();
             if (fileUploads == null) {
                 fileUploads = new HashMap<>();
             }
             // check, if there are any attachments
-            Iterator<FileItem> i = m_multipartFileItems.iterator();
+            Iterator<DiskFileItem> i = m_multipartFileItems.iterator();
             while (i.hasNext()) {
-                FileItem fileItem = i.next();
+                DiskFileItem fileItem = i.next();
                 if (CmsStringUtil.isNotEmpty(fileItem.getName())) {
                     // append file upload to the map of file items
                     fileUploads.put(fileItem.getFieldName(), fileItem);
@@ -2151,7 +2151,7 @@ public class CmsFormHandler extends CmsJspActionElement {
             if (specialUploadHandling && (field instanceof CmsFileUploadField)) {
                 if (CmsStringUtil.isEmptyOrWhitespaceOnly(fValue)) {
                     // try to read upload item from session attribute
-                    FileItem fileItem = getUploadFile(field);
+                    DiskFileItem fileItem = getUploadFile(field);
                     if (fileItem != null) {
                         fValue = fileItem.getName();
                     }
@@ -2213,11 +2213,11 @@ public class CmsFormHandler extends CmsJspActionElement {
      * @return the map of uploaded files
      */
     @SuppressWarnings("unchecked")
-    private Map<String, FileItem> getFileUploads() {
+    private Map<String, DiskFileItem> getFileUploads() {
 
         if ((getRequest().getSession(false) != null)
             && (getRequest().getSession(false).getAttribute(ATTRIBUTE_FILEITEMS) != null)) {
-            return (Map<String, FileItem>)getRequest().getSession().getAttribute(ATTRIBUTE_FILEITEMS);
+            return (Map<String, DiskFileItem>)getRequest().getSession().getAttribute(ATTRIBUTE_FILEITEMS);
         }
         return null;
     }

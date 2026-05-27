@@ -1,0 +1,25 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: JavaxToJakarta
+displayName: Migrate servlet and JSP Java references to Jakarta
+preconditions:
+  - org.openrewrite.FindSourceFiles:
+      filePattern: "**/*.java"
+recipeList:
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: javax.servlet
+      newPackageName: jakarta.servlet
+      recursive: true
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: JakartaToJavax
+displayName: Migrate Jakarta references to Javax
+preconditions:
+  - org.openrewrite.FindSourceFiles:
+      filePattern: "**/*.java"
+recipeList:
+  - org.openrewrite.java.ChangePackage:
+      oldPackageName: jakarta.servlet
+      newPackageName: javax.servlet
+      recursive: true
+

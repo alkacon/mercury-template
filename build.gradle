@@ -4,7 +4,14 @@ plugins {
     id 'eclipse'
     id 'org.opencms.modules.defaultdependencies'
     id 'org.opencms.modules'
+    id 'org.openrewrite.rewrite' version '7.+'
 }
+
+rewrite {
+    configFile = file("rewrite.yml")
+}
+
+
 
 // here you can configure the default dependencies via 'ocDependencies'
 // see the output of `./gradlew ocDependenciesDemo` for an example

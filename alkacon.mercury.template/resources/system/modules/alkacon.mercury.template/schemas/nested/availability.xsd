@@ -40,7 +40,7 @@
                     <DisplayName><![CDATA[%(key.label.Availability.Expiration)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Availability.Expiration.help)]]></Description>
                     <Widget>datetime</Widget>
-                    <Default><![CDATA[%(currenttime + 86400000)]]></Default>
+                    <Default><![CDATA[%(currenttime)]]></Default>
                     <Error><![CDATA[%(key.msg.error.dateformat)]]></Error>
                     <Search>false</Search>
                     <Synchronization>strong</Synchronization>

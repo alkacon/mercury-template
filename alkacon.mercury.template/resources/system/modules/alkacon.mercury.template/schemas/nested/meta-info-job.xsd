@@ -51,7 +51,7 @@
                     <DisplayName><![CDATA[%(key.label.Job.ValidThrough)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Job.ValidThrough.help)]]></Description>
                     <Widget>datetime</Widget>
-                    <Default><![CDATA[%(currenttime + 86400000)]]></Default>
+                    <Default><![CDATA[%(currenttime)]]></Default>
                     <WidgetConfig>{fixedTime: "23:59"}</WidgetConfig>
                     <Error><![CDATA[%(key.msg.error.dateformat.notime)]]></Error>
                     <Search>false</Search>

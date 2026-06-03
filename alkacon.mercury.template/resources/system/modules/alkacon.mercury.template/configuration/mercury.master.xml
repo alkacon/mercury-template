@@ -1300,6 +1300,10 @@
       <Value><![CDATA[/system/modules/alkacon.mercury.theme/css/editor.min.css]]></Value>
     </Attribute>
     <Attribute>
+      <Key><![CDATA[template.redirect.newwindow.keyword]]></Key>
+      <Value><![CDATA[extern]]></Value>
+    </Attribute>
+    <Attribute>
       <Key><![CDATA[list.use.configured.formatters]]></Key>
       <Value><![CDATA[true]]></Value>
     </Attribute>

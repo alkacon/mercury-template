@@ -4,11 +4,10 @@
     trimDirectiveWhitespaces="true"
     import="
         java.util.*,
-        javax.servlet.http.*,
         org.opencms.file.*,
         org.opencms.util.*,
         org.opencms.jsp.util.*,
-        org.apache.commons.fileupload.*
+        org.apache.commons.fileupload2.core.*
     "
     description="Parses multipart request data." %>
 
@@ -29,7 +28,7 @@
 public Map<String, String[]> getMultiPartParameters(HttpServletRequest request, String encoding) {
 
     Map<String, String[]> result;
-    List<FileItem> fileItems = CmsRequestUtil.readMultipartFileItems(request);
+    List<DiskFileItem> fileItems = CmsRequestUtil.readMultipartFileItems(request);
     if (fileItems != null) {
         result = CmsRequestUtil.readParameterMapFromMultiPart(encoding, fileItems);
     } else {

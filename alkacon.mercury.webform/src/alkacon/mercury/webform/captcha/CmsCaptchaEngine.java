@@ -19,8 +19,6 @@
 
 package alkacon.mercury.webform.captcha;
 
-import alkacon.mercury.webform.CmsForm;
-
 import org.opencms.main.CmsLog;
 import org.opencms.main.OpenCms;
 import org.opencms.module.CmsModule;
@@ -56,6 +54,8 @@ import com.octo.captcha.engine.CaptchaEngineException;
 import com.octo.captcha.engine.image.ImageCaptchaEngine;
 import com.octo.captcha.image.ImageCaptchaFactory;
 import com.octo.captcha.image.gimpy.GimpyFactory;
+
+import alkacon.mercury.webform.CmsForm;
 
 /**
  * A captcha engine using a Gimpy factory to create captchas.<p>

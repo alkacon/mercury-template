@@ -19,8 +19,6 @@
 
 package alkacon.mercury.webform.captcha;
 
-import alkacon.mercury.webform.maptcha.CmsMaptchaService;
-
 import org.opencms.file.CmsObject;
 import org.opencms.main.CmsEvent;
 import org.opencms.main.I_CmsEventListener;
@@ -30,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.octo.captcha.service.CaptchaService;
+
+import alkacon.mercury.webform.maptcha.CmsMaptchaService;
 
 /**
  * Caches captcha services, otherwise the mechanism will not work.<p>

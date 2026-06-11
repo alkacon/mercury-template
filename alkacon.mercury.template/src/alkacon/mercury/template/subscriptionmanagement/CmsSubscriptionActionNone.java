@@ -19,12 +19,12 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
-import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
-
 import org.opencms.i18n.CmsMessageContainer;
 
 import java.util.Collections;
 import java.util.List;
+
+import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
 
 /** Dummy action, doing nothing. */
 public class CmsSubscriptionActionNone implements I_CmsSubscriptionAction {

@@ -27,14 +27,6 @@
 
 package alkacon.mercury.webform.mail;
 
-import alkacon.mercury.webform.CmsForm;
-import alkacon.mercury.webform.CmsFormDataField;
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.CmsFormMailSettings;
-import alkacon.mercury.webform.I_CmsFormMessages;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateHtmlEmail;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateHtmlEmailFields;
-
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.mail.CmsHtmlMail;
@@ -63,6 +55,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.mail.EmailException;
 
 import org.antlr.stringtemplate.StringTemplate;
+
+import alkacon.mercury.webform.CmsForm;
+import alkacon.mercury.webform.CmsFormDataField;
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.CmsFormMailSettings;
+import alkacon.mercury.webform.I_CmsFormMessages;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateHtmlEmail;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateHtmlEmailFields;
 
 /**
  * Abstract form mail.

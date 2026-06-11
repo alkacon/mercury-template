@@ -19,9 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.CmsForm;
-import alkacon.mercury.webform.CmsFormContentUtil;
-
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsMessages;
@@ -41,6 +38,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import alkacon.mercury.webform.CmsForm;
+import alkacon.mercury.webform.CmsFormContentUtil;
 
 /**
  * Special select widget that generates options from the configured form input fields.<p>

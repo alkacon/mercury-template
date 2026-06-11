@@ -27,9 +27,6 @@
 
 package alkacon.mercury.webform.mail;
 
-import alkacon.mercury.webform.CmsFormDataField;
-import alkacon.mercury.webform.CmsFormHandler;
-
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +34,9 @@ import javax.mail.internet.AddressException;
 
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.mail.EmailException;
+
+import alkacon.mercury.webform.CmsFormDataField;
+import alkacon.mercury.webform.CmsFormHandler;
 
 /**
  * Form mail sent to the administrator if a the group size for a user is changed.

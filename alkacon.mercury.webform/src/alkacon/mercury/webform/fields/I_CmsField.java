@@ -19,12 +19,12 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.CmsFormHandler;
-
 import org.opencms.i18n.CmsMessages;
 
 import java.util.List;
 import java.util.Map;
+
+import alkacon.mercury.webform.CmsFormHandler;
 
 /**
  * Defines the methods required for form fields.<p>

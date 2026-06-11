@@ -19,36 +19,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
-import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
-import alkacon.mercury.webform.CmsSubmissionStatus.SubmissionCheckResult;
-import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
-import alkacon.mercury.webform.fields.CmsCaptchaField;
-import alkacon.mercury.webform.fields.CmsCheckboxField;
-import alkacon.mercury.webform.fields.CmsEmptyField;
-import alkacon.mercury.webform.fields.CmsFieldItem;
-import alkacon.mercury.webform.fields.CmsFileUploadField;
-import alkacon.mercury.webform.fields.CmsHiddenField;
-import alkacon.mercury.webform.fields.CmsPagingField;
-import alkacon.mercury.webform.fields.CmsParameterField;
-import alkacon.mercury.webform.fields.CmsPasswordField;
-import alkacon.mercury.webform.fields.CmsPrivacyField;
-import alkacon.mercury.webform.fields.CmsTextField;
-import alkacon.mercury.webform.fields.I_CmsField;
-import alkacon.mercury.webform.fields.I_CmsHasHiddenFieldHtml;
-import alkacon.mercury.webform.mail.A_CmsFormMail;
-import alkacon.mercury.webform.mail.CmsFormMailICalInfo;
-import alkacon.mercury.webform.mail.CmsFormMailRegisterAdmin;
-import alkacon.mercury.webform.mail.CmsFormMailRegisterUser;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateCheckPage;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateConfirmationPage;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateError;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateForm;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFormJs;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFullyBooked;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateInitError;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateSubmissionError;
-
 import org.opencms.cache.CmsVfsMemoryObjectCache;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsProperty;
@@ -102,6 +72,36 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 
 import com.octo.captcha.service.text.TextCaptchaService;
+
+import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
+import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
+import alkacon.mercury.webform.CmsSubmissionStatus.SubmissionCheckResult;
+import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
+import alkacon.mercury.webform.fields.CmsCaptchaField;
+import alkacon.mercury.webform.fields.CmsCheckboxField;
+import alkacon.mercury.webform.fields.CmsEmptyField;
+import alkacon.mercury.webform.fields.CmsFieldItem;
+import alkacon.mercury.webform.fields.CmsFileUploadField;
+import alkacon.mercury.webform.fields.CmsHiddenField;
+import alkacon.mercury.webform.fields.CmsPagingField;
+import alkacon.mercury.webform.fields.CmsParameterField;
+import alkacon.mercury.webform.fields.CmsPasswordField;
+import alkacon.mercury.webform.fields.CmsPrivacyField;
+import alkacon.mercury.webform.fields.CmsTextField;
+import alkacon.mercury.webform.fields.I_CmsField;
+import alkacon.mercury.webform.fields.I_CmsHasHiddenFieldHtml;
+import alkacon.mercury.webform.mail.A_CmsFormMail;
+import alkacon.mercury.webform.mail.CmsFormMailICalInfo;
+import alkacon.mercury.webform.mail.CmsFormMailRegisterAdmin;
+import alkacon.mercury.webform.mail.CmsFormMailRegisterUser;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateCheckPage;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateConfirmationPage;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateError;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateForm;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFormJs;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFullyBooked;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateInitError;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateSubmissionError;
 
 /**
  * The form handler controls the HTML or mail output of a configured email form.<p>

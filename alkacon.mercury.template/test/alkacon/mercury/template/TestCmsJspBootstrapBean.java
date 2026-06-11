@@ -19,10 +19,9 @@
 
 package alkacon.mercury.template;
 
-import alkacon.mercury.test.AllTests;
-
 import org.opencms.test.OpenCmsTestProperties;
 
+import alkacon.mercury.test.AllTests;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;

@@ -208,7 +208,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
 
     /**
      * Returns the DB label of the input field that holds the group size.
-     * 
+     *
      * @return the DB label of the input field that holds the group size.
      */
     public String getGroupSizeInputFieldDBLabel() {
@@ -228,7 +228,7 @@ public class CmsFormUgcConfiguration extends CmsUgcConfiguration {
 
     /**
      * Returns the maximally allowed group size for one booking.
-     * 
+     *
      * @return the maximally allowed group size for one booking.
      */
     public int getMaxGroupSize() {

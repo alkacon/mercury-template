@@ -19,9 +19,6 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
-import alkacon.mercury.template.mail.I_CmsPreconfiguredMail;
-import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
-
 import org.opencms.file.CmsObject;
 import org.opencms.i18n.CmsMessageContainer;
 import org.opencms.main.CmsLog;
@@ -30,6 +27,9 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
+
+import alkacon.mercury.template.mail.I_CmsPreconfiguredMail;
+import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
 
 /**
  * Action that sends a suitable confirmation mail for unsubscription to the user.

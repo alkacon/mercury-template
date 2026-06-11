@@ -19,8 +19,6 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
-import alkacon.mercury.test.AllTests;
-
 import org.opencms.file.CmsGroup;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsUser;
@@ -33,6 +31,7 @@ import org.opencms.test.OpenCmsTestProperties;
 import java.util.Collection;
 import java.util.List;
 
+import alkacon.mercury.test.AllTests;
 import junit.extensions.TestSetup;
 import junit.framework.Test;
 import junit.framework.TestSuite;

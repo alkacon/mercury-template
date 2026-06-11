@@ -19,11 +19,11 @@
 
 package alkacon.mercury.webform.maptcha;
 
-import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
-
 import com.octo.captcha.CaptchaFactory;
 import com.octo.captcha.engine.CaptchaEngineException;
 import com.octo.captcha.engine.GenericCaptchaEngine;
+
+import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
 
 /**
  * A captcha engine using a Maptcha factory to create mathematical captchas.<p>

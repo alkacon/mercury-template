@@ -19,12 +19,12 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
-import alkacon.mercury.template.mail.I_CmsPreconfiguredMail;
-import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
-
 import org.opencms.file.CmsObject;
 
 import java.util.List;
+
+import alkacon.mercury.template.mail.I_CmsPreconfiguredMail;
+import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
 
 /** Interface for a subscription configuration.
  *

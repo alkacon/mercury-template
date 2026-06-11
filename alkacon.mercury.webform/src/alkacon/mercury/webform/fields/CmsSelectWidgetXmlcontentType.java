@@ -19,8 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
-
 import org.opencms.ade.configuration.CmsADEConfigData;
 import org.opencms.ade.configuration.plugins.CmsSitePlugin;
 import org.opencms.ade.configuration.plugins.CmsTemplatePlugin;
@@ -62,6 +60,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
+
+import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
 
 /**
  *
@@ -550,6 +550,255 @@ public class CmsSelectWidgetXmlcontentType extends CmsSelectWidget {
     }
 
     /**
+     * Returns the list of configured select options, parsing the configuration String if required.<p>
+     *
+     * @param cms the current users OpenCms context.
+     * @param contentResource the edited resource
+     * @param contentLocale the content locale
+     * @param widgetDialog the dialog of this widget.
+     * @param param the widget parameter of this dialog.
+     *
+     * @see org.opencms.widgets.A_CmsSelectWidget#parseSelectOptions(org.opencms.file.CmsObject,
+     *      org.opencms.widgets.I_CmsWidgetDialog, org.opencms.widgets.I_CmsWidgetParameter)
+     *
+     * @return the list of configured select options.
+     *
+     * @throws CmsIllegalArgumentException if the "folder" property of the configuration does not denote a folder within the VFS.
+     */
+    protected List<CmsSelectWidgetOption> parseSelectOptions(
+        CmsObject cms,
+        CmsResource contentResource,
+        Locale contentLocale,
+        I_CmsWidgetDialog widgetDialog,
+        I_CmsWidgetParameter param)
+    throws CmsIllegalArgumentException {
+
+        if (contentLocale == null) {
+            contentLocale = ((I_CmsXmlContentValue)param).getLocale();
+        }
+
+        if (m_macroCmsObject == null) {
+            try {
+                m_macroCmsObject = OpenCms.initCmsObject(cms);
+                m_macroCmsObject.getRequestContext().setSiteRoot("/");
+            } catch (CmsException e) {
+                // should never happen
+                if (LOG.isErrorEnabled()) {
+                    LOG.error(
+                        Messages.get().getBundle().key(
+                            Messages.ERR_SELECTWIDGET_INTERNAL_CONFIGURATION_2,
+                            new Object[] {getClass().getName(), getConfiguration()}));
+                }
+                return Collections.emptyList();
+
+            }
+        }
+        if (m_macroResolver == null) {
+            m_macroResolver = new CmsMacroResolver();
+            m_macroResolver.setCmsObject(m_macroCmsObject);
+            m_macroResolver.setKeepEmptyMacros(true);
+        }
+
+        List<CmsSelectWidgetOption> selectOptions = getSelectOptions();
+        if (selectOptions == null) {
+            String configuration = getConfiguration();
+            if (configuration == null) {
+                // workaround: use the default value to parse the options
+                configuration = param.getDefault(cms);
+            }
+            List<CmsResourceSelectWidgetOption> resourceOptions = null;
+            try {
+                // parse configuration to members
+                if (contentResource == null) {
+                    contentResource = ((I_CmsXmlContentValue)param).getDocument().getFile();
+                }
+                parseConfigurationInternal(configuration, cms, contentResource, param);
+                if (isCaptcha()) {
+                    // special handling for captcha preset options
+                    String uriForSiteConfig = null;
+                    if (!cms.getRequestContext().getUri().contains("/system/workplace/")
+                        && !cms.getRequestContext().getUri().contains(".gwt")) {
+                        if (cms.existsResource(cms.getRequestContext().getUri(), CmsResourceFilter.IGNORE_EXPIRATION)) {
+                            uriForSiteConfig = cms.getRequestContext().addSiteRoot(cms.getRequestContext().getUri());
+                        }
+                    }
+                    if (uriForSiteConfig == null) {
+                        uriForSiteConfig = contentResource.getRootPath();
+                    }
+                    // get sitemap configuration
+                    CmsADEConfigData configData = OpenCms.getADEManager().lookupConfigurationWithCache(
+                        cms,
+                        uriForSiteConfig);
+                    List<CmsSitePlugin> plugins = configData.getSitePlugins();
+                    // check plugins
+                    for (CmsSitePlugin plugin : plugins) {
+                        for (CmsTemplatePlugin templatePlugin : plugin.getPlugins()) {
+                            if (templatePlugin.getGroup().equals(CmsCaptchaPluginLoader.PLUGIN_WEBFORM_CAPTCHA)) {
+                                // found external captcha plugin, create option containing hint to captcha provider
+                                addSelectOption(
+                                    new CmsSelectWidgetOption(
+                                        "",
+                                        false,
+                                        widgetDialog.getMessages().key("form.captchapreset.option.useprovider")));
+                                selectOptions = getSelectOptions();
+                                return selectOptions;
+                            }
+                        }
+                    }
+                }
+
+                // build the set of sorted options
+                List<CmsResourceSelectWidgetOption> sortOptions = new ArrayList<>();
+                CmsResourceSelectWidgetOption option;
+                List<CmsResource> resources;
+                List<CmsResource> allResources = new LinkedList<>();
+                // collect all subresources of resource folder.
+                // As a CmsResourceFilter is somewhat limited we have to do several reads
+                // for each resourceType we allow:
+                int resType;
+                Iterator<Integer> itResTypes = m_resourceTypeIDs.iterator();
+                while (itResTypes.hasNext()) {
+                    resType = (itResTypes.next()).intValue();
+                    CmsResourceFilter filter = CmsResourceFilter.ALL.addRequireType(resType);
+                    CmsRequestContext context = cms.getRequestContext();
+                    String oldSiteroot = context.getSiteRoot();
+                    context.setSiteRoot("/");
+                    resources = cms.readResources(m_resourceFolder.getRootPath(), filter, true);
+                    context.setSiteRoot(oldSiteroot);
+                    if (resources.size() == 0) {
+                        if (LOG.isErrorEnabled()) {
+                            LOG.error(
+                                Messages.get().getBundle().key(
+                                    Messages.LOG_ERR_SELECTWIDGET_NO_RESOURCES_FOUND_3,
+                                    configuration,
+                                    m_resourceFolder.getRootPath(),
+                                    OpenCms.getResourceManager().getResourceType(resType).getTypeName()));
+                        }
+                    } else {
+                        allResources.addAll(resources);
+                    }
+
+                }
+
+                Iterator<CmsResource> itResources = allResources.iterator();
+                CmsResource resource;
+
+                String displayName;
+                // inner loop vars :
+                while (itResources.hasNext()) {
+
+                    resource = itResources.next();
+                    // don't make resources selectable that have a different locale than the
+                    // we read the locale node of the xmlcontent instance matching the resources
+                    // locale property (or top level locale).
+                    CmsProperty resourceLocaleProperty = cms.readPropertyObject(
+                        resource,
+                        CmsPropertyDefinition.PROPERTY_LOCALE,
+                        true);
+                    Locale resourceLocale = OpenCms.getLocaleManager().getDefaultLocale(cms, cms.getSitePath(resource));
+
+                    // We allow all resources without locale property and only the
+                    // resources with locale property that match the current XML content editor locale.
+                    if (isIgnoreLocaleMatching()
+                        || ((resourceLocaleProperty.isNullProperty() && containsLocale(cms, resource, contentLocale))
+                            || contentLocale.equals(resourceLocale))) {
+                        // macro resolvation within hasFilterProperty will resolve values to the
+                        // current request
+                        if (hasFilterProperty(resource, cms)) {
+
+                            // implant the uri to the special cms object for resolving macros from
+                            // the collected xml contents:
+                            m_macroCmsObject.getRequestContext().setUri(resource.getRootPath());
+                            // implant the resource for macro "%(opencms.filename)"
+                            m_macroResolver.setResourceName(resource.getName());
+                            // implant the messages
+                            m_macroResolver.setMessages(widgetDialog.getMessages());
+                            // filter out unwanted resources - if no filter properties are defined,
+                            // every
+                            // resource collected here is ok:
+                            displayName = m_macroResolver.resolveMacros(getDisplayOptionMacro());
+                            // deal with a bug of the macro resolver: it will return "" if it gets
+                            // "%(unknown.thin)":
+                            if (CmsStringUtil.isEmptyOrWhitespaceOnly(displayName)) {
+                                // it was a "%(xpath.field})" expression only and swallowed by macro
+                                // resolver:
+                                displayName = resolveXpathMacros(cms, resource, getDisplayOptionMacro());
+                            } else {
+                                // there was more than one xpath macro: allow further replacements
+                                // within partly resolved macro:
+                                displayName = resolveXpathMacros(cms, resource, displayName);
+                            }
+                            // final check:
+                            if (CmsStringUtil.isEmpty(displayName)) {
+                                displayName = resource.getName();
+                            }
+
+                            displayName = resolveXpathMacros(cms, resource, displayName);
+
+                            if (!CmsStringUtil.isEmpty(displayName)) {
+
+                                // now everything required is there:
+                                option = new CmsResourceSelectWidgetOption(cms, resource, false, displayName);
+                                sortOptions.add(option);
+                            }
+                        }
+                    }
+                }
+                resourceOptions = new LinkedList<>(sortOptions);
+                // sort the found resources according to their file name (without path information)
+                Collections.sort(
+                    resourceOptions,
+                    new CmsResourceSelectWidgetOptionComparator(m_macroCmsObject, m_sortMacro));
+
+            } catch (Exception e) {
+                if (LOG.isErrorEnabled()) {
+                    LOG.error(
+                        Messages.get().getBundle().key(
+                            Messages.ERR_SELECTWIDGET_CONFIGURATION_2,
+                            getClass(),
+                            configuration),
+                        e);
+                }
+            }
+
+            if (resourceOptions == null) {
+                resourceOptions = Collections.emptyList();
+            }
+
+            Iterator<CmsResourceSelectWidgetOption> it = resourceOptions.iterator();
+            while (it.hasNext()) {
+                addSelectOption(it.next());
+            }
+            selectOptions = getSelectOptions();
+        }
+        return selectOptions;
+    }
+
+    /**
+     * Returns the list of configured select options, parsing the configuration String if required.<p>
+     *
+     * @param cms the current users OpenCms context.
+     * @param widgetDialog the dialog of this widget.
+     * @param param the widget parameter of this dialog.
+     *
+     * @see org.opencms.widgets.A_CmsSelectWidget#parseSelectOptions(org.opencms.file.CmsObject,
+     *      org.opencms.widgets.I_CmsWidgetDialog, org.opencms.widgets.I_CmsWidgetParameter)
+     *
+     * @return the list of configured select options.
+     *
+     * @throws CmsIllegalArgumentException if the "folder" property of the configuration does not denote a folder within the VFS.
+     */
+    @Override
+    protected List<CmsSelectWidgetOption> parseSelectOptions(
+        CmsObject cms,
+        I_CmsWidgetDialog widgetDialog,
+        I_CmsWidgetParameter param)
+    throws CmsIllegalArgumentException {
+
+        return parseSelectOptions(cms, null, null, widgetDialog, param);
+    }
+
+    /**
      * Checks if the given XML content resource contains the given locale.
      *
      * @param cms
@@ -896,255 +1145,6 @@ public class CmsSelectWidgetXmlcontentType extends CmsSelectWidget {
         result.append(work);
         return result.toString();
 
-    }
-
-    /**
-     * Returns the list of configured select options, parsing the configuration String if required.<p>
-     *
-     * @param cms the current users OpenCms context.
-     * @param contentResource the edited resource
-     * @param contentLocale the content locale
-     * @param widgetDialog the dialog of this widget.
-     * @param param the widget parameter of this dialog.
-     *
-     * @see org.opencms.widgets.A_CmsSelectWidget#parseSelectOptions(org.opencms.file.CmsObject,
-     *      org.opencms.widgets.I_CmsWidgetDialog, org.opencms.widgets.I_CmsWidgetParameter)
-     *
-     * @return the list of configured select options.
-     *
-     * @throws CmsIllegalArgumentException if the "folder" property of the configuration does not denote a folder within the VFS.
-     */
-    protected List<CmsSelectWidgetOption> parseSelectOptions(
-        CmsObject cms,
-        CmsResource contentResource,
-        Locale contentLocale,
-        I_CmsWidgetDialog widgetDialog,
-        I_CmsWidgetParameter param)
-    throws CmsIllegalArgumentException {
-
-        if (contentLocale == null) {
-            contentLocale = ((I_CmsXmlContentValue)param).getLocale();
-        }
-
-        if (m_macroCmsObject == null) {
-            try {
-                m_macroCmsObject = OpenCms.initCmsObject(cms);
-                m_macroCmsObject.getRequestContext().setSiteRoot("/");
-            } catch (CmsException e) {
-                // should never happen
-                if (LOG.isErrorEnabled()) {
-                    LOG.error(
-                        Messages.get().getBundle().key(
-                            Messages.ERR_SELECTWIDGET_INTERNAL_CONFIGURATION_2,
-                            new Object[] {getClass().getName(), getConfiguration()}));
-                }
-                return Collections.emptyList();
-
-            }
-        }
-        if (m_macroResolver == null) {
-            m_macroResolver = new CmsMacroResolver();
-            m_macroResolver.setCmsObject(m_macroCmsObject);
-            m_macroResolver.setKeepEmptyMacros(true);
-        }
-
-        List<CmsSelectWidgetOption> selectOptions = getSelectOptions();
-        if (selectOptions == null) {
-            String configuration = getConfiguration();
-            if (configuration == null) {
-                // workaround: use the default value to parse the options
-                configuration = param.getDefault(cms);
-            }
-            List<CmsResourceSelectWidgetOption> resourceOptions = null;
-            try {
-                // parse configuration to members
-                if (contentResource == null) {
-                    contentResource = ((I_CmsXmlContentValue)param).getDocument().getFile();
-                }
-                parseConfigurationInternal(configuration, cms, contentResource, param);
-                if (isCaptcha()) {
-                    // special handling for captcha preset options
-                    String uriForSiteConfig = null;
-                    if (!cms.getRequestContext().getUri().contains("/system/workplace/")
-                        && !cms.getRequestContext().getUri().contains(".gwt")) {
-                        if (cms.existsResource(cms.getRequestContext().getUri(), CmsResourceFilter.IGNORE_EXPIRATION)) {
-                            uriForSiteConfig = cms.getRequestContext().addSiteRoot(cms.getRequestContext().getUri());
-                        }
-                    }
-                    if (uriForSiteConfig == null) {
-                        uriForSiteConfig = contentResource.getRootPath();
-                    }
-                    // get sitemap configuration
-                    CmsADEConfigData configData = OpenCms.getADEManager().lookupConfigurationWithCache(
-                        cms,
-                        uriForSiteConfig);
-                    List<CmsSitePlugin> plugins = configData.getSitePlugins();
-                    // check plugins
-                    for (CmsSitePlugin plugin : plugins) {
-                        for (CmsTemplatePlugin templatePlugin : plugin.getPlugins()) {
-                            if (templatePlugin.getGroup().equals(CmsCaptchaPluginLoader.PLUGIN_WEBFORM_CAPTCHA)) {
-                                // found external captcha plugin, create option containing hint to captcha provider
-                                addSelectOption(
-                                    new CmsSelectWidgetOption(
-                                        "",
-                                        false,
-                                        widgetDialog.getMessages().key("form.captchapreset.option.useprovider")));
-                                selectOptions = getSelectOptions();
-                                return selectOptions;
-                            }
-                        }
-                    }
-                }
-
-                // build the set of sorted options
-                List<CmsResourceSelectWidgetOption> sortOptions = new ArrayList<>();
-                CmsResourceSelectWidgetOption option;
-                List<CmsResource> resources;
-                List<CmsResource> allResources = new LinkedList<>();
-                // collect all subresources of resource folder.
-                // As a CmsResourceFilter is somewhat limited we have to do several reads
-                // for each resourceType we allow:
-                int resType;
-                Iterator<Integer> itResTypes = m_resourceTypeIDs.iterator();
-                while (itResTypes.hasNext()) {
-                    resType = (itResTypes.next()).intValue();
-                    CmsResourceFilter filter = CmsResourceFilter.ALL.addRequireType(resType);
-                    CmsRequestContext context = cms.getRequestContext();
-                    String oldSiteroot = context.getSiteRoot();
-                    context.setSiteRoot("/");
-                    resources = cms.readResources(m_resourceFolder.getRootPath(), filter, true);
-                    context.setSiteRoot(oldSiteroot);
-                    if (resources.size() == 0) {
-                        if (LOG.isErrorEnabled()) {
-                            LOG.error(
-                                Messages.get().getBundle().key(
-                                    Messages.LOG_ERR_SELECTWIDGET_NO_RESOURCES_FOUND_3,
-                                    configuration,
-                                    m_resourceFolder.getRootPath(),
-                                    OpenCms.getResourceManager().getResourceType(resType).getTypeName()));
-                        }
-                    } else {
-                        allResources.addAll(resources);
-                    }
-
-                }
-
-                Iterator<CmsResource> itResources = allResources.iterator();
-                CmsResource resource;
-
-                String displayName;
-                // inner loop vars :
-                while (itResources.hasNext()) {
-
-                    resource = itResources.next();
-                    // don't make resources selectable that have a different locale than the
-                    // we read the locale node of the xmlcontent instance matching the resources
-                    // locale property (or top level locale).
-                    CmsProperty resourceLocaleProperty = cms.readPropertyObject(
-                        resource,
-                        CmsPropertyDefinition.PROPERTY_LOCALE,
-                        true);
-                    Locale resourceLocale = OpenCms.getLocaleManager().getDefaultLocale(cms, cms.getSitePath(resource));
-
-                    // We allow all resources without locale property and only the
-                    // resources with locale property that match the current XML content editor locale.
-                    if (isIgnoreLocaleMatching()
-                        || ((resourceLocaleProperty.isNullProperty() && containsLocale(cms, resource, contentLocale))
-                            || contentLocale.equals(resourceLocale))) {
-                        // macro resolvation within hasFilterProperty will resolve values to the
-                        // current request
-                        if (hasFilterProperty(resource, cms)) {
-
-                            // implant the uri to the special cms object for resolving macros from
-                            // the collected xml contents:
-                            m_macroCmsObject.getRequestContext().setUri(resource.getRootPath());
-                            // implant the resource for macro "%(opencms.filename)"
-                            m_macroResolver.setResourceName(resource.getName());
-                            // implant the messages
-                            m_macroResolver.setMessages(widgetDialog.getMessages());
-                            // filter out unwanted resources - if no filter properties are defined,
-                            // every
-                            // resource collected here is ok:
-                            displayName = m_macroResolver.resolveMacros(getDisplayOptionMacro());
-                            // deal with a bug of the macro resolver: it will return "" if it gets
-                            // "%(unknown.thin)":
-                            if (CmsStringUtil.isEmptyOrWhitespaceOnly(displayName)) {
-                                // it was a "%(xpath.field})" expression only and swallowed by macro
-                                // resolver:
-                                displayName = resolveXpathMacros(cms, resource, getDisplayOptionMacro());
-                            } else {
-                                // there was more than one xpath macro: allow further replacements
-                                // within partly resolved macro:
-                                displayName = resolveXpathMacros(cms, resource, displayName);
-                            }
-                            // final check:
-                            if (CmsStringUtil.isEmpty(displayName)) {
-                                displayName = resource.getName();
-                            }
-
-                            displayName = resolveXpathMacros(cms, resource, displayName);
-
-                            if (!CmsStringUtil.isEmpty(displayName)) {
-
-                                // now everything required is there:
-                                option = new CmsResourceSelectWidgetOption(cms, resource, false, displayName);
-                                sortOptions.add(option);
-                            }
-                        }
-                    }
-                }
-                resourceOptions = new LinkedList<>(sortOptions);
-                // sort the found resources according to their file name (without path information)
-                Collections.sort(
-                    resourceOptions,
-                    new CmsResourceSelectWidgetOptionComparator(m_macroCmsObject, m_sortMacro));
-
-            } catch (Exception e) {
-                if (LOG.isErrorEnabled()) {
-                    LOG.error(
-                        Messages.get().getBundle().key(
-                            Messages.ERR_SELECTWIDGET_CONFIGURATION_2,
-                            getClass(),
-                            configuration),
-                        e);
-                }
-            }
-
-            if (resourceOptions == null) {
-                resourceOptions = Collections.emptyList();
-            }
-
-            Iterator<CmsResourceSelectWidgetOption> it = resourceOptions.iterator();
-            while (it.hasNext()) {
-                addSelectOption(it.next());
-            }
-            selectOptions = getSelectOptions();
-        }
-        return selectOptions;
-    }
-
-    /**
-     * Returns the list of configured select options, parsing the configuration String if required.<p>
-     *
-     * @param cms the current users OpenCms context.
-     * @param widgetDialog the dialog of this widget.
-     * @param param the widget parameter of this dialog.
-     *
-     * @see org.opencms.widgets.A_CmsSelectWidget#parseSelectOptions(org.opencms.file.CmsObject,
-     *      org.opencms.widgets.I_CmsWidgetDialog, org.opencms.widgets.I_CmsWidgetParameter)
-     *
-     * @return the list of configured select options.
-     *
-     * @throws CmsIllegalArgumentException if the "folder" property of the configuration does not denote a folder within the VFS.
-     */
-    @Override
-    protected List<CmsSelectWidgetOption> parseSelectOptions(
-        CmsObject cms,
-        I_CmsWidgetDialog widgetDialog,
-        I_CmsWidgetParameter param)
-    throws CmsIllegalArgumentException {
-
-        return parseSelectOptions(cms, null, null, widgetDialog, param);
     }
 
 }

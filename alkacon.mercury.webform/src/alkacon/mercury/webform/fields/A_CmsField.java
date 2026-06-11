@@ -19,9 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.I_CmsFormMessages;
-
 import org.opencms.i18n.CmsMessages;
 import org.opencms.main.CmsLog;
 import org.opencms.util.CmsStringUtil;
@@ -38,6 +35,9 @@ import java.util.regex.PatternSyntaxException;
 import org.apache.commons.logging.Log;
 
 import org.antlr.stringtemplate.StringTemplate;
+
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.I_CmsFormMessages;
 
 /**
  * Abstract base class for all input fields.<p>
@@ -440,7 +440,7 @@ public abstract class A_CmsField implements I_CmsField {
     /**
      * This functions looks if the row should be started. By one colsize, its
      * every time starting. By two colsize every second cell its starting.<p>
-    
+     *
      * @return true if the row should be shown
      */
     public boolean isShowRowStart() {

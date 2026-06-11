@@ -35,6 +35,46 @@ public class CmsEmailSelectionField extends CmsSelectionField implements I_CmsHa
     }
 
     /**
+     * @see alkacon.mercury.webform.fields.A_CmsField#decodeValue(java.lang.String)
+     */
+    @Override
+    public String decodeValue(String value) {
+
+        if (value != null) {
+            for (CmsFieldItem item : getItems()) {
+                if (value.equals(item.getValueHash())) {
+                    return item.getValue();
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @see alkacon.mercury.webform.fields.I_CmsHasHiddenFieldHtml#getHiddenFieldHtml()
+     */
+    public String getHiddenFieldHtml() {
+
+        StringBuffer result = new StringBuffer();
+        result.append("<input type=\"hidden\" name=\"");
+        result.append(getName());
+        result.append("\" value=\"");
+        result.append(CmsFieldItem.getHash(getValue()));
+        result.append("\" />\n");
+        return result.toString();
+
+    }
+
+    /**
+     * @see alkacon.mercury.webform.fields.CmsSelectionField#getType()
+     */
+    @Override
+    public String getType() {
+
+        return getStaticType();
+    }
+
+    /**
      * @see alkacon.mercury.webform.fields.A_CmsField#setValue(java.lang.String)
      */
     @Override
@@ -53,45 +93,5 @@ public class CmsEmailSelectionField extends CmsSelectionField implements I_CmsHa
             }
             super.setValue(value);
         }
-    }
-
-    /**
-     * @see alkacon.mercury.webform.fields.A_CmsField#decodeValue(java.lang.String)
-     */
-    @Override
-    public String decodeValue(String value) {
-
-        if (value != null) {
-            for (CmsFieldItem item : getItems()) {
-                if (value.equals(item.getValueHash())) {
-                    return item.getValue();
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * @see alkacon.mercury.webform.fields.CmsSelectionField#getType()
-     */
-    @Override
-    public String getType() {
-
-        return getStaticType();
-    }
-
-    /**
-     * @see alkacon.mercury.webform.fields.I_CmsHasHiddenFieldHtml#getHiddenFieldHtml()
-     */
-    public String getHiddenFieldHtml() {
-
-        StringBuffer result = new StringBuffer();
-        result.append("<input type=\"hidden\" name=\"");
-        result.append(getName());
-        result.append("\" value=\"");
-        result.append(CmsFieldItem.getHash(getValue()));
-        result.append("\" />\n");
-        return result.toString();
-
     }
 }

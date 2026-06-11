@@ -19,8 +19,6 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
-import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
-
 import org.opencms.i18n.CmsMessageContainer;
 import org.opencms.main.CmsLog;
 
@@ -28,6 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
+
+import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
 
 /** Action that activates the requested subscriptions for a webuser. */
 public class CmsSubscriptionActionConfirmSubscription implements I_CmsSubscriptionAction {

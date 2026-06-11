@@ -27,13 +27,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.webform.mail.CmsFormMailCancelAdmin;
-import alkacon.mercury.webform.mail.CmsFormMailCancelUser;
-import alkacon.mercury.webform.mail.CmsFormMailGroupSizeAdmin;
-import alkacon.mercury.webform.mail.CmsFormMailGroupSizeUser;
-import alkacon.mercury.webform.mail.CmsFormMailMoveUpAdmin;
-import alkacon.mercury.webform.mail.CmsFormMailMoveUpUser;
-
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.file.types.I_CmsResourceType;
@@ -55,6 +48,13 @@ import javax.servlet.jsp.PageContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.mail.EmailException;
+
+import alkacon.mercury.webform.mail.CmsFormMailCancelAdmin;
+import alkacon.mercury.webform.mail.CmsFormMailCancelUser;
+import alkacon.mercury.webform.mail.CmsFormMailGroupSizeAdmin;
+import alkacon.mercury.webform.mail.CmsFormMailGroupSizeUser;
+import alkacon.mercury.webform.mail.CmsFormMailMoveUpAdmin;
+import alkacon.mercury.webform.mail.CmsFormMailMoveUpUser;
 
 /**
  * Action class for managing form data.

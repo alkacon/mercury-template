@@ -19,10 +19,10 @@
 
 package alkacon.mercury.webform.maptcha;
 
-import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
-
 import com.octo.captcha.service.captchastore.MapCaptchaStore;
 import com.octo.captcha.service.multitype.GenericManageableCaptchaService;
+
+import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
 
 /**
  * Provides the facility to create and cache the maptchas.<p>

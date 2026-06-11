@@ -27,9 +27,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
-import alkacon.mercury.webform.mail.CmsFormMailMessages;
-
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResourceFilter;
@@ -67,6 +64,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
+
+import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
+import alkacon.mercury.webform.mail.CmsFormMailMessages;
 
 /**
  * Job that reminds users of a booked event that is about to start.

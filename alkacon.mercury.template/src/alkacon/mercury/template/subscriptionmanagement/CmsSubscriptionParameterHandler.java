@@ -19,8 +19,6 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
-import alkacon.mercury.template.CmsStringCrypter;
-
 import org.opencms.i18n.CmsMessageContainer;
 import org.opencms.main.CmsLog;
 import org.opencms.util.CmsRequestUtil;
@@ -33,6 +31,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.commons.logging.Log;
+
+import alkacon.mercury.template.CmsStringCrypter;
 
 /**
  * Helper to perform subscriptions/unsubscriptions for webusers.

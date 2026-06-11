@@ -27,15 +27,15 @@
 
 package alkacon.mercury.template.subscriptionmanagement;
 
-import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
-import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
-
 import org.opencms.file.CmsObject;
 import org.opencms.json.JSONException;
 
 import java.io.IOException;
 
 import javax.servlet.ServletRequest;
+
+import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
+import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
 
 /**
  * Handles subscription Captchas in cooperation with the CmsSubscriptionParameterHandler.

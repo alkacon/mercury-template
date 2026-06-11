@@ -27,11 +27,6 @@
 
 package alkacon.mercury.webform.mail;
 
-import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
-import alkacon.mercury.webform.CmsFormDataField;
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.CmsFormMailSettings;
-
 import org.opencms.file.CmsResource;
 import org.opencms.util.CmsStringUtil;
 
@@ -43,6 +38,11 @@ import javax.mail.internet.InternetAddress;
 
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.mail.EmailException;
+
+import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
+import alkacon.mercury.webform.CmsFormDataField;
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.CmsFormMailSettings;
 
 /**
  * Form mail sent to the administrators of a configured form.

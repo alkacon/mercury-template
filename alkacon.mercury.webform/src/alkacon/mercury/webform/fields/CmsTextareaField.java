@@ -19,13 +19,13 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.I_CmsFormMessages;
-
 import org.opencms.i18n.CmsEncoder;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.util.CmsStringUtil;
 import org.opencms.util.I_CmsMacroResolver;
+
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.I_CmsFormMessages;
 
 /**
  * Represents a text area.<p>

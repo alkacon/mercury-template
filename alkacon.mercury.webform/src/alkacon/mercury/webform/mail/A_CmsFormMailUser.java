@@ -27,11 +27,6 @@
 
 package alkacon.mercury.webform.mail;
 
-import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
-import alkacon.mercury.webform.CmsFormDataField;
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.CmsFormMailSettings;
-
 import org.opencms.file.CmsResource;
 import org.opencms.util.CmsStringUtil;
 
@@ -40,6 +35,11 @@ import java.util.List;
 import javax.mail.internet.AddressException;
 
 import org.apache.commons.mail.EmailException;
+
+import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
+import alkacon.mercury.webform.CmsFormDataField;
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.CmsFormMailSettings;
 
 /**
  * Form mail sent to the user of a configured form.
@@ -133,9 +133,9 @@ public abstract class A_CmsFormMailUser extends A_CmsFormMail {
             } else if ((resource != null)
                 && CmsFormMailSettings.getInstance().useDkimMailHost(m_cms, resource)
                 && CmsStringUtil.isNotEmptyOrWhitespaceOnly(mailFromAsReplyTo)) {
-                    m_htmlMail.addReplyTo(mailFromAsReplyTo);
-                    m_simpleMail.addReplyTo(mailFromAsReplyTo);
-                }
+                m_htmlMail.addReplyTo(mailFromAsReplyTo);
+                m_simpleMail.addReplyTo(mailFromAsReplyTo);
+            }
             m_htmlMail.setTo(createInternetAddresses(mailTo));
             m_simpleMail.setTo(createInternetAddresses(mailTo));
         }

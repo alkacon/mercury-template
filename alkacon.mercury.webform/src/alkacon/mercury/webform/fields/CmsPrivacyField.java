@@ -19,16 +19,15 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.template.CmsFunctionLinkResolver;
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.I_CmsFormMessages;
-
 import org.opencms.i18n.CmsMessages;
-import org.opencms.main.CmsLog;
 import org.opencms.util.CmsStringUtil;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import alkacon.mercury.template.CmsFunctionLinkResolver;
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.I_CmsFormMessages;
 
 /**
  * Represents a confirmation check box with a link.<p>

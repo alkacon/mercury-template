@@ -19,9 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.I_CmsFormMessages;
-
 import org.opencms.i18n.CmsEncoder;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.main.CmsLog;
@@ -33,6 +30,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.fileupload2.core.DiskFileItem;
+
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.I_CmsFormMessages;
 
 /**
  * Represents a file upload field.<p>

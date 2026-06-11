@@ -27,11 +27,11 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
-
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.mail.CmsMailHost;
+
+import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
 
 /**
  * Form mail settings.

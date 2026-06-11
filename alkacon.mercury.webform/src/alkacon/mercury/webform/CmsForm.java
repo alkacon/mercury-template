@@ -21,23 +21,6 @@ package alkacon.mercury.webform;
 
 import static alkacon.mercury.webform.CmsFormContentUtil.getContentValues;
 
-import alkacon.mercury.template.CmsFunctionLinkResolver;
-import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
-import alkacon.mercury.webform.fields.A_CmsField;
-import alkacon.mercury.webform.fields.CmsCaptchaField;
-import alkacon.mercury.webform.fields.CmsCheckboxField;
-import alkacon.mercury.webform.fields.CmsEmailField;
-import alkacon.mercury.webform.fields.CmsEmptyField;
-import alkacon.mercury.webform.fields.CmsFieldFactory;
-import alkacon.mercury.webform.fields.CmsFieldItem;
-import alkacon.mercury.webform.fields.CmsFieldText;
-import alkacon.mercury.webform.fields.CmsFileUploadField;
-import alkacon.mercury.webform.fields.CmsHiddenField;
-import alkacon.mercury.webform.fields.CmsPrivacyField;
-import alkacon.mercury.webform.fields.CmsSelectionField;
-import alkacon.mercury.webform.fields.CmsTextField;
-import alkacon.mercury.webform.fields.I_CmsField;
-
 import org.opencms.ade.detailpage.CmsDetailPageInfo;
 import org.opencms.configuration.CmsConfigurationException;
 import org.opencms.file.CmsFile;
@@ -71,6 +54,23 @@ import java.util.stream.IntStream;
 
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.logging.Log;
+
+import alkacon.mercury.template.CmsFunctionLinkResolver;
+import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
+import alkacon.mercury.webform.fields.A_CmsField;
+import alkacon.mercury.webform.fields.CmsCaptchaField;
+import alkacon.mercury.webform.fields.CmsCheckboxField;
+import alkacon.mercury.webform.fields.CmsEmailField;
+import alkacon.mercury.webform.fields.CmsEmptyField;
+import alkacon.mercury.webform.fields.CmsFieldFactory;
+import alkacon.mercury.webform.fields.CmsFieldItem;
+import alkacon.mercury.webform.fields.CmsFieldText;
+import alkacon.mercury.webform.fields.CmsFileUploadField;
+import alkacon.mercury.webform.fields.CmsHiddenField;
+import alkacon.mercury.webform.fields.CmsPrivacyField;
+import alkacon.mercury.webform.fields.CmsSelectionField;
+import alkacon.mercury.webform.fields.CmsTextField;
+import alkacon.mercury.webform.fields.I_CmsField;
 
 /**
  * Represents an input form with all configured fields and options.<p>

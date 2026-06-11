@@ -19,10 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.webform.CmsForm;
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.I_CmsFormMessages;
-
 import org.opencms.i18n.CmsEncoder;
 import org.opencms.i18n.CmsMessages;
 import org.opencms.util.CmsStringUtil;
@@ -32,6 +28,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import alkacon.mercury.webform.CmsForm;
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.I_CmsFormMessages;
 
 /**
  * Represents a new page field.<p>

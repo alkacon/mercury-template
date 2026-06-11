@@ -27,8 +27,6 @@
 
 package alkacon.mercury.webform;
 
-import alkacon.mercury.template.writer.A_CmsWriter;
-
 import org.opencms.file.CmsObject;
 import org.opencms.file.CmsResource;
 import org.opencms.i18n.CmsMessages;
@@ -60,6 +58,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
+
+import alkacon.mercury.template.writer.A_CmsWriter;
 
 /**
  * Class representing an export bean for data submitted by a form.

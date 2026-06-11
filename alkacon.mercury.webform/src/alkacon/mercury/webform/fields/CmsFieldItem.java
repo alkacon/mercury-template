@@ -101,6 +101,26 @@ public class CmsFieldItem {
     }
 
     /**
+     * Computes a hash code from the given value.<p>
+     *
+     * @param value the value
+     * @return the hash of the value
+     */
+    public static final String getHash(String value) {
+
+        try {
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            md5.update(value.getBytes("UTF-8"));
+            String result = Hex.encodeHexString(md5.digest());
+            return result;
+        } catch (Exception e) {
+            LOG.error("Could not compute hash value", e);
+            return null;
+        }
+
+    }
+
+    /**
      * Returns the dbLabel.<p>
      *
      * @return the dbLabel
@@ -143,36 +163,6 @@ public class CmsFieldItem {
     }
 
     /**
-     * Computes a hash code from the given value.<p>
-     *
-     * @param value the value
-     * @return the hash of the value
-     */
-    public static final String getHash(String value) {
-
-        try {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            md5.update(value.getBytes("UTF-8"));
-            String result = Hex.encodeHexString(md5.digest());
-            return result;
-        } catch (Exception e) {
-            LOG.error("Could not compute hash value", e);
-            return null;
-        }
-
-    }
-
-    /**
-     * Returns a hash code of the value.<p>
-     *
-     * @return the hash code
-     */
-    public String getValueHash() {
-
-        return getHash(getValue());
-    }
-
-    /**
      * Returns the escaped value of the field, or <code>null</code> if the value is empty.<p>
      *
      * This is necessary to avoid XSS or other exploits on the webform output pages.<p>
@@ -185,6 +175,16 @@ public class CmsFieldItem {
             return null;
         }
         return CmsStringUtil.escapeHtml(getValue());
+    }
+
+    /**
+     * Returns a hash code of the value.<p>
+     *
+     * @return the hash code
+     */
+    public String getValueHash() {
+
+        return getHash(getValue());
     }
 
     /**

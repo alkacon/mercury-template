@@ -27,14 +27,14 @@
 
 package alkacon.mercury.webform.mail;
 
-import alkacon.mercury.webform.CmsFormDataField;
-import alkacon.mercury.webform.CmsFormHandler;
-
 import java.util.List;
 
 import javax.mail.internet.AddressException;
 
 import org.apache.commons.mail.EmailException;
+
+import alkacon.mercury.webform.CmsFormDataField;
+import alkacon.mercury.webform.CmsFormHandler;
 
 /**
  * Form mail sent to the user when a user registers for the first time.

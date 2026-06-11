@@ -19,14 +19,6 @@
 
 package alkacon.mercury.webform.fields;
 
-import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
-import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
-import alkacon.mercury.webform.CmsFormHandler;
-import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
-import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
-import alkacon.mercury.webform.captcha.CmsCaptchaStore;
-import alkacon.mercury.webform.captcha.CmsCaptchaToken;
-
 import org.opencms.flex.CmsFlexController;
 import org.opencms.i18n.CmsEncoder;
 import org.opencms.i18n.CmsMessages;
@@ -54,6 +46,14 @@ import com.octo.captcha.service.CaptchaService;
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.ImageCaptchaService;
 import com.octo.captcha.service.text.TextCaptchaService;
+
+import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
+import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
+import alkacon.mercury.webform.CmsFormHandler;
+import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
+import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
+import alkacon.mercury.webform.captcha.CmsCaptchaStore;
+import alkacon.mercury.webform.captcha.CmsCaptchaToken;
 
 /**
  * Creates captcha images and validates the phrases submitted by a request parameter.<p>

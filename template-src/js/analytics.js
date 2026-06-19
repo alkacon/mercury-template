@@ -178,9 +178,6 @@ function addMatomo(matomoData, userAllowedStatisticalCookies) {
         if (typeof matomoData.setDomains != 'undefined'){
             _paq.push(["setDomains", matomoData.setDomains]);
         }
-        if (matomoData.setTrackBots == "true"){
-            _paq.push(['appendToTrackingUrl','recMode=2&ua=' + encodeURIComponent(navigator.userAgent)]);
-        }
         _paq.push(['setCustomUrl', getNormalizedPathForAnalytics()]);
         // see: https://developer.matomo.org/guides/tracking-consent
         _paq.push(['requireCookieConsent']);

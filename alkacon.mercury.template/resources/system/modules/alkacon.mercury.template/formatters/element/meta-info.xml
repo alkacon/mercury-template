@@ -19,6 +19,7 @@
         <ContainerType><![CDATA[m-element]]></ContainerType>
       </Types>
     </Match>
+    <ContentExtractionPolicy><![CDATA[search-only]]></ContentExtractionPolicy>
     <AutoEnabled>false</AutoEnabled>
     <SearchContent>true</SearchContent>
     <StrictContainers>true</StrictContainers>

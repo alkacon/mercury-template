@@ -3,6 +3,7 @@
     <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/social-facebook.xsd" />
     <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/social-twitter.xsd" />
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/llmstxt-settings.xsd" />
 
     <xsd:element name="MetaInfoData" type="OpenCmsMetaInfoData"/>
 
@@ -24,6 +25,7 @@
             <xsd:element name="CanonicalURL" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Robots" type="OpenCmsString" minOccurs="0" />
             <xsd:element name="Revisit" type="OpenCmsString" minOccurs="0" />
+            <xsd:element name="LlmsTxtSettings" type="OpenCmsLlmsTxtSettings" minOccurs="0" />
             <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" />
         </xsd:sequence>
         <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
@@ -141,6 +143,12 @@
                         30 days:30 %(key.label.MetaInfo.Revisit.days)|
                         90 days:90 %(key.label.MetaInfo.Revisit.days)
                     ]]></WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>LlmsTxtSettings</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.MetaInfo.LlmsTxtSettings)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.MetaInfo.LlmsTxtSettings.help)]]></Description>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

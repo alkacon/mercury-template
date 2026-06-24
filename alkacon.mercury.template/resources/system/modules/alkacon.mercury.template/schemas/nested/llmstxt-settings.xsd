@@ -1,0 +1,54 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="LlmsTxtSettingsData" type="OpenCmsLlmsTxtSettingsData"/>
+
+    <xsd:complexType name="OpenCmsLlmsTxtSettingsData">
+        <xsd:sequence>
+            <xsd:element name="LlmsTxtSettings" type="OpenCmsLlmsTxtSettings" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsLlmsTxtSettings">
+        <xsd:sequence>
+            <xsd:element name="Include" type="OpenCmsBoolean" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Section" type="OpenCmsString" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Description" type="OpenCmsString" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Include</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxtSettings.Include)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxtSettings.Include.help)]]></Description>
+                    <Widget>checkbox</Widget>
+                    <Default><![CDATA[true]]></Default>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Section</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxtSettings.Section)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxtSettings.Section.help)]]></Description>
+                    <Widget>alkacon.mercury.template.llms.CmsMercuryLlmsSectionSelectWidget</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Description</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxtSettings.Description)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxtSettings.Description.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>3|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

@@ -1,0 +1,45 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+
+    <xsd:element name="LlmsTxtResultData" type="OpenCmsLlmsTxtResultData"/>
+
+    <xsd:complexType name="OpenCmsLlmsTxtResultData">
+        <xsd:sequence>
+            <xsd:element name="Result" type="OpenCmsResult" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsResult">
+        <xsd:sequence>
+            <xsd:element name="ContainerPage" type="OpenCmsVfsFile" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="ResultText" type="OpenCmsString" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>ContainerPage</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxt.Result.ContainerPage)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxt.Result.ContainerPage.help)]]></Description>
+                    <Widget>display</Widget>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>ResultText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxt.Result.ResultText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxt.Result.ResultText.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>3|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
+                    <Search>false</Search>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

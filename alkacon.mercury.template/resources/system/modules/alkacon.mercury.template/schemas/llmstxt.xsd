@@ -1,0 +1,97 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="opencms://opencms-xmlcontent.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/llmstxt-section.xsd"/>
+    <xsd:include schemaLocation="opencms://system/modules/alkacon.mercury.template/schemas/nested/llmstxt-result.xsd"/>
+
+    <xsd:element name="LlmsTxtData" type="OpenCmsLlmsTxtData"/>
+
+    <xsd:complexType name="OpenCmsLlmsTxtData">
+        <xsd:sequence>
+            <xsd:element name="LlmsTxt" type="OpenCmsLlmsTxt" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OpenCmsLlmsTxt">
+        <xsd:sequence>
+            <xsd:element name="Title" type="OpenCmsString" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="IntroText" type="OpenCmsString" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="OutroText" type="OpenCmsString" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="Date" type="OpenCmsDateTime" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Section" type="OpenCmsSection" minOccurs="0" maxOccurs="200"/>
+            <xsd:element name="Result" type="OpenCmsResult" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="GalleryTitle" type="OpenCmsString" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="language" type="OpenCmsLocale" use="required"/>
+    </xsd:complexType>
+
+    <xsd:annotation>
+        <xsd:appinfo>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
+            <editorchangehandlers>
+                <editorchangehandler class="org.opencms.ade.contenteditor.CmsDelayedDefaultChangeHandler" scope="Section*/Name" configuration="../Id|section-%(randomId)" />
+            </editorchangehandlers>
+            <defaults>
+                <default element="Date" value="%(currenttime)" />
+            </defaults>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxt.Title)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxt.Title.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(key.type.m-llmstxt.title)]]></Default>
+                    <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>IntroText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxt.IntroText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxt.IntroText.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>5|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>OutroText</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxt.OutroText)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxt.OutroText.help)]]></Description>
+                    <Widget>textarea</Widget>
+                    <WidgetConfig>5|proportional|%(attribute:stringConfigTypo)</WidgetConfig>
+                </Setting>
+                <Setting>
+                    <PropertyName>Date</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxt.Date)]]></DisplayName>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Section</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxt.Section)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxt.Section.help)]]></Description>
+                    <Search>false</Search>
+                </Setting>
+                <Setting>
+                    <PropertyName>Result</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.LlmsTxt.Result)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.LlmsTxt.Result.help)]]></Description>
+                    <Search>false</Search>
+                    <Visibility>hidden</Visibility>
+                </Setting>
+                <Setting>
+                    <PropertyName>GalleryTitle</PropertyName>
+                    <DisplayName><![CDATA[%(key.label.GalleryTitle)]]></DisplayName>
+                    <Description><![CDATA[%(key.label.GalleryTitle.help)]]></Description>
+                    <Widget>string</Widget>
+                    <Default><![CDATA[%(page_title)%(no_prefix:: )%(value:Title)]]></Default>
+                    <DefaultResolveMacros>false</DefaultResolveMacros>
+                    <Search>false</Search>
+                    <Visibility>ROLE.WORKPLACE_USER</Visibility>
+                    <Mapping>
+                        <MapTo>property:Title</MapTo>
+                        <UseDefault>true</UseDefault>
+                    </Mapping>
+                </Setting>
+            </FieldSettings>
+        </xsd:appinfo>
+    </xsd:annotation>
+</xsd:schema>

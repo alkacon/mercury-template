@@ -570,7 +570,7 @@ public class CmsFormHandler extends CmsJspActionElement {
                 if (CmsStringUtil.isEmpty(label) && CmsStringUtil.isEmpty(fieldValue)) {
                     continue;
                 }
-                CmsFormDataField mailField = new CmsFormDataField(label, fieldValue);
+                CmsFormDataField mailField = new CmsFormDataField(label, fieldValue, current.getText());
                 formDataFields.add(mailField);
             } else {
                 // format output as plain text
@@ -594,6 +594,18 @@ public class CmsFormHandler extends CmsJspActionElement {
                 formDataString.append("\t\t");
                 formDataString.append(value);
                 formDataString.append("\n");
+                if (current.isHasText()) {
+                    try {
+                        formDataString.append(
+                            CmsHtmlToTextConverter.htmlToText(
+                                current.getText().getText(),
+                                getCmsObject().getRequestContext().getEncoding()).trim());
+                    } catch (Exception e) {
+                        // error parsing the String, provide it as is
+                        formDataString.append(current.getText().getText());
+                    }
+                    formDataString.append("\n");
+                }
             }
         }
         return isConfirmationMail
@@ -1513,6 +1525,7 @@ public class CmsFormHandler extends CmsJspActionElement {
                 I_CmsField checkField = new CmsTextField();
                 checkField.setLabel(label);
                 checkField.setValue(value);
+                checkField.setText(current.getText());
                 checkFields.add(checkField);
             }
         }
@@ -1586,6 +1599,7 @@ public class CmsFormHandler extends CmsJspActionElement {
             I_CmsField confirmField = new CmsTextField();
             confirmField.setLabel(label);
             confirmField.setValue(value);
+            confirmField.setText(current.getText());
             confirmFields.add(confirmField);
         }
         sTemplate.setAttribute(I_CmsTemplateConfirmationPage.ATTR_CONFIRMFIELDS, confirmFields);

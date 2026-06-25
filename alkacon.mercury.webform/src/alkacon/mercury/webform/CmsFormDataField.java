@@ -27,6 +27,8 @@
 
 package alkacon.mercury.webform;
 
+import alkacon.mercury.webform.fields.CmsFieldText;
+
 /**
  * Form data field.
  */
@@ -34,6 +36,9 @@ public class CmsFormDataField {
 
     /** The label */
     private String m_label;
+
+    /** The optional text between fields. */
+    private CmsFieldText m_text;
 
     /** The value */
     private String m_value;
@@ -45,8 +50,29 @@ public class CmsFormDataField {
      */
     public CmsFormDataField(String label, String value) {
 
+        this(label, value, null);
+    }
+
+    /**
+     * Creates a new form data field.
+     * @param label the label
+     * @param value the value
+     * @param text the optional text between fields
+     */
+    public CmsFormDataField(String label, String value, CmsFieldText text) {
+
         m_label = label;
         m_value = value;
+        m_text = text;
+    }
+
+    /**
+     * Returns if an optional text between fields is present.
+     * @return true if an optional text between fields is present
+     */
+    public boolean getHasText() {
+
+        return hasText();
     }
 
     /**
@@ -59,11 +85,29 @@ public class CmsFormDataField {
     }
 
     /**
+     * Returns the optional text between fields.
+     * @return the optional text between fields
+     */
+    public CmsFieldText getText() {
+
+        return m_text;
+    }
+
+    /**
      * Returns the value.
      * @return the value
      */
     public String getValue() {
 
         return m_value;
+    }
+
+    /**
+     * Returns if an optional text between fields is present.
+     * @return true if an optional text between fields is present
+     */
+    public boolean hasText() {
+
+        return m_text != null;
     }
 }

@@ -452,6 +452,27 @@ $endif$
 >>
 
 
+summary_optional_text(field) ::= <<
+$if(field.hasText)$
+$!  !$<tr>
+$!      !$<td colspan="2" class="text">$!
+$!          !$$if(field.text.columnLeft)$
+$!              !$<div class="pull-left">
+$!                  !$$field.text.text$
+$!              !$</div><div class="clearfix"></div>
+$!          !$$elseif(field.text.columnRight)$
+$!              !$<div class="pull-right">
+$!                  !$$field.text.text$
+$!              !$</div><div class="clearfix"></div>
+$!          !$$else$
+$!              !$<div>$field.text.text$</div>
+$!          !$$endif$
+$!      !$</td>
+$!  !$</tr>
+$endif$
+>>
+
+
 checkpage(formuri,formconfig,checktext,captchafield,captchawidget,captchaerror,captchaimagelink,captchatokenid,checkfields,hiddenfields,checkbutton,correctbutton,captchatext) ::= <<
 $! ###### CHECK page of the form ###### !$
 $checktext$
@@ -461,6 +482,7 @@ $checkfields:{$!
         !$<td class="label">$it.label$</td>$!
         !$<td class="value">$it.value$</td>$!
     !$</tr>
+$!  !$$summary_optional_text(field=it)$
 }$</table>
 
 <div class="styled-form checkpage$if(captchaerror)$ state-error$endif$">
@@ -545,6 +567,7 @@ $confirmfields:{$!
         !$<td class="label">$it.label$</td>$!
         !$<td class="value">$it.value$</td>$!
     !$</tr>
+$!  !$$summary_optional_text(field=it)$
 }$</table>
 >>
 
@@ -611,12 +634,22 @@ $!  !$<tr>
 $!      !$<td class="first$if(!mailcss)$ fieldlabel$endif$"> $it.label$</td>
 $!      !$<td class="first$if(mailcss)$ data$else$ fieldvalue$endif$">$it.value$</td>
 $!  !$</tr>
+$!  !$$if(it.hasText)$
+$!      !$<tr>
+$!          !$<td colspan="2" class="text">$it.text.text$</td>
+$!      !$</tr>
+$!  !$$endif$
 }$
 $rest(fields):{
 $!  !$<tr>
 $!      !$<td class="$if(!mailcss)$fieldlabel$endif$"> $it.label$</td>
 $!      !$<td class="$if(mailcss)$data$else$fieldvalue$endif$">$it.value$</td>
 $!  !$</tr>
+$!  !$$if(it.hasText)$
+$!      !$<tr>
+$!          !$<td colspan="2" class="text">$it.text.text$</td>
+$!      !$</tr>
+$!  !$$endif$
 }$
 </table>
 >>

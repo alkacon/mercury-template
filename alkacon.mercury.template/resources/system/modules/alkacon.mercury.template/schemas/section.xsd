@@ -35,7 +35,7 @@
                     <DisplayName><![CDATA[%(key.label.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
-                    <Default><![CDATA[%(key.type.m-section.title)]]></Default>
+                    <Default><![CDATA[%(attribute:type.m-section.title:%(key.type.m-section.title))]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
                 </Setting>
                 <Setting>

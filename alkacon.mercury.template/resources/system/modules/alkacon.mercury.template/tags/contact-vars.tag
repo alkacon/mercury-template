@@ -98,6 +98,7 @@
     <c:otherwise>
         <%-- Content must be of type 'm-contact' --%>
         <c:set var="valKind"                value="${value.Kind.isSet ? value.Kind.toString : 'pers'}" />
+        <c:set var="valKind"                value="${valKind eq 'person' ? 'pers' : valKind}" />
         <c:set var="useLinkedContent"       value="${false}" />
         <c:set var="setShowName"            value="${valKind eq 'org' ? showOrganization : true}" />
         <c:set var="setShowPosition"        value="${showPosition and setShowName}" />

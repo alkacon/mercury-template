@@ -126,8 +126,15 @@
             <c:set var="noTitleCopyright" value="${alt eq 'nocopy'}" />
             <c:set var="alt" value="${noTitleCopyright ? null : alt}" />
             <c:set var="imgAlt" value="${empty alt ? (empty imageDescription ? imageTitle : imageDescription) : alt}" />
-            <c:set var="imgTitle" value="${setTitle ? (showCopyright or noTitleCopyright ? (empty imageDescription ? imageTitle : imageDescription) : (empty imageDescription ? imageTitleCopyright : imageDescriptionCopyright)) : null}" />
-
+            <c:set var="imgTitle" value="${setTitle ?
+                (showCopyright or noTitleCopyright ?
+                    (not empty imageTitle ?
+                        imageTitle :
+                        imageDescription) :
+                    (not empty imageTitleCopyright ?
+                        imageTitleCopyright :
+                        imageDescriptionCopyright)) :
+                null}" />
             <c:set var="adaptRatioToScreen" value="${ratio ne ratioLg}" />
             <c:if test="${adaptRatioToScreen}">
                 <%-- Note: The 'template.piece.breakpoint' sitemap attribute is NOT used here on purpose.

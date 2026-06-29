@@ -458,6 +458,7 @@ public class CmsMercuryLlmsGenerator {
         CmsMercuryLlmsFile llmsFile = CmsMercuryLlmsFile.read(m_cms, m_llmsResource);
         List<Candidate> resolvedCandidates = resolveEligiblePages();
         List<Candidate> candidates = filterCandidatesForConfiguredSections(llmsFile, resolvedCandidates);
+        List<Candidate> aiCandidates = getCandidatesWithoutIndividualLlmsDescription(candidates);
         if (LOG.isDebugEnabled()) {
             LOG.debug(
                 "Updating Mercury llms.txt summaries for "
@@ -470,12 +471,12 @@ public class CmsMercuryLlmsGenerator {
                     + llmsFile.getDate()
                     + ".");
         }
-        boolean changed = llmsFile.retainResultsForPages(m_cms, getPages(candidates));
+        boolean changed = llmsFile.retainResultsForPages(m_cms, getPages(aiCandidates));
         if (changed && LOG.isDebugEnabled()) {
             LOG.debug(
                 "Removed obsolete Mercury llms.txt cached results from " + m_cms.getSitePath(m_llmsResource) + ".");
         }
-        for (Candidate candidate : candidates) {
+        for (Candidate candidate : aiCandidates) {
             CmsMercuryLlmsFile.Result cached = llmsFile.getResult(candidate.page());
             long pageDate = candidate.page().getDateLastModified();
             long metaInfoDate = candidate.metaInfo().getDateLastModified();
@@ -594,6 +595,24 @@ public class CmsMercuryLlmsGenerator {
             return candidate.sharedDescription();
         }
         return CmsStringUtil.trimToSize(excerpt, 250, "");
+    }
+
+    /**
+     * Gets candidates which need a generated AI result.<p>
+     *
+     * @param candidates the candidates
+     *
+     * @return the candidates without an individual llms.txt description
+     */
+    private List<Candidate> getCandidatesWithoutIndividualLlmsDescription(List<Candidate> candidates) {
+
+        List<Candidate> result = new ArrayList<Candidate>();
+        for (Candidate candidate : candidates) {
+            if (CmsStringUtil.isEmptyOrWhitespaceOnly(candidate.llmsDescription())) {
+                result.add(candidate);
+            }
+        }
+        return result;
     }
 
     /**

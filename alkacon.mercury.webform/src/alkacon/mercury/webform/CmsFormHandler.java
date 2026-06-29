@@ -19,6 +19,36 @@
 
 package alkacon.mercury.webform;
 
+import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
+import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
+import alkacon.mercury.webform.CmsSubmissionStatus.SubmissionCheckResult;
+import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
+import alkacon.mercury.webform.fields.CmsCaptchaField;
+import alkacon.mercury.webform.fields.CmsCheckboxField;
+import alkacon.mercury.webform.fields.CmsEmptyField;
+import alkacon.mercury.webform.fields.CmsFieldItem;
+import alkacon.mercury.webform.fields.CmsFileUploadField;
+import alkacon.mercury.webform.fields.CmsHiddenField;
+import alkacon.mercury.webform.fields.CmsPagingField;
+import alkacon.mercury.webform.fields.CmsParameterField;
+import alkacon.mercury.webform.fields.CmsPasswordField;
+import alkacon.mercury.webform.fields.CmsPrivacyField;
+import alkacon.mercury.webform.fields.CmsTextField;
+import alkacon.mercury.webform.fields.I_CmsField;
+import alkacon.mercury.webform.fields.I_CmsHasHiddenFieldHtml;
+import alkacon.mercury.webform.mail.A_CmsFormMail;
+import alkacon.mercury.webform.mail.CmsFormMailICalInfo;
+import alkacon.mercury.webform.mail.CmsFormMailRegisterAdmin;
+import alkacon.mercury.webform.mail.CmsFormMailRegisterUser;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateCheckPage;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateConfirmationPage;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateError;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateForm;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFormJs;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFullyBooked;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateInitError;
+import alkacon.mercury.webform.stringtemplates.I_CmsTemplateSubmissionError;
+
 import org.opencms.cache.CmsVfsMemoryObjectCache;
 import org.opencms.file.CmsFile;
 import org.opencms.file.CmsProperty;
@@ -72,36 +102,6 @@ import org.antlr.stringtemplate.StringTemplateGroup;
 import org.antlr.stringtemplate.language.DefaultTemplateLexer;
 
 import com.octo.captcha.service.text.TextCaptchaService;
-
-import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
-import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
-import alkacon.mercury.webform.CmsSubmissionStatus.SubmissionCheckResult;
-import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
-import alkacon.mercury.webform.fields.CmsCaptchaField;
-import alkacon.mercury.webform.fields.CmsCheckboxField;
-import alkacon.mercury.webform.fields.CmsEmptyField;
-import alkacon.mercury.webform.fields.CmsFieldItem;
-import alkacon.mercury.webform.fields.CmsFileUploadField;
-import alkacon.mercury.webform.fields.CmsHiddenField;
-import alkacon.mercury.webform.fields.CmsPagingField;
-import alkacon.mercury.webform.fields.CmsParameterField;
-import alkacon.mercury.webform.fields.CmsPasswordField;
-import alkacon.mercury.webform.fields.CmsPrivacyField;
-import alkacon.mercury.webform.fields.CmsTextField;
-import alkacon.mercury.webform.fields.I_CmsField;
-import alkacon.mercury.webform.fields.I_CmsHasHiddenFieldHtml;
-import alkacon.mercury.webform.mail.A_CmsFormMail;
-import alkacon.mercury.webform.mail.CmsFormMailICalInfo;
-import alkacon.mercury.webform.mail.CmsFormMailRegisterAdmin;
-import alkacon.mercury.webform.mail.CmsFormMailRegisterUser;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateCheckPage;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateConfirmationPage;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateError;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateForm;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFormJs;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFullyBooked;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateInitError;
-import alkacon.mercury.webform.stringtemplates.I_CmsTemplateSubmissionError;
 
 /**
  * The form handler controls the HTML or mail output of a configured email form.<p>
@@ -1246,6 +1246,9 @@ public class CmsFormHandler extends CmsJspActionElement {
     public void setICalInfo(String link, String fileName, String label) {
 
         String absoluteLink = OpenCms.getLinkManager().getServerLink(getCmsObject(), "/");
+        if ((link != null) && link.startsWith("/") && (absoluteLink != null) && absoluteLink.endsWith("/")) {
+            absoluteLink = absoluteLink.substring(0, absoluteLink.length() - 1);
+        }
         m_iCalInfo = new CmsFormMailICalInfo(absoluteLink + link, fileName, label);
     }
 
@@ -1263,8 +1266,8 @@ public class CmsFormHandler extends CmsJspActionElement {
         } else if (getFormConfiguration().captchaFieldIsOnCheckPage()
             && ACTION_CONFIRMED.equals(getParameter(PARAM_FORMACTION))
             && !validate()) {
-            result = true;
-        }
+                result = true;
+            }
 
         return result;
     }
@@ -1310,14 +1313,14 @@ public class CmsFormHandler extends CmsJspActionElement {
         } else if (ACTION_CONFIRMED.equalsIgnoreCase(formAction)
             && getFormConfiguration().captchaFieldIsOnCheckPage()
             && !validate()) {
-            // captcha field validation on check page failed: redisplay the check page, not the input page!
-            result = false;
-        } else if (CmsStringUtil.isNotEmpty(getParameter(PARAM_BACK + getFormConfiguration().getConfigId()))) {
-            result = true;
-        } else if ((CmsStringUtil.isNotEmpty(getParameter(PARAM_PAGE + getFormConfiguration().getConfigId())))
-            && CmsStringUtil.isEmpty(getParameter(PARAM_FINALPAGE))) {
-            result = true;
-        }
+                // captcha field validation on check page failed: redisplay the check page, not the input page!
+                result = false;
+            } else if (CmsStringUtil.isNotEmpty(getParameter(PARAM_BACK + getFormConfiguration().getConfigId()))) {
+                result = true;
+            } else if ((CmsStringUtil.isNotEmpty(getParameter(PARAM_PAGE + getFormConfiguration().getConfigId())))
+                && CmsStringUtil.isEmpty(getParameter(PARAM_FINALPAGE))) {
+                    result = true;
+                }
 
         return result;
     }

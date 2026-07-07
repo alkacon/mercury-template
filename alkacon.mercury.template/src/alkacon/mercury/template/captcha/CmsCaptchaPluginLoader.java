@@ -35,7 +35,7 @@ import org.opencms.main.CmsLog;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletRequest;
+import jakarta.servlet.ServletRequest;
 
 import org.apache.commons.logging.Log;
 

@@ -32,7 +32,7 @@ import org.opencms.json.JSONException;
 
 import java.io.IOException;
 
-import javax.servlet.ServletRequest;
+import jakarta.servlet.ServletRequest;
 
 import org.apache.http.client.ClientProtocolException;
 

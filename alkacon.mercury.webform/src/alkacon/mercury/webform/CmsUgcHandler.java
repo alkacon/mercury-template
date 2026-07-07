@@ -29,7 +29,7 @@ import org.opencms.ugc.shared.CmsUgcException;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /** Handler for the UGC connections for storing form data in XML contents. */
 public class CmsUgcHandler {

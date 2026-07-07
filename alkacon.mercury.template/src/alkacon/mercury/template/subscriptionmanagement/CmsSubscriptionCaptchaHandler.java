@@ -32,7 +32,7 @@ import org.opencms.json.JSONException;
 
 import java.io.IOException;
 
-import javax.servlet.ServletRequest;
+import jakarta.servlet.ServletRequest;
 
 import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
 import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;

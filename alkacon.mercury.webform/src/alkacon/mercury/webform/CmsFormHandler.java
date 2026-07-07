@@ -57,10 +57,10 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.mail.internet.AddressException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.jsp.PageContext;
 
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.logging.Log;
@@ -926,7 +926,7 @@ public class CmsFormHandler extends CmsJspActionElement {
     /**
      * Initializes the form handler and creates the necessary configuration objects.<p>
      *
-     * @see org.opencms.jsp.CmsJspBean#init(javax.servlet.jsp.PageContext, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * @see org.opencms.jsp.CmsJspBean#init(jakarta.servlet.jsp.PageContext, jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse)
      */
     @Override
     public void init(PageContext context, HttpServletRequest req, HttpServletResponse res) {

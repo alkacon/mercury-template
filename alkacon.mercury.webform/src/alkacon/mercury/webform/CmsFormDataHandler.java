@@ -42,9 +42,6 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import javax.mail.internet.AddressException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.jsp.PageContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.mail.EmailException;
@@ -55,6 +52,9 @@ import alkacon.mercury.webform.mail.CmsFormMailGroupSizeAdmin;
 import alkacon.mercury.webform.mail.CmsFormMailGroupSizeUser;
 import alkacon.mercury.webform.mail.CmsFormMailMoveUpAdmin;
 import alkacon.mercury.webform.mail.CmsFormMailMoveUpUser;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.jsp.PageContext;
 
 /**
  * Action class for managing form data.

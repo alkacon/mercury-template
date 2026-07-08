@@ -36,8 +36,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
-import jakarta.servlet.ServletOutputStream;
-import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 
@@ -54,6 +52,8 @@ import alkacon.mercury.webform.captcha.CmsCaptchaServiceCache;
 import alkacon.mercury.webform.captcha.CmsCaptchaSettings;
 import alkacon.mercury.webform.captcha.CmsCaptchaStore;
 import alkacon.mercury.webform.captcha.CmsCaptchaToken;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Creates captcha images and validates the phrases submitted by a request parameter.<p>

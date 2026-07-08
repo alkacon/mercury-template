@@ -32,9 +32,9 @@ import org.opencms.json.JSONException;
 
 import java.io.IOException;
 
-import jakarta.servlet.ServletRequest;
-
 import org.apache.http.client.ClientProtocolException;
+
+import jakarta.servlet.ServletRequest;
 
 /**
  * Interface to be implemented by Captcha providers.

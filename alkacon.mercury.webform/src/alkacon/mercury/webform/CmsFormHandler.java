@@ -57,10 +57,6 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.mail.internet.AddressException;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.jsp.PageContext;
 
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.logging.Log;
@@ -102,6 +98,10 @@ import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFormJs;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFullyBooked;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateInitError;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateSubmissionError;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.jsp.PageContext;
 
 /**
  * The form handler controls the HTML or mail output of a configured email form.<p>

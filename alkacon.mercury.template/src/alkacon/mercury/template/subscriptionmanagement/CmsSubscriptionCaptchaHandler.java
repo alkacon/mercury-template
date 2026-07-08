@@ -32,10 +32,9 @@ import org.opencms.json.JSONException;
 
 import java.io.IOException;
 
-import jakarta.servlet.ServletRequest;
-
 import alkacon.mercury.template.captcha.CmsCaptchaPluginLoader;
 import alkacon.mercury.template.captcha.I_CmsCaptchaProvider;
+import jakarta.servlet.ServletRequest;
 
 /**
  * Handles subscription Captchas in cooperation with the CmsSubscriptionParameterHandler.

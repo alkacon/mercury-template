@@ -3,7 +3,7 @@
 
 var npmConfig = require('./adjustpaths.js');
 
-npmConfig.initRewritePaths(process.env.npm_config_xdeploydir, process.env.npm_package_config_templateThemeVfsDir);
+npmConfig.initRewritePaths(process.env.XDEPLOYDIR, '/system/modules/alkacon.mercury.theme');
 
 module.exports = {
  plugins : [

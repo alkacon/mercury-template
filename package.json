@@ -48,10 +48,6 @@
     "last 2 versions",
     "not dead"
   ],
-  "config": {
-    "basedir": "./",
-    "templateThemeVfsDir": "/system/modules/alkacon.mercury.theme"
-  },
   "nodemonConfig": {
     "delay": "1000"
   },
@@ -59,21 +55,21 @@
     "vite-proxy": "vite",
     "debug-vite-proxy": "DEBUG=vite:* vite",
     "dist": "npm run css && npm run js",
-    "css": "npm run --silent cssg:all --xsrcdir=template-src/scss/themes --xbuilddir=build/npm --xdeploydir=$npm_package_config_templateThemeVfsDir/css",
-    "cssi:icons": "sass --source-map --embed-sources --stop-on-error template-src/fork-awesome/scss:$npm_config_xbuilddir/1_processed",
+    "css": "XSRCDIR=template-src/scss/themes XBUILDDIR=build/npm XDEPLOYDIR=/system/modules/alkacon.mercury.theme/css npm run --silent cssg:all",
+    "cssi:icons": "sass --source-map --embed-sources --stop-on-error template-src/fork-awesome/scss:$XBUILDDIR/1_processed",
     "cssg:all": "npm run cssg:clean && npm run cssg:sass && npm run cssi:icons && npm run cssg:postcss && npm run cssg:minify && npm run cssg:deploy",
-    "cssg:plugins": "cleancss --source-map --source-map-inline-sources --output $npm_config_xbuilddir/1_processed/base.css template-src/fork-awesome/css/fork-awesome.css",
-    "cssg:clean": "del-cli $npm_config_xbuilddir/1_processed/* $npm_config_xbuilddir/2_postcssed/* $npm_config_xbuilddir/3_minified/*",
-    "cssg:sass": "sass --source-map --embed-sources --stop-on-error --load-path='../' $npm_config_xsrcdir:$npm_config_xbuilddir/1_processed",
-    "cssg:postcss": "postcss --config ./npm_scripts/postcss.config.js $npm_config_xbuilddir/1_processed/*.css --dir $npm_config_xbuilddir//2_postcssed",
-    "cssg:minify": "node ./npm_scripts/cleancss.js --cleancss --inputDir $npm_config_xbuilddir/2_postcssed/ --outputDir $npm_config_xbuilddir//3_minified",
-    "cssg:deploy": "copyfiles -f -V $npm_config_xbuilddir/3_minified/* ${OCMOUNT}/$npm_config_xdeploydir",
+    "cssg:plugins": "cleancss --source-map --source-map-inline-sources --output $XBUILDDIR/1_processed/base.css template-src/fork-awesome/css/fork-awesome.css",
+    "cssg:clean": "del-cli $XBUILDDIR/1_processed/* $XBUILDDIR/2_postcssed/* $XBUILDDIR/3_minified/*",
+    "cssg:sass": "sass --source-map --embed-sources --stop-on-error --load-path='../' $XSRCDIR:$XBUILDDIR/1_processed",
+    "cssg:postcss": "postcss --config ./npm_scripts/postcss.config.js $XBUILDDIR/1_processed/*.css --dir $XBUILDDIR//2_postcssed",
+    "cssg:minify": "node ./npm_scripts/cleancss.js --cleancss --inputDir $XBUILDDIR/2_postcssed/ --outputDir $XBUILDDIR//3_minified",
+    "cssg:deploy": "${OCDEPLOY:-copyfiles -f -V} $XBUILDDIR/3_minified/* ${OCMOUNT}$XDEPLOYDIR",
     "js": "npm run js:clean && npm run js:compile && npm run js:deploy",
     "js:clean": "del-cli build/npm/js/*",
     "js:compile": "webpack --config ./npm_scripts/webpack.config.js",
-    "js:deploy": "copyfiles -f -V build/npm/js/* ${OCMOUNT}/$npm_package_config_templateThemeVfsDir/js/",
+    "js:deploy": "${OCDEPLOY:-copyfiles -f -V} build/npm/js/* ${OCMOUNT}/system/modules/alkacon.mercury.theme/js",
     "watch": "npm run watch:js & npm run watch:css",
-    "watch:js": "nodemon --watch $npm_package_config_basedir/template-src/js --ext js --exec \"npm run js\"",
-    "watch:css": "nodemon --watch $npm_package_config_basedir/template-src --ext scss --exec \"npm run css\""
+    "watch:js": "nodemon --watch template-src/js --ext js --exec \"npm run js\"",
+    "watch:css": "nodemon --watch template-src --ext scss --exec \"npm run css\""
   }
 }

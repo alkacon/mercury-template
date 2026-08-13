@@ -66,6 +66,24 @@ $endif$
 </footer>
 </form>
 
+$! --- remove form field values if form was submitted and back button was clicked --- !$
+<script type="text/javascript">
+$!  !$(function () {
+$!      !$var storageKey = "webform-submitted-" + window.location.pathname + "-$formconfig.configId$";
+$!      !$window.addEventListener("pageshow", function () {
+$!          !$try {
+$!              !$if (window.sessionStorage && window.sessionStorage.getItem(storageKey) === "true") {
+$!                  !$var form = document.getElementById("emailform$formconfig.configId$");
+$!                  !$if (form) {
+$!                      !$form.reset();
+$!                  !$}
+$!                  !$window.sessionStorage.removeItem(storageKey);
+$!              !$}
+$!          !$} catch (e) {}
+$!      !$});
+$!  !$}());
+</script>
+
 $if(subfieldjs)$
 $! --- JavaScript for sub fields --- !$
 $!  !$<script type="text/javascript">$subfieldjs$initWebformSubFields("emailform$formconfig.configId$");</script>
@@ -560,6 +578,16 @@ $!  !$</footer>
 
 confirmationpage(formconfig,confirmtext,confirmfields) ::= <<
 $! ###### CONFIRMATION page of the form ###### !$
+$! --- store form submission in session storage --- !$
+<script type="text/javascript">
+$!  !$(function () {
+$!      !$try {
+$!          !$if (window.sessionStorage) {
+$!              !$window.sessionStorage.setItem("webform-submitted-" + window.location.pathname + "-$formconfig.configId$", "true");
+$!          !$}
+$!      !$} catch (e) {}
+$!  !$}());
+</script>
 <div class="form-text form-confirm">$confirmtext$</div>
 <table class="webform-input table table-responsive table-bordered table-striped matomo-goal">
 $confirmfields:{$!

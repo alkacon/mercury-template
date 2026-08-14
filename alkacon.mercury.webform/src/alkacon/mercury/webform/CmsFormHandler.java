@@ -590,20 +590,27 @@ public class CmsFormHandler extends CmsJspActionElement {
                 } else if (current instanceof CmsEmptyField) {
                     label = "";
                 }
+                String optionalText = null;
+                if (current.isHasText()) {
+                    try {
+                        optionalText = CmsHtmlToTextConverter.htmlToText(
+                            current.getText().getText(),
+                            getCmsObject().getRequestContext().getEncoding()).trim();
+                    } catch (Exception e) {
+                        // error parsing the String, provide it as is
+                        optionalText = current.getText().getText();
+                    }
+                }
+                if ((optionalText != null) && current.getText().isAbove()) {
+                    formDataString.append(optionalText);
+                    formDataString.append("\n");
+                }
                 formDataString.append(label);
                 formDataString.append("\t\t");
                 formDataString.append(value);
                 formDataString.append("\n");
-                if (current.isHasText()) {
-                    try {
-                        formDataString.append(
-                            CmsHtmlToTextConverter.htmlToText(
-                                current.getText().getText(),
-                                getCmsObject().getRequestContext().getEncoding()).trim());
-                    } catch (Exception e) {
-                        // error parsing the String, provide it as is
-                        formDataString.append(current.getText().getText());
-                    }
+                if ((optionalText != null) && current.getText().isBelow()) {
+                    formDataString.append(optionalText);
                     formDataString.append("\n");
                 }
             }

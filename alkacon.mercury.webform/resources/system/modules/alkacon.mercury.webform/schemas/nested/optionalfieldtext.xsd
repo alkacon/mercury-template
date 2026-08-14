@@ -35,7 +35,7 @@
                     <DisplayName><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Column)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.OptionalWebFormFieldText.Column.help)]]></Description>
                     <Widget>select</Widget>
-                    <WidgetConfig>0:%(key.form.column.both)|1:%(key.form.column.left)|2:%(key.form.column.right)</WidgetConfig>
+                    <WidgetConfig>0:%(key.form.column.both)|1:%(key.form.column.left)|2:%(key.form.column.right)|3:%(key.form.column.above.both)|4:%(key.form.column.above.left)|5:%(key.form.column.above.right)</WidgetConfig>
                 </Setting>
                 <Setting>
                     <PropertyName>Text</PropertyName>

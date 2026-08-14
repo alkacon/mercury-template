@@ -20,20 +20,29 @@
 package alkacon.mercury.webform.fields;
 
 /**
- * Represents an additional text for an input field, with information in which column to show the text.<p>
+ * Represents an additional text for an input field, with information where to show the text.<p>
  */
 public class CmsFieldText {
 
-    /** Indicates that the text should be shown in both columns. */
+    /** Indicates that the text should be shown below the field in both columns. */
     public static final int COL_BOTH = 0;
 
-    /** Indicates that the text should be shown in the left column. */
+    /** Indicates that the text should be shown below the field in the left column. */
     public static final int COL_LEFT = 1;
 
-    /** Indicates that the text should be shown in the right column. */
+    /** Indicates that the text should be shown below the field in the right column. */
     public static final int COL_RIGHT = 2;
 
-    /** The text to show below the input field. */
+    /** Indicates that the text should be shown above the field in both columns. */
+    public static final int COL_ABOVE_BOTH = 3;
+
+    /** Indicates that the text should be shown above the field in the left column. */
+    public static final int COL_ABOVE_LEFT = 4;
+
+    /** Indicates that the text should be shown above the field in the right column. */
+    public static final int COL_ABOVE_RIGHT = 5;
+
+    /** The text to show above or below the input field. */
     private String m_text;
 
     /** The column where to show the text. */
@@ -42,14 +51,14 @@ public class CmsFieldText {
     /**
      * Constructor, with parameters.<p>
      *
-     * @param text the text to show below the input field
+     * @param text the text to show above or below the input field
      * @param column the column where to show the text
      */
     public CmsFieldText(String text, int column) {
 
         m_text = text;
         m_column = column;
-        if ((m_column < COL_BOTH) || (m_column > COL_RIGHT)) {
+        if ((m_column < COL_BOTH) || (m_column > COL_ABOVE_RIGHT)) {
             m_column = COL_BOTH;
         }
     }
@@ -57,7 +66,7 @@ public class CmsFieldText {
     /**
      * Constructor, with parameters.<p>
      *
-     * @param text the text to show below the input field
+     * @param text the text to show above or below the input field
      * @param column the column where to show the text
      */
     public CmsFieldText(String text, String column) {
@@ -68,7 +77,7 @@ public class CmsFieldText {
         } catch (Exception e) {
             // ignore
         }
-        if ((m_column < COL_BOTH) || (m_column > COL_RIGHT)) {
+        if ((m_column < COL_BOTH) || (m_column > COL_ABOVE_RIGHT)) {
             m_column = COL_BOTH;
         }
     }
@@ -84,13 +93,33 @@ public class CmsFieldText {
     }
 
     /**
-     * Returns the text to show below the input field.<p>
+     * Returns the text to show above or below the input field.<p>
      *
-     * @return the text to show below the input field
+     * @return the text to show above or below the input field
      */
     public String getText() {
 
         return m_text;
+    }
+
+    /**
+     * Returns if the text should be shown above the input field.<p>
+     *
+     * @return <code>true</code> if the text should be shown above the input field, otherwise <code>false</code>
+     */
+    public boolean isAbove() {
+
+        return m_column >= COL_ABOVE_BOTH;
+    }
+
+    /**
+     * Returns if the text should be shown below the input field.<p>
+     *
+     * @return <code>true</code> if the text should be shown below the input field, otherwise <code>false</code>
+     */
+    public boolean isBelow() {
+
+        return !isAbove();
     }
 
     /**
@@ -100,7 +129,7 @@ public class CmsFieldText {
      */
     public boolean isColumnBoth() {
 
-        return m_column == COL_BOTH;
+        return (m_column == COL_BOTH) || (m_column == COL_ABOVE_BOTH);
     }
 
     /**
@@ -110,7 +139,7 @@ public class CmsFieldText {
      */
     public boolean isColumnLeft() {
 
-        return m_column == COL_LEFT;
+        return (m_column == COL_LEFT) || (m_column == COL_ABOVE_LEFT);
     }
 
     /**
@@ -120,6 +149,6 @@ public class CmsFieldText {
      */
     public boolean isColumnRight() {
 
-        return m_column == COL_RIGHT;
+        return (m_column == COL_RIGHT) || (m_column == COL_ABOVE_RIGHT);
     }
 }

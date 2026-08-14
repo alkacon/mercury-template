@@ -204,6 +204,7 @@ $row_end(field=field,formconfig=formconfig)$
 
 field_hidden(field,formconfig,attributes,errormessage,mandatory) ::= <<
 $! ###### HIDDEN field ###### !$
+$subtext(field=field,formconfig=formconfig,above="true")$
 <div style="display: none;"><input type="hidden" name="$field.name$" value="$field.valueEscaped$"/></div>
 $subtext(field=field,formconfig=formconfig)$
 >>
@@ -423,6 +424,7 @@ $! ###### Standard LABEL for a field ###### !$
 
 row_start(field) ::= <<
 $! ###### Standard start row for a field ###### !$
+$subtext(field=field,above="true")$
 $if(field.showRowStart)$
 $!  !$<section class="form-field-$field.type$">
 $endif$
@@ -446,9 +448,23 @@ $subfields$
 >>
 
 
-subtext(field,formconfig) ::= <<
-$! ###### Intermediate texts for the fields ###### !$
+subtext(field,formconfig,above) ::= <<
 $if(field.hasText)$
+$if(above)$
+$!  !$$if(field.text.above)$
+$!      !$$subtext_output(field=field,formconfig=formconfig)$
+$!  !$$endif$
+$else$
+$!  !$$if(field.text.below)$
+$!      !$$subtext_output(field=field,formconfig=formconfig)$
+$!  !$$endif$
+$endif$
+$endif$
+>>
+
+
+subtext_output(field,formconfig) ::= <<
+$! ###### Intermediate texts for the fields ###### !$
 $!  !$$if(field.showRowStart)$
 $!      !$<section>
 $!  !$$endif$
@@ -466,12 +482,25 @@ $!  !$$endif$
 $!  !$$if(field.showRowEnd)$
 $!      !$</section>
 $!  !$$endif$
+>>
+
+
+summary_optional_text(field,above) ::= <<
+$if(field.hasText)$
+$if(above)$
+$!  !$$if(field.text.above)$
+$!      !$$summary_optional_text_output(field=field)$
+$!  !$$endif$
+$else$
+$!  !$$if(field.text.below)$
+$!      !$$summary_optional_text_output(field=field)$
+$!  !$$endif$
+$endif$
 $endif$
 >>
 
 
-summary_optional_text(field) ::= <<
-$if(field.hasText)$
+summary_optional_text_output(field) ::= <<
 $!  !$<tr>
 $!      !$<td colspan="2" class="text">$!
 $!          !$$if(field.text.columnLeft)$
@@ -487,7 +516,6 @@ $!              !$<div>$field.text.text$</div>
 $!          !$$endif$
 $!      !$</td>
 $!  !$</tr>
-$endif$
 >>
 
 
@@ -496,6 +524,7 @@ $! ###### CHECK page of the form ###### !$
 $checktext$
 <table class="webform-input table table-responsive table-bordered table-striped">
 $checkfields:{$!
+    !$$summary_optional_text(field=it,above="true")$$!
     !$<tr>$!
         !$<td class="label">$it.label$</td>$!
         !$<td class="value">$it.value$</td>$!
@@ -591,6 +620,7 @@ $!  !$}());
 <div class="form-text form-confirm">$confirmtext$</div>
 <table class="webform-input table table-responsive table-bordered table-striped matomo-goal">
 $confirmfields:{$!
+    !$$summary_optional_text(field=it,above="true")$$!
     !$<tr>$!
         !$<td class="label">$it.label$</td>$!
         !$<td class="value">$it.value$</td>$!
@@ -627,6 +657,8 @@ p.foot { font-size: 9px; color: #555; }
 table.dataform { border-collapse: collapse; border: 1px solid #333; }
 table.dataform tr td { border-top: 1px solid #ccc; vertical-align:top; padding: 8px; }
 table.dataform tr td.first { border-top: none; }
+table.dataform tr td.text > p:first-child { margin-top: 0; }
+table.dataform tr td.text > p:last-child { margin-bottom: 0; }
 td.data { font-weight: bold; }
 table.table-wf-label { vertical-align: top; }
 table.table-wf-label tr th, table.table-wf-label tr td, table.table-wf-field tr th, table.table-wf-field tr td { white-space: nowrap; }
@@ -658,25 +690,43 @@ htmlemailfields(mailcss,fields) ::= <<
 $! ###### FIELDS for the HTML email ###### !$
 <table border="0" class="dataform$if(!mailcss)$ fields$endif$">
 $first(fields):{
+$!  !$$if(it.hasText)$
+$!      !$$if(it.text.above)$
+$!          !$<tr>
+$!              !$<td colspan="2" class="first text">$it.text.text$</td>
+$!          !$</tr>
+$!      !$$endif$
+$!  !$$endif$
 $!  !$<tr>
 $!      !$<td class="first$if(!mailcss)$ fieldlabel$endif$"> $it.label$</td>
 $!      !$<td class="first$if(mailcss)$ data$else$ fieldvalue$endif$">$it.value$</td>
 $!  !$</tr>
 $!  !$$if(it.hasText)$
-$!      !$<tr>
-$!          !$<td colspan="2" class="text">$it.text.text$</td>
-$!      !$</tr>
+$!      !$$if(it.text.below)$
+$!          !$<tr>
+$!              !$<td colspan="2" class="text">$it.text.text$</td>
+$!          !$</tr>
+$!      !$$endif$
 $!  !$$endif$
 }$
 $rest(fields):{
+$!  !$$if(it.hasText)$
+$!      !$$if(it.text.above)$
+$!          !$<tr>
+$!              !$<td colspan="2" class="text">$it.text.text$</td>
+$!          !$</tr>
+$!      !$$endif$
+$!  !$$endif$
 $!  !$<tr>
 $!      !$<td class="$if(!mailcss)$fieldlabel$endif$"> $it.label$</td>
 $!      !$<td class="$if(mailcss)$data$else$fieldvalue$endif$">$it.value$</td>
 $!  !$</tr>
 $!  !$$if(it.hasText)$
-$!      !$<tr>
-$!          !$<td colspan="2" class="text">$it.text.text$</td>
-$!      !$</tr>
+$!      !$$if(it.text.below)$
+$!          !$<tr>
+$!              !$<td colspan="2" class="text">$it.text.text$</td>
+$!          !$</tr>
+$!      !$$endif$
 $!  !$$endif$
 }$
 </table>

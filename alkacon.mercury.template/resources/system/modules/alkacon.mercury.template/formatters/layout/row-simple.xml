@@ -53,6 +53,12 @@
       <IncludeName><![CDATA[colWidth.layout]]></IncludeName>
     </Setting>
     <Setting>
+      <IncludeName><![CDATA[columnWidths.layout]]></IncludeName>
+    </Setting>
+    <Setting>
+      <IncludeName><![CDATA[mainColPosition.layout]]></IncludeName>
+    </Setting>
+    <Setting>
       <IncludeName><![CDATA[tileCss.layout]]></IncludeName>
     </Setting>
     <Setting>
@@ -108,6 +114,26 @@
       <Key><![CDATA[showColWidth]]></Key>
       <Value><![CDATA[%!
             !%%if (fn.(content.value.("Variant")).isEqual.("adjust"))%%!
+                !%select%!
+            !%%else%%!
+                !%hidden%!
+            !%%endif%%!
+        !%]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[showColumnWidths]]></Key>
+      <Value><![CDATA[%!
+            !%%if (fn.(content.value.("Variant")).isEqual.("adjust-3"))%%!
+                !%selectcombo%!
+            !%%else%%!
+                !%hidden%!
+            !%%endif%%!
+        !%]]></Value>
+    </Attribute>
+    <Attribute>
+      <Key><![CDATA[showMainColPosition]]></Key>
+      <Value><![CDATA[%!
+            !%%if (fn.(content.value.("Variant")).isEqual.("adjust-3"))%%!
                 !%select%!
             !%%else%%!
                 !%hidden%!

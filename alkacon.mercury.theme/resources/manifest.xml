@@ -119493,5 +119493,26 @@
 			<relations/>
 			<accesscontrol/>
 		</file>
+		<file>
+			<source>system/shared/mercury/template/layout-row/lr_00014.xml</source>
+			<destination>system/shared/mercury/template/layout-row/lr_00014.xml</destination>
+			<type>m-layout-row-simple</type>
+			<uuidstructure>a5c078f1-ce9a-4c9b-85c8-beeef04e304d</uuidstructure>
+			<uuidresource>5146746a-d9b1-4c5d-8577-bb5461e1dd6a</uuidresource>
+			<datecreated>Mon, 17 Aug 2026 00:00:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Row 3 columns (adjustable widths) [from display size LG]]]></value>
+				</property>
+				<property>
+					<name>Title_de</name>
+					<value><![CDATA[Row 3 Spalten (einstellbare Breiten) [Ab Bildschirmgröße LG]]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
 	</files>
 </export>

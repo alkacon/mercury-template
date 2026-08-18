@@ -14,8 +14,17 @@
 <%@ attribute name="sideColSize" type="java.lang.Integer" required="false"
     description="The size of the aside container." %>
 
+<%@ attribute name="mainColSize" type="java.lang.Integer" required="false"
+    description="The size of the main container." %>
+
+<%@ attribute name="addColSize" type="java.lang.Integer" required="false"
+    description="The size of the additional container." %>
+
 <%@ attribute name="showSideLast" type="java.lang.Boolean" required="false"
     description="Controls if in a 2 column layout the smaller 'side' container is shown before or after the 'main' container on desktop devices." %>
+
+<%@ attribute name="mainColPosition" type="java.lang.Integer" required="false"
+    description="The 1-based position of the 'main' container in a 3 column layout on desktop devices." %>
 
 <%@ attribute name="mainType" type="java.lang.String" required="false"
     description="The type for the larger 'main' container." %>
@@ -134,25 +143,30 @@
 
 
     <c:when test="${rowVariant == 3}">
-        <%-- '4-4-4' - lr_00009 --%>
+        <%-- all 3 column row variants like '4-4-4' etc. --%>
+        <c:set var="sideColSize" value="${empty sideColSize ? 4 : sideColSize}" />
+        <c:set var="mainColSize" value="${empty mainColSize ? 12 - (2 * sideColSize) : mainColSize}" />
+        <c:set var="addColSize" value="${empty addColSize ? sideColSize : addColSize}" />
+        <c:set var="mainColPosition" value="${(mainColPosition == 2) or (mainColPosition == 3) ? mainColPosition : 1}" />
+        <c:set var="mainColOrder" value="${mainColPosition == 1 ? (reverseMobileOrder ? ' order-last order'.concat(breakpoint).concat('first') : '') : mainColPosition == 2 ? (reverseMobileOrder ? ' order-last order'.concat(breakpoint).concat('2') : ' order'.concat(breakpoint).concat('2')) : (reverseMobileOrder ? ' order-last' : ' order'.concat(breakpoint).concat('last'))}" />
+        <c:set var="sideColOrder" value="${mainColPosition == 2 ? ' order'.concat(breakpoint).concat('1') : ''}" />
+        <c:set var="addColOrder" value="${mainColPosition == 1 ? (reverseMobileOrder ? ' order-first order'.concat(breakpoint).concat('last') : '') : mainColPosition == 2 ? (reverseMobileOrder ? ' order-first order'.concat(breakpoint).concat('3') : ' order'.concat(breakpoint).concat('3')) : (reverseMobileOrder ? ' order-first order'.concat(breakpoint).concat('1') : '')}" />
         <m:div test="${addContainer}" css="${conCss}" css2="container">
             <div class="row${rowCss}"><%----%>
 
-                <c:set var="colOrder" value="${reverseMobileOrder ? ' order-last order'.concat(breakpoint).concat('first') : ''}" />
                 <c:set target="${valueMap}" property="Type"         value="${mainType}"/>
                 <c:set target="${valueMap}" property="subType"      value="${subType}"/>
                 <c:set target="${valueMap}" property="Name"         value="maincol"/>
-                <c:set target="${valueMap}" property="Css"          value="col${breakpoint}4${colCss}${colOrder}" />
+                <c:set target="${valueMap}" property="Css"          value="col${breakpoint}${mainColSize}${colCss}${mainColOrder}" />
                 <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'maincol'}" />
 
                 <c:set target="${valueMap}" property="Type"         value="${sideType}"/>
                 <c:set target="${valueMap}" property="Name"         value="sidecol"/>
-                <c:set target="${valueMap}" property="Css"          value="col${breakpoint}4${colCss}" />
+                <c:set target="${valueMap}" property="Css"          value="col${breakpoint}${sideColSize}${colCss}${sideColOrder}" />
                 <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'sidecol'}" />
 
-                <c:set var="colOrder" value="${reverseMobileOrder ? ' order-first order'.concat(breakpoint).concat('last') : ''}" />
                 <c:set target="${valueMap}" property="Name"         value="addcol1"/>
-                <c:set target="${valueMap}" property="Css"          value="col${breakpoint}4${colCss}${colOrder}" />
+                <c:set target="${valueMap}" property="Css"          value="col${breakpoint}${addColSize}${colCss}${addColOrder}" />
                 <m:container value="${valueMap}" title="${title}" detailView="${detailContainer eq 'addcol1'}" />
 
             <m:nl />

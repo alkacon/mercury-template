@@ -88,6 +88,53 @@
         />
     </c:when>
 
+    <c:when test="${variant eq 'adjust-3'}">
+        <%-- lr_00014 - 3 column row with adjustable widths --%>
+        <c:set var="columnWidths" value="${setting.columnWidths.toString}" />
+        <c:set var="validColumnWidths" value="${not empty columnWidths and columnWidths.matches('^(?:[1-9]|10)-(?:[1-9]|10)-(?:[1-9]|10)$')}" />
+        <c:if test="${validColumnWidths}">
+            <c:set var="columnWidthValues" value="${fn:split(columnWidths, '-')}" />
+            <c:set var="width1" value="${columnWidthValues[0] + 0}" />
+            <c:set var="width2" value="${columnWidthValues[1] + 0}" />
+            <c:set var="width3" value="${columnWidthValues[2] + 0}" />
+            <c:set var="validColumnWidths" value="${(width1 + width2 + width3) == 12}" />
+        </c:if>
+        <c:choose>
+            <c:when test="${validColumnWidths}">
+                <c:set var="mainColPosition" value="${setting.mainColPosition.validate(['1','2','3'],'1').toInteger}" />
+                <c:set var="mainColSize" value="${mainColPosition == 1 ? width1 : mainColPosition == 2 ? width2 : width3}" />
+                <c:set var="sideColSize" value="${mainColPosition == 1 ? width2 : width1}" />
+                <c:set var="addColSize" value="${mainColPosition == 3 ? width2 : width3}" />
+                <m:layout-row
+                    rowVariant="${3}"
+                    title="${value.Title}"
+                    mainColSize="${mainColSize}"
+                    sideColSize="${sideColSize}"
+                    addColSize="${addColSize}"
+                    mainColPosition="${mainColPosition}"
+                    detailContainer="${detailContainer}"
+                    rowCss="${cssWrapper}"
+                    colCss="${setting.useFlex.toBoolean ? ' flex-col' : null}"
+                    mainType="${mainType}"
+                    reverseMobileOrder="${reverseMobileOrder}"
+                />
+            </c:when>
+            <c:when test="${cms.isEditMode}">
+                <fmt:setLocale value="${cms.workplaceLocale}" />
+                <cms:bundle basename="alkacon.mercury.template.messages">
+                    <m:alert type="error">
+                        <jsp:attribute name="head">
+                            <fmt:message key="msg.error.columnWidths.head" />
+                        </jsp:attribute>
+                        <jsp:attribute name="text">
+                            <fmt:message key="msg.error.columnWidths" />
+                        </jsp:attribute>
+                    </m:alert>
+                </cms:bundle>
+            </c:when>
+        </c:choose>
+    </c:when>
+
     <c:when test="${variant eq '3-3-3-3'}">
         <%-- lr_00010 --%>
         <m:layout-row

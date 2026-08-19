@@ -42,7 +42,7 @@ addUserToRole 'Templator' 'DEVELOPER']]></import-script>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The OpenCms Mercury template "default" demo contents.
 This module also creates a set of demo users during the import.]]></description>
-		<version>21.0.1</version>
+		<version>21.0.3</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -1079,7 +1079,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property type="shared">
 					<name>Description.LLM</name>
-					<value><![CDATA[lipart illustration of a glass filled with a yellow beverage, such as juice or lemonade, with realistic highlights and reflections. The graphic is suitable for food, drink, or hospitality-themed designs.]]></value>
+					<value><![CDATA[Clipart illustration of a glass filled with a yellow beverage, such as juice or lemonade, with realistic highlights and reflections. The graphic is suitable for food, drink, or hospitality-themed designs.]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -1487,7 +1487,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property type="shared">
 					<name>Description.LLM</name>
-					<value><![CDATA[lipart illustration of large red sunglasses with dark tinted lenses. The graphic is suitable for summer, fashion, travel, sun protection, or leisure themes.]]></value>
+					<value><![CDATA[Clipart illustration of large red sunglasses with dark tinted lenses. The graphic is suitable for summer, fashion, travel, sun protection, or leisure themes.]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -2962,7 +2962,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property type="shared">
 					<name>Description.LLM</name>
-					<value><![CDATA[tudio portrait of a smiling woman giving a thumbs-up gesture toward the camera. The white background and positive expression emphasize approval, success, or encouragement.]]></value>
+					<value><![CDATA[Studio portrait of a smiling woman giving a thumbs-up gesture toward the camera. The white background and positive expression emphasize approval, success, or encouragement.]]></value>
 				</property>
 				<property type="shared">
 					<name>image.focalpoint</name>
@@ -4543,7 +4543,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property type="shared">
 					<name>Description.LLM</name>
-					<value><![CDATA[araglider suspended beneath a bright yellow canopy against a clear blue sky. The image highlights recreational free flight and the curved shape of the inflated wing.]]></value>
+					<value><![CDATA[Paraglider suspended beneath a bright yellow canopy against a clear blue sky. The image highlights recreational free flight and the curved shape of the inflated wing.]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>
@@ -4618,7 +4618,7 @@ This module also creates a set of demo users during the import.]]></description>
 				</property>
 				<property type="shared">
 					<name>Description.LLM</name>
-					<value><![CDATA[Scheveningen Pier in The Hague at sunset, with the sea, beach reflections, and the pier’s tower silhouetted against a dramatic sky. The coastal landmark is shown in warm evening light with waves beneath the structu]]></value>
+					<value><![CDATA[Scheveningen Pier in The Hague at sunset, with the sea, beach reflections, and the pier’s tower silhouetted against a dramatic sky. The coastal landmark is shown in warm evening light with waves beneath the structure.]]></value>
 				</property>
 				<property type="shared">
 					<name>image.size</name>

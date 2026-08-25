@@ -58,12 +58,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import javax.mail.internet.InternetAddress;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 
 import org.jsoup.nodes.Element;
+
+import jakarta.mail.internet.InternetAddress;
 
 /**
  * Presents webform data for a given email address as user data for the user data app.

@@ -29,12 +29,11 @@ package alkacon.mercury.webform.mail;
 
 import java.util.List;
 
-import javax.mail.internet.AddressException;
-
-import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail2.core.EmailException;
 
 import alkacon.mercury.webform.CmsFormDataField;
 import alkacon.mercury.webform.CmsFormHandler;
+import jakarta.mail.internet.AddressException;
 
 /**
  * Form mail sent to the user if a user moves up from the waiting list.

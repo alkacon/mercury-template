@@ -30,13 +30,12 @@ package alkacon.mercury.webform.mail;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.internet.AddressException;
-
 import org.apache.commons.fileupload2.core.DiskFileItem;
-import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail2.core.EmailException;
 
 import alkacon.mercury.webform.CmsFormDataField;
 import alkacon.mercury.webform.CmsFormHandler;
+import jakarta.mail.internet.AddressException;
 
 /**
  * Form mail sent to the administrator if a registration is cancelled.

@@ -56,11 +56,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import javax.mail.internet.AddressException;
-
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.logging.Log;
-import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail2.core.EmailException;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateErrorListener;
@@ -98,6 +96,7 @@ import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFormJs;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateFullyBooked;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateInitError;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateSubmissionError;
+import jakarta.mail.internet.AddressException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

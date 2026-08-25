@@ -21,7 +21,7 @@ package alkacon.mercury.template.mail;
 
 import java.util.Map;
 
-import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail2.core.EmailException;
 
 /**
  * Interface for emails that are already fully configured, i.e, content, subject, sender, etc. are already set.

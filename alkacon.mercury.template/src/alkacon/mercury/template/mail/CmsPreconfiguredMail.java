@@ -28,7 +28,7 @@ import org.opencms.util.CmsStringUtil;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
-import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail2.core.EmailException;
 
 /** Class for sending HTML mails. */
 public class CmsPreconfiguredMail implements I_CmsPreconfiguredMail {

@@ -47,12 +47,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.logging.Log;
-import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail2.core.EmailException;
 
 import org.antlr.stringtemplate.StringTemplate;
 
@@ -63,6 +60,8 @@ import alkacon.mercury.webform.CmsFormMailSettings;
 import alkacon.mercury.webform.I_CmsFormMessages;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateHtmlEmail;
 import alkacon.mercury.webform.stringtemplates.I_CmsTemplateHtmlEmailFields;
+import jakarta.mail.internet.AddressException;
+import jakarta.mail.internet.InternetAddress;
 
 /**
  * Abstract form mail.

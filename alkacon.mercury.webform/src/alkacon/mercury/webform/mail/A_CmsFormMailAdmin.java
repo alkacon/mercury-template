@@ -33,16 +33,15 @@ import org.opencms.util.CmsStringUtil;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-
 import org.apache.commons.fileupload2.core.DiskFileItem;
-import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail2.core.EmailException;
 
 import alkacon.mercury.template.mail.A_CmsDkimMailSettings;
 import alkacon.mercury.webform.CmsFormDataField;
 import alkacon.mercury.webform.CmsFormHandler;
 import alkacon.mercury.webform.CmsFormMailSettings;
+import jakarta.mail.internet.AddressException;
+import jakarta.mail.internet.InternetAddress;
 
 /**
  * Form mail sent to the administrators of a configured form.

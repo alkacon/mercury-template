@@ -4,7 +4,7 @@ plugins {
     id 'eclipse'
     id 'org.opencms.modules.defaultdependencies'
     id 'org.opencms.modules'
-    id 'org.openrewrite.rewrite' version '7.+'
+    id 'org.openrewrite.rewrite' version '7.39.0'
 }
 
 rewrite {

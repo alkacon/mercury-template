@@ -1053,7 +1053,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a classic black-and-white soccer ball with subtle shading and a shadow beneath it. The graphic is suitable for sports-related websites, presentations, or educational materials.]]></value>
 				</property>
 				<property type="shared">
@@ -1078,7 +1078,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a glass filled with a yellow beverage, such as juice or lemonade, with realistic highlights and reflections. The graphic is suitable for food, drink, or hospitality-themed designs.]]></value>
 				</property>
 				<property type="shared">
@@ -1103,7 +1103,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a sliced lime viewed from above, showing the fruit's segmented interior in bright green. The graphic is suitable for food, beverage, or cooking-related content.]]></value>
 				</property>
 				<property type="shared">
@@ -1128,7 +1128,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a blue ornament featuring a green four-leaf clover. The graphic symbolizes good luck and is suitable for St. Patrick's Day or lucky charm themes.]]></value>
 				</property>
 				<property type="shared">
@@ -1153,7 +1153,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of half an avocado with a large brown pit and green flesh. The graphic is suitable for food, cooking, nutrition, or healthy eating topics.]]></value>
 				</property>
 				<property>
@@ -1182,7 +1182,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a touchscreen smartphone with a blank display and a pair of wired earbuds. The graphic represents mobile technology, music, communication, or portable devices.]]></value>
 				</property>
 				<property type="shared">
@@ -1207,7 +1207,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a paint roller with a wooden handle and a white roller sleeve. The graphic is suitable for home improvement, painting, decorating, or renovation topics.]]></value>
 				</property>
 				<property type="shared">
@@ -1232,7 +1232,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a steaming cup of black coffee in a white ceramic mug. The graphic is suitable for beverages, cafés, breakfast, or coffee break themes.]]></value>
 				</property>
 				<property type="shared">
@@ -1257,7 +1257,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a classic stovetop moka pot used for brewing espresso-style coffee. The graphic is suitable for coffee preparation, kitchens, or Italian coffee culture.]]></value>
 				</property>
 				<property type="shared">
@@ -1282,7 +1282,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a stainless steel cooking pot with lid and side handles. The graphic is suitable for cooking, kitchen equipment, recipes, or household themes.]]></value>
 				</property>
 				<property type="shared">
@@ -1307,7 +1307,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a transparent salt shaker filled with white salt crystals. The graphic is suitable for cooking, seasoning, food preparation, or kitchen-related content.]]></value>
 				</property>
 				<property type="shared">
@@ -1332,7 +1332,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a blue recycling bin featuring the universal recycling symbol. The graphic represents recycling, waste separation, sustainability, and environmental protection.]]></value>
 				</property>
 				<property type="shared">
@@ -1357,7 +1357,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a wrapped gift box with a silver ribbon and bow. The graphic is suitable for gifts, birthdays, Christmas, celebrations, or special occasions.]]></value>
 				</property>
 				<property>
@@ -1386,7 +1386,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a magnifying glass with a blue lens and metallic handle. The graphic represents search, inspection, analysis, investigation, or zoom functionality.]]></value>
 				</property>
 				<property type="shared">
@@ -1411,7 +1411,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a classic incandescent light bulb. The graphic symbolizes ideas, creativity, innovation, inspiration, or electrical lighting.]]></value>
 				</property>
 				<property type="shared">
@@ -1436,7 +1436,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a yellow padlock with a silver shackle. The graphic represents security, privacy, encryption, authentication, or access control.]]></value>
 				</property>
 				<property type="shared">
@@ -1461,7 +1461,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a striped red-and-yellow pencil with a sharpened graphite tip. The graphic is suitable for writing, education, drawing, or office-related topics.]]></value>
 				</property>
 				<property type="shared">
@@ -1486,7 +1486,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of large red sunglasses with dark tinted lenses. The graphic is suitable for summer, fashion, travel, sun protection, or leisure themes.]]></value>
 				</property>
 				<property type="shared">
@@ -1511,7 +1511,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of two glossy red cherries connected by their stems. The graphic is suitable for fruit, food, desserts, healthy eating, or agriculture-related content.]]></value>
 				</property>
 				<property type="shared">
@@ -1536,7 +1536,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a white first aid kit with a red medical cross on the lid. The graphic represents first aid, healthcare, emergency equipment, or medical services.]]></value>
 				</property>
 				<property type="shared">
@@ -1561,7 +1561,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / openclipart.org]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a red octagonal STOP traffic sign with white lettering. The graphic represents traffic control, road safety, warnings, or prohibition.]]></value>
 				</property>
 				<property type="shared">
@@ -1586,7 +1586,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / alkacon.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Clipart illustration of a generic image placeholder icon showing stylized mountains and a sun inside a picture frame. The graphic represents missing images, photo galleries, image uploads, or multimedia content.]]></value>
 				</property>
 				<property>
@@ -1634,7 +1634,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[The Alkacon logo as SVG]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Alkacon Software corporate logo featuring the company name in a modern blue serif typeface.]]></value>
 				</property>
 				<property>
@@ -1674,7 +1674,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Collection of conference name badges with lanyards spread across a table before an event. The badges are branded for OpenCms Days, used participant registration for the OpenCms conference.]]></value>
 				</property>
 				<property>
@@ -1722,7 +1722,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[Several OpenCms bags standing in a row]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Rows of branded OpenCms conference gift bags arranged neatly at an exhibition or event venue. The bags are prepared for attendees of an OpenCms conference.]]></value>
 				</property>
 				<property>
@@ -1766,7 +1766,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Man arranging branded OpenCms conference bags in orderly rows at an event venue. The image captures preparations for an OpenCms conference.]]></value>
 				</property>
 				<property type="shared">
@@ -1802,7 +1802,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Woman and man presenting the OpenCms and Alkacon booth at an OpenCms days conference. The exhibition stand features OpenCms demonstrations, promotional materials, and computer displays for visitors.]]></value>
 				</property>
 				<property type="shared">
@@ -1831,7 +1831,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Collection of branded OpenCms promotional mint cases arranged in a grid. The giveaway items feature the OpenCms logo and a red-and-blue target design for conference attendees.]]></value>
 				</property>
 				<property type="shared">
@@ -1856,7 +1856,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC BY-NC-SA / Alkacon Software - https://alkacon.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Branded OpenCms notepad and pen on a desk with handwritten notes. The conference stationery highlights OpenCms promotional materials used during meetings, workshops, or events.]]></value>
 				</property>
 				<property type="shared">
@@ -1889,7 +1889,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[The OpenCms logo as SVG]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[OpenCms logo featuring the product name with its distinctive red-and-blue icon.]]></value>
 				</property>
 				<property>
@@ -1933,7 +1933,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[Used as a background image for the tutorial]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Decorative green ribbon graphic displaying lines of computer source code in a terminal-style layout.]]></value>
 				</property>
 				<property>
@@ -1988,7 +1988,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Collection of colorful empty wooden picture frames arranged in overlapping layers. The varied sizes, colors, and weathered finishes create a vibrant decorative composition.]]></value>
 				</property>
 				<property type="shared">
@@ -2013,7 +2013,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Row of sharpened colored pencils arranged in rainbow order on a white background. The shallow depth of field emphasizes the sharpened tips and bright colors.]]></value>
 				</property>
 				<property type="shared">
@@ -2038,7 +2038,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Stack of colorful hardcover notebooks or journals viewed from the side, highlighting their pages and fabric covers. The close-up composition emphasizes organization, writing, and stationery.]]></value>
 				</property>
 				<property type="shared">
@@ -2063,7 +2063,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Open case filled with office and stationery supplies, including pens, markers, folders, sticky notes, and notebooks. The colorful assortment suggests organization, creativity, or a mobile workspace.]]></value>
 				</property>
 				<property type="shared">
@@ -2088,7 +2088,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Overhead view of open paint buckets in multiple colors surrounding a hand holding a paintbrush. The scene captures painting or decorating work with a variety of mixed paint colors.]]></value>
 				</property>
 				<property type="shared">
@@ -2113,7 +2113,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Watercolor paint set, paintbrushes, and a blank spiral sketchbook arranged on a wooden tabletop. The composition suggests painting, drawing, and artistic creativity with space for new artwork.]]></value>
 				</property>
 				<property type="shared">
@@ -2138,7 +2138,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Vintage film camera, interchangeable camera lens, notebooks, pencils, and desk accessories arranged on a wooden desk. The neatly organized workspace combines photography, writing, and creative tools.]]></value>
 				</property>
 				<property type="shared">
@@ -2163,7 +2163,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Craft and design tools arranged on a blue work surface, including scissors, a rotary cutter, cutting mat, adhesive tapes, sticky notes, and a craft knife. The collection suggests paper crafting, graphic design, or creative prototyping.]]></value>
 				</property>
 				<property type="shared">
@@ -2188,7 +2188,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Well-used paintbrushes covered with dried paint arranged together in a close-up composition. The colorful bristles and worn handles reflect frequent use in painting or artistic work.]]></value>
 				</property>
 				<property type="shared">
@@ -2213,7 +2213,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Artist's workbench covered with paintbrushes, paint containers, tools, and other art supplies in a busy studio environment. The cluttered workspace conveys active painting, restoration, or creative production.]]></value>
 				</property>
 				<property type="shared">
@@ -2263,7 +2263,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Collection of vintage folding rulers neatly arranged on a wooden surface beside wooden storage boxes. The close-up composition emphasizes traditional measuring tools and woodworking craftsmanship.]]></value>
 				</property>
 				<property type="shared">
@@ -2288,7 +2288,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Wooden desk with a notebook, rulers, pen, leather notebook cover, and other stationery arranged in a clean workspace. The minimalist setup suggests planning, design, or creative work.]]></value>
 				</property>
 				<property type="shared">
@@ -2313,7 +2313,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Framed motivational poster displaying the phrase "ASK MORE QUESTIONS", mounted on a wall between two clocks. The office décor emphasizes curiosity, learning, and critical thinking.]]></value>
 				</property>
 				<property type="shared">
@@ -2338,7 +2338,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Open hardcover book viewed from the side with pages spread wide and a yellow back visible beneath the spine. The close-up composition emphasizes reading, learning, and printed reference material.]]></value>
 				</property>
 				<property type="shared">
@@ -2363,7 +2363,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Modern conference room with a long meeting table, rolling office chairs, a ceiling-mounted projector, and floor-to-ceiling windows. The bright corporate space is designed for business meetings, presentations, and collaboration.]]></value>
 				</property>
 				<property type="shared">
@@ -2388,7 +2388,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Modern home office or meeting space with laptops, books, candles, and framed wall art arranged on a large wooden table. A German poster reading "Alles ist fertig; es muss nur noch gemacht werden." ("Everything is ready; it just has to be done.") adds a motivational element to the workspace.]]></value>
 				</property>
 				<property type="shared">
@@ -2413,7 +2413,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Woman working on a laptop while holding a mug of tea at a wooden desk. The workspace and beverage suggest remote work, studying, or a relaxed home office environment.]]></value>
 				</property>
 				<property type="shared">
@@ -2438,7 +2438,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Man working on a laptop at a wooden table with a glass of water, notebook, and small potted plant nearby. The bright indoor setting suggests remote work, studying, or a modern home office.]]></value>
 				</property>
 				<property type="shared">
@@ -2463,7 +2463,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Two people collaborating at a table with laptops, notebooks, and handwritten notes spread across the workspace. The meeting focuses on planning, discussion, or project work in a collaborative office environment.]]></value>
 				</property>
 				<property type="shared">
@@ -2488,7 +2488,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Man using a laptop at an outdoor café or coworking space, with a smartphone, notebook, and coffee on the table. The casual setting illustrates mobile working or remote work outside the office.]]></value>
 				</property>
 				<property type="shared">
@@ -2513,7 +2513,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Silhouette of a person working on a laptop while talking on a phone beside a large window. The low-light scene conveys remote work, business communication, or focused work in a café or office.]]></value>
 				</property>
 				<property type="shared">
@@ -2538,7 +2538,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up of a person painting with a fine brush on watercolor paper. The image highlights artistic creativity, painting techniques, and hands-on artwork.]]></value>
 				</property>
 				<property type="shared">
@@ -2563,7 +2563,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Hand holding a mechanical stopwatch with the timer positioned near the 60-second mark. The close-up emphasizes time measurement, sports timing, or precision timing.]]></value>
 				</property>
 				<property type="shared">
@@ -2603,7 +2603,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a smiling young girl wearing a pink knitted winter hat with pom-poms while adjusting it with both hands. The cheerful expression and soft background create a casual outdoor portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -2628,7 +2628,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / David Niblack /  imagebase.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a man wearing reflective sunglasses outdoors. The mirrored lenses reflect nearby buildings, flowers, and a bicycle, while the blurred background emphasizes the face.]]></value>
 				</property>
 				<property type="shared">
@@ -2653,7 +2653,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a smiling child with blue eyes and medium-length brown hair outdoors. The softly blurred natural background draws attention to the child's face and expression.]]></value>
 				</property>
 				<property type="shared">
@@ -2678,7 +2678,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a smiling woman with a flower tucked behind one ear. The soft background and direct eye contact create a warm, natural outdoor portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -2728,7 +2728,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / David Niblack /  imagebase.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Portrait of a man standing outdoors in front of softly blurred buildings and parked vehicles. The casual clothing and neutral expression create a natural street portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -2753,7 +2753,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / David Niblack /  imagebase.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up outdoor portrait of a smiling man with a historic stone building softly blurred in the background. The shallow depth of field emphasizes the face and expression.]]></value>
 				</property>
 				<property type="shared">
@@ -2778,7 +2778,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / David Niblack /  imagebase.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Portrait of a smiling man seated indoors in a living room with chairs and furniture in the background. The relaxed setting and natural lighting create a casual home environment.]]></value>
 				</property>
 				<property type="shared">
@@ -2803,7 +2803,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / David Niblack /  imagebase.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Portrait of a man wearing a business suit and tie against a plain indoor background. The formal clothing and direct gaze create a professional head-and-shoulders portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -2828,7 +2828,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / publicdomainpictures.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio-style portrait of a smiling young woman with long dark hair wearing a gray turtleneck top against a plain light background. The clean composition emphasizes the face and friendly expression.]]></value>
 				</property>
 				<property type="shared">
@@ -2853,7 +2853,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a smiling man wearing large sunglasses and holding a shoulder strap, with a tropical beach and overwater bungalows in the background. The sunny seaside setting suggests a vacation or travel destination.]]></value>
 				</property>
 				<property type="shared">
@@ -2882,7 +2882,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a woman wearing distinctive purple-framed glasses while reading a book outdoors. The direct gaze, colorful eyewear, and softly blurred natural background create a playful, casual portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -2907,7 +2907,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / David Niblack /  imagebase.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Side-profile portrait of a man looking upward against a light stone wall. The natural lighting and thoughtful expression create a calm, contemplative outdoor portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -2932,7 +2932,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / publicdomainpictures.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio portrait of a smiling woman holding a magnifying glass in front of one eye, creating a playful distortion. The white background and exaggerated perspective emphasize curiosity, investigation, or inspection.]]></value>
 				</property>
 				<property type="shared">
@@ -2961,7 +2961,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / publicdomainpictures.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio portrait of a smiling woman giving a thumbs-up gesture toward the camera. The white background and positive expression emphasize approval, success, or encouragement.]]></value>
 				</property>
 				<property type="shared">
@@ -2990,7 +2990,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a smiling man wearing glasses and casual clothing against a plain white background. The relaxed pose and friendly expression create an informal studio portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -3019,7 +3019,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio portrait of a smiling man wearing round glasses against a plain white background. The close-up composition and cheerful expression emphasize the face and eyewear.]]></value>
 				</property>
 				<property type="shared">
@@ -3048,7 +3048,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / publicdomainpictures.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio portrait of a smiling woman wearing a headset with microphone, suggesting a customer support or call center role. The white background and professional headset emphasize communication and service.]]></value>
 				</property>
 				<property type="shared">
@@ -3077,7 +3077,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / publicdomainpictures.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio portrait of a smiling man in a business suit holding rolled architectural or engineering plans. The white background and presentation of blueprints suggest architecture, engineering, or construction.]]></value>
 				</property>
 				<property type="shared">
@@ -3106,7 +3106,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a man reaching toward the camera with an outstretched finger. The intense expression, shallow depth of field, and outdoor setting create a direct and engaging perspective.]]></value>
 				</property>
 				<property type="shared">
@@ -3135,7 +3135,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio-style beauty portrait of a woman with hair styled in a high bun, wearing a light-colored sleeveless top against a plain white background. The clean composition and soft lighting emphasize facial features and elegant styling.]]></value>
 				</property>
 				<property type="shared">
@@ -3160,7 +3160,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Portrait of a smiling man in business attire with a modern city skyline softly blurred in the background. The outdoor setting and formal clothing create a professional corporate portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -3185,7 +3185,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[A young woman smiles warmly at the camera in a clean studio portrait with a softly blurred background. Her natural expression, neat hairstyle, and simple appearance create a friendly, approachable, and professional impression.]]></value>
 				</property>
 				<property type="shared">
@@ -3210,7 +3210,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Portrait of a young woman wearing black-framed glasses while reading a book. The neutral background and focused expression emphasize studying, reading, or learning.]]></value>
 				</property>
 				<property type="shared">
@@ -3239,7 +3239,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a smiling woman with hair tied back against a neutral background. The bright lighting and friendly expression create a clean, professional headshot.]]></value>
 				</property>
 				<property type="shared">
@@ -3264,7 +3264,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio-style portrait of a smiling woman in business attire against a plain light background. The close-up composition emphasizes the face and approachable professional appearance.]]></value>
 				</property>
 				<property type="shared">
@@ -3289,7 +3289,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio-style portrait of a smiling woman against a plain light background. The close-up composition and direct eye contact create a friendly, professional headshot.]]></value>
 				</property>
 				<property type="shared">
@@ -3314,7 +3314,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / publicdomainpictures.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Studio-style portrait of a smiling woman with shoulder-length dark hair against a plain white background. The simple composition emphasizes the face and warm expression.]]></value>
 				</property>
 				<property type="shared">
@@ -3343,7 +3343,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Portrait of a man in a business suit and tie seated in an office environment. The professional attire and indoor setting create a formal corporate portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -3368,7 +3368,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Portrait of a man in business attire against a plain light background. The close-up composition and direct eye contact create a professional corporate headshot.]]></value>
 				</property>
 				<property type="shared">
@@ -3393,7 +3393,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Outdoor portrait of a smiling man wearing a blue shirt and dark jacket, with a softly blurred natural landscape in the background. The warm sunlight and relaxed expression create a friendly, informal portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -3418,7 +3418,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Wikimedia Commons]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Professional headshot of a man with grey hair wearing glasses and a business suit against a softly blurred neutral background. The formal attire and close-up composition emphasize a corporate or executive portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -3447,7 +3447,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up portrait of a smiling person wearing glasses, with warm indoor lighting and a softly blurred background. The casual expression and modern eyewear create a friendly portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -3472,7 +3472,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[A middle-aged man with short gray hair and glasses looks slightly to the side with a gentle smile. The neutral background and relaxed portrait style convey confidence, experience, and a calm, approachable personality.]]></value>
 				</property>
 				<property type="shared">
@@ -3497,7 +3497,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Professional headshot of a smiling girl with hair tied back against a neutral background. The clean composition and natural expression create a friendly business-style portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -3522,7 +3522,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Bearded man wearing glasses concentrating while working at a desktop computer, with the monitor visible in the foreground. The indoor setting and focused expression suggest office work, programming, or digital tasks.]]></value>
 				</property>
 				<property type="shared">
@@ -3547,7 +3547,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / publicdomainpictures.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Professional headshot of a smiling woman in business attire against a plain white background. The formal clothing and clean composition create a corporate portrait.]]></value>
 				</property>
 				<property type="shared">
@@ -3572,7 +3572,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / publicdomainpictures.net]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Blonde woman in a business suit pointing with both hands toward empty space beside them against a plain white background. The pose suggests presenting, highlighting, or drawing attention to information or promotional content.]]></value>
 				</property>
 				<property type="shared">
@@ -3616,7 +3616,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Interior of a massive industrial turbine or turbine test chamber with a cylindrical metallic structure, radial guide vanes, and dramatic blue and red lighting. A worker in white protective clothing stands in the foreground for scale, while the illuminated center emphasizes the depth and symmetry of the chamber.]]></value>
 				</property>
 				<property>
@@ -3656,7 +3656,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Modern glass building façade with a geometric triangular grid forming a large circular opening in the center. The reflective glass panels mirror the surrounding architecture and blue sky, emphasizing the building's contemporary design and symmetry.]]></value>
 				</property>
 				<property>
@@ -3696,7 +3696,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Construction worker wearing a hard hat, safety harness, and protective equipment while cutting steel beams with a power tool. Sparks fly from the metal as the worker stands on the structural framework of a building under construction.]]></value>
 				</property>
 				<property>
@@ -3736,7 +3736,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Modern office or airport interior with glass walls, illuminated blue accent lighting, and a moving walkway running through the corridor. The reflective surfaces and clean architectural lines create a bright, contemporary indoor environment.]]></value>
 				</property>
 				<property>
@@ -3776,7 +3776,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Reichstag Dome in Berlin, featuring the iconic glass dome with its spiral walkways illuminated at night. The transparent structure contrasts with the dark sky, highlighting the modern architectural addition to the historic Reichstag building.]]></value>
 				</property>
 				<property type="shared">
@@ -3801,7 +3801,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Row of large wind turbines standing across an open landscape with rolling hills beneath a blue sky with scattered clouds. The turbines are evenly spaced, illustrating renewable energy generation in a rural setting.]]></value>
 				</property>
 				<property type="shared">
@@ -3826,7 +3826,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Mountain bike parked against a stone wall overlooking a snowy landscape with a distant city skyline in the background. The bicycle is in sharp focus while the urban scenery appears softly blurred, emphasizing outdoor recreation and travel.]]></value>
 				</property>
 				<property type="shared">
@@ -3851,7 +3851,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Pair of turquoise ceramic salt and pepper shakers placed on a bamboo placemat. The simple square design and glossy finish create a clean, minimalist tabletop composition.]]></value>
 				</property>
 				<property type="shared">
@@ -3876,7 +3876,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Formation of aerobatic jets flying through the sky while releasing red, white, and blue smoke trails. The synchronized aircraft create colorful curved patterns against a lightly clouded background.]]></value>
 				</property>
 				<property type="shared">
@@ -3905,7 +3905,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Two colorful character-shaped egg holders holding oversized spoons while sitting side by side on a windowsill. The decorative kitchen accessories are backlit by a softly blurred green outdoor background, creating a bright and playful scene.]]></value>
 				</property>
 				<property type="shared">
@@ -3934,7 +3934,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up view of a wind turbine nacelle and rotor blades against a blue sky with light clouds. The image highlights the mechanical details and scale of the renewable energy installation.]]></value>
 				</property>
 				<property type="shared">
@@ -3959,7 +3959,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Coin-operated binocular viewer made of polished metal with brass accents, positioned outdoors against a blue sky. The close-up perspective emphasizes its reflective surfaces and classic design.]]></value>
 				</property>
 				<property type="shared">
@@ -3988,7 +3988,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Railway semaphore signal with a raised red-and-white signal arm and colored signal lights against a clear sky. The historic mechanical signaling equipment is shown in close-up, highlighting its distinctive form.]]></value>
 				</property>
 				<property type="shared">
@@ -4013,7 +4013,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Military transport aircraft releasing multiple paratroopers beneath green parachutes during an airborne exercise or demonstration. The aircraft is viewed from below against a clear blue sky, emphasizing the coordinated parachute deployment.]]></value>
 				</property>
 				<property type="shared">
@@ -4038,7 +4038,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Illuminated Louvre Pyramid reflected in a calm water surface at night, with the historic Louvre Palace in the background. The image highlights the contrast between the modern glass pyramid and the surrounding classical architecture in a symmetrical composition.]]></value>
 				</property>
 				<property type="shared">
@@ -4063,7 +4063,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up of a brass padlock securing a metal latch on a weathered industrial door or gate. The textured metal surfaces and shallow depth of field emphasize security and durability.]]></value>
 				</property>
 				<property type="shared">
@@ -4088,7 +4088,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Interior of the Milwaukee Art Museum – Quadracci Pavilion, featuring sweeping white architectural curves, large glass windows, and a high vaulted ceiling. Several visitors walk across the polished floor, emphasizing the spacious, light-filled design by Santiago Calatrava.]]></value>
 				</property>
 				<property type="shared">
@@ -4113,7 +4113,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Large abstract metal sculpture displayed in front of a modern glass office building. The curved bronze-colored forms contrast with the straight lines and reflective façade in the background.]]></value>
 				</property>
 				<property type="shared">
@@ -4138,7 +4138,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Modern residential apartment buildings with colorful orange and white façades featuring irregular balconies and protruding window sections. The contemporary urban architecture stands beneath a bright blue sky with scattered clouds.]]></value>
 				</property>
 				<property type="shared">
@@ -4163,7 +4163,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Modern airport terminal, likely Stockholm Arlanda Airport, with seating areas, large gate information signs, and wide pedestrian walkways. The bright interior features reflective floors, colorful structural elements, and Swedish-language signage directing passengers to departure gates.]]></value>
 				</property>
 				<property type="shared">
@@ -4188,7 +4188,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Giant upside-down ice cream cone sculpture on the roof of the Neumarkt Galerie shopping center in Cologne, Germany. The whimsical rooftop installation creates the illusion of a melting ice cream cone resting on the modern glass building, making it a distinctive urban landmark.]]></value>
 				</property>
 				<property type="shared">
@@ -4213,7 +4213,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Historic railway semaphore signal with two raised red-and-white signal arms and colored signal lights beside a steam locomotive. The close-up highlights the mechanical railway signaling equipment used before modern electronic signals.]]></value>
 				</property>
 				<property type="shared">
@@ -4238,7 +4238,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Escalator viewed from the bottom, creating a strong symmetrical perspective toward the upper level. The stainless-steel sides and repeating steps emphasize the clean, geometric design of the indoor space.]]></value>
 				</property>
 				<property type="shared">
@@ -4263,7 +4263,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[High-voltage electricity transmission tower carrying multiple overhead power lines against a blue sky with scattered clouds. The lattice steel structure illustrates large-scale electrical power distribution infrastructure.]]></value>
 				</property>
 				<property type="shared">
@@ -4288,7 +4288,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Traditional sailing boat with white sails floating on calm water beneath a vivid red and pink sunset sky. The tranquil scene is reflected on the water, creating a colorful and peaceful seascape.]]></value>
 				</property>
 				<property type="shared">
@@ -4313,7 +4313,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Pair of red sneakers tied together and hanging from overhead utility wires against a clear blue sky. The image depicts the well-known urban phenomenon commonly referred to as shoefiti.]]></value>
 				</property>
 				<property type="shared">
@@ -4338,7 +4338,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[LOVE sculpture by Robert Indiana displayed in an urban streetscape surrounded by pedestrians and city buildings. The iconic red public artwork is one of the artist's best-known pop art sculptures.]]></value>
 				</property>
 				<property type="shared">
@@ -4363,7 +4363,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Construction worker wearing a hard hat and overalls while drilling into a large timber beam with a hand brace drill. Industrial cranes in the background reinforce the construction and heavy engineering setting.]]></value>
 				</property>
 				<property type="shared">
@@ -4388,7 +4388,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Workers assembling the interior fuselage of an aircraft during aircraft manufacturing, installing components inside the unfinished metal airframe. The image depicts large-scale aerospace production in a factory environment.]]></value>
 				</property>
 				<property type="shared">
@@ -4413,7 +4413,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Factory worker assembling a radial aircraft engine during the World War II era, wearing a red headscarf and work clothes typical of wartime industrial production. The image reflects the increased role of women in aircraft manufacturing during the war.]]></value>
 				</property>
 				<property type="shared">
@@ -4442,7 +4442,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Colorful fireworks exploding across the night sky, likely during a public celebration or festival. Bright green, red, yellow, blue, and purple trails fill the frame above a dark city silhouette.]]></value>
 				</property>
 				<property type="shared">
@@ -4467,7 +4467,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Military heavy-lift helicopter hovering or landing in a cloud of dust, with blurred rotor blades showing motion. The warm yellow haze and low-angle view emphasize the aircraft’s power and operational setting.]]></value>
 				</property>
 				<property type="shared">
@@ -4492,7 +4492,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up of a camera lens resting beside a camera body, with the glass optics and focus ring in sharp detail. The shallow depth of field highlights photography equipment and lens design.]]></value>
 				</property>
 				<property type="shared">
@@ -4517,7 +4517,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[London Underground roundel sign viewed from below against a blue sky with scattered clouds. The iconic red circle and blue “UNDERGROUND” bar identify the entrance to London’s Tube network.]]></value>
 				</property>
 				<property type="shared">
@@ -4542,7 +4542,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Paraglider suspended beneath a bright yellow canopy against a clear blue sky. The image highlights recreational free flight and the curved shape of the inflated wing.]]></value>
 				</property>
 				<property type="shared">
@@ -4567,7 +4567,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Space Shuttle Atlantis launching from a NASA launch pad, with rocket boosters firing and clouds of exhaust below. The image captures a dramatic spacecraft liftoff from the Space Shuttle program.]]></value>
 				</property>
 				<property type="shared">
@@ -4592,7 +4592,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Mostly empty stadium seating with rows of green chairs and a single person sitting alone among them. The repeated seat pattern emphasizes scale, solitude, and the quiet atmosphere of an empty sports venue.]]></value>
 				</property>
 				<property type="shared">
@@ -4617,7 +4617,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Scheveningen Pier in The Hague at sunset, with the sea, beach reflections, and the pier’s tower silhouetted against a dramatic sky. The coastal landmark is shown in warm evening light with waves beneath the structure.]]></value>
 				</property>
 				<property type="shared">
@@ -4642,7 +4642,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[(c) Roland Fischer, Zürich (Switzerland) – Mail notification to: roland_zh(at)hispeed(dot)ch / Wikimedia Commons, via Wikimedia Commons]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Historic university-style building façade with classical columns, arched windows, and a large paved plaza in front. The symmetrical architecture and people on the steps suggest a public or academic institution.]]></value>
 				</property>
 				<property type="shared">
@@ -4671,7 +4671,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[By Namedina. Cropped by Oleg Alexandrov (Own work) [GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/) or CC BY 2.5 (http://creativecommons.org/licenses/by/2.5)], via Wikimedia Commons]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Elevated viewpoint overlooking a bay with visitors gathered on a wide terrace and distant bridges visible across the water. The scene combines modern architecture, open public space, and a broad coastal city panorama.]]></value>
 				</property>
 				<property type="shared">
@@ -4700,7 +4700,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[By Farbkontrast (Own work) [CC BY 3.0 (http://creativecommons.org/licenses/by/3.0)], via Wikimedia Commons]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Haus der Kulturen der Welt in Berlin, Germany, featuring its distinctive curved roof reflected in a calm pond. The iconic modernist building is shown in a symmetrical composition under a clear blue sky.]]></value>
 				</property>
 				<property type="shared">
@@ -4725,7 +4725,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[(c) Raimond Spekking, via Wikimedia Commons]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Modern office and commercial buildings at the MediaPark in Cologne, Germany, surrounding a spacious urban plaza with fountains, outdoor seating, and pedestrians. The contemporary glass architecture and open public space create a bright business district under a clear blue sky.]]></value>
 				</property>
 				<property type="shared">
@@ -4754,7 +4754,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[Public Domain, via Wikimedia Commons]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Exhibition booths and visitors at the CeBIT technology trade fair in Hanover, Germany, inside a large exhibition hall with a historic glass roof. The OpenCms booth is prominently visible among enterprise software and IT exhibitors, illustrating a major international technology exhibition.]]></value>
 				</property>
 				<property type="shared">
@@ -4779,7 +4779,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up of a hammer driving a screw into a wooden board while an adjustable wrench grips a nearby nail. The arrangement humorously contrasts using the correct and incorrect tools for common DIY tasks.]]></value>
 				</property>
 				<property type="shared">
@@ -4804,7 +4804,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Person using a smartphone in front of a bright yellow flowering rapeseed field. The image combines mobile technology with a rural landscape under clear daylight.]]></value>
 				</property>
 				<property type="shared">
@@ -4833,7 +4833,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Group of paragliders flying beneath colorful canopies against a dramatic sunset sky. The image captures a recreational paragliding event with multiple pilots soaring together.]]></value>
 				</property>
 				<property type="shared">
@@ -4858,7 +4858,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Blackboard with the handwritten phrase "Think Outside the Box" arranged around a drawn square. The motivational message illustrates creativity, innovation, and unconventional thinking.]]></value>
 				</property>
 				<property type="shared">
@@ -4883,7 +4883,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Powered paraglider (paramotor) pilot flying beneath a red, orange, and yellow canopy against a clear blue sky. The motorized harness and propeller distinguish it from conventional paragliding.]]></value>
 				</property>
 				<property type="shared">
@@ -4908,7 +4908,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up of a blue pipe wrench resting among assorted hand tools, including socket wrenches and open-end spanners. The worn surfaces emphasize frequent use in mechanical or maintenance work.]]></value>
 				</property>
 				<property type="shared">
@@ -4933,7 +4933,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Open laptop computer placed on a grassy lawn in a garden or park setting. The image conveys outdoor working, remote work, or mobile computing in a natural environment.]]></value>
 				</property>
 				<property type="shared">
@@ -4958,7 +4958,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Fork lifting a bite of ribbon pasta above a plate of seasoned pasta, highlighting the texture and folded noodles. The close-up food composition emphasizes a simple pasta dish ready to eat.]]></value>
 				</property>
 				<property type="shared">
@@ -4983,7 +4983,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Close-up of a fountain pen writing on lined paper, with the metal nib and fresh ink in sharp focus. The image emphasizes handwriting, writing instruments, and traditional note-taking.]]></value>
 				</property>
 				<property type="shared">
@@ -5008,7 +5008,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Two sheep and a young lamb standing together in a grassy pasture. The family group and springtime setting evoke livestock farming and the lambing season.]]></value>
 				</property>
 				<property type="shared">
@@ -5037,7 +5037,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Indigenous people traveling in a traditional outrigger canoe loaded with tropical fruit and other goods across open water. The image depicts traditional seafaring, transportation, and everyday life in a coastal island community.]]></value>
 				</property>
 				<property type="shared">
@@ -5062,7 +5062,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Group of king penguins standing together on a snowy path, likely in a zoo or wildlife park enclosure. Their distinctive black, white, and yellow plumage contrasts with the winter surroundings.]]></value>
 				</property>
 				<property type="shared">
@@ -5087,7 +5087,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / Pixabay.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Two boxers exchanging punches during a professional boxing match under bright stadium lights. The action captures the intensity of a competitive sporting event inside the ring.]]></value>
 				</property>
 				<property type="shared">
@@ -5112,7 +5112,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Two hands forming a heart shape around the setting sun above the horizon. The silhouette composition symbolizes love, romance, and affection during sunset.]]></value>
 				</property>
 				<property type="shared">
@@ -5137,7 +5137,7 @@ This module also creates a set of demo users during the import.]]></description>
 					<value><![CDATA[CC0 Public Domain / unsplash.com]]></value>
 				</property>
 				<property type="shared">
-					<name>Description.LLM</name>
+					<name>mcp.description</name>
 					<value><![CDATA[Two lit sparklers held by hand at dusk, producing glowing sparks against a softly blurred background. The festive scene is commonly associated with celebrations such as New Year's Eve, weddings, birthdays, and other special occasions.]]></value>
 				</property>
 				<property type="shared">

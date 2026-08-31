@@ -13,7 +13,7 @@
 		<import-site>/</import-site>
 		<export-mode name="reduced"/>
 		<description><![CDATA[The mercury template is a full featured, configurable template. It is also the default demonstration template for OpenCms 11.]]></description>
-		<version>21.0.3</version>
+		<version>21.0.4</version>
 		<autoincrement>true</autoincrement>
 		<authorname><![CDATA[Alkacon Software GmbH & Co. KG]]></authorname>
 		<authoremail/>
@@ -114,34 +114,34 @@
 			<type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-person" id="8526">
 				<param name="schema">/system/modules/alkacon.mercury.template/schemas/person.xsd</param>
 			</type>
-            <type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-organization" id="8527">
-                <param name="schema">/system/modules/alkacon.mercury.template/schemas/organization.xsd</param>
-            </type>
-            <type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-llmstxt" id="8528">
-                <properties>
-                    <property>
-                        <name>template-elements</name>
-                        <value><![CDATA[/system/modules/alkacon.mercury.template/elements/llmstxt.jsp]]></value>
-                    </property>
-                    <property>
-                        <name>export</name>
-                        <value><![CDATA[false]]></value>
-                    </property>
-                    <property>
-                        <name>locale-available</name>
-                        <value><![CDATA[en]]></value>
-                    </property>
-                        <property>
-                            <name>locale</name>
-                            <value><![CDATA[en]]></value>
-                        </property>
-                        <property>
-                            <name>search.exclude</name>
-                            <value><![CDATA[all]]></value>
-                        </property>
-                    </properties>
-                    <param name="schema">/system/modules/alkacon.mercury.template/schemas/llmstxt.xsd</param>
-                </type>
+			<type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-organization" id="8527">
+				<param name="schema">/system/modules/alkacon.mercury.template/schemas/organization.xsd</param>
+			</type>
+			<type class="org.opencms.file.types.CmsResourceTypeXmlContent" name="m-llmstxt" id="8528">
+				<properties>
+					<property>
+						<name>template-elements</name>
+						<value><![CDATA[/system/modules/alkacon.mercury.template/elements/llmstxt.jsp]]></value>
+					</property>
+					<property>
+						<name>export</name>
+						<value><![CDATA[false]]></value>
+					</property>
+					<property>
+						<name>locale-available</name>
+						<value><![CDATA[en]]></value>
+					</property>
+					<property>
+						<name>locale</name>
+						<value><![CDATA[en]]></value>
+					</property>
+					<property>
+						<name>search.exclude</name>
+						<value><![CDATA[all]]></value>
+					</property>
+				</properties>
+				<param name="schema">/system/modules/alkacon.mercury.template/schemas/llmstxt.xsd</param>
+			</type>
 		</resourcetypes>
 		<explorertypes>
 			<explorertype name="m-layout-row-complex" key="type.m-layout-row-complex.name" smalliconstyle="m-icon-16-layout-row-complex" bigiconstyle="m-icon-24-layout-row-complex" reference="xmlcontent">
@@ -222,12 +222,12 @@
 			<explorertype name="m-person" key="type.m-person.name" smalliconstyle="m-icon-16-person" bigiconstyle="m-icon-24-person" reference="xmlcontent">
 				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-person.description" key="type.m-person.title"/>
 			</explorertype>
-            <explorertype name="m-organization" key="type.m-organization.name" smalliconstyle="m-icon-16-organization" bigiconstyle="m-icon-24-organization" reference="xmlcontent">
-                <newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-organization.description" key="type.m-organization.title"/>
-            </explorertype>
-            <explorertype name="m-llmstxt" key="type.m-llmstxt.name" smalliconstyle="oc-icon-16-jsp_search" bigiconstyle="oc-icon-24-jsp_search" reference="xmlcontent" elementview="view_configs">
-                <newresource creatable="true" order="998" autosetnavigation="false" autosettitle="false" info="type.m-llmstxt.description" key="type.m-llmstxt.title"/>
-            </explorertype>
+			<explorertype name="m-organization" key="type.m-organization.name" smalliconstyle="m-icon-16-organization" bigiconstyle="m-icon-24-organization" reference="xmlcontent">
+				<newresource creatable="true" order="10" autosetnavigation="false" autosettitle="false" info="type.m-organization.description" key="type.m-organization.title"/>
+			</explorertype>
+			<explorertype name="m-llmstxt" key="type.m-llmstxt.name" smalliconstyle="oc-icon-16-jsp_search" bigiconstyle="oc-icon-24-jsp_search" reference="xmlcontent" elementview="view_configs">
+				<newresource creatable="true" order="998" autosetnavigation="false" autosettitle="false" info="type.m-llmstxt.description" key="type.m-llmstxt.title"/>
+			</explorertype>
 		</explorertypes>
 	</module>
 	<files>
@@ -511,9 +511,34 @@
 			<relations/>
 			<accesscontrol/>
 		</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/elements/privacy-policy.jsp</source>
-				<destination>system/modules/alkacon.mercury.template/elements/privacy-policy.jsp</destination>
+		<file>
+			<source>system/modules/alkacon.mercury.template/elements/llmstxt.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/elements/llmstxt.jsp</destination>
+			<type>jsp</type>
+			<uuidstructure>e44f4043-c725-18b0-ab0a-a52b8e96d2df</uuidstructure>
+			<uuidresource>04c897e2-3469-bf56-a9b6-b6c52be170cd</uuidresource>
+			<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[JSP for Mercury llms.txt files]]></value>
+				</property>
+				<property>
+					<name>cache</name>
+					<value><![CDATA[uri]]></value>
+				</property>
+				<property type="shared">
+					<name>export</name>
+					<value><![CDATA[false]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/elements/privacy-policy.jsp</source>
+			<destination>system/modules/alkacon.mercury.template/elements/privacy-policy.jsp</destination>
 			<type>jsp</type>
 			<uuidstructure>248c8527-557c-42f8-86a3-8ef88d13306b</uuidstructure>
 			<uuidresource>943e903b-1c3e-4d7b-a84a-4903bd014699</uuidresource>
@@ -529,34 +554,9 @@
 					<value><![CDATA[false]]></value>
 				</property>
 			</properties>
-				<relations/>
-				<accesscontrol/>
-			</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/elements/llmstxt.jsp</source>
-				<destination>system/modules/alkacon.mercury.template/elements/llmstxt.jsp</destination>
-				<type>jsp</type>
-				<uuidstructure>e44f4043-c725-18b0-ab0a-a52b8e96d2df</uuidstructure>
-				<uuidresource>04c897e2-3469-bf56-a9b6-b6c52be170cd</uuidresource>
-				<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
-				<flags>0</flags>
-				<properties>
-					<property>
-                        <name>cache</name>
-                        <value><![CDATA[uri]]></value>
-                    </property>
-                    <property>
-						<name>Title</name>
-						<value><![CDATA[JSP for Mercury llms.txt files]]></value>
-					</property>
-					<property type="shared">
-						<name>export</name>
-						<value><![CDATA[false]]></value>
-					</property>
-				</properties>
-				<relations/>
-				<accesscontrol/>
-			</file>
+			<relations/>
+			<accesscontrol/>
+		</file>
 		<file>
 			<destination>system/modules/alkacon.mercury.template/elementviews</destination>
 			<type>folder</type>
@@ -729,6 +729,10 @@
 					<value><![CDATA[Article detail view]]></value>
 				</property>
 				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
+				</property>
+				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
@@ -779,6 +783,10 @@
 					<value><![CDATA[Contact information]]></value>
 				</property>
 				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
+				</property>
+				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
@@ -819,6 +827,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Event detail view]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -871,6 +883,10 @@
 					<value><![CDATA[FAQ detail view]]></value>
 				</property>
 				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
+				</property>
+				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
@@ -919,6 +935,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Image series detail view]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -971,6 +991,10 @@
 					<value><![CDATA[Job offer detail view]]></value>
 				</property>
 				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
+				</property>
+				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
@@ -1019,6 +1043,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Media detail view]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -1071,6 +1099,10 @@
 					<value><![CDATA[Organization extended]]></value>
 				</property>
 				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
+				</property>
+				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
@@ -1100,6 +1132,10 @@
 					<value><![CDATA[Organization]]></value>
 				</property>
 				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
+				</property>
+				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
@@ -1127,6 +1163,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[Person]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -1177,6 +1217,10 @@
 				<property>
 					<name>Title</name>
 					<value><![CDATA[POI element]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
 				</property>
 				<property>
 					<name>locale</name>
@@ -6510,9 +6554,9 @@
 			<relations/>
 			<accesscontrol/>
 		</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/schemas/linksequence.xsd</source>
-				<destination>system/modules/alkacon.mercury.template/schemas/linksequence.xsd</destination>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/linksequence.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/linksequence.xsd</destination>
 			<type>plain</type>
 			<uuidstructure>910f2539-0db8-4452-91b7-670deaf12752</uuidstructure>
 			<uuidresource>5802cc3e-1fa4-4be2-aa7d-b5d0dd0ef1d3</uuidresource>
@@ -6524,26 +6568,26 @@
 					<value><![CDATA[XSD for link sequences]]></value>
 				</property>
 			</properties>
-				<relations/>
-				<accesscontrol/>
-			</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/schemas/llmstxt.xsd</source>
-				<destination>system/modules/alkacon.mercury.template/schemas/llmstxt.xsd</destination>
-				<type>plain</type>
-				<uuidstructure>1cf37b71-8900-6a49-e40a-5e0fe2d06738</uuidstructure>
-				<uuidresource>810f49be-2be6-e5fe-222c-c1a7c06fea0e</uuidresource>
-				<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
-				<flags>0</flags>
-				<properties>
-					<property>
-						<name>Title</name>
-						<value><![CDATA[XSD for llms.txt files]]></value>
-					</property>
-				</properties>
-				<relations/>
-				<accesscontrol/>
-			</file>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/llmstxt.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/llmstxt.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>1cf37b71-8900-6a49-e40a-5e0fe2d06738</uuidstructure>
+			<uuidresource>810f49be-2be6-e5fe-222c-c1a7c06fea0e</uuidresource>
+			<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[XSD for llms.txt files]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
 		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/map.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/map.xsd</destination>
@@ -7048,6 +7092,57 @@
 			<accesscontrol/>
 		</file>
 		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-result.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-result.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>fd155ddd-4ec5-d2ab-e9e4-e9f286653294</uuidstructure>
+			<uuidresource>38b7a1ca-c266-951f-bc86-8bdc9ed2548e</uuidresource>
+			<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for llms.txt generated results]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-section.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-section.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>8a73253c-473a-27df-ba94-d7ca03d802a2</uuidstructure>
+			<uuidresource>c09b2d22-f647-58ba-a57b-31ff839c753e</uuidresource>
+			<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for llms.txt sections]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-settings.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-settings.xsd</destination>
+			<type>plain</type>
+			<uuidstructure>a10f26c9-c72c-4d0f-d22d-b167765da83e</uuidstructure>
+			<uuidresource>cef2e859-1441-dc2f-a0da-70aa8ff225b9</uuidresource>
+			<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
+			<flags>0</flags>
+			<properties>
+				<property>
+					<name>Title</name>
+					<value><![CDATA[Nested XSD for llms.txt meta info settings]]></value>
+				</property>
+			</properties>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
 			<source>system/modules/alkacon.mercury.template/schemas/nested/map-config.xsd</source>
 			<destination>system/modules/alkacon.mercury.template/schemas/nested/map-config.xsd</destination>
 			<type>plain</type>
@@ -7501,9 +7596,9 @@
 			<relations/>
 			<accesscontrol/>
 		</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/schemas/nested/social-twitter.xsd</source>
-				<destination>system/modules/alkacon.mercury.template/schemas/nested/social-twitter.xsd</destination>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/social-twitter.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/social-twitter.xsd</destination>
 			<type>plain</type>
 			<uuidstructure>8a226afb-d03a-4899-9929-b386144f0fcd</uuidstructure>
 			<uuidresource>11702aa6-919e-49f6-89e9-0e16b6579d74</uuidresource>
@@ -7515,63 +7610,12 @@
 					<value><![CDATA[Nested XSD for Twitter meta infos]]></value>
 				</property>
 			</properties>
-				<relations/>
-				<accesscontrol/>
-			</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-settings.xsd</source>
-				<destination>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-settings.xsd</destination>
-				<type>plain</type>
-				<uuidstructure>a10f26c9-c72c-4d0f-d22d-b167765da83e</uuidstructure>
-				<uuidresource>cef2e859-1441-dc2f-a0da-70aa8ff225b9</uuidresource>
-				<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
-				<flags>0</flags>
-				<properties>
-					<property>
-						<name>Title</name>
-						<value><![CDATA[Nested XSD for llms.txt meta info settings]]></value>
-					</property>
-				</properties>
-				<relations/>
-				<accesscontrol/>
-			</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-section.xsd</source>
-				<destination>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-section.xsd</destination>
-				<type>plain</type>
-				<uuidstructure>8a73253c-473a-27df-ba94-d7ca03d802a2</uuidstructure>
-				<uuidresource>c09b2d22-f647-58ba-a57b-31ff839c753e</uuidresource>
-				<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
-				<flags>0</flags>
-				<properties>
-					<property>
-						<name>Title</name>
-						<value><![CDATA[Nested XSD for llms.txt sections]]></value>
-					</property>
-				</properties>
-				<relations/>
-				<accesscontrol/>
-			</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-result.xsd</source>
-				<destination>system/modules/alkacon.mercury.template/schemas/nested/llmstxt-result.xsd</destination>
-				<type>plain</type>
-				<uuidstructure>fd155ddd-4ec5-d2ab-e9e4-e9f286653294</uuidstructure>
-				<uuidresource>38b7a1ca-c266-951f-bc86-8bdc9ed2548e</uuidresource>
-				<datecreated>Mon, 22 Jun 2026 00:00:00 GMT</datecreated>
-				<flags>0</flags>
-				<properties>
-					<property>
-						<name>Title</name>
-						<value><![CDATA[Nested XSD for llms.txt generated results]]></value>
-					</property>
-				</properties>
-				<relations/>
-				<accesscontrol/>
-			</file>
-			<file>
-				<source>system/modules/alkacon.mercury.template/schemas/nested/tab-entry.xsd</source>
-				<destination>system/modules/alkacon.mercury.template/schemas/nested/tab-entry.xsd</destination>
+			<relations/>
+			<accesscontrol/>
+		</file>
+		<file>
+			<source>system/modules/alkacon.mercury.template/schemas/nested/tab-entry.xsd</source>
+			<destination>system/modules/alkacon.mercury.template/schemas/nested/tab-entry.xsd</destination>
 			<type>plain</type>
 			<uuidstructure>4c0e7bff-b2a1-4d1c-8554-d9b9d65fae17</uuidstructure>
 			<uuidresource>f2cc9e84-ab49-408a-9724-a39573f8a940</uuidresource>

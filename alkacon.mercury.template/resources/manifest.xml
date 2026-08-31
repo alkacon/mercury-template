@@ -729,16 +729,16 @@
 					<value><![CDATA[Article detail view]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -783,12 +783,12 @@
 					<value><![CDATA[Contact information]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 			</properties>
 			<relations/>
@@ -829,16 +829,16 @@
 					<value><![CDATA[Event detail view]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -883,16 +883,16 @@
 					<value><![CDATA[FAQ detail view]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -937,16 +937,16 @@
 					<value><![CDATA[Image series detail view]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -991,16 +991,16 @@
 					<value><![CDATA[Job offer detail view]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -1045,16 +1045,16 @@
 					<value><![CDATA[Media detail view]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -1099,16 +1099,16 @@
 					<value><![CDATA[Organization extended]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -1132,16 +1132,16 @@
 					<value><![CDATA[Organization]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -1165,16 +1165,16 @@
 					<value><![CDATA[Person]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>
@@ -1219,16 +1219,16 @@
 					<value><![CDATA[POI element]]></value>
 				</property>
 				<property>
-					<name>mcp.formatter</name>
-					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
-				</property>
-				<property>
 					<name>locale</name>
 					<value><![CDATA[en]]></value>
 				</property>
 				<property>
 					<name>locale-available</name>
 					<value><![CDATA[en]]></value>
+				</property>
+				<property>
+					<name>mcp.formatter</name>
+					<value><![CDATA[{"detailContainers":[{"name":"attachments","type":["element","row","m-element"]}]}]]></value>
 				</property>
 				<property>
 					<name>search.exclude</name>

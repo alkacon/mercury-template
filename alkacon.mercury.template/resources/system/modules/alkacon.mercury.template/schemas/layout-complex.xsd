@@ -36,6 +36,7 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-layout-row-complex.title)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                     <RuleRegex><![CDATA[.+]]></RuleRegex>
                     <RuleType><![CDATA[error]]></RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>

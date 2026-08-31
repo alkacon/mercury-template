@@ -24,7 +24,10 @@
     </xsd:complexType>
     <xsd:annotation>
         <xsd:appinfo>
-            <resourcebundle name="alkacon.mercury.xtensions.imagur-asset.messages"/>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.xtensions.imagur-asset.messages" />
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <mappings>
                 <mapping element="GalleryTitle" mapto="property:Title" useDefault="true" />
                 <mapping element="GalleryTitle" mapto="urlName" useDefault="true" />
@@ -45,6 +48,16 @@
             <visibilities>
                 <visibility element="GalleryTitle" params="ROLE.WORKPLACE_USER" />
             </visibilities>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
+                </Setting>
+                <Setting>
+                    <PropertyName>Text</PropertyName>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
+                </Setting>
+            </FieldSettings>
         </xsd:appinfo>
     </xsd:annotation>
 </xsd:schema>

@@ -35,6 +35,7 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-shariff.title)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

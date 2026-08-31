@@ -34,6 +34,7 @@
                     <Description><![CDATA[%(key.msg.label.form.OptionalWebFormRelease.Text.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
                 </Setting>
             </FieldSettings>
         </xsd:appinfo>

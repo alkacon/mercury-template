@@ -57,7 +57,10 @@
 
     <xsd:annotation>
         <xsd:appinfo>
-            <resourcebundle name="alkacon.mercury.webform.messages"/>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.webform.messages" />
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <tabs>
                 <tab element="Title" name="Tab.FormPage" collapse="false">
                     <description><![CDATA[%(key.msg.label.form.WebForm.Tab.FormPage.Description)]]></description>
@@ -81,6 +84,7 @@
                     <PropertyName>Title</PropertyName>
                     <DisplayName><![CDATA[%(key.msg.label.form.WebForm.Title)]]></DisplayName>
                     <Description><![CDATA[%(key.msg.label.form.WebForm.Title.help)]]></Description>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                     <Mapping>
                         <MapTo>property:Title</MapTo>
                     </Mapping>
@@ -91,6 +95,7 @@
                     <Description><![CDATA[%(key.msg.label.form.WebForm.FormText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>FormMiddleText</PropertyName>
@@ -98,6 +103,7 @@
                     <Description><![CDATA[%(key.msg.label.form.WebForm.FormMiddleText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>FormFooterText</PropertyName>
@@ -105,6 +111,7 @@
                     <Description><![CDATA[%(key.msg.label.form.WebForm.FormFooterText.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>FormConfirmation</PropertyName>
@@ -112,6 +119,7 @@
                     <Description><![CDATA[%(key.msg.label.form.WebForm.FormConfirmation.help)]]></Description>
                     <Widget>HtmlWidget</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>FormCaptcha</PropertyName>

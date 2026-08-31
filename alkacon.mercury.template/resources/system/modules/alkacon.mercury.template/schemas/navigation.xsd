@@ -33,6 +33,7 @@
                     <Description><![CDATA[%(key.label.Title.help)]]></Description>
                     <Widget>string</Widget>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                     <Search>false</Search>
                     <Mapping>
                         <MapTo>property:Title</MapTo>

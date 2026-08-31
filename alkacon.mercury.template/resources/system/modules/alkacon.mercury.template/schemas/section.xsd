@@ -37,12 +37,14 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(attribute:type.m-section.title:%(key.type.m-section.title))]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>Text</PropertyName>
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Widget>html</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigFull:%(param:editorConfigFull))]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>

@@ -37,6 +37,7 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-sitemap.title)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                     <Search>false</Search>
                 </Setting>
                 <Setting>

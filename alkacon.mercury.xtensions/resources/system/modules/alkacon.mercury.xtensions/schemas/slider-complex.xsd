@@ -31,7 +31,10 @@
 
     <xsd:annotation>
         <xsd:appinfo>
-            <resourcebundle name="alkacon.mercury.xtensions.slider-complex.messages"/>
+            <resourcebundles>
+                <propertybundle name="alkacon.mercury.xtensions.slider-complex.messages" />
+                <propertybundle name="alkacon.mercury.template.messages" />
+            </resourcebundles>
             <mappings>
                 <mapping element="GalleryTitle" mapto="property:Title" useDefault="true" />
                 <mapping element="GalleryTitle" mapto="urlName" useDefault="true" />
@@ -127,6 +130,12 @@
             <visibilities>
                 <visibility element="GalleryTitle" params="ROLE.WORKPLACE_USER" />
             </visibilities>
+            <FieldSettings>
+                <Setting>
+                    <PropertyName>Title</PropertyName>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
+                </Setting>
+            </FieldSettings>
         </xsd:appinfo>
     </xsd:annotation>
 

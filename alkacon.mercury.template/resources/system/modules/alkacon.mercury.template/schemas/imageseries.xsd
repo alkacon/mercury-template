@@ -63,6 +63,7 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-imageseries.title)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -90,6 +91,7 @@
                     <DisplayName><![CDATA[%(key.label.Text)]]></DisplayName>
                     <Widget>html</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>Image</PropertyName>

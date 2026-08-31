@@ -165,6 +165,7 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-event.title)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>

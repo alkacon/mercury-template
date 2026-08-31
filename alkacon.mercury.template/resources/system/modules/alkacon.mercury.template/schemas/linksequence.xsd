@@ -35,6 +35,7 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-linksequence.title)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                     <RuleRegex>.+</RuleRegex>
                     <RuleType>error</RuleType>
                     <Error><![CDATA[%(key.msg.error.notempty)]]></Error>
@@ -45,6 +46,7 @@
                     <Description><![CDATA[%(key.label.LinkSequence.Text.help)]]></Description>
                     <Widget>html</Widget>
                     <WidgetConfig><![CDATA[%(attribute:editorConfigLimited:%(param:editorConfigLimited))]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Text)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>LinkEntry</PropertyName>

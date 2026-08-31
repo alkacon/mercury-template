@@ -45,6 +45,7 @@
                     <Widget>string</Widget>
                     <Default><![CDATA[%(key.type.m-map.title)]]></Default>
                     <WidgetConfig><![CDATA[%(attribute:stringConfigTypo)]]></WidgetConfig>
+                    <Placeholder><![CDATA[%(key.msg.placeholder.Title)]]></Placeholder>
                 </Setting>
                 <Setting>
                     <PropertyName>MarkerConfig</PropertyName>

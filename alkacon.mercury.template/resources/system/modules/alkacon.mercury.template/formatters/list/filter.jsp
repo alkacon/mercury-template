@@ -16,14 +16,13 @@
 <fmt:setLocale value="${cms.locale}" />
 <cms:bundle basename="alkacon.mercury.template.messages">
 
+<m:setting-defaults>
+
     <%-- We just want to load facet metadata here, no actual results, so the count is 0 --%>
     <m:list-search
         config="${content}"
         count="0"
     />
-
-    <c:set var="setting"        value="${cms.element.setting}" />
-    <c:set var="cssWrapper"     value="${setting.cssWrapper}" />
 
     <c:set var="searchLabel"    value="${setting.searchlabel.toString}" />
     <c:set var="showSearch"     value="${setting.showsearch.toBoolean}" />
@@ -85,7 +84,7 @@
     <c:set var="resetButtonTitle"><fmt:message key="msg.page.list.resetbutton.title" /></c:set>
 
     <m:nl />
-    <div class="element type-list-filter${categoriesInline ? ' inline-list ' : ''} pivot ${cssWrapper}" <%--
+    <div class="element type-list-filter${categoriesInline ? ' inline-list' : ''} pivot${setCssWrapper123}" <%--
     --%>id="${filterId}" <%--
     --%>data-id="${elementId}" <%--
     --%>data-filter='{<%--
@@ -460,6 +459,9 @@
         </c:if>
     </div><%----%>
     <m:nl />
+
+</m:setting-defaults>
+
 </cms:bundle>
 </cms:formatter>
 

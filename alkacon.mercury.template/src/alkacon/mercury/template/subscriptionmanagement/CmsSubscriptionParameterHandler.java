@@ -58,7 +58,7 @@ public class CmsSubscriptionParameterHandler {
         EMAIL,
         /** The subscription groups to take an action for. */
         GROUPS,
-        /** The agreement for the terms & conditions */
+        /** The agreement for the terms and conditions */
         AGREEMENT,
         /** The captcha solution solved by the subscriber. */
         CAPTCHA;
@@ -133,10 +133,14 @@ public class CmsSubscriptionParameterHandler {
         SUBSCRIBE,
         /** Unsubscribe for a group. */
         UNSUBSCRIBE,
-        /** Confirm the subscription of a group. */
+        /** A user request to confirm the subscription of a group. This is the action the link in the confirmation mail points to. It performs nothing itself. */
         CONFIRM_SUBSCRIPTION,
-        /** Confirm the unsubscription of a group. */
-        CONFIRM_UNSUBSCRIPTION;
+        /** A user request to confirm the unsubscription of a group. This is the action the link in the confirmation mail points to. It performs nothing itself. */
+        CONFIRM_UNSUBSCRIPTION,
+        /** Complete the subscription for a group, after a user's confirmation request. */
+        COMPLETE_SUBSCRIPTION,
+        /** Complete the unsubscription for a group, after a user's confirmation request. */
+        COMPLETE_UNSUBSCRIPTION;
     }
 
     /** Password to use for encryption/decryption of parameter values. */
@@ -169,7 +173,7 @@ public class CmsSubscriptionParameterHandler {
     /** The group names as determined from the request parameters. */
     private List<String> m_requestedGroups;
 
-    /** Flag, indicating if the user has agreed terms & conditions according to the request parameters. */
+    /** Flag, indicating if the user has agreed terms and conditions according to the request parameters. */
     private boolean m_hasAgreed;
 
     /** Flag, indicating if the requested groups are valid, i.e., can be handled by the configuration. */
@@ -178,7 +182,7 @@ public class CmsSubscriptionParameterHandler {
     /** Flag, indicating if the email address is valid. */
     private boolean m_isValidEmail;
 
-    /** Flag, indicating if for the current action the user committed himself to the necessary terms & conditions. */
+    /** Flag, indicating if for the current action the user committed himself to the necessary terms and conditions. */
     private boolean m_isValidAgreement;
 
     /** Flag, indicating whether the user did provide a valid Captcha solution. */
@@ -277,6 +281,10 @@ public class CmsSubscriptionParameterHandler {
     /**
      * Returns the confirmation link parameters to add to a confirmation link for the requested action.
      *
+     * The parameters encode the action that follows the provided one, i.e., the subscription/unsubscription
+     * actions yield the parameters for the confirmation page linked in the mail, and the confirmation actions
+     * yield the parameters for the link that really completes the (un)subscription.
+     *
      * @param action the action to confirm
      * @param email the email (user name) of the user to confirm the action for.
      * @param groups the groups the action is confirmed for.
@@ -290,11 +298,9 @@ public class CmsSubscriptionParameterHandler {
         List<String> groups,
         String encryptionPassphrase) {
 
-        if (action.equals(SubscriptionAction.SUBSCRIBE) || action.equals(SubscriptionAction.UNSUBSCRIBE)) {
+        SubscriptionAction confirmAction = getConfirmAction(action);
+        if (null != confirmAction) {
             StringBuffer params = new StringBuffer();
-            SubscriptionAction confirmAction = action.equals(SubscriptionAction.SUBSCRIBE)
-            ? SubscriptionAction.CONFIRM_SUBSCRIPTION
-            : SubscriptionAction.CONFIRM_UNSUBSCRIPTION;
             params.append(Parameter.ACTION.toString()).append("=").append(confirmAction.ordinal());
             params.append('&');
             params.append(Parameter.EMAIL.toString()).append("=").append(email);
@@ -308,6 +314,29 @@ public class CmsSubscriptionParameterHandler {
             return PARAM_CONFIRM + "=" + encrypt(params.toString(), encryptionPassphrase);
         }
         return null;
+    }
+
+    /**
+     * Returns the action that follows the provided one in the double opt-in/opt-out chain.
+     *
+     * @param action the action to get the confirm action for.
+     *
+     * @return the confirm action, or <code>null</code> if the provided action needs no confirm action.
+     */
+    private static SubscriptionAction getConfirmAction(SubscriptionAction action) {
+
+        switch (action) {
+            case SUBSCRIBE:
+                return SubscriptionAction.CONFIRM_SUBSCRIPTION;
+            case UNSUBSCRIBE:
+                return SubscriptionAction.CONFIRM_UNSUBSCRIPTION;
+            case CONFIRM_SUBSCRIPTION:
+                return SubscriptionAction.COMPLETE_SUBSCRIPTION;
+            case CONFIRM_UNSUBSCRIPTION:
+                return SubscriptionAction.COMPLETE_UNSUBSCRIPTION;
+            default:
+                return null;
+        }
     }
 
     /**
@@ -336,6 +365,21 @@ public class CmsSubscriptionParameterHandler {
     public String getCaptchaSolution() {
 
         return m_captchaSolution;
+    }
+
+    /**
+     * Returns the parameters to add to the link that triggers the action following the current one.
+     *
+     * @return the request parameters to add to the management link to perform the follow-up action, or
+     *      <code>null</code> if the current action has no follow-up action.
+     */
+    public String getConfirmationLinkParameters() {
+
+        return getConfirmationLinkParameters(
+            m_action,
+            getEmail(),
+            getRequestedGroups(),
+            m_subscriptionConfig.getParameterEncryptionPassphrase());
     }
 
     /**
@@ -376,8 +420,8 @@ public class CmsSubscriptionParameterHandler {
     }
 
     /**
-     * Returns the name of the request parameter whose presence, indicates that the user accepted the terms & conditions.
-     * @return the name of the request parameter whose presence, indicates that the user accepted the terms & conditions.
+     * Returns the name of the request parameter whose presence, indicates that the user accepted the terms and conditions.
+     * @return the name of the request parameter whose presence, indicates that the user accepted the terms and conditions.
      */
     public String getParamAgreement() {
 
@@ -403,8 +447,8 @@ public class CmsSubscriptionParameterHandler {
     }
 
     /**
-     * Returns the name of the request parameter whose presence, indicates that the user accepted the terms & conditions.
-     * @return the name of the request parameter whose presence, indicates that the user accepted the terms & conditions.
+     * Returns the name of the request parameter whose presence, indicates that the user accepted the terms and conditions.
+     * @return the name of the request parameter whose presence, indicates that the user accepted the terms and conditions.
      */
     public String getParamGroups() {
 
@@ -421,8 +465,26 @@ public class CmsSubscriptionParameterHandler {
     }
 
     /**
-     * Returns a flag, indicating if the current action is to confirm a subscription.
-     * @return a flag, indicating if the current action is to confirm a subscription.
+     * Returns a flag, indicating if the current action is to complete a subscription.
+     * @return a flag, indicating if the current action is to complete a subscription.
+     */
+    public boolean isActionCompleteSubscription() {
+
+        return m_action.equals(SubscriptionAction.COMPLETE_SUBSCRIPTION);
+    }
+
+    /**
+     * Returns a flag, indicating if the current action is to complete an unsubscription.
+     * @return a flag, indicating if the current action is to complete an unsubscription.
+     */
+    public boolean isActionCompleteUnsubscription() {
+
+        return m_action.equals(SubscriptionAction.COMPLETE_UNSUBSCRIPTION);
+    }
+
+    /**
+     * Returns a flag, indicating if the current action is the user request to confirm a subscription.
+     * @return a flag, indicating if the current action is the user request to confirm a subscription.
      */
     public boolean isActionConfirmSubscription() {
 
@@ -430,8 +492,8 @@ public class CmsSubscriptionParameterHandler {
     }
 
     /**
-     * Returns a flag, indicating if the current action is to confirm an unsubscription.
-     * @return a flag, indicating if the current action is to confirm an unsubscription.
+     * Returns a flag, indicating if the current action is the user request to confirm an unsubscription.
+     * @return a flag, indicating if the current action is the user request to confirm an unsubscription.
      */
     public boolean isActionConfirmUnsubscription() {
 
@@ -513,21 +575,6 @@ public class CmsSubscriptionParameterHandler {
             return m_subscriptionConfig.getAction(m_action).perform(this);
         }
         return Collections.singletonList(new CmsMessageContainer(Messages.get(), Messages.GUI_INVALID_PARAMETERS_0));
-    }
-
-    /**
-     * Returns the parameters for unsubscribing the provided user from the given group configuration.
-     *
-     * @return the request parameters to add to the management link to perform the action, or <code>null</code> if
-     *      for the provided action no mail has to be send.
-     */
-    protected String getConfirmationLinkParameters() {
-
-        return getConfirmationLinkParameters(
-            m_action,
-            getEmail(),
-            getRequestedGroups(),
-            m_subscriptionConfig.getParameterEncryptionPassphrase());
     }
 
     /**

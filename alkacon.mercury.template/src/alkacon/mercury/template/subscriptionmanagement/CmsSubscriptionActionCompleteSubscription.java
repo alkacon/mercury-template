@@ -29,13 +29,13 @@ import org.apache.commons.logging.Log;
 
 import alkacon.mercury.template.subscriptionmanagement.CmsSubscriptionParameterHandler.SubscriptionAction;
 
-/** Action to unsubscribe a webuser when he confirms a requested unsubscription. */
-public class CmsSubscriptionActionConfirmUnsubscription implements I_CmsSubscriptionAction {
+/** Action that activates the requested subscriptions for a webuser. */
+public class CmsSubscriptionActionCompleteSubscription implements I_CmsSubscriptionAction {
 
     /** The log object for this class. */
-    private static final Log LOG = CmsLog.getLog(CmsSubscriptionActionConfirmUnsubscription.class);
+    private static final Log LOG = CmsLog.getLog(CmsSubscriptionActionCompleteSubscription.class);
 
-    /** The subscription manager. */
+    /** The subscription manager to use for handling subscriptions. */
     private CmsSubscriptionManager m_manager;
 
     /**
@@ -43,7 +43,7 @@ public class CmsSubscriptionActionConfirmUnsubscription implements I_CmsSubscrip
      *
      * @param manager the subscription manager to use.
      */
-    public CmsSubscriptionActionConfirmUnsubscription(CmsSubscriptionManager manager) {
+    public CmsSubscriptionActionCompleteSubscription(CmsSubscriptionManager manager) {
 
         m_manager = manager;
 
@@ -55,7 +55,7 @@ public class CmsSubscriptionActionConfirmUnsubscription implements I_CmsSubscrip
     @Override
     public String getName() {
 
-        return SubscriptionAction.CONFIRM_UNSUBSCRIPTION.toString();
+        return SubscriptionAction.CONFIRM_SUBSCRIPTION.toString();
     }
 
     /**
@@ -64,11 +64,11 @@ public class CmsSubscriptionActionConfirmUnsubscription implements I_CmsSubscrip
     @Override
     public String getParamValue() {
 
-        return String.valueOf(SubscriptionAction.CONFIRM_UNSUBSCRIPTION.ordinal());
+        return String.valueOf(SubscriptionAction.CONFIRM_SUBSCRIPTION.ordinal());
     }
 
     /**
-     * Unsubscribes a webuser from the requested groups.
+     * Activates the requested subscriptions for a user.
      *
      * @see alkacon.mercury.template.subscriptionmanagement.I_CmsSubscriptionAction#perform(CmsSubscriptionParameterHandler)
      */
@@ -76,14 +76,19 @@ public class CmsSubscriptionActionConfirmUnsubscription implements I_CmsSubscrip
     public List<CmsMessageContainer> perform(CmsSubscriptionParameterHandler paramHandler) {
 
         List<CmsMessageContainer> errors = new ArrayList<>();
-        String email = paramHandler.getEmail();
         for (String group : paramHandler.getRequestedGroups()) {
-            if (!m_manager.unregisterUser(email, group)) {
-                LOG.warn("Could not unregister subscriber '" + email + "' for group '" + group + "'.");
+            if (!m_manager.activateUser(paramHandler.getEmail(), group)) {
+                LOG.warn(
+                    "Could not activate subscriber \"" + paramHandler.getEmail() + "\" for group\"" + group + "'.");
                 errors.add(
-                    new CmsMessageContainer(Messages.get(), Messages.GUI_FAILED_UNSUBSCRIPTION_FOR_2, email, group));
+                    new CmsMessageContainer(
+                        Messages.get(),
+                        Messages.GUI_FAILED_SUBSCRIPTION_ACTIVATION_FOR_2,
+                        paramHandler.getEmail(),
+                        group));
             }
         }
         return errors;
+
     }
 }

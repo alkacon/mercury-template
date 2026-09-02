@@ -142,15 +142,16 @@ public final class CmsFunctionLinkResolver {
                             CmsJspContentAccessBean xmlBean = cmsBean.getDetailContent().getToXml();
                             boolean hasLocale = (xmlBean != null)
                                 && xmlBean.getHasLocale().get(targetLocale).booleanValue();
-                            if (hasLocale) {
+                            CmsJspResourceWrapper targetDetailPage = hasLocale
+                            ? cmsBean.getLocaleResource().get(targetLocale)
+                            : null;
+                            if (hasLocale && (null != targetDetailPage)) {
                                 String targetLink = cmsBean.getDetailContent().getSitePath();
-                                String baseUri = cmsBean.getLocaleResource().get(targetLocale).getSitePath();
+                                String baseUri = targetDetailPage.getSitePath();
                                 if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(baseUri)) {
                                     // this content is available in the other locale
                                     cms = OpenCms.initCmsObject(cms);
-                                    if (CmsStringUtil.isNotEmptyOrWhitespaceOnly(baseUri)) {
-                                        cms.getRequestContext().setUri(baseUri);
-                                    }
+                                    cms.getRequestContext().setUri(baseUri);
                                     cms.getRequestContext().setLocale(CmsLocaleManager.getLocale(targetLocale));
                                 }
                                 result = OpenCms.getLinkManager().substituteLinkForUnknownTarget(

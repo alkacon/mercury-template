@@ -1,10 +1,12 @@
 <%@page
     pageEncoding="UTF-8"
-    buffer="none"
+    contentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    buffer="8kb"
     session="false"
     trimDirectiveWhitespaces="true" %>
 <%@page import="alkacon.mercury.webform.CmsExportBeanExcel" %>
 <%@page import="alkacon.mercury.template.writer.CmsExcelWriter" %>
+<%@page import="org.apache.poi.ss.usermodel.Workbook" %>
 
 <%@ taglib prefix="m" tagdir="/WEB-INF/tags/mercury" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -35,11 +37,12 @@
     <%
         CmsExportBeanExcel exportBean = (CmsExportBeanExcel)pageContext.getAttribute("exportBean");
         if (exportBean != null) {
-            response.setHeader("Content-Type", "application/xlsx");
-            response.setContentType("application/xlsx");
             response.setHeader("Content-Disposition","inline; filename=" + exportBean.getSafeFileName());
-            ((CmsExcelWriter)exportBean.export()).getWorkbook().write(response.getOutputStream());
-            ((CmsExcelWriter)exportBean.export()).getWorkbook().close();
+            CmsExcelWriter excelWriter = (CmsExcelWriter)exportBean.export();
+
+            try (Workbook workbook = excelWriter.getWorkbook()) {
+                workbook.write(response.getOutputStream());
+            }
         }
     %>
 

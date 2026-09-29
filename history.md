@@ -2,6 +2,27 @@
 
 ## Release history ##
 
+### Version 22 ###
+
+*October 6, 2026*:
+
+* Updated for OpenCms 22.
+* New layout row for 3 columns with individually adjustable column widths.
+* Generation of an llms.txt file for the website with page descriptions grouped in configurable sections.
+* API keys and IDs for maps, analytics and other tools can now be stored in the OpenCms secret store instead of properties.
+* Redirects in navigations can optionally be opened in a new window.
+* Search in subsites can also be displayed on mobile devices.
+* Removal of default texts like "New text" or "New caption" from text fields, the editor shows real placeholders instead.
+* Default for the title of new content sections can be centrally adjusted or removed.
+* Default value for "Expiration date" is no longer one year in advance.
+* Consistent image titles on mouseover.
+* Job postings now have geo coordinates, so they can be shown in map searches and filtered by location.
+* Webform: Flexibly position texts between fields, above or below an input field.
+* Webform: No redisplay of submitted form data when returning from the confirmation page.
+* Prepared the template for MCP / AI agent integration: content types, formatters and demo images now carry descriptions for AI agents.
+* Migrated all Java sources from javax to Jakarta EE namespaces, updated to Gradle 9.
+* All NPM dependencies have been updated to a recent version.
+
 ### Version 21 ###
 
 *April 14, 2026*:

@@ -38,15 +38,15 @@ Each of the above functionality can be placed on a web page using OpenCms unique
 
 For the technical minded here are some more background facts about Mercury:
 
-* **SASS sources** CSS gurus can style the complete HTML output with individual CSS-themes using Mercurys [SASS](https://sass-lang.com) and [npm](https://www.npmjs.com) infrastructure.
-* **All minified** Mercurys npm build process minifies all CSS and JavaScript to give website visitors the best page loading performance.
+* **SASS sources** CSS gurus can style the complete HTML output with individual CSS-themes using Mercury's [SASS](https://sass-lang.com) and [npm](https://www.npmjs.com) infrastructure.
+* **All minified** Mercury's npm build process minifies all CSS and JavaScript to give website visitors the best page loading performance.
 * **Source maps provided** Mercury provides full CSS and JavaScript source maps so you can see the original sources in the Chrome or Firefox developer tools.
 
 **A demo website for the Mercury template is shipped as part of the main [OpenCms](https://opencms.org) download.**
 
 ## Customizing Mercury from source ##
 
-The rest of this page deals explains the technical process of how to customize the template from source. This is required only if you require full control of all aspects of the HTML / CSS being generated.
+The rest of this page explains the technical process of how to customize the template from source. This is required only if you require full control of all aspects of the HTML / CSS being generated.
 
 ### Structure of the repository source files ###
 
@@ -66,12 +66,12 @@ The JavaScript is generated from the resources under `./template-src/js`.
 
 To customize the template, you can add or change files under `template-src` and then use SASS / npm to compile the sources and place the results in the *alkacon.mercury.theme* module.
 
-To create Mercurys CSS and JavaScript resources from source, you need to setup a compile environment with [SASS](https://sass-lang.com) and [npm](https://www.npmjs.com). There are many articles available in the web on the details on how to setup such an environment, so we will provide only some brief details about the process here. We will assume that you have the basic environment already in place here.
+To create Mercury's CSS and JavaScript resources from source, you need to setup a compile environment with [SASS](https://sass-lang.com) and [npm](https://www.npmjs.com). There are many articles available in the web on the details on how to setup such an environment, so we will provide only some brief details about the process here. We will assume that you have the basic environment already in place here.
 
 You need to check out this repository from GitHub first. Then run
 
 ```shell
-sudo npm install
+npm install
 ```
 to install all dependencies required to compile the template's sources.
 
@@ -82,23 +82,23 @@ npm run dist
 ```
 in the repository's root folder.
 
-After running `npm`, the repository will have a new folder `./build/npm/` with three sub-folders. The sub-folder `03_minified/` contains the final CSS resources that you can copy to the *alkacon.mercury.theme* module. The result has to be copied to the folder `/system/modules/alkacon.mercury.theme/`.
+After running `npm`, the repository will have a new folder `./build/npm/` with the sub-folders `1_processed/`, `2_postcssed/`, `3_minified/` and `js/`. The sub-folder `3_minified/` contains the final CSS resources and `js/` the compiled JavaScript. These have to be copied to the folders `/system/modules/alkacon.mercury.theme/css/` and `/system/modules/alkacon.mercury.theme/js/` in the *alkacon.mercury.theme* module.
 
-You can also set the environment variable `OCMOUNTS` to point to a folder where the compilation result should be copied to. The intention is to mount the VFS of the OpenCms installation you develop on and set `OCMOUNTS` to point to the mount point. Then the CSS and JavaScript sources are updated automatically in the installation and you can see your changes in action.
+You can also set the environment variable `OCMOUNT` to point to a folder where the compilation result should be copied to. The intention is to mount the VFS of the OpenCms installation you develop on and set `OCMOUNT` to point to the mount point. Then the CSS and JavaScript sources are updated automatically in the installation and you can see your changes in action. The environment variable `OCDEPLOY` can optionally replace the copy command used for this deployment.
 
-### Customizing Mercurys CSS ###
+### Customizing Mercury's CSS ###
 
 Our npm process uses [SASS](https://sass-lang.com/) to generate minified CSS files (with source maps).
 
-The Mercury Template uses CSS themes. By default, the themes *theme-blue* and *theme-red* are available.
+The Mercury Template uses CSS themes. By default, the themes *theme-standard* and *theme-burger* are available.
 
 Our npm process generates one minified CSS file (with source map) for each theme. There is also one additional CSS file generated that contains resources shared by all themes.
 
-To write your own theme, you could add add an `.scss` file in the folder `./template-src/scss-themes/`, e.g., `theme-custom.scss`.
+To write your own theme, you can add an `.scss` file in the folder `./template-src/scss/themes/`, e.g., `theme-custom.scss`.
 
-The simplest adjustment to do in your theme is to change the color values of `$main-theme`, `$main-theme-hover` and `$main-theme-additional`, but you can overwrite any of the variables defined in one of the `.scss` files under `./template-src/scss/`. Of course, you can also add your own variables and style definitions.
+The simplest adjustment to do in your theme is to change the color values of `$main-theme` and `$main-theme-hover`, but you can overwrite any of the variables defined in one of the `.scss` files under `./template-src/scss/`. Of course, you can also add your own variables and style definitions.
 
-### Customizing Mercurys JavaScript ###
+### Customizing Mercury's JavaScript ###
 
 Our npm process uses Webpack to generate minified JavaScript files (with source maps) that are shared by all generated CSS themes.
 
@@ -108,7 +108,7 @@ You can modify or extend the files found in `./template-src/js` according to you
 
 ### Building the Mercury OpenCms modules ###
 
-Mercurys modules are built using [Gradle](https://gradle.org). The interesting targets are:
+Mercury's modules are built using [Gradle](https://gradle.org). The interesting targets are:
 
 * `dist_{module name}` to build a single module (includes building the module's JAR if required)
 * `jar_{module name}` to build only a module JAR
@@ -116,7 +116,7 @@ Mercurys modules are built using [Gradle](https://gradle.org). The interesting t
 
 The module *alkacon.mercury.template.democontents* contains a complete web site built with the Mercury Template. It serves as demonstration of the various content elements that are part of the template.
 
-The  [OpenCms Documentation](http://documentation.opencms.org) has more details about the general process required to build general OpenCms modules. Here we want to focus on the special way the Mercury CSS / JavaScript sources are build.
+The [OpenCms Documentation](https://documentation.opencms.org) has more details about the general process required to build general OpenCms modules. Here we want to focus on the special way the Mercury CSS / JavaScript sources are built.
 
 ## License ##
 
